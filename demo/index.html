@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@aeva/ui - Component Library Demo</title>
+    <!-- Prism.js for syntax highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -71,6 +73,104 @@
             color: #1976d2;
             margin: 0;
         }
+
+        /* Button demo styles */
+        .component-showcase h3 {
+            font-size: 1.2rem;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        .description {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+
+        .button-column {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .button-demo {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .button-demo .label {
+            font-size: 0.85rem;
+            color: #666;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Carbon-like Code Window */
+        .carbon-container {
+            border-radius: 12px;
+            margin-top: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .code-window {
+            background: #1e1e1e;
+            border-radius: 8px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            width: 100%;
+            overflow: hidden;
+            font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        }
+
+        .window-header {
+            background: #323232;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red {
+            background: #ff5f56;
+        }
+
+        .dot-yellow {
+            background: #ffbd2e;
+        }
+
+        .dot-green {
+            background: #27c93f;
+        }
+
+        .code-content {
+            padding: 1.5rem !important;
+            margin: 0 !important;
+            background: transparent !important;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Override Prism default scrollbar and background */
+        pre[class*="language-"] {
+            padding: 0px 13px !important;
+        }
     </style>
 </head>
 
@@ -81,35 +181,231 @@
 
         <div class="section">
             <h2>🎨 Atoms</h2>
+
+            <!-- Button Variants -->
             <div class="component-showcase">
-                <p>Basic building blocks akan ditampilkan di sini</p>
-                <!-- Komponen atoms akan ditambahkan di sini -->
+                <h3>Button Variants</h3>
+                <p class="description">Five distinct button styles for different use cases</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button variant="primary">Primary</aeva-button>
+                        <span class="label">Primary</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button variant="secondary">Secondary</aeva-button>
+                        <span class="label">Secondary</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button variant="outline">Outline</aeva-button>
+                        <span class="label">Outline</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button variant="ghost">Ghost</aeva-button>
+                        <span class="label">Ghost</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button variant="danger">Danger</aeva-button>
+                        <span class="label">Danger</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button Sizes -->
+            <div class="component-showcase button-size">
+                <h3>Button Sizes</h3>
+                <p class="description">Three sizes to fit different contexts</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button size="sm">Small</aeva-button>
+                        <span class="label">Small (sm)</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button size="md">Medium</aeva-button>
+                        <span class="label">Medium (md)</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button size="lg">Large</aeva-button>
+                        <span class="label">Large (lg)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Buttons with Icons -->
+            <div class="component-showcase">
+                <h3>Buttons with Icons</h3>
+                <p class="description">Icons can be placed on the left, right, or used alone</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button>
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Add Item
+                        </aeva-button>
+                        <span class="label">Icon Left</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button variant="secondary">
+                            Next
+                            <svg slot="icon-right" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                                </path>
+                            </svg>
+                        </aeva-button>
+                        <span class="label">Icon Right</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button icon-only variant="outline" aria-label="Search">
+                            <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </aeva-button>
+                        <span class="label">Icon Only</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button States -->
+            <div class="component-showcase">
+                <h3>Button States</h3>
+                <p class="description">Hover over buttons to see hover effects, click to see active state</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button>Normal</aeva-button>
+                        <span class="label">Normal State</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button disabled>Disabled</aeva-button>
+                        <span class="label">Disabled State</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button loading>Loading</aeva-button>
+                        <span class="label">Loading State</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Width Buttons -->
+            <div class="component-showcase">
+                <h3>Full Width Buttons</h3>
+                <p class="description">Buttons can span the full width of their container</p>
+                <div class="button-column">
+                    <div class="button-demo">
+                        <aeva-button full-width>Full Width Button</aeva-button>
+                        <span class="label">Full Width (100%)</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button>Default Width</aeva-button>
+                        <span class="label">Default (max 80%)</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complex Examples -->
+            <div class="component-showcase">
+                <h3>Complex Examples</h3>
+                <p class="description">Combining variants, sizes, and icons</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button variant="danger" size="lg">
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+                                </path>
+                            </svg>
+                            Delete Account
+                        </aeva-button>
+                        <span class="label">Large Danger with Icon</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button icon-only variant="outline" size="sm" aria-label="Settings">
+                            <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </aeva-button>
+                        <span class="label">Small Icon Button</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-button variant="ghost" loading>
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                            </svg>
+                            Uploading...
+                        </aeva-button>
+                        <span class="label">Ghost Loading State</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customizing -->
+            <div class="component-showcase">
+                <h3>User Custom Styling</h3>
+                <p class="description">This is how user can customize the button's style.</p>
+                <div class="carbon-container">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <pre class="code-content">
+                            <code class="language-css">
+/* Global Customization */
+aeva-button {
+    --aeva-button-primary-bg: #34d399;
+    --aeva-button-primary-hover-bg: #10b981;
+}
+
+/* Customization for a specific container */
+.button-size aeva-button {
+    --aeva-button-primary-bg: #f59e0b;
+    --aeva-button-primary-hover-bg: #d68905;
+    --aeva-button-border-radius: 8px;
+}
+                            </code></pre>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="section">
             <h2>🧩 Molecules</h2>
             <div class="component-showcase">
-                <p>Kombinasi atoms akan ditampilkan di sini</p>
-                <!-- Komponen molecules akan ditambahkan di sini -->
+                <p>Combinations of atoms will be displayed here</p>
+                <!-- Molecule components will be added here -->
             </div>
         </div>
 
         <div class="section">
             <h2>🏗️ Organisms</h2>
             <div class="component-showcase">
-                <p>Komponen kompleks akan ditampilkan di sini</p>
-                <!-- Komponen organisms akan ditambahkan di sini -->
+                <p>Complex components will be displayed here</p>
+                <!-- Organism components will be added here -->
             </div>
         </div>
 
         <div class="info-box">
-            <p><strong>Hot Reload Active!</strong> Edit komponen di folder src/ dan lihat perubahan secara real-time.
-            </p>
+            <p><strong>Hot Reload Active!</strong> Edit components in the src/ folder and see changes in real-time.</p>
         </div>
     </div>
 
     <script type="module" src="/demo/main.ts"></script>
+    <!-- Prism.js script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
 </body>
 
 </html>

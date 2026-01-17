@@ -2,7 +2,7 @@
 // Export all components here
 
 // Atoms
-// export * from './components/atoms/button';
+export * from './components/atoms/aeva-button';
 // export * from './components/atoms/card';
 
 // Molecules
