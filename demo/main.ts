@@ -8,6 +8,7 @@ console.log('Demo page loaded!');
 console.log('Hot reload is active - edit files in src/ to see changes');
 
 // Nanti kita akan import dan showcase komponen di sini
-// Contoh:
-// import '../src/components/atoms/button';
+// Import components for demo
+import '../src/components/atoms/aeva-button';
+import '../src/components/atoms/aeva-text';
 // import '../src/components/atoms/card';

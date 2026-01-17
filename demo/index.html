@@ -182,6 +182,11 @@
         <div class="section">
             <h2>🎨 Atoms</h2>
 
+            <!-- Button Component -->
+            <h3
+                style="font-size: 1.75rem; color: #667eea; margin-top: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                Button Component</h3>
+
             <!-- Button Variants -->
             <div class="component-showcase">
                 <h3>Button Variants</h3>
@@ -379,7 +384,452 @@ aeva-button {
                     </div>
                 </div>
             </div>
+
+            <!-- Typography Component -->
+            <h3
+                style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                Typography Component</h3>
+
+            <div class="component-showcase">
+                <p class="description">A comprehensive typography system with multiple variants, sizes, and states</p>
+
+                <!-- Typography Variants -->
+                <div style="margin-top: 2rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Variants</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <aeva-text variant="display">Display / Hero Text</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Display/Hero - Large
+                                impactful text for hero sections</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="h1">Heading 1</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">H1 - Main page
+                                heading</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="h2">Heading 2</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">H2 - Section heading</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="h3">Heading 3</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">H3 - Subsection
+                                heading</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="h4">Heading 4</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">H4 - Minor heading</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="h5">Heading 5</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">H5 - Small heading</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="h6">Heading 6</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">H6 - Smallest heading</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body">Body text for paragraphs and general content. This is the
+                                default variant for readable text.</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Body - Default paragraph
+                                text</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="label">Label Text</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Label - For form labels and
+                                UI text</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typography Sizes -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Sizes</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <aeva-text variant="body" size="xs">Extra Small (xs) - Tiny text for
+                                captions</aeva-text>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" size="sm">Small (sm) - Small text for secondary
+                                info</aeva-text>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" size="md">Medium (md) - Default size for body
+                                text</aeva-text>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" size="lg">Large (lg) - Larger text for
+                                emphasis</aeva-text>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" size="xl">Extra Large (xl) - Very large
+                                text</aeva-text>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" size="2xl">2X Large (2xl) - Even larger
+                                text</aeva-text>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" size="3xl">3X Large (3xl) - Largest size</aeva-text>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typography Alignment -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Text Alignment</h4>
+                    <div
+                        style="display: flex; flex-direction: column; gap: 1rem; background: white; padding: 1rem; border-radius: 8px;">
+                        <div>
+                            <aeva-text variant="body" align="left">Left aligned text - This is the default
+                                alignment for most text content.</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Left alignment</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" align="center">Center aligned text - Perfect for headings
+                                and featured content.</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem; text-align: center;">Center
+                                alignment</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" align="right">Right aligned text - Useful for dates, prices,
+                                and numerical data.</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem; text-align: right;">Right
+                                alignment</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" align="justify">Justified text - This text is aligned to
+                                both left and right margins, creating a clean block of text. Best used for longer
+                                paragraphs where a formal appearance is desired.</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Justify alignment</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typography States -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">States</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <aeva-text variant="body" state="normal">Normal state - Default text
+                                appearance</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Normal state</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" state="muted">Muted state - Reduced emphasis for secondary
+                                information</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Muted state</span>
+                        </div>
+                        <div style="background: #1a1a1a; padding: 1rem; border-radius: 8px;">
+                            <aeva-text variant="body" state="inverse">Inverse state - For use on dark
+                                backgrounds</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem; color: #999;">Inverse
+                                state</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" state="error">Error state - For error messages and
+                                warnings</aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Error state</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inline Formatting -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Inline Formatting</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <aeva-text variant="body">
+                                This text contains <strong>bold text</strong> for emphasis.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Bold formatting</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body">
+                                This text contains <em>italic text</em> for subtle emphasis.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Italic formatting</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body">
+                                This text contains <u>underlined text</u> for highlighting.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Underline formatting</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body">
+                                Visit our <a href="#">website</a> for more information.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Hyperlink formatting</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body">
+                                Use the <code>console.log()</code> function to debug.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Code formatting</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body">
+                                This is <strong>bold</strong>, <em>italic</em>, and <a href="#">linked</a> text all
+                                together.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Mixed formatting</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Complex Examples -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Complex Examples</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <aeva-text variant="h2" align="center" size="xl">
+                                Welcome to Our Platform
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem; text-align: center;">Large
+                                centered heading</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" size="lg" align="center">
+                                Build amazing web applications with our <strong>modern design system</strong>.
+                                <a href="#">Get started today</a> and join thousands of developers.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem; text-align: center;">Large
+                                centered body with formatting</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="label" size="sm" state="muted">
+                                Last updated: January 17, 2026
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Small muted label</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Transform -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Text Transform</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <aeva-text variant="body" transform="uppercase">
+                                uppercase text transformation
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Uppercase transform</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" transform="lowercase">
+                                LOWERCASE TEXT TRANSFORMATION
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Lowercase transform</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" transform="capitalize">
+                                capitalize each word in this sentence
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.25rem;">Capitalize transform</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Truncation & No Wrap -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Truncation & No Wrap</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div>
+                            <div style="max-width: 300px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body" truncate>
+                                    This is a very long text that will be truncated with an ellipsis when it exceeds the
+                                    container width
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Truncate - Single line with
+                                ellipsis</span>
+                        </div>
+                        <div>
+                            <div style="max-width: 300px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body" no-wrap>
+                                    This text will not wrap to multiple lines
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">No Wrap - Prevents line
+                                breaks</span>
+                        </div>
+                        <div>
+                            <div style="max-width: 300px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body">
+                                    This text will wrap normally when it reaches the container edge
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Normal - Default wrapping
+                                behavior</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Line Clamp (Multi-line Truncation) -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Line Clamp (Multi-line
+                        Truncation)</h4>
+                    <p class="description">Truncate text to specific number of lines (1-6 lines supported)</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <div style="max-width: 400px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body" line-clamp="1">
+                                    This is a very long paragraph that demonstrates the line clamp feature. When you set
+                                    line-clamp to 1, it will truncate the text to a single line with an ellipsis at the
+                                    end, similar to the truncate property but using a different CSS technique.
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Line Clamp: 1 line</span>
+                        </div>
+                        <div>
+                            <div style="max-width: 400px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body" line-clamp="2">
+                                    This is a very long paragraph that demonstrates the line clamp feature. When you set
+                                    line-clamp to 2, it will truncate the text to exactly two lines with an ellipsis at
+                                    the end. This is perfect for card descriptions, preview text, and other UI elements
+                                    where you want to show a limited amount of text.
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Line Clamp: 2 lines</span>
+                        </div>
+                        <div>
+                            <div style="max-width: 400px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body" line-clamp="3">
+                                    This is a very long paragraph that demonstrates the line clamp feature. When you set
+                                    line-clamp to 3, it will truncate the text to exactly three lines with an ellipsis
+                                    at the end. This is perfect for card descriptions, article previews, product
+                                    descriptions, and other UI elements where you want to show a limited amount of text
+                                    while maintaining readability and visual consistency across your interface.
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Line Clamp: 3 lines</span>
+                        </div>
+                        <div>
+                            <div style="max-width: 400px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body" line-clamp="4">
+                                    This is a very long paragraph that demonstrates the line clamp feature. When you set
+                                    line-clamp to 4, it will truncate the text to exactly four lines with an ellipsis at
+                                    the end. This gives you more room to display content while still maintaining control
+                                    over the layout. It's particularly useful for blog post previews, product
+                                    descriptions, user bios, and other content where you want to give readers a
+                                    substantial preview without overwhelming the page layout.
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Line Clamp: 4 lines</span>
+                        </div>
+                        <div>
+                            <div style="max-width: 400px; border: 1px dashed #ccc; padding: 0.5rem;">
+                                <aeva-text variant="body">
+                                    This is the same long paragraph without line clamp. Notice how it wraps naturally to
+                                    fill all available space. When you set line-clamp to 4, it will truncate the text to
+                                    exactly four lines with an ellipsis at the end. This gives you more room to display
+                                    content while still maintaining control over the layout. It's particularly useful
+                                    for blog post previews, product descriptions, user bios, and other content where you
+                                    want to give readers a substantial preview without overwhelming the page layout.
+                                </aeva-text>
+                            </div>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">No Line Clamp - Full text
+                                displayed</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Spacing Control -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Spacing Control</h4>
+                    <p class="description">Use CSS variables to control margins</p>
+                    <div style="background: white; padding: 1rem; border-radius: 8px;">
+                        <div style="border: 1px dashed #ccc; padding: 1rem;">
+                            <aeva-text variant="h3" style="--aeva-text-margin-bottom: 1rem;">
+                                Heading with Bottom Margin
+                            </aeva-text>
+                            <aeva-text variant="body">
+                                This paragraph follows the heading with proper spacing.
+                            </aeva-text>
+                        </div>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Custom margin using CSS
+                            variables</span>
+                    </div>
+                </div>
+
+                <!-- Max Width Control -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">Max Width Control</h4>
+                    <p class="description">Limit text width for optimal readability (60-80 characters)</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div>
+                            <aeva-text variant="body"
+                                style="--aeva-text-max-width: 65ch; background: #f0f0f0; padding: 1rem;">
+                                This paragraph has a maximum width of 65 characters, which is optimal for readability.
+                                Long lines of text can be difficult to read, so limiting the width improves the reading
+                                experience. This is especially important for body text in articles and documentation.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">Max width: 65 characters
+                                (optimal)</span>
+                        </div>
+                        <div>
+                            <aeva-text variant="body" style="background: #f0f0f0; padding: 1rem;">
+                                This paragraph has no maximum width constraint, so it will stretch to fill the entire
+                                container width. This can make reading more difficult, especially on wide screens where
+                                lines become very long.
+                            </aeva-text>
+                            <span class="label" style="display: block; margin-top: 0.5rem;">No max width (full
+                                width)</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- CSS Customization Example -->
+                <div style="margin-top: 3rem;">
+                    <h4 style="font-size: 1.1rem; color: #667eea; margin-bottom: 1rem;">CSS Customization</h4>
+                    <p class="description">Customize typography using CSS variables</p>
+                    <div class="carbon-container">
+                        <div class="code-window">
+                            <div class="window-header">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                            </div>
+                            <pre class="code-content">
+                                <code class="language-css">
+/* Global Customization */
+aeva-text {
+    --aeva-text-font-family: 'Inter', sans-serif;
+    --aeva-text-color: #2d3748;
+    --aeva-text-link-color: #3182ce;
+}
+
+/* Customize specific variants */
+aeva-text[variant="display"] {
+    --aeva-text-display-weight: 900;
+    --aeva-text-letter-spacing-display: -0.03em;
+}
+
+/* Customize states */
+aeva-text[state="error"] {
+    --aeva-text-error-color: #e53e3e;
+}
+
+/* Add spacing to headings */
+aeva-text[variant^="h"] {
+    --aeva-text-margin-bottom: 1rem;
+}
+
+/* Limit body text width for readability */
+aeva-text[variant="body"] {
+    --aeva-text-max-width: 65ch;
+}
+                                </code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
 
         <div class="section">
             <h2>🧩 Molecules</h2>

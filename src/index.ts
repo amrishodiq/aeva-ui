@@ -2,7 +2,8 @@
 // Export all components here
 
 // Atoms
-export * from './components/atoms/aeva-button';
+export { AevaButton } from './components/atoms/aeva-button.js';
+export { AevaText } from './components/atoms/aeva-text.js';
 // export * from './components/atoms/card';
 
 // Molecules
