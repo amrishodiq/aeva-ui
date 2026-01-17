@@ -1,0 +1,590 @@
+import { LitElement, html, css } from 'lit';
+import { customElement, property, state } from 'lit/decorators.js';
+import { classMap } from 'lit/directives/class-map.js';
+
+/**
+ * A versatile input component with multiple variants, sizes, and validation.
+ * Supports text filtering via regex and numeric validation.
+ *
+ * @slot - Not used (input is self-contained)
+ *
+ * @fires input - Fired when input value changes
+ * @fires change - Fired when input loses focus after value change
+ * @fires error - Fired when validation fails
+ *
+ * @csspart input - The input/textarea element
+ * @csspart container - The container wrapper
+ *
+ * @cssprop --aeva-input-font-family - Font family for input text
+ * @cssprop --aeva-input-border-radius - Border radius for inputs
+ * @cssprop --aeva-input-transition - Transition timing for state changes
+ *
+ * @cssprop --aeva-input-bg - Background color
+ * @cssprop --aeva-input-border-color - Border color
+ * @cssprop --aeva-input-text-color - Text color
+ * @cssprop --aeva-input-placeholder-color - Placeholder text color
+ * @cssprop --aeva-input-error-border-color - Border color on error
+ *
+ * @cssprop --aeva-input-focus-border-color - Border color on focus
+ * @cssprop --aeva-input-focus-ring-color - Focus ring color
+ * @cssprop --aeva-input-focus-ring-width - Focus ring width
+ * @cssprop --aeva-input-focus-ring-offset - Focus ring offset
+ *
+ * @cssprop --aeva-input-hover-border-color - Border color on hover
+ *
+ * @cssprop --aeva-input-disabled-bg - Background color when disabled
+ * @cssprop --aeva-input-disabled-border-color - Border color when disabled
+ * @cssprop --aeva-input-disabled-text-color - Text color when disabled
+ * @cssprop --aeva-input-disabled-opacity - Opacity when disabled
+ *
+ * @cssprop --aeva-input-padding-sm - Padding for small input
+ * @cssprop --aeva-input-font-size-sm - Font size for small input
+ * @cssprop --aeva-input-height-sm - Height for small input
+ *
+ * @cssprop --aeva-input-padding-md - Padding for medium input
+ * @cssprop --aeva-input-font-size-md - Font size for medium input
+ * @cssprop --aeva-input-height-md - Height for medium input
+ *
+ * @cssprop --aeva-input-padding-lg - Padding for large input
+ * @cssprop --aeva-input-font-size-lg - Font size for large input
+ * @cssprop --aeva-input-height-lg - Height for large input
+ *
+ * @cssprop --aeva-input-multiline-min-height - Minimum height for multiline
+ */
+@customElement('aeva-input')
+export class AevaInput extends LitElement {
+  static styles = css`
+    :host {
+      --aeva-input-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      --aeva-input-border-radius: 8px;
+      --aeva-input-transition: all 0.2s ease-in-out;
+
+      /* Colors */
+      --aeva-input-bg: #ffffff;
+      --aeva-input-border-color: #d1d5db;
+      --aeva-input-text-color: #1a1a1a;
+      --aeva-input-placeholder-color: #9ca3af;
+      --aeva-input-error-border-color: #dc2626;
+
+      /* Focus state */
+      --aeva-input-focus-border-color: #667eea;
+      --aeva-input-focus-ring-color: rgba(102, 126, 234, 0.3);
+      --aeva-input-focus-ring-width: 3px;
+      --aeva-input-focus-ring-offset: 0px;
+
+      /* Hover state */
+      --aeva-input-hover-border-color: #9ca3af;
+
+      /* Disabled state */
+      --aeva-input-disabled-bg: #f3f4f6;
+      --aeva-input-disabled-border-color: #e5e7eb;
+      --aeva-input-disabled-text-color: #9ca3af;
+      --aeva-input-disabled-opacity: 0.6;
+
+      /* Sizes */
+      --aeva-input-padding-sm: 8px 12px;
+      --aeva-input-font-size-sm: 14px;
+      --aeva-input-height-sm: 36px;
+
+      --aeva-input-padding-md: 12px 16px;
+      --aeva-input-font-size-md: 16px;
+      --aeva-input-height-md: 44px;
+
+      --aeva-input-padding-lg: 16px 20px;
+      --aeva-input-font-size-lg: 18px;
+      --aeva-input-height-lg: 52px;
+
+      /* Multiline */
+      --aeva-input-multiline-min-height: 100px;
+
+      display: block;
+      width: 100%;
+    }
+
+    /* Dark mode support */
+    @media (prefers-color-scheme: dark) {
+      :host {
+        --aeva-input-bg: #1f2937;
+        --aeva-input-border-color: #4b5563;
+        --aeva-input-text-color: #f9fafb;
+        --aeva-input-placeholder-color: #6b7280;
+        --aeva-input-disabled-bg: #111827;
+        --aeva-input-disabled-border-color: #374151;
+      }
+    }
+
+    .container {
+      width: 100%;
+    }
+
+    input,
+    textarea {
+      font-family: var(--aeva-input-font-family);
+      width: 100%;
+      border: 2px solid var(--aeva-input-border-color);
+      border-radius: var(--aeva-input-border-radius);
+      background-color: var(--aeva-input-bg);
+      color: var(--aeva-input-text-color);
+      transition: var(--aeva-input-transition);
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    input::placeholder,
+    textarea::placeholder {
+      color: var(--aeva-input-placeholder-color);
+    }
+
+    /* Hover state */
+    input:hover:not(:disabled),
+    textarea:hover:not(:disabled) {
+      border-color: var(--aeva-input-hover-border-color);
+    }
+
+    /* Focus state */
+    input:focus,
+    textarea:focus {
+      border-color: var(--aeva-input-focus-border-color);
+      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width)
+        var(--aeva-input-focus-ring-color);
+    }
+
+    /* Error state */
+    .error input,
+    .error textarea {
+      border-color: var(--aeva-input-error-border-color);
+    }
+
+    .error input:focus,
+    .error textarea:focus {
+      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width)
+        rgba(220, 38, 38, 0.3);
+    }
+
+    /* Disabled state */
+    input:disabled,
+    textarea:disabled {
+      background-color: var(--aeva-input-disabled-bg);
+      border-color: var(--aeva-input-disabled-border-color);
+      color: var(--aeva-input-disabled-text-color);
+      opacity: var(--aeva-input-disabled-opacity);
+      cursor: not-allowed;
+    }
+
+    /* Size variants for input */
+    .size-sm input {
+      padding: var(--aeva-input-padding-sm);
+      font-size: var(--aeva-input-font-size-sm);
+      height: var(--aeva-input-height-sm);
+    }
+
+    .size-md input {
+      padding: var(--aeva-input-padding-md);
+      font-size: var(--aeva-input-font-size-md);
+      height: var(--aeva-input-height-md);
+    }
+
+    .size-lg input {
+      padding: var(--aeva-input-padding-lg);
+      font-size: var(--aeva-input-font-size-lg);
+      height: var(--aeva-input-height-lg);
+    }
+
+    /* Size variants for textarea */
+    .size-sm textarea {
+      padding: var(--aeva-input-padding-sm);
+      font-size: var(--aeva-input-font-size-sm);
+      min-height: var(--aeva-input-multiline-min-height);
+    }
+
+    .size-md textarea {
+      padding: var(--aeva-input-padding-md);
+      font-size: var(--aeva-input-font-size-md);
+      min-height: var(--aeva-input-multiline-min-height);
+    }
+
+    .size-lg textarea {
+      padding: var(--aeva-input-padding-lg);
+      font-size: var(--aeva-input-font-size-lg);
+      min-height: var(--aeva-input-multiline-min-height);
+    }
+
+    /* Textarea specific */
+    textarea {
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      input,
+      textarea {
+        transition: none;
+      }
+    }
+  `;
+
+  /**
+   * Input variant type
+   */
+  @property({ type: String, reflect: true })
+  variant:
+    | 'text'
+    | 'password'
+    | 'integer'
+    | 'decimal'
+    | 'email'
+    | 'multiline' = 'text';
+
+  /**
+   * Input size
+   */
+  @property({ type: String, reflect: true })
+  size: 'sm' | 'md' | 'lg' = 'md';
+
+  /**
+   * Placeholder text
+   */
+  @property({ type: String })
+  placeholder = '';
+
+  /**
+   * Input value
+   */
+  @property({ type: String })
+  value = '';
+
+  /**
+   * Whether the input is disabled
+   */
+  @property({ type: Boolean, reflect: true })
+  disabled = false;
+
+  /**
+   * Regex pattern for filtering allowed characters (text variant only)
+   * Example: "^[0-9]*$" for numbers only, "^[a-zA-Z ]*$" for letters and spaces
+   */
+  @property({ type: String })
+  regex = '';
+
+  /**
+   * Input name attribute
+   */
+  @property({ type: String })
+  name = '';
+
+  /**
+   * Whether the input is required
+   */
+  @property({ type: Boolean })
+  required = false;
+
+  /**
+   * Minimum value (for integer and decimal variants)
+   */
+  @property({ type: Number })
+  min?: number;
+
+  /**
+   * Maximum value (for integer and decimal variants)
+   */
+  @property({ type: Number })
+  max?: number;
+
+  /**
+   * Step value (for integer and decimal variants)
+   */
+  @property({ type: Number })
+  step?: number;
+
+  /**
+   * Maximum length (for text variant)
+   */
+  @property({ type: Number })
+  maxlength?: number;
+
+  /**
+   * Number of rows for multiline variant
+   */
+  @property({ type: Number })
+  rows?: number;
+
+  @state()
+  private _internalValue = '';
+
+  @state()
+  private _hasError = false;
+
+  connectedCallback() {
+    super.connectedCallback();
+    this._internalValue = this.value;
+  }
+
+  private _dispatchError(message: string, code: string) {
+    this._hasError = true;
+    this.dispatchEvent(
+      new CustomEvent('error', {
+        detail: {
+          message,
+          code,
+          value: this._internalValue,
+        },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
+  private _clearError() {
+    this._hasError = false;
+  }
+
+  private _validateInteger(value: string): boolean {
+    // Empty is valid (unless required)
+    if (value === '') {
+      this._clearError();
+      return true;
+    }
+
+    // Check if it's a valid integer
+    if (!/^-?\d+$/.test(value)) {
+      this._dispatchError('Value must be a valid integer', 'INVALID_INTEGER');
+      return false;
+    }
+
+    // Check for leading zeros (except for "0" itself)
+    if (/^0\d+/.test(value) || /^-0\d+/.test(value)) {
+      this._dispatchError(
+        'Integer cannot have leading zeros',
+        'LEADING_ZERO'
+      );
+      return false;
+    }
+
+    const numValue = parseInt(value, 10);
+
+    // Check min
+    if (this.min !== undefined && numValue < this.min) {
+      this._dispatchError(
+        `Value must be at least ${this.min}`,
+        'MIN_VALUE_ERROR'
+      );
+      return false;
+    }
+
+    // Check max
+    if (this.max !== undefined && numValue > this.max) {
+      this._dispatchError(
+        `Value must be at most ${this.max}`,
+        'MAX_VALUE_ERROR'
+      );
+      return false;
+    }
+
+    this._clearError();
+    return true;
+  }
+
+  private _validateDecimal(value: string): boolean {
+    // Empty is valid (unless required)
+    if (value === '') {
+      this._clearError();
+      return true;
+    }
+
+    // Check if it's a valid decimal
+    if (!/^-?\d*\.?\d*$/.test(value)) {
+      this._dispatchError('Value must be a valid decimal', 'INVALID_DECIMAL');
+      return false;
+    }
+
+    // Don't allow just a decimal point
+    if (value === '.' || value === '-.') {
+      this._dispatchError('Value must be a valid decimal', 'INVALID_DECIMAL');
+      return false;
+    }
+
+    // Check for leading zeros (except for "0", "0.", "0.xxx")
+    if (/^0\d+/.test(value) || /^-0\d+/.test(value)) {
+      this._dispatchError(
+        'Decimal cannot have leading zeros (except 0.xxx)',
+        'LEADING_ZERO'
+      );
+      return false;
+    }
+
+    // If it's just a minus sign or ends with dot, it's in progress
+    if (value === '-' || value.endsWith('.')) {
+      this._clearError();
+      return true;
+    }
+
+    const numValue = parseFloat(value);
+
+    // Check if it's a valid number
+    if (isNaN(numValue)) {
+      this._dispatchError('Value must be a valid decimal', 'INVALID_DECIMAL');
+      return false;
+    }
+
+    // Check min
+    if (this.min !== undefined && numValue < this.min) {
+      this._dispatchError(
+        `Value must be at least ${this.min}`,
+        'MIN_VALUE_ERROR'
+      );
+      return false;
+    }
+
+    // Check max
+    if (this.max !== undefined && numValue > this.max) {
+      this._dispatchError(
+        `Value must be at most ${this.max}`,
+        'MAX_VALUE_ERROR'
+      );
+      return false;
+    }
+
+    this._clearError();
+    return true;
+  }
+
+  private _validateText(value: string): boolean {
+    // Check maxlength
+    if (this.maxlength !== undefined && value.length > this.maxlength) {
+      this._dispatchError(
+        `Text cannot exceed ${this.maxlength} characters`,
+        'MAX_LENGTH_ERROR'
+      );
+      return false;
+    }
+
+    this._clearError();
+    return true;
+  }
+
+  private _handleInput(e: Event) {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    let newValue = target.value;
+
+    // Apply regex filter for text variant
+    if (this.variant === 'text' && this.regex) {
+      try {
+        const regexPattern = new RegExp(this.regex);
+        if (!regexPattern.test(newValue)) {
+          // Revert to previous value if regex doesn't match
+          target.value = this._internalValue;
+          this._dispatchError(
+            'Input does not match required format',
+            'REGEX_MISMATCH'
+          );
+          return;
+        }
+      } catch (error) {
+        console.warn('[aeva-input] Invalid regex pattern:', this.regex);
+      }
+    }
+
+    // Validate based on variant
+    let isValid = true;
+    if (this.variant === 'integer') {
+      isValid = this._validateInteger(newValue);
+    } else if (this.variant === 'decimal') {
+      isValid = this._validateDecimal(newValue);
+    } else if (this.variant === 'text') {
+      isValid = this._validateText(newValue);
+    }
+
+    // If validation fails, revert to previous value
+    if (!isValid) {
+      target.value = this._internalValue;
+      return;
+    }
+
+    this._internalValue = newValue;
+    this.value = newValue;
+
+    // Dispatch custom event
+    this.dispatchEvent(
+      new CustomEvent('input', {
+        detail: { value: newValue },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
+  private _handleChange(e: Event) {
+    const target = e.target as HTMLInputElement | HTMLTextAreaElement;
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: { value: target.value },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
+  render() {
+    const classes = {
+      container: true,
+      [`size-${this.size}`]: true,
+      error: this._hasError,
+    };
+
+    if (this.variant === 'multiline') {
+      return html`
+        <div class="${classMap(classes)}" part="container">
+          <textarea
+            part="input"
+            .value="${this._internalValue}"
+            @input="${this._handleInput}"
+            @change="${this._handleChange}"
+            ?disabled="${this.disabled}"
+            placeholder="${this.placeholder}"
+            name="${this.name}"
+            ?required="${this.required}"
+            maxlength="${this.maxlength || ''}"
+            rows="${this.rows || ''}"
+          ></textarea>
+        </div>
+      `;
+    }
+
+    // Determine input type
+    let inputType = 'text';
+    if (this.variant === 'password') inputType = 'password';
+    else if (this.variant === 'integer' || this.variant === 'decimal')
+      inputType = 'text'; // Use text to have full control over validation
+    else if (this.variant === 'email') inputType = 'email';
+
+    return html`
+      <div class="${classMap(classes)}" part="container">
+        <input
+          part="input"
+          type="${inputType}"
+          .value="${this._internalValue}"
+          @input="${this._handleInput}"
+          @change="${this._handleChange}"
+          ?disabled="${this.disabled}"
+          placeholder="${this.placeholder}"
+          name="${this.name}"
+          ?required="${this.required}"
+          maxlength="${this.maxlength || ''}"
+          inputmode="${this.variant === 'integer'
+        ? 'numeric'
+        : this.variant === 'decimal'
+          ? 'decimal'
+          : 'text'}"
+        />
+      </div>
+    `;
+  }
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'aeva-input': AevaInput;
+  }
+}

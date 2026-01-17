@@ -828,6 +828,268 @@ aeva-text[variant="body"] {
                     </div>
                 </div>
             </div>
+
+            <!-- Input Component -->
+            <h3
+                style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                Input Component</h3>
+
+            <!-- Input Variants -->
+            <div class="component-showcase">
+                <h3>Input Variants</h3>
+                <p class="description">Six input types for different data collection needs</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                    <div>
+                        <aeva-input variant="text" placeholder="Enter your name" maxlength="50"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Text - Standard text input with
+                            max-length validation</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="password" placeholder="Enter your password"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Password - Masked text
+                            input</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="integer" placeholder="Enter age" min="1" max="120"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Integer - Whole numbers only, no
+                            leading zeros, with min/max validation</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="decimal" placeholder="Enter price" min="0" max="9999.99"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Decimal - Numbers with decimals
+                            (e.g., 0.5, 123.45), with min/max validation</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="email" placeholder="your.email@example.com"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Email - Email address input with
+                            validation</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="multiline" placeholder="Enter multiple lines of text..."
+                            rows="4"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Multiline - Textarea for longer
+                            text</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Sizes -->
+            <div class="component-showcase">
+                <h3>Input Sizes</h3>
+                <p class="description">Three sizes to fit different contexts</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                    <div>
+                        <aeva-input size="sm" placeholder="Small input"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Small (sm) - Compact input for
+                            tight spaces</span>
+                    </div>
+                    <div>
+                        <aeva-input size="md" placeholder="Medium input"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Medium (md) - Default size for
+                            most use cases</span>
+                    </div>
+                    <div>
+                        <aeva-input size="lg" placeholder="Large input"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Large (lg) - Prominent input for
+                            important fields</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Regex Filtering -->
+            <div class="component-showcase">
+                <h3>Regex Filtering (Text Variant Only)</h3>
+                <p class="description">Filter allowed characters using regex patterns - invalid characters won't be
+                    entered</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                    <div>
+                        <aeva-input variant="text" placeholder="Numbers only" regex="^[0-9]*$"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Numbers Only -
+                            regex="^[0-9]*$"</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="text" placeholder="Letters only" regex="^[a-zA-Z]*$"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Letters Only -
+                            regex="^[a-zA-Z]*$"</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="text" placeholder="Letters and spaces" regex="^[a-zA-Z ]*$"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Letters and Spaces -
+                            regex="^[a-zA-Z ]*$"</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="text" placeholder="Alphanumeric only" regex="^[a-zA-Z0-9]*$"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Alphanumeric -
+                            regex="^[a-zA-Z0-9]*$"</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="text" placeholder="Phone number format"
+                            regex="^[0-9\-\+\(\) ]*$"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Phone Number -
+                            regex="^[0-9\-\+\(\) ]*$"</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input States -->
+            <div class="component-showcase">
+                <h3>Input States</h3>
+                <p class="description">Different states for user interaction</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                    <div>
+                        <aeva-input placeholder="Normal state - hover and click to see effects"></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Normal - Default interactive
+                            state</span>
+                    </div>
+                    <div>
+                        <aeva-input placeholder="This input is disabled" disabled></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Disabled - Non-interactive
+                            state</span>
+                    </div>
+                    <div>
+                        <aeva-input placeholder="Required field" required></aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Required - Field must be
+                            filled</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Validation & Error Handling -->
+            <div class="component-showcase">
+                <h3>Validation & Error Handling</h3>
+                <p class="description">Built-in validation with error events - try entering invalid values!</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                    <div>
+                        <aeva-input variant="integer" placeholder="Try entering: 01, 0123, or 150" min="1" max="100"
+                            id="integer-demo">
+                        </aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Integer Validation - No leading
+                            zeros (01 ❌), min=1, max=100</span>
+                        <div id="integer-error"
+                            style="color: #dc2626; font-size: 0.875rem; margin-top: 0.25rem; min-height: 1.25rem;">
+                        </div>
+                    </div>
+                    <div>
+                        <aeva-input variant="decimal" placeholder="Try: 0.5, 01.5, or 1000" min="0" max="999.99"
+                            id="decimal-demo">
+                        </aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Decimal Validation - Allows 0.5
+                            ✓, but not 01.5 ❌, min=0, max=999.99</span>
+                        <div id="decimal-error"
+                            style="color: #dc2626; font-size: 0.875rem; margin-top: 0.25rem; min-height: 1.25rem;">
+                        </div>
+                    </div>
+                    <div>
+                        <aeva-input variant="text" placeholder="Max 10 characters" maxlength="10" id="text-demo">
+                        </aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Text Max-Length - Cannot exceed
+                            10 characters</span>
+                        <div id="text-error"
+                            style="color: #dc2626; font-size: 0.875rem; margin-top: 0.25rem; min-height: 1.25rem;">
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    // Error event listeners for demo
+                    document.getElementById('integer-demo')?.addEventListener('error', (e) => {
+                        document.getElementById('integer-error').textContent = `❌ ${e.detail.message}`;
+                    });
+                    document.getElementById('integer-demo')?.addEventListener('input', (e) => {
+                        if (e.detail.value) {
+                            document.getElementById('integer-error').textContent = '✓ Valid';
+                        } else {
+                            document.getElementById('integer-error').textContent = '';
+                        }
+                    });
+
+                    document.getElementById('decimal-demo')?.addEventListener('error', (e) => {
+                        document.getElementById('decimal-error').textContent = `❌ ${e.detail.message}`;
+                    });
+                    document.getElementById('decimal-demo')?.addEventListener('input', (e) => {
+                        if (e.detail.value) {
+                            document.getElementById('decimal-error').textContent = '✓ Valid';
+                        } else {
+                            document.getElementById('decimal-error').textContent = '';
+                        }
+                    });
+
+                    document.getElementById('text-demo')?.addEventListener('error', (e) => {
+                        document.getElementById('text-error').textContent = `❌ ${e.detail.message}`;
+                    });
+                    document.getElementById('text-demo')?.addEventListener('input', (e) => {
+                        if (e.detail.value) {
+                            document.getElementById('text-error').textContent = '✓ Valid';
+                        } else {
+                            document.getElementById('text-error').textContent = '';
+                        }
+                    });
+                </script>
+            </div>
+
+            <!-- Complex Examples -->
+            <div class="component-showcase">
+                <h3>Complex Examples</h3>
+                <p class="description">Combining multiple properties for real-world use cases</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                    <div>
+                        <aeva-input variant="text" size="lg" placeholder="Enter username (letters and numbers only)"
+                            regex="^[a-zA-Z0-9]*$" maxlength="20" required>
+                        </aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Username Field - Large,
+                            alphanumeric only, max 20 chars, required</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="number" size="md" placeholder="Age" min="18" max="120" required>
+                        </aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Age Field - Number input with
+                            min/max validation</span>
+                    </div>
+                    <div>
+                        <aeva-input variant="multiline" size="lg" placeholder="Tell us about yourself..." rows="6"
+                            maxlength="500">
+                        </aeva-input>
+                        <span class="label" style="display: block; margin-top: 0.5rem;">Bio Field - Large multiline with
+                            character limit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customization -->
+            <div class="component-showcase">
+                <h3>User Custom Styling</h3>
+                <p class="description">Customize input appearance using CSS variables</p>
+                <div class="carbon-container">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <pre class="code-content">
+                            <code class="language-css">
+/* Global Customization */
+aeva-input {
+    --aeva-input-border-radius: 12px;
+    --aeva-input-focus-border-color: #34d399;
+    --aeva-input-focus-ring-color: rgba(52, 211, 153, 0.3);
+}
+
+/* Dark theme inputs */
+.dark-theme aeva-input {
+    --aeva-input-bg: #1f2937;
+    --aeva-input-border-color: #4b5563;
+    --aeva-input-text-color: #f9fafb;
+}
+
+/* Custom size */
+aeva-input[size="lg"] {
+    --aeva-input-padding-lg: 20px 24px;
+    --aeva-input-font-size-lg: 20px;
+}
+                            </code></pre>
+                    </div>
+                </div>
+            </div>
         </div>
 
 

@@ -11,4 +11,5 @@ console.log('Hot reload is active - edit files in src/ to see changes');
 // Import components for demo
 import '../src/components/atoms/aeva-button';
 import '../src/components/atoms/aeva-text';
+import '../src/components/atoms/aeva-input';
 // import '../src/components/atoms/card';
