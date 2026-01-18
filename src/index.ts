@@ -5,6 +5,7 @@
 export { AevaButton } from './components/atoms/aeva-button.js';
 export { AevaText } from './components/atoms/aeva-text.js';
 export { AevaInput } from './components/atoms/aeva-input.js';
+export { AevaSurface } from './components/atoms/aeva-surface.js';
 // export * from './components/atoms/card';
 
 // Molecules

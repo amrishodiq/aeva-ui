@@ -1093,6 +1093,218 @@ aeva-input[size="lg"] {
         </div>
 
 
+        <!-- Surface Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Surface Component</h3>
+
+        <!-- Basic Surface -->
+        <div class="component-showcase">
+            <h3>Liquid Glass Surface</h3>
+            <p class="description">A floating container with glassmorphism effect - semi-transparent background with
+                backdrop blur</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-button id="open-surface-btn">Open Surface</aeva-button>
+                    <span class="label">Click to open surface</span>
+                </div>
+            </div>
+
+            <aeva-surface id="demo-surface">
+                <div style="text-align: center;">
+                    <h2 style="margin: 0 0 1rem 0; color: #667eea;">Welcome!</h2>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">This is a liquid glass surface component with
+                        backdrop blur effect.</p>
+                    <aeva-button id="close-surface-btn" variant="primary">Close</aeva-button>
+                </div>
+            </aeva-surface>
+        </div>
+
+        <!-- Elevation Levels -->
+        <div class="component-showcase">
+            <h3>Elevation Levels</h3>
+            <p class="description">Different shadow depths for visual hierarchy (1-5)</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-button id="open-elevation-1">Elevation 1</aeva-button>
+                    <span class="label">Minimal shadow</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-button id="open-elevation-3">Elevation 3</aeva-button>
+                    <span class="label">Default shadow</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-button id="open-elevation-5">Elevation 5</aeva-button>
+                    <span class="label">Maximum shadow</span>
+                </div>
+            </div>
+
+            <aeva-surface id="surface-elevation-1" elevation="1">
+                <div style="text-align: center;">
+                    <h3 style="margin: 0 0 1rem 0; color: #667eea;">Elevation 1</h3>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">Minimal shadow depth</p>
+                    <aeva-button class="close-btn" variant="outline">Close</aeva-button>
+                </div>
+            </aeva-surface>
+
+            <aeva-surface id="surface-elevation-3" elevation="3">
+                <div style="text-align: center;">
+                    <h3 style="margin: 0 0 1rem 0; color: #667eea;">Elevation 3</h3>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">Default shadow depth</p>
+                    <aeva-button class="close-btn" variant="outline">Close</aeva-button>
+                </div>
+            </aeva-surface>
+
+            <aeva-surface id="surface-elevation-5" elevation="5">
+                <div style="text-align: center;">
+                    <h3 style="margin: 0 0 1rem 0; color: #667eea;">Elevation 5</h3>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">Maximum shadow depth</p>
+                    <aeva-button class="close-btn" variant="outline">Close</aeva-button>
+                </div>
+            </aeva-surface>
+        </div>
+
+        <!-- Blur Amounts -->
+        <div class="component-showcase">
+            <h3>Blur Intensity</h3>
+            <p class="description">Adjust the backdrop blur amount for different effects</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-button id="open-blur-5">Light Blur</aeva-button>
+                    <span class="label">5px blur</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-button id="open-blur-20">Heavy Blur</aeva-button>
+                    <span class="label">20px blur</span>
+                </div>
+            </div>
+
+            <aeva-surface id="surface-blur-5" blur-amount="5">
+                <div style="text-align: center;">
+                    <h3 style="margin: 0 0 1rem 0; color: #667eea;">Light Blur (5px)</h3>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">Subtle glass effect</p>
+                    <aeva-button class="close-btn" variant="secondary">Close</aeva-button>
+                </div>
+            </aeva-surface>
+
+            <aeva-surface id="surface-blur-20" blur-amount="20">
+                <div style="text-align: center;">
+                    <h3 style="margin: 0 0 1rem 0; color: #667eea;">Heavy Blur (20px)</h3>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">Strong glass effect</p>
+                    <aeva-button class="close-btn" variant="secondary">Close</aeva-button>
+                </div>
+            </aeva-surface>
+        </div>
+
+        <!-- Features -->
+        <div class="component-showcase">
+            <h3>Interactive Features</h3>
+            <p class="description">Surface closes on backdrop click, Escape key, or browser back button</p>
+            <div class="info-box">
+                <p><strong>Try these interactions:</strong></p>
+                <ul style="margin: 0.5rem 0 0 1.5rem; color: #1976d2;">
+                    <li>Click outside the surface to close it</li>
+                    <li>Press Escape key to close</li>
+                    <li>Press browser back button to close</li>
+                    <li>Notice the smooth fade and scale animations</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Code Example -->
+        <div class="component-showcase">
+            <h3>Usage Example</h3>
+            <p class="description">How to use the surface component in your code</p>
+            <div class="carbon-container">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <pre class="code-content">
+                        <code class="language-markup">&lt;!-- HTML --&gt;
+&lt;aeva-button id="openBtn"&gt;Open Surface&lt;/aeva-button&gt;
+
+&lt;aeva-surface id="mySurface" elevation="3" blur-amount="10"&gt;
+  &lt;h2&gt;Surface Content&lt;/h2&gt;
+  &lt;p&gt;Your content here&lt;/p&gt;
+  &lt;aeva-button id="closeBtn"&gt;Close&lt;/aeva-button&gt;
+&lt;/aeva-surface&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  const surface = document.getElementById('mySurface');
+  const openBtn = document.getElementById('openBtn');
+  const closeBtn = document.getElementById('closeBtn');
+
+  openBtn.addEventListener('click', () =&gt; {
+    surface.open = true;
+  });
+
+  closeBtn.addEventListener('click', () =&gt; {
+    surface.close();
+  });
+
+  // Listen to events
+  surface.addEventListener('open', () =&gt; {
+    console.log('Surface opened');
+  });
+
+  surface.addEventListener('close', () =&gt; {
+    console.log('Surface closed');
+  });
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Demo surface interactions
+            const demoSurface = document.getElementById('demo-surface');
+            const openSurfaceBtn = document.getElementById('open-surface-btn');
+            const closeSurfaceBtn = document.getElementById('close-surface-btn');
+
+            openSurfaceBtn?.addEventListener('click', () => {
+                demoSurface.open = true;
+            });
+
+            closeSurfaceBtn?.addEventListener('click', () => {
+                demoSurface.close();
+            });
+
+            // Elevation demos
+            document.getElementById('open-elevation-1')?.addEventListener('click', () => {
+                document.getElementById('surface-elevation-1').open = true;
+            });
+
+            document.getElementById('open-elevation-3')?.addEventListener('click', () => {
+                document.getElementById('surface-elevation-3').open = true;
+            });
+
+            document.getElementById('open-elevation-5')?.addEventListener('click', () => {
+                document.getElementById('surface-elevation-5').open = true;
+            });
+
+            // Blur demos
+            document.getElementById('open-blur-5')?.addEventListener('click', () => {
+                document.getElementById('surface-blur-5').open = true;
+            });
+
+            document.getElementById('open-blur-20')?.addEventListener('click', () => {
+                document.getElementById('surface-blur-20').open = true;
+            });
+
+            // Close buttons for all surfaces
+            document.querySelectorAll('.close-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const surface = e.target.closest('aeva-surface');
+                    if (surface) surface.close();
+                });
+            });
+        </script>
+
+
         <div class="section">
             <h2>🧩 Molecules</h2>
             <div class="component-showcase">
