@@ -282,6 +282,9 @@ export class AevaModal extends LitElement {
     this.closing = false;
     this.previousFocus = document.activeElement as HTMLElement;
 
+    // Lock body scroll
+    document.body.style.overflow = 'hidden';
+
     // Add to history for back button support
     if (window.history.state?.aevaModal !== true) {
       window.history.pushState({ aevaModal: true }, '');
@@ -297,6 +300,9 @@ export class AevaModal extends LitElement {
   }
 
   private handleClose() {
+    // Restore body scroll
+    document.body.style.overflow = '';
+
     // Restore focus
     if (this.previousFocus) {
       this.previousFocus.focus();
