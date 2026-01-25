@@ -156,6 +156,8 @@ export class AevaButton extends LitElement {
       /* Minimum 44x44px hit area for accessibility */
       min-width: 44px;
       min-height: 44px;
+      /* Remove tap highlight on mobile */
+      -webkit-tap-highlight-color: transparent;
     }
 
     :host([full-width]) button {
@@ -221,9 +223,8 @@ export class AevaButton extends LitElement {
 
     .variant-primary:active:not(:disabled) {
       background-color: var(--aeva-button-primary-active-bg);
-      transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(102, 126, 234, 0.3); /* Fallback */
-      box-shadow: 0 2px 6px color-mix(in srgb, var(--aeva-button-primary-bg) 30%, transparent);
+      transform: scale(0.95);
+      box-shadow: none;
     }
 
     /* Secondary variant */
@@ -241,9 +242,8 @@ export class AevaButton extends LitElement {
 
     .variant-secondary:active:not(:disabled) {
       background-color: var(--aeva-button-secondary-active-bg);
-      transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(108, 117, 125, 0.3); /* Fallback */
-      box-shadow: 0 2px 6px color-mix(in srgb, var(--aeva-button-secondary-bg) 30%, transparent);
+      transform: scale(0.95);
+      box-shadow: none;
     }
 
     /* Outline variant */
@@ -262,7 +262,7 @@ export class AevaButton extends LitElement {
       background-color: rgba(102, 126, 234, 0.2); /* Fallback */
       background-color: var(--aeva-button-outline-active-bg);
       background-color: color-mix(in srgb, var(--aeva-button-outline-color) 20%, transparent);
-      transform: translateY(0);
+      transform: scale(0.95);
     }
 
     /* Ghost variant */
@@ -279,6 +279,7 @@ export class AevaButton extends LitElement {
       background-color: rgba(102, 126, 234, 0.2); /* Fallback */
       background-color: var(--aeva-button-ghost-active-bg);
       background-color: color-mix(in srgb, var(--aeva-button-ghost-color) 20%, transparent);
+      transform: scale(0.95);
     }
 
     /* Danger variant */
@@ -296,9 +297,8 @@ export class AevaButton extends LitElement {
 
     .variant-danger:active:not(:disabled) {
       background-color: var(--aeva-button-danger-active-bg);
-      transform: translateY(0);
-      box-shadow: 0 2px 6px rgba(220, 53, 69, 0.3); /* Fallback */
-      box-shadow: 0 2px 6px color-mix(in srgb, var(--aeva-button-danger-bg) 30%, transparent);
+      transform: scale(0.95);
+      box-shadow: none;
     }
 
     /* Disabled state */

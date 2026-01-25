@@ -66,7 +66,6 @@ export class AevaModal extends LitElement {
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 1rem;
       pointer-events: none;
     }
 
@@ -202,11 +201,26 @@ export class AevaModal extends LitElement {
       }
     }
 
-    /* Responsive */
-    @media (max-width: 640px) {
+    /* Responsive - Mobile First */
+    /* Mobile: 100vw - 24px (12px padding on each side) */
+    @media (max-width: 767px) {
       .modal {
-        max-width: 100%;
+        max-width: calc(100vw - 24px);
         margin: 0;
+      }
+    }
+
+    /* Tablet: 80% of 640px = 512px */
+    @media (min-width: 640px) and (max-width: 1023px) {
+      .modal {
+        max-width: 512px;
+      }
+    }
+
+    /* Desktop/Laptop: 80% of 1024px = 819px */
+    @media (min-width: 1024px) {
+      .modal {
+        max-width: 819px;
       }
     }
   `;
