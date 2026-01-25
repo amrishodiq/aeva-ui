@@ -1017,6 +1017,260 @@ aeva-text[variant="body"] {
                 </div>
             </div>
 
+            <!-- Card Component -->
+            <h3
+                style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                Card Component</h3>
+
+            <!-- Basic Card -->
+            <div class="component-showcase">
+                <h3>Basic Card</h3>
+                <p class="description">Simple content container with header, body, and footer slots</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px;">
+                    <aeva-card>
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Card Title</h4>
+                            <p style="margin: 0.25rem 0 0 0; color: #999; font-size: 0.875rem;">Subtitle text</p>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">This is the main content area of the card. You can put
+                                any content here including text, images, or other components.</p>
+                        </div>
+                        <div slot="footer">
+                            <aeva-button size="sm" variant="outline">Learn More</aeva-button>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card>
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Another Card</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">Cards maintain a clean, simple design with white
+                                background and subtle border.</p>
+                        </div>
+                        <div slot="footer">
+                            <div style="display: flex; gap: 0.5rem;">
+                                <aeva-button size="sm">Action</aeva-button>
+                                <aeva-button size="sm" variant="ghost">Cancel</aeva-button>
+                            </div>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card>
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Product Card</h4>
+                            <p style="margin: 0.25rem 0 0 0; color: #999; font-size: 0.875rem;">$29.99</p>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">A beautiful product with amazing features that you'll
+                                love.</p>
+                        </div>
+                        <div slot="footer">
+                            <aeva-button size="sm" full-width>Add to Cart</aeva-button>
+                        </div>
+                    </aeva-card>
+                </div>
+            </div>
+
+            <!-- Slot Combinations -->
+            <div class="component-showcase">
+                <h3>Flexible Slot Usage</h3>
+                <p class="description">Use only the slots you need - all slots are optional</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px;">
+                    <aeva-card>
+                        <div slot="body">
+                            <h4 style="margin: 0 0 0.5rem 0; color: #667eea;">Body Only</h4>
+                            <p style="margin: 0; color: #666;">This card only uses the body slot. Perfect for simple
+                                content.</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card>
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Header + Body</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">This card uses header and body slots, but no footer.</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card>
+                        <div slot="body">
+                            <p style="margin: 0 0 0.5rem 0; color: #666;">This card has body and footer.</p>
+                        </div>
+                        <div slot="footer">
+                            <aeva-button size="sm" variant="outline">Action</aeva-button>
+                        </div>
+                    </aeva-card>
+                </div>
+            </div>
+
+            <!-- Padding Sizes -->
+            <div class="component-showcase">
+                <h3>Padding Sizes</h3>
+                <p class="description">Control internal spacing with small, medium, or large padding</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px;">
+                    <aeva-card padding="sm">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Small Padding</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">Compact card with small padding (1rem).</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card padding="md">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Medium Padding</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">Default card with medium padding (1.5rem).</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card padding="lg">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Large Padding</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">Spacious card with large padding (2rem).</p>
+                        </div>
+                    </aeva-card>
+                </div>
+            </div>
+
+            <!-- Interactive Cards -->
+            <div class="component-showcase">
+                <h3>Interactive Cards</h3>
+                <p class="description">Cards can be clickable with hover effects and click events</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px;">
+                    <aeva-card interactive id="card-1">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Clickable Card</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">Click me! I'll dispatch a card-click event.</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card interactive id="card-2">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Navigation Card</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">Hover to see the border color change.</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card interactive id="card-3">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #667eea;">Action Card</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #666;">Interactive cards support keyboard navigation too!</p>
+                        </div>
+                    </aeva-card>
+                </div>
+                <div id="card-click-log"
+                    style="margin-top: 1rem; padding: 1rem; background: #f0f0f0; border-radius: 8px; font-family: monospace; font-size: 0.875rem; color: #666;">
+                    Click a card to see the event log here...
+                </div>
+            </div>
+
+            <!-- Custom Styling -->
+            <div class="component-showcase">
+                <h3>Custom Styling</h3>
+                <p class="description">Customize cards using CSS custom properties</p>
+                <div
+                    style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 900px;">
+                    <aeva-card
+                        style="--aeva-card-bg: #f0f9ff; --aeva-card-border-color: #0ea5e9; --aeva-card-border-hover-color: #0284c7;">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #0284c7;">Blue Theme</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #0369a1;">Custom background and border colors.</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card
+                        style="--aeva-card-bg: #fef3c7; --aeva-card-border-color: #f59e0b; --aeva-card-border-radius: 24px;">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #d97706;">Amber Theme</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #b45309;">Custom colors and larger border radius.</p>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card style="--aeva-card-bg: #f0fdf4; --aeva-card-border-color: #22c55e;">
+                        <div slot="header">
+                            <h4 style="margin: 0; color: #16a34a;">Green Theme</h4>
+                        </div>
+                        <div slot="body">
+                            <p style="margin: 0; color: #15803d;">Easily customize to match your brand.</p>
+                        </div>
+                    </aeva-card>
+                </div>
+            </div>
+
+            <!-- Code Example -->
+            <div class="component-showcase">
+                <h3>Usage Example</h3>
+                <p class="description">How to use the card component in your code</p>
+                <div class="carbon-container">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <pre class="code-content">
+                            <code class="language-markup">&lt;!-- Basic Card --&gt;
+&lt;aeva-card&gt;
+  &lt;div slot="header"&gt;
+    &lt;h4&gt;Card Title&lt;/h4&gt;
+  &lt;/div&gt;
+  &lt;div slot="body"&gt;
+    &lt;p&gt;Card content goes here&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div slot="footer"&gt;
+    &lt;aeva-button&gt;Action&lt;/aeva-button&gt;
+  &lt;/div&gt;
+&lt;/aeva-card&gt;
+
+&lt;!-- Interactive Card --&gt;
+&lt;aeva-card interactive id="myCard"&gt;
+  &lt;div slot="body"&gt;
+    &lt;p&gt;Click me!&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/aeva-card&gt;
+
+&lt;!-- JavaScript --&gt;
+&lt;script&gt;
+  const card = document.getElementById('myCard');
+  card.addEventListener('card-click', () =&gt; {
+    console.log('Card clicked!');
+  });
+&lt;/script&gt;
+
+&lt;!-- Custom Styling --&gt;
+&lt;aeva-card 
+  padding="lg"
+  style="--aeva-card-bg: #f0f9ff; --aeva-card-border-color: #0ea5e9;"&gt;
+  &lt;div slot="body"&gt;
+    &lt;p&gt;Customized card&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/aeva-card&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+
             <!-- Input Component -->
             <h3
                 style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
@@ -2583,6 +2837,21 @@ const count = CheckboxGroupHelper.getCount('interests');
 
             page?.addEventListener('backdrop-click', () => {
                 console.log('Backdrop clicked:', page.id);
+            });
+        });
+
+        // Card Component Demo - Interactive Cards
+        const card1 = document.getElementById('card-1');
+        const card2 = document.getElementById('card-2');
+        const card3 = document.getElementById('card-3');
+        const cardLog = document.getElementById('card-click-log');
+
+        [card1, card2, card3].forEach(card => {
+            card?.addEventListener('card-click', (e) => {
+                const cardId = e.target.id;
+                const timestamp = new Date().toLocaleTimeString();
+                cardLog.textContent = `[${timestamp}] Card "${cardId}" clicked!`;
+                cardLog.style.color = '#667eea';
             });
         });
 

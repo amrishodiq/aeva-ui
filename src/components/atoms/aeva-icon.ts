@@ -85,22 +85,6 @@ export class AevaIcon extends LitElement {
     }
 
     /* Fading border effect - blur/fade to opacity 0 at edges */
-    // .border-fading::before {
-    //   content: '';
-    //   position: absolute;
-    //   inset: 0;
-    //   border-radius: inherit;
-    //   padding: 3px;  /* Controls fade width */
-    //   background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
-    //   -webkit-mask: 
-    //     linear-gradient(#fff 0 0) content-box, 
-    //     linear-gradient(#fff 0 0);
-    //   -webkit-mask-composite: xor;
-    //   mask-composite: exclude;
-    //   pointer-events: none;
-    //   filter: blur(2px);
-    // }
-
     .border-fading {
       mask-image: radial-gradient(black 30%, transparent);
       -webkit-mask-image: radial-gradient(black 30%, transparent);
