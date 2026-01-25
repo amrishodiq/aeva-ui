@@ -3,8 +3,8 @@ import { customElement, property, state } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 /**
- * A versatile input component with multiple variants, sizes, and validation.
- * Supports text filtering via regex and numeric validation.
+ * A versatile input component with regex-based validation.
+ * Variants serve as preset shortcuts for common input patterns.
  *
  * @slot - Not used (input is self-contained)
  *
@@ -36,6 +36,10 @@ import { classMap } from 'lit/directives/class-map.js';
  * @cssprop --aeva-input-disabled-border-color - Border color when disabled
  * @cssprop --aeva-input-disabled-text-color - Text color when disabled
  * @cssprop --aeva-input-disabled-opacity - Opacity when disabled
+ *
+ * @cssprop --aeva-input-flat-bg - Background color for flat appearance
+ * @cssprop --aeva-input-flat-hover-bg - Background color on hover for flat appearance
+ * @cssprop --aeva-input-flat-focus-bg - Background color on focus for flat appearance
  *
  * @cssprop --aeva-input-padding-sm - Padding for small input
  * @cssprop --aeva-input-font-size-sm - Font size for small input
@@ -82,6 +86,11 @@ export class AevaInput extends LitElement {
       --aeva-input-disabled-text-color: #9ca3af;
       --aeva-input-disabled-opacity: 0.6;
 
+      /* Flat appearance */
+      --aeva-input-flat-bg: transparent;
+      --aeva-input-flat-hover-bg: rgba(0, 0, 0, 0.05);
+      --aeva-input-flat-focus-bg: rgba(0, 0, 0, 0.08);
+
       /* Sizes */
       --aeva-input-padding-sm: 8px 12px;
       --aeva-input-font-size-sm: 14px;
@@ -111,6 +120,8 @@ export class AevaInput extends LitElement {
         --aeva-input-placeholder-color: #6b7280;
         --aeva-input-disabled-bg: #111827;
         --aeva-input-disabled-border-color: #374151;
+        --aeva-input-flat-hover-bg: rgba(255, 255, 255, 0.1);
+        --aeva-input-flat-focus-bg: rgba(255, 255, 255, 0.15);
       }
     }
 
@@ -216,6 +227,36 @@ export class AevaInput extends LitElement {
       line-height: 1.5;
     }
 
+    /* Flat appearance */
+    .appearance-flat input,
+    .appearance-flat textarea {
+      border: none;
+      background-color: var(--aeva-input-flat-bg);
+    }
+
+    .appearance-flat input:hover:not(:disabled),
+    .appearance-flat textarea:hover:not(:disabled) {
+      background-color: var(--aeva-input-flat-hover-bg);
+    }
+
+    .appearance-flat input:focus,
+    .appearance-flat textarea:focus {
+      background-color: var(--aeva-input-flat-focus-bg);
+      box-shadow: none;
+    }
+
+    /* Error state for flat appearance */
+    .appearance-flat.error input,
+    .appearance-flat.error textarea {
+      border: 2px solid var(--aeva-input-error-border-color);
+    }
+
+    .appearance-flat.error input:focus,
+    .appearance-flat.error textarea:focus {
+      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width)
+        rgba(220, 38, 38, 0.3);
+    }
+
     /* Reduced motion support */
     @media (prefers-reduced-motion: reduce) {
       input,
@@ -226,7 +267,13 @@ export class AevaInput extends LitElement {
   `;
 
   /**
-   * Input variant type
+   * Input variant type (serves as preset for common patterns)
+   * - text: No restrictions
+   * - password: Masked input
+   * - integer: Whole numbers only (uses regex ^-?\d*$)
+   * - decimal: Decimal numbers (uses regex ^-?\d*\.?\d*$)
+   * - email: Email input with browser validation
+   * - multiline: Textarea for longer text
    */
   @property({ type: String, reflect: true })
   variant:
@@ -242,6 +289,12 @@ export class AevaInput extends LitElement {
    */
   @property({ type: String, reflect: true })
   size: 'sm' | 'md' | 'lg' = 'md';
+
+  /**
+   * Input appearance style
+   */
+  @property({ type: String, reflect: true })
+  appearance: 'bordered' | 'flat' = 'bordered';
 
   /**
    * Placeholder text
@@ -262,7 +315,8 @@ export class AevaInput extends LitElement {
   disabled = false;
 
   /**
-   * Regex pattern for filtering allowed characters (text variant only)
+   * Regex pattern for filtering allowed characters
+   * Overrides variant preset if specified
    * Example: "^[0-9]*$" for numbers only, "^[a-zA-Z ]*$" for letters and spaces
    */
   @property({ type: String })
@@ -321,6 +375,30 @@ export class AevaInput extends LitElement {
     this._internalValue = this.value;
   }
 
+  /**
+   * Get the regex pattern for the current variant
+   */
+  private _getVariantRegex(): string {
+    // Custom regex overrides variant preset
+    if (this.regex) {
+      return this.regex;
+    }
+
+    // Variant presets
+    switch (this.variant) {
+      case 'integer':
+        return '^-?\\d*$';
+      case 'decimal':
+        return '^-?\\d*\\.?\\d*$';
+      case 'text':
+      case 'password':
+      case 'email':
+      case 'multiline':
+      default:
+        return '';
+    }
+  }
+
   private _dispatchError(message: string, code: string) {
     this._hasError = true;
     this.dispatchEvent(
@@ -340,92 +418,31 @@ export class AevaInput extends LitElement {
     this._hasError = false;
   }
 
-  private _validateInteger(value: string): boolean {
-    // Empty is valid (unless required)
-    if (value === '') {
+  /**
+   * Validate numeric min/max constraints
+   */
+  private _validateNumericRange(value: string): boolean {
+    if (value === '' || value === '-' || value.endsWith('.')) {
       this._clearError();
       return true;
     }
 
-    // Check if it's a valid integer
-    if (!/^-?\d+$/.test(value)) {
-      this._dispatchError('Value must be a valid integer', 'INVALID_INTEGER');
-      return false;
-    }
-
-    // Check for leading zeros (except for "0" itself)
+    // Check for leading zeros (except "0" or "0.xxx")
     if (/^0\d+/.test(value) || /^-0\d+/.test(value)) {
       this._dispatchError(
-        'Integer cannot have leading zeros',
+        'Number cannot have leading zeros',
         'LEADING_ZERO'
       );
       return false;
     }
 
-    const numValue = parseInt(value, 10);
+    const numValue = this.variant === 'integer'
+      ? parseInt(value, 10)
+      : parseFloat(value);
 
-    // Check min
-    if (this.min !== undefined && numValue < this.min) {
-      this._dispatchError(
-        `Value must be at least ${this.min}`,
-        'MIN_VALUE_ERROR'
-      );
-      return false;
-    }
-
-    // Check max
-    if (this.max !== undefined && numValue > this.max) {
-      this._dispatchError(
-        `Value must be at most ${this.max}`,
-        'MAX_VALUE_ERROR'
-      );
-      return false;
-    }
-
-    this._clearError();
-    return true;
-  }
-
-  private _validateDecimal(value: string): boolean {
-    // Empty is valid (unless required)
-    if (value === '') {
-      this._clearError();
-      return true;
-    }
-
-    // Check if it's a valid decimal
-    if (!/^-?\d*\.?\d*$/.test(value)) {
-      this._dispatchError('Value must be a valid decimal', 'INVALID_DECIMAL');
-      return false;
-    }
-
-    // Don't allow just a decimal point
-    if (value === '.' || value === '-.') {
-      this._dispatchError('Value must be a valid decimal', 'INVALID_DECIMAL');
-      return false;
-    }
-
-    // Check for leading zeros (except for "0", "0.", "0.xxx")
-    if (/^0\d+/.test(value) || /^-0\d+/.test(value)) {
-      this._dispatchError(
-        'Decimal cannot have leading zeros (except 0.xxx)',
-        'LEADING_ZERO'
-      );
-      return false;
-    }
-
-    // If it's just a minus sign or ends with dot, it's in progress
-    if (value === '-' || value.endsWith('.')) {
-      this._clearError();
-      return true;
-    }
-
-    const numValue = parseFloat(value);
-
-    // Check if it's a valid number
     if (isNaN(numValue)) {
-      this._dispatchError('Value must be a valid decimal', 'INVALID_DECIMAL');
-      return false;
+      this._clearError();
+      return true; // Let regex handle format validation
     }
 
     // Check min
@@ -450,8 +467,10 @@ export class AevaInput extends LitElement {
     return true;
   }
 
-  private _validateText(value: string): boolean {
-    // Check maxlength
+  /**
+   * Validate text length
+   */
+  private _validateTextLength(value: string): boolean {
     if (this.maxlength !== undefined && value.length > this.maxlength) {
       this._dispatchError(
         `Text cannot exceed ${this.maxlength} characters`,
@@ -468,32 +487,38 @@ export class AevaInput extends LitElement {
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     let newValue = target.value;
 
-    // Apply regex filter for text variant
-    if (this.variant === 'text' && this.regex) {
+    // Get the effective regex pattern (custom or variant preset)
+    const regexPattern = this._getVariantRegex();
+
+    // Apply regex filter if pattern exists
+    if (regexPattern) {
       try {
-        const regexPattern = new RegExp(this.regex);
-        if (!regexPattern.test(newValue)) {
+        const regex = new RegExp(regexPattern);
+        if (!regex.test(newValue)) {
           // Revert to previous value if regex doesn't match
           target.value = this._internalValue;
           this._dispatchError(
             'Input does not match required format',
-            'REGEX_MISMATCH'
+            'INVALID_FORMAT'
           );
           return;
         }
       } catch (error) {
-        console.warn('[aeva-input] Invalid regex pattern:', this.regex);
+        console.warn('[aeva-input] Invalid regex pattern:', regexPattern);
       }
     }
 
-    // Validate based on variant
+    // Additional validation based on variant
     let isValid = true;
-    if (this.variant === 'integer') {
-      isValid = this._validateInteger(newValue);
-    } else if (this.variant === 'decimal') {
-      isValid = this._validateDecimal(newValue);
-    } else if (this.variant === 'text') {
-      isValid = this._validateText(newValue);
+
+    // Numeric range validation for integer and decimal
+    if (this.variant === 'integer' || this.variant === 'decimal') {
+      isValid = this._validateNumericRange(newValue);
+    }
+
+    // Text length validation
+    if (this.variant === 'text' || this.variant === 'multiline') {
+      isValid = this._validateTextLength(newValue);
     }
 
     // If validation fails, revert to previous value
@@ -530,6 +555,7 @@ export class AevaInput extends LitElement {
     const classes = {
       container: true,
       [`size-${this.size}`]: true,
+      [`appearance-${this.appearance}`]: true,
       error: this._hasError,
     };
 
