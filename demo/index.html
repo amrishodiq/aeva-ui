@@ -1563,6 +1563,202 @@ aeva-radio {
         </script>
 
 
+        <!-- Icon Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Icon Component</h3>
+
+        <!-- Size Variants -->
+        <div class="component-showcase">
+            <h3>Size Variants</h3>
+            <p class="description">Three size options: sm (40px), md (56px default), and lg (72px)</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-icon size="sm">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Small (40px)</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon size="md">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Medium (56px)</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon size="lg">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Large (72px)</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shape Options -->
+        <div class="component-showcase">
+            <h3>Shape Options</h3>
+            <p class="description">Three shape styles: circle, rect, and round-rect</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-icon shape="circle">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Circle</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon shape="rect">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Rectangle</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon shape="round-rect">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Rounded Rectangle</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Border Styles -->
+        <div class="component-showcase">
+            <h3>Border Styles</h3>
+            <p class="description">Three border options: none, solid, and fading gradient</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-icon border="none">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">No Border</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon border="solid">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Solid Border</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon border="fading">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Fading Border</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Combined Examples -->
+        <div class="component-showcase">
+            <h3>Combined Examples</h3>
+            <p class="description">Combining different properties for various use cases</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-icon size="lg" shape="circle" border="solid">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Profile Avatar</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon size="md" shape="round-rect" border="fading">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Email Icon</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon size="sm" shape="circle" border="none">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Notification</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon size="lg" shape="rect" border="solid">
+                        <img src="/demo/img/avatar.jpg" alt="Avatar">
+                    </aeva-icon>
+                    <span class="label">Target Icon</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Colors -->
+        <div class="component-showcase">
+            <h3>Custom Colors</h3>
+            <p class="description">Customize colors using CSS variables</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-icon
+                        style="--aeva-icon-bg: #fef3c7; --aeva-icon-color: #f59e0b; --aeva-icon-border-color: #f59e0b;"
+                        border="solid">⚡</aeva-icon>
+                    <span class="label">Yellow Theme</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon
+                        style="--aeva-icon-bg: #dbeafe; --aeva-icon-color: #3b82f6; --aeva-icon-border-color: #3b82f6;"
+                        border="fading">💎</aeva-icon>
+                    <span class="label">Blue Theme</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-icon
+                        style="--aeva-icon-bg: #dcfce7; --aeva-icon-color: #22c55e; --aeva-icon-border-color: #22c55e;"
+                        border="solid">✓</aeva-icon>
+                    <span class="label">Green Theme</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usage Example -->
+        <div class="component-showcase">
+            <h3>Usage Example</h3>
+            <div class="carbon-container">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <pre class="code-content">
+                        <code class="language-markup">
+&lt;!-- Basic Usage --&gt;
+&lt;aeva-icon&gt;👤&lt;/aeva-icon&gt;
+
+&lt;!-- Size Variants --&gt;
+&lt;aeva-icon size="sm"&gt;⭐&lt;/aeva-icon&gt;
+&lt;aeva-icon size="md"&gt;⭐&lt;/aeva-icon&gt;
+&lt;aeva-icon size="lg"&gt;⭐&lt;/aeva-icon&gt;
+
+&lt;!-- Shape Options --&gt;
+&lt;aeva-icon shape="circle"&gt;🎨&lt;/aeva-icon&gt;
+&lt;aeva-icon shape="rect"&gt;🎨&lt;/aeva-icon&gt;
+&lt;aeva-icon shape="round-rect"&gt;🎨&lt;/aeva-icon&gt;
+
+&lt;!-- Border Styles --&gt;
+&lt;aeva-icon border="none"&gt;📧&lt;/aeva-icon&gt;
+&lt;aeva-icon border="solid"&gt;📧&lt;/aeva-icon&gt;
+&lt;aeva-icon border="fading"&gt;📧&lt;/aeva-icon&gt;
+
+&lt;!-- Combined --&gt;
+&lt;aeva-icon size="lg" shape="circle" border="solid"&gt;
+  👤
+&lt;/aeva-icon&gt;
+
+&lt;!-- Custom Colors --&gt;
+&lt;aeva-icon 
+  style="--aeva-icon-bg: #dbeafe; 
+         --aeva-icon-color: #3b82f6;
+         --aeva-icon-border-color: #3b82f6;"
+  border="fading"&gt;
+  💎
+&lt;/aeva-icon&gt;
+
+&lt;!-- With SVG --&gt;
+&lt;aeva-icon size="md" shape="round-rect"&gt;
+  &lt;svg viewBox="0 0 24 24" fill="currentColor"&gt;
+    &lt;path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/&gt;
+  &lt;/svg&gt;
+&lt;/aeva-icon&gt;
+                        </code></pre>
+                </div>
+            </div>
+        </div>
+
         <!-- Checkbox Component -->
         <h3
             style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
