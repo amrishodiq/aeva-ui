@@ -954,6 +954,73 @@ aeva-text[variant="body"] {
                 </div>
             </div>
 
+            <!-- Input Appearance -->
+            <div class="component-showcase">
+                <h3>Input Appearance</h3>
+                <p class="description">Choose between bordered (default) or flat (borderless) styles</p>
+                <div style="display: flex; flex-direction: column; gap: 2rem; max-width: 600px;">
+                    <div>
+                        <h4 style="font-size: 1rem; color: #667eea; margin-bottom: 1rem;">Bordered (Default)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <aeva-input appearance="bordered" placeholder="Bordered input"></aeva-input>
+                                <span class="label" style="display: block; margin-top: 0.5rem;">Standard bordered input
+                                    with visible border</span>
+                            </div>
+                            <div>
+                                <aeva-input appearance="bordered" size="lg"
+                                    placeholder="Large bordered input"></aeva-input>
+                                <span class="label" style="display: block; margin-top: 0.5rem;">Large bordered
+                                    input</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 12px;">
+                        <h4 style="font-size: 1rem; color: white; margin-bottom: 1rem;">Flat (Borderless)</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <aeva-input appearance="flat"
+                                    placeholder="Flat input - blends with background"></aeva-input>
+                                <span class="label"
+                                    style="display: block; margin-top: 0.5rem; color: rgba(255,255,255,0.8);">Flat input
+                                    with no border, transparent background</span>
+                            </div>
+                            <div>
+                                <aeva-input appearance="flat" size="lg" placeholder="Large flat input"></aeva-input>
+                                <span class="label"
+                                    style="display: block; margin-top: 0.5rem; color: rgba(255,255,255,0.8);">Large flat
+                                    input - hover to see subtle background</span>
+                            </div>
+                            <div>
+                                <aeva-input appearance="flat" variant="multiline" placeholder="Flat multiline input..."
+                                    rows="3"></aeva-input>
+                                <span class="label"
+                                    style="display: block; margin-top: 0.5rem; color: rgba(255,255,255,0.8);">Flat
+                                    multiline textarea</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background: #f8f9fa; padding: 2rem; border-radius: 12px;">
+                        <h4 style="font-size: 1rem; color: #667eea; margin-bottom: 1rem;">Comparison</h4>
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <div>
+                                <aeva-input appearance="bordered" placeholder="Bordered input"
+                                    value="With border"></aeva-input>
+                                <span class="label" style="display: block; margin-top: 0.5rem;">Bordered - Clear visual
+                                    boundary</span>
+                            </div>
+                            <div>
+                                <aeva-input appearance="flat" placeholder="Flat input"
+                                    value="Without border"></aeva-input>
+                                <span class="label" style="display: block; margin-top: 0.5rem;">Flat - Seamless
+                                    integration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Validation & Error Handling -->
             <div class="component-showcase">
                 <h3>Validation & Error Handling</h3>
@@ -1093,31 +1160,429 @@ aeva-input[size="lg"] {
         </div>
 
 
-        <!-- Surface Component -->
+        <!-- Radio Button Component -->
         <h3
             style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
-            Surface Component</h3>
+            Radio Button Component</h3>
 
-        <!-- Basic Surface -->
+        <!-- Basic Radio Buttons -->
         <div class="component-showcase">
-            <h3>Liquid Glass Surface</h3>
-            <p class="description">A floating container with glassmorphism effect - semi-transparent background with
-                backdrop blur</p>
+            <h3>Basic Radio Buttons</h3>
+            <p class="description">Custom radio buttons with checked and unchecked states</p>
             <div class="button-row">
                 <div class="button-demo">
-                    <aeva-button id="open-surface-btn">Open Surface</aeva-button>
-                    <span class="label">Click to open surface</span>
+                    <aeva-radio id="radio-unchecked"></aeva-radio>
+                    <span class="label">Unchecked</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-radio id="radio-checked" checked></aeva-radio>
+                    <span class="label">Checked</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Radio Button States -->
+        <div class="component-showcase">
+            <h3>Radio Button States</h3>
+            <p class="description">Different states for radio buttons</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-radio id="radio-normal"></aeva-radio>
+                    <span class="label">Normal</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-radio checked></aeva-radio>
+                    <span class="label">Checked</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-radio disabled></aeva-radio>
+                    <span class="label">Disabled</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-radio checked disabled></aeva-radio>
+                    <span class="label">Checked & Disabled</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Radio Button Group Example -->
+        <div class="component-showcase">
+            <h3>Radio Button Group</h3>
+            <p class="description">Radio buttons in a group (click to select)</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px;">
+                <div style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;" class="radio-option">
+                    <aeva-radio name="option" value="option1" id="option1"></aeva-radio>
+                    <label for="option1" style="cursor: pointer; user-select: none;">Option 1</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;" class="radio-option">
+                    <aeva-radio name="option" value="option2" id="option2"></aeva-radio>
+                    <label for="option2" style="cursor: pointer; user-select: none;">Option 2</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem; cursor: pointer;" class="radio-option">
+                    <aeva-radio name="option" value="option3" id="option3"></aeva-radio>
+                    <label for="option3" style="cursor: pointer; user-select: none;">Option 3</label>
+                </div>
+            </div>
+            <div id="radio-selection"
+                style="margin-top: 1rem; padding: 1rem; background: #e3f2fd; border-radius: 8px; color: #1976d2;">
+                Selected: None
+            </div>
+        </div>
+
+        <!-- Getting Selected Value -->
+        <div class="component-showcase">
+            <h3>Getting Selected Value</h3>
+            <p class="description">Two easy ways to get the selected value from a radio group</p>
+
+            <!-- Demo Group -->
+            <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px; margin-bottom: 1.5rem;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <aeva-radio name="payment" value="credit-card" id="payment1"></aeva-radio>
+                    <label for="payment1" style="cursor: pointer; user-select: none;">Credit Card</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <aeva-radio name="payment" value="paypal" id="payment2"></aeva-radio>
+                    <label for="payment2" style="cursor: pointer; user-select: none;">PayPal</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <aeva-radio name="payment" value="bank-transfer" id="payment3"></aeva-radio>
+                    <label for="payment3" style="cursor: pointer; user-select: none;">Bank Transfer</label>
                 </div>
             </div>
 
-            <aeva-surface id="demo-surface">
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <aeva-button id="get-value-query" size="sm">Get Value (Query)</aeva-button>
+                <aeva-button id="get-value-helper" size="sm" variant="secondary">Get Value (Helper)</aeva-button>
+                <aeva-button id="set-value-paypal" size="sm" variant="outline">Set to PayPal</aeva-button>
+                <aeva-button id="check-selection" size="sm" variant="outline">Check Selection</aeva-button>
+            </div>
+
+            <!-- Result Display -->
+            <div id="value-result"
+                style="padding: 1rem; background: #f0f0f0; border-radius: 8px; font-family: monospace; min-height: 60px;">
+                Click a button to see the result...
+            </div>
+
+            <!-- Code Examples -->
+            <div class="carbon-container" style="margin-top: 1.5rem;">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <pre class="code-content">
+                        <code class="language-javascript">
+// Method 1: Direct Query (Simple & Fast)
+const selected = document.querySelector('aeva-radio[name="payment"][checked]');
+const value = selected ? selected.value : null;
+console.log('Selected:', value);
+
+// Method 2: RadioGroupHelper (Recommended)
+import { RadioGroupHelper } from '@aeva/ui';
+
+// Get selected value
+const value = RadioGroupHelper.getValue('payment');
+
+// Set selected value
+RadioGroupHelper.setValue('payment', 'paypal');
+
+// Check if any selected
+if (!RadioGroupHelper.hasSelection('payment')) {
+  alert('Please select a payment method');
+}
+
+// Get the radio element
+const radio = RadioGroupHelper.getRadio('payment');
+                        </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Styling -->
+        <div class="component-showcase">
+            <h3>User Custom Styling</h3>
+            <p class="description">Customize radio button appearance using CSS variables</p>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <div class="button-demo">
+                    <aeva-radio checked
+                        style="--aeva-radio-checked-bg: #10b981; --aeva-radio-checked-stroke: #10b981;"></aeva-radio>
+                    <span class="label">Green Theme</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-radio checked
+                        style="--aeva-radio-checked-bg: #f59e0b; --aeva-radio-checked-stroke: #f59e0b;"></aeva-radio>
+                    <span class="label">Orange Theme</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-radio checked
+                        style="--aeva-radio-size: 30px; --aeva-radio-checked-bg: #8b5cf6; --aeva-radio-checked-stroke: #8b5cf6;"></aeva-radio>
+                    <span class="label">Large Purple</span>
+                </div>
+            </div>
+            <div class="carbon-container">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <pre class="code-content">
+                        <code class="language-css">
+/* Global Customization */
+aeva-radio {
+    --aeva-radio-size: 24px;
+    --aeva-radio-checked-bg: #10b981;
+    --aeva-radio-checked-stroke: #10b981;
+}
+
+/* Custom colors */
+.custom-radio {
+    --aeva-radio-unchecked-stroke: #6b7280;
+    --aeva-radio-checked-bg: #f59e0b;
+    --aeva-radio-checked-stroke: #f59e0b;
+    --aeva-radio-checkmark-color: #ffffff;
+}
+                        </code></pre>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            // Radio button group - selection display update
+            const radioOptions = document.querySelectorAll('aeva-radio[name="option"]');
+            const radioSelection = document.getElementById('radio-selection');
+
+            radioOptions.forEach(radio => {
+                radio.addEventListener('change', (e) => {
+                    // Update selection display
+                    const selectedValue = e.detail.value;
+                    radioSelection.textContent = `Selected: ${selectedValue}`;
+                });
+            });
+
+            // Make labels clickable
+            document.querySelectorAll('label[for^="option"]').forEach(label => {
+                label.addEventListener('click', () => {
+                    const radio = document.getElementById(label.getAttribute('for'));
+                    if (radio && !radio.disabled) {
+                        radio.click();
+                    }
+                });
+            });
+        </script>
+
+
+        <!-- Checkbox Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Checkbox Component</h3>
+
+        <!-- Basic Checkboxes -->
+        <div class="component-showcase">
+            <h3>Basic Checkboxes</h3>
+            <p class="description">Custom checkboxes with checked and unchecked states</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-checkbox></aeva-checkbox>
+                    <span class="label">Unchecked</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-checkbox checked></aeva-checkbox>
+                    <span class="label">Checked</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkbox States -->
+        <div class="component-showcase">
+            <h3>Checkbox States</h3>
+            <p class="description">Different states for checkboxes</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-checkbox></aeva-checkbox>
+                    <span class="label">Normal</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-checkbox checked></aeva-checkbox>
+                    <span class="label">Checked</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-checkbox disabled></aeva-checkbox>
+                    <span class="label">Disabled</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-checkbox checked disabled></aeva-checkbox>
+                    <span class="label">Checked & Disabled</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkbox Group Example -->
+        <div class="component-showcase">
+            <h3>Checkbox Group (Multiple Selection)</h3>
+            <p class="description">Select multiple options in a group</p>
+            <div style="display: flex; flex-direction: column; gap: 1rem; max-width: 400px;">
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <aeva-checkbox name="interests" value="sports" id="interest1"></aeva-checkbox>
+                    <label for="interest1" style="cursor: pointer; user-select: none;">Sports</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <aeva-checkbox name="interests" value="music" id="interest2"></aeva-checkbox>
+                    <label for="interest2" style="cursor: pointer; user-select: none;">Music</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <aeva-checkbox name="interests" value="reading" id="interest3"></aeva-checkbox>
+                    <label for="interest3" style="cursor: pointer; user-select: none;">Reading</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                    <aeva-checkbox name="interests" value="gaming" id="interest4"></aeva-checkbox>
+                    <label for="interest4" style="cursor: pointer; user-select: none;">Gaming</label>
+                </div>
+            </div>
+            <div id="checkbox-selection"
+                style="margin-top: 1rem; padding: 1rem; background: #e3f2fd; border-radius: 8px; color: #1976d2;">
+                Selected: None
+            </div>
+        </div>
+
+        <!-- Getting Selected Values -->
+        <div class="component-showcase">
+            <h3>Getting Selected Values</h3>
+            <p class="description">Easy ways to get all checked values from a checkbox group</p>
+
+            <!-- Action Buttons -->
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 1rem;">
+                <aeva-button id="get-checkbox-values" size="sm">Get Values</aeva-button>
+                <aeva-button id="select-all-interests" size="sm" variant="secondary">Select All</aeva-button>
+                <aeva-button id="clear-all-interests" size="sm" variant="outline">Clear All</aeva-button>
+                <aeva-button id="check-checkbox-selection" size="sm" variant="outline">Check Selection</aeva-button>
+            </div>
+
+            <!-- Result Display -->
+            <div id="checkbox-result"
+                style="padding: 1rem; background: #f0f0f0; border-radius: 8px; font-family: monospace; min-height: 60px;">
+                Click a button to see the result...
+            </div>
+
+            <!-- Code Examples -->
+            <div class="carbon-container" style="margin-top: 1.5rem;">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <pre class="code-content">
+                        <code class="language-javascript">
+// CheckboxGroupHelper (Recommended)
+import { CheckboxGroupHelper } from '@aeva/ui';
+
+// Get all checked values
+const values = CheckboxGroupHelper.getValues('interests');
+
+// Set checked values
+CheckboxGroupHelper.setValues('interests', ['sports', 'music']);
+
+// Select all
+CheckboxGroupHelper.selectAll('interests');
+
+// Clear all
+CheckboxGroupHelper.clearAll('interests');
+
+// Check if any selected
+if (!CheckboxGroupHelper.hasSelection('interests')) {
+  alert('Please select at least one interest');
+}
+
+// Get count
+const count = CheckboxGroupHelper.getCount('interests');
+                        </code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Styling -->
+        <div class="component-showcase">
+            <h3>User Custom Styling</h3>
+            <p class="description">Customize checkbox appearance using CSS variables</p>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                <div class="button-demo">
+                    <aeva-checkbox checked
+                        style="--aeva-checkbox-checked-bg: #10b981; --aeva-checkbox-checked-stroke: #10b981;"></aeva-checkbox>
+                    <span class="label">Green Theme</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-checkbox checked
+                        style="--aeva-checkbox-checked-bg: #f59e0b; --aeva-checkbox-checked-stroke: #f59e0b;"></aeva-checkbox>
+                    <span class="label">Orange Theme</span>
+                </div>
+                <div class="button-demo">
+                    <aeva-checkbox checked
+                        style="--aeva-checkbox-size: 30px; --aeva-checkbox-border-radius: 8px; --aeva-checkbox-checked-bg: #8b5cf6; --aeva-checkbox-checked-stroke: #8b5cf6;"></aeva-checkbox>
+                    <span class="label">Large Purple</span>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // Checkbox group - selection display update
+            const checkboxes = document.querySelectorAll('aeva-checkbox[name="interests"]');
+            const checkboxSelection = document.getElementById('checkbox-selection');
+
+            function updateCheckboxSelection() {
+                const checked = Array.from(checkboxes)
+                    .filter(cb => cb.checked)
+                    .map(cb => cb.value);
+
+                if (checked.length === 0) {
+                    checkboxSelection.textContent = 'Selected: None';
+                } else {
+                    checkboxSelection.textContent = `Selected: ${checked.join(', ')}`;
+                }
+            }
+
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateCheckboxSelection);
+            });
+
+            // Make labels clickable
+            document.querySelectorAll('label[for^="interest"]').forEach(label => {
+                label.addEventListener('click', () => {
+                    const checkbox = document.getElementById(label.getAttribute('for'));
+                    if (checkbox && !checkbox.disabled) {
+                        checkbox.click();
+                    }
+                });
+            });
+        </script>
+
+
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Modal Component</h3>
+
+        <!-- Basic Modal -->
+        <div class="component-showcase">
+            <h3>Modal Overlay</h3>
+            <p class="description">A floating modal overlay with semi-transparent background and backdrop blur</p>
+            <div class="button-row">
+                <div class="button-demo">
+                    <aeva-button id="open-modal-btn">Open Modal</aeva-button>
+                    <span class="label">Click to open modal</span>
+                </div>
+            </div>
+
+            <aeva-modal id="demo-modal">
                 <div style="text-align: center;">
                     <h2 style="margin: 0 0 1rem 0; color: #667eea;">Welcome!</h2>
-                    <p style="margin: 0 0 1.5rem 0; color: #666;">This is a liquid glass surface component with
-                        backdrop blur effect.</p>
-                    <aeva-button id="close-surface-btn" variant="primary">Close</aeva-button>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">This is a modal overlay component with backdrop blur
+                        effect.</p>
+                    <aeva-button id="close-modal-btn" variant="primary">Close</aeva-button>
                 </div>
-            </aeva-surface>
+            </aeva-modal>
         </div>
 
         <!-- Elevation Levels -->
@@ -1139,29 +1604,29 @@ aeva-input[size="lg"] {
                 </div>
             </div>
 
-            <aeva-surface id="surface-elevation-1" elevation="1">
+            <aeva-modal id="modal-elevation-1" elevation="1">
                 <div style="text-align: center;">
                     <h3 style="margin: 0 0 1rem 0; color: #667eea;">Elevation 1</h3>
                     <p style="margin: 0 0 1.5rem 0; color: #666;">Minimal shadow depth</p>
                     <aeva-button class="close-btn" variant="outline">Close</aeva-button>
                 </div>
-            </aeva-surface>
+            </aeva-modal>
 
-            <aeva-surface id="surface-elevation-3" elevation="3">
+            <aeva-modal id="modal-elevation-3" elevation="3">
                 <div style="text-align: center;">
                     <h3 style="margin: 0 0 1rem 0; color: #667eea;">Elevation 3</h3>
                     <p style="margin: 0 0 1.5rem 0; color: #666;">Default shadow depth</p>
                     <aeva-button class="close-btn" variant="outline">Close</aeva-button>
                 </div>
-            </aeva-surface>
+            </aeva-modal>
 
-            <aeva-surface id="surface-elevation-5" elevation="5">
+            <aeva-modal id="modal-elevation-5" elevation="5">
                 <div style="text-align: center;">
                     <h3 style="margin: 0 0 1rem 0; color: #667eea;">Elevation 5</h3>
                     <p style="margin: 0 0 1.5rem 0; color: #666;">Maximum shadow depth</p>
                     <aeva-button class="close-btn" variant="outline">Close</aeva-button>
                 </div>
-            </aeva-surface>
+            </aeva-modal>
         </div>
 
         <!-- Blur Amounts -->
@@ -1179,31 +1644,31 @@ aeva-input[size="lg"] {
                 </div>
             </div>
 
-            <aeva-surface id="surface-blur-5" blur-amount="5">
+            <aeva-modal id="modal-blur-5" blur-amount="5">
                 <div style="text-align: center;">
                     <h3 style="margin: 0 0 1rem 0; color: #667eea;">Light Blur (5px)</h3>
-                    <p style="margin: 0 0 1.5rem 0; color: #666;">Subtle glass effect</p>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">Subtle blur effect</p>
                     <aeva-button class="close-btn" variant="secondary">Close</aeva-button>
                 </div>
-            </aeva-surface>
+            </aeva-modal>
 
-            <aeva-surface id="surface-blur-20" blur-amount="20">
+            <aeva-modal id="modal-blur-20" blur-amount="20">
                 <div style="text-align: center;">
                     <h3 style="margin: 0 0 1rem 0; color: #667eea;">Heavy Blur (20px)</h3>
-                    <p style="margin: 0 0 1.5rem 0; color: #666;">Strong glass effect</p>
+                    <p style="margin: 0 0 1.5rem 0; color: #666;">Strong blur effect</p>
                     <aeva-button class="close-btn" variant="secondary">Close</aeva-button>
                 </div>
-            </aeva-surface>
+            </aeva-modal>
         </div>
 
         <!-- Features -->
         <div class="component-showcase">
             <h3>Interactive Features</h3>
-            <p class="description">Surface closes on backdrop click, Escape key, or browser back button</p>
+            <p class="description">Modal closes on backdrop click, Escape key, or browser back button</p>
             <div class="info-box">
                 <p><strong>Try these interactions:</strong></p>
                 <ul style="margin: 0.5rem 0 0 1.5rem; color: #1976d2;">
-                    <li>Click outside the surface to close it</li>
+                    <li>Click outside the modal to close it</li>
                     <li>Press Escape key to close</li>
                     <li>Press browser back button to close</li>
                     <li>Notice the smooth fade and scale animations</li>
@@ -1224,35 +1689,35 @@ aeva-input[size="lg"] {
                     </div>
                     <pre class="code-content">
                         <code class="language-markup">&lt;!-- HTML --&gt;
-&lt;aeva-button id="openBtn"&gt;Open Surface&lt;/aeva-button&gt;
+&lt;aeva-button id="openBtn"&gt;Open Modal&lt;/aeva-button&gt;
 
-&lt;aeva-surface id="mySurface" elevation="3" blur-amount="10"&gt;
-  &lt;h2&gt;Surface Content&lt;/h2&gt;
+&lt;aeva-modal id="myModal" elevation="3" blur-amount="10"&gt;
+  &lt;h2&gt;Modal Content&lt;/h2&gt;
   &lt;p&gt;Your content here&lt;/p&gt;
   &lt;aeva-button id="closeBtn"&gt;Close&lt;/aeva-button&gt;
-&lt;/aeva-surface&gt;
+&lt;/aeva-modal&gt;
 
 &lt;!-- JavaScript --&gt;
 &lt;script&gt;
-  const surface = document.getElementById('mySurface');
+  const modal = document.getElementById('myModal');
   const openBtn = document.getElementById('openBtn');
   const closeBtn = document.getElementById('closeBtn');
 
   openBtn.addEventListener('click', () =&gt; {
-    surface.open = true;
+    modal.open = true;
   });
 
   closeBtn.addEventListener('click', () =&gt; {
-    surface.close();
+    modal.close();
   });
 
   // Listen to events
-  surface.addEventListener('open', () =&gt; {
-    console.log('Surface opened');
+  modal.addEventListener('open', () =&gt; {
+    console.log('Modal opened');
   });
 
-  surface.addEventListener('close', () =&gt; {
-    console.log('Surface closed');
+  modal.addEventListener('close', () =&gt; {
+    console.log('Modal closed');
   });
 &lt;/script&gt;</code></pre>
                 </div>
@@ -1260,46 +1725,46 @@ aeva-input[size="lg"] {
         </div>
 
         <script>
-            // Demo surface interactions
-            const demoSurface = document.getElementById('demo-surface');
-            const openSurfaceBtn = document.getElementById('open-surface-btn');
-            const closeSurfaceBtn = document.getElementById('close-surface-btn');
+            // Demo modal interactions
+            const demoModal = document.getElementById('demo-modal');
+            const openModalBtn = document.getElementById('open-modal-btn');
+            const closeModalBtn = document.getElementById('close-modal-btn');
 
-            openSurfaceBtn?.addEventListener('click', () => {
-                demoSurface.open = true;
+            openModalBtn?.addEventListener('click', () => {
+                demoModal.open = true;
             });
 
-            closeSurfaceBtn?.addEventListener('click', () => {
-                demoSurface.close();
+            closeModalBtn?.addEventListener('click', () => {
+                demoModal.close();
             });
 
             // Elevation demos
             document.getElementById('open-elevation-1')?.addEventListener('click', () => {
-                document.getElementById('surface-elevation-1').open = true;
+                document.getElementById('modal-elevation-1').open = true;
             });
 
             document.getElementById('open-elevation-3')?.addEventListener('click', () => {
-                document.getElementById('surface-elevation-3').open = true;
+                document.getElementById('modal-elevation-3').open = true;
             });
 
             document.getElementById('open-elevation-5')?.addEventListener('click', () => {
-                document.getElementById('surface-elevation-5').open = true;
+                document.getElementById('modal-elevation-5').open = true;
             });
 
             // Blur demos
             document.getElementById('open-blur-5')?.addEventListener('click', () => {
-                document.getElementById('surface-blur-5').open = true;
+                document.getElementById('modal-blur-5').open = true;
             });
 
             document.getElementById('open-blur-20')?.addEventListener('click', () => {
-                document.getElementById('surface-blur-20').open = true;
+                document.getElementById('modal-blur-20').open = true;
             });
 
-            // Close buttons for all surfaces
+            // Close buttons for all modals
             document.querySelectorAll('.close-btn').forEach(btn => {
                 btn.addEventListener('click', (e) => {
-                    const surface = e.target.closest('aeva-surface');
-                    if (surface) surface.close();
+                    const modal = e.target.closest('aeva-modal');
+                    if (modal) modal.close();
                 });
             });
         </script>
