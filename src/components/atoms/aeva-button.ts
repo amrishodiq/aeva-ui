@@ -162,6 +162,7 @@ export class AevaButton extends LitElement {
 
     :host([full-width]) button {
       max-width: none;
+      width: 100%;
     }
 
     /* Focus ring for accessibility */
