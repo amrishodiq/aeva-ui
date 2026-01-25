@@ -1767,14 +1767,218 @@ const count = CheckboxGroupHelper.getCount('interests');
                     if (modal) modal.close();
                 });
             });
+
+            // Tab component event handlers
+            const basicTab = document.getElementById('basic-tab');
+            const multiTab = document.getElementById('multi-tab');
+            const basicTabInfo = document.getElementById('basic-tab-info');
+            const multiTabInfo = document.getElementById('multi-tab-info');
+
+            basicTab?.addEventListener('on-tab-changed', (e) => {
+                if (basicTabInfo) {
+                    basicTabInfo.textContent = `Selected: ${e.detail.label}`;
+                }
+                console.log('Basic tab changed:', e.detail);
+            });
+
+            multiTab?.addEventListener('on-tab-changed', (e) => {
+                if (multiTabInfo) {
+                    multiTabInfo.textContent = `Selected: ${e.detail.label} | Try clicking on "Premium" - it's disabled!`;
+                }
+                console.log('Multi tab changed:', e.detail);
+            });
         </script>
 
 
         <div class="section">
             <h2>🧩 Molecules</h2>
+
+            <!-- Tab Component -->
+            <h3
+                style="font-size: 1.75rem; color: #667eea; margin-top: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                Tab Component</h3>
+
+            <!-- Basic Tab -->
             <div class="component-showcase">
-                <p>Combinations of atoms will be displayed here</p>
-                <!-- Molecule components will be added here -->
+                <h3>Basic Tab</h3>
+                <p class="description">A tab component with morphing background animation</p>
+                <div
+                    style="display: flex; justify-content: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
+                    <aeva-tab id="basic-tab">
+                        <aeva-tab-item label="Current location"></aeva-tab-item>
+                        <aeva-tab-item label="Place"></aeva-tab-item>
+                    </aeva-tab>
+                </div>
+                <div class="info-box" style="margin-top: 1rem;">
+                    <p id="basic-tab-info">Selected: Current location</p>
+                </div>
+            </div>
+
+            <!-- Tab with Multiple Items -->
+            <div class="component-showcase">
+                <h3>Multiple Tab Items</h3>
+                <p class="description">Tab with more options and disabled state</p>
+                <div
+                    style="display: flex; justify-content: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
+                    <aeva-tab id="multi-tab">
+                        <aeva-tab-item label="Home"></aeva-tab-item>
+                        <aeva-tab-item label="Profile"></aeva-tab-item>
+                        <aeva-tab-item label="Settings"></aeva-tab-item>
+                        <aeva-tab-item label="Premium" disabled></aeva-tab-item>
+                    </aeva-tab>
+                </div>
+                <div class="info-box" style="margin-top: 1rem;">
+                    <p id="multi-tab-info">Selected: Home | Try clicking on "Premium" - it's disabled!</p>
+                </div>
+            </div>
+
+            <!-- Keyboard Navigation Demo -->
+            <div class="component-showcase">
+                <h3>Keyboard Navigation</h3>
+                <p class="description">Use Arrow Left/Right, Home, or End keys to navigate</p>
+                <div
+                    style="display: flex; justify-content: center; padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
+                    <aeva-tab id="keyboard-tab">
+                        <aeva-tab-item label="Tab 1"></aeva-tab-item>
+                        <aeva-tab-item label="Tab 2"></aeva-tab-item>
+                        <aeva-tab-item label="Tab 3"></aeva-tab-item>
+                        <aeva-tab-item label="Tab 4"></aeva-tab-item>
+                    </aeva-tab>
+                </div>
+                <div class="info-box" style="margin-top: 1rem;">
+                    <p>Click on any tab, then use keyboard arrows to navigate. Press Home/End for first/last tab.</p>
+                </div>
+            </div>
+
+            <!-- Mobile Scrollable Tabs -->
+            <div class="component-showcase">
+                <h3>Scrollable Tabs (Auto)</h3>
+                <p class="description">Tabs automatically scroll when content exceeds available space. Try resizing your
+                    browser!</p>
+                <div
+                    style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
+                    <aeva-tab>
+                        <aeva-tab-item label="Monday"></aeva-tab-item>
+                        <aeva-tab-item label="Tuesday"></aeva-tab-item>
+                        <aeva-tab-item label="Wednesday"></aeva-tab-item>
+                        <aeva-tab-item label="Thursday"></aeva-tab-item>
+                        <aeva-tab-item label="Friday"></aeva-tab-item>
+                        <aeva-tab-item label="Saturday"></aeva-tab-item>
+                        <aeva-tab-item label="Sunday"></aeva-tab-item>
+                    </aeva-tab>
+                </div>
+                <div class="info-box" style="margin-top: 1rem;">
+                    <p>✨ Tabs fill the container width. Scroll only appears when tabs don't fit. No visible scrollbar!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Constrained Width Demo -->
+            <div class="component-showcase">
+                <h3>Scrollable Tabs (Forced)</h3>
+                <p class="description">Container width limited to 400px to demonstrate scrolling behavior</p>
+                <div
+                    style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px;">
+                    <div style="max-width: 400px; margin: 0 auto;">
+                        <aeva-tab>
+                            <aeva-tab-item label="Dashboard"></aeva-tab-item>
+                            <aeva-tab-item label="Analytics"></aeva-tab-item>
+                            <aeva-tab-item label="Reports"></aeva-tab-item>
+                            <aeva-tab-item label="Settings"></aeva-tab-item>
+                            <aeva-tab-item label="Profile"></aeva-tab-item>
+                            <aeva-tab-item label="Notifications"></aeva-tab-item>
+                        </aeva-tab>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 1rem;">
+                    <p>📱 Swipe/drag to scroll. Background stays aligned with active tab during scroll!</p>
+                </div>
+            </div>
+
+            <!-- Custom Styling -->
+            <div class="component-showcase">
+                <h3>Custom Styling</h3>
+                <p class="description">Customize colors, spacing, and animation timing</p>
+                <div
+                    style="display: flex; flex-direction: column; gap: 2rem; padding: 2rem; background: #1a1a1a; border-radius: 12px;">
+                    <div style="display: flex; justify-content: center;">
+                        <aeva-tab style="
+                            --aeva-tab-bg: rgba(255, 255, 255, 0.1);
+                            --aeva-tab-active-bg: rgba(255, 255, 255, 0.2);
+                            --aeva-tab-padding: 12px;
+                            --aeva-tab-gap: 12px;
+                            --aeva-tab-border-radius: 16px;
+                        ">
+                            <aeva-tab-item label="Design"></aeva-tab-item>
+                            <aeva-tab-item label="Develop"></aeva-tab-item>
+                            <aeva-tab-item label="Deploy"></aeva-tab-item>
+                        </aeva-tab>
+                    </div>
+                    <div style="display: flex; justify-content: center;">
+                        <aeva-tab style="
+                            --aeva-tab-bg: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                            --aeva-tab-active-bg: rgba(255, 255, 255, 0.3);
+                            --aeva-tab-padding: 6px;
+                            --aeva-tab-gap: 6px;
+                            --aeva-tab-border-radius: 50vh;
+                            --aeva-tab-transition-duration: 500ms;
+                        ">
+                            <aeva-tab-item label="Fast"></aeva-tab-item>
+                            <aeva-tab-item label="Slow"></aeva-tab-item>
+                            <aeva-tab-item label="Custom"></aeva-tab-item>
+                        </aeva-tab>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Usage Code -->
+            <div class="component-showcase">
+                <h3>Usage Example</h3>
+                <div class="carbon-container">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <pre class="code-content">
+                            <code class="language-markup">
+&lt;!-- Basic Usage --&gt;
+&lt;aeva-tab&gt;
+  &lt;aeva-tab-item label="Current location"&gt;&lt;/aeva-tab-item&gt;
+  &lt;aeva-tab-item label="Place"&gt;&lt;/aeva-tab-item&gt;
+&lt;/aeva-tab&gt;
+
+&lt;!-- With Disabled Item --&gt;
+&lt;aeva-tab&gt;
+  &lt;aeva-tab-item label="Home"&gt;&lt;/aeva-tab-item&gt;
+  &lt;aeva-tab-item label="Profile"&gt;&lt;/aeva-tab-item&gt;
+  &lt;aeva-tab-item label="Premium" disabled&gt;&lt;/aeva-tab-item&gt;
+&lt;/aeva-tab&gt;
+
+&lt;!-- Custom Styling --&gt;
+&lt;aeva-tab style="
+  --aeva-tab-bg: rgba(255, 255, 255, 0.1);
+  --aeva-tab-active-bg: rgba(255, 255, 255, 0.2);
+  --aeva-tab-padding: 12px;
+  --aeva-tab-gap: 12px;
+"&gt;
+  &lt;aeva-tab-item label="Tab 1"&gt;&lt;/aeva-tab-item&gt;
+  &lt;aeva-tab-item label="Tab 2"&gt;&lt;/aeva-tab-item&gt;
+&lt;/aeva-tab&gt;
+
+&lt;!-- JavaScript Event Handling --&gt;
+&lt;script&gt;
+  const tab = document.querySelector('aeva-tab');
+  
+  tab.addEventListener('on-tab-changed', (e) =&gt; {
+    console.log('Tab changed:', e.detail);
+    // { previousIndex: 0, currentIndex: 1, label: "Place" }
+  });
+&lt;/script&gt;
+                            </code></pre>
+                    </div>
+                </div>
             </div>
         </div>
 
