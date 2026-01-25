@@ -1791,14 +1791,129 @@ const count = CheckboxGroupHelper.getCount('interests');
 
 
         <div class="section">
-            <h2>🧩 Molecules</h2>
+            <h2>🧬 Molecules</h2>
+
+            <!-- Page Component -->
+            <h3
+                style="font-size: 1.75rem; color: #667eea; margin-top: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                Page Component</h3>
+
+            <!-- Basic Page -->
+            <div class="component-showcase">
+                <h3>Basic Full-Screen Page</h3>
+                <p class="description">A full-screen modal page with slide-in animation from right to left</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button id="open-basic-page">Open Basic Page</aeva-button>
+                        <span class="label">Click to open page</span>
+                    </div>
+                </div>
+                <div class="info-box" style="margin-top: 1rem;">
+                    <p>✨ Click the button, backdrop, or press back button to close. Notice the smooth slide animation!
+                    </p>
+                </div>
+            </div>
+
+            <!-- Custom Background Page -->
+            <div class="component-showcase">
+                <h3>Custom Background</h3>
+                <p class="description">Page with custom gradient background</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button id="open-gradient-page" variant="secondary">Open Gradient Page</aeva-button>
+                        <span class="label">Custom gradient background</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page with Content -->
+            <div class="component-showcase">
+                <h3>Page with Content</h3>
+                <p class="description">Full-screen page containing other components</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-button id="open-content-page" variant="outline">Open Content Page</aeva-button>
+                        <span class="label">Page with nested components</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animation Demo -->
+            <div class="component-showcase">
+                <h3>Animation Details</h3>
+                <p class="description">The page component features smooth animations:</p>
+                <div style="margin-top: 1rem;">
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                            <strong>Open:</strong> Slide in from right (100% → 0%), scale (120% → 100%), fade in (0 → 1)
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                            <strong>Close:</strong> Slide out to right (0% → 100%), scale (100% → 120%), fade out (1 →
+                            0)
+                        </li>
+                        <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                            <strong>Duration:</strong> 350ms with smooth easing
+                        </li>
+                        <li style="padding: 0.5rem 0;">
+                            <strong>Back Button:</strong> Hardware/browser back button closes the page
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Usage Example -->
+            <div class="component-showcase">
+                <h3>Usage Example</h3>
+                <div class="carbon-container">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <pre class="code-content">
+                            <code class="language-markup">
+&lt;!-- Basic Usage --&gt;
+&lt;aeva-page id="myPage"&gt;
+  &lt;div style="padding: 2rem;"&gt;
+    &lt;h1&gt;Page Title&lt;/h1&gt;
+    &lt;p&gt;Your content here&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/aeva-page&gt;
+
+&lt;!-- Custom Background --&gt;
+&lt;aeva-page background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"&gt;
+  &lt;div style="padding: 2rem; color: white;"&gt;
+    &lt;h1&gt;Gradient Background&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/aeva-page&gt;
+
+&lt;!-- JavaScript Control --&gt;
+&lt;script&gt;
+  const page = document.querySelector('#myPage');
+  
+  // Open page
+  page.show();
+  
+  // Close page
+  page.close();
+  
+  // Listen to events
+  page.addEventListener('open', () =&gt; {
+    console.log('Page opened');
+  });
+&lt;/script&gt;
+                            </code></pre>
+                    </div>
+                </div>
+            </div>
 
             <!-- Tab Component -->
             <h3
-                style="font-size: 1.75rem; color: #667eea; margin-top: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
                 Tab Component</h3>
 
-            <!-- Basic Tab -->
+            <!--Basic Tab-- >
             <div class="component-showcase">
                 <h3>Basic Tab</h3>
                 <p class="description">A tab component with morphing background animation</p>
@@ -1814,7 +1929,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!-- Tab with Multiple Items -->
+            <!--Tab with Multiple Items-- >
             <div class="component-showcase">
                 <h3>Multiple Tab Items</h3>
                 <p class="description">Tab with more options and disabled state</p>
@@ -1832,7 +1947,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!-- Keyboard Navigation Demo -->
+            <!--Keyboard Navigation Demo-- >
             <div class="component-showcase">
                 <h3>Keyboard Navigation</h3>
                 <p class="description">Use Arrow Left/Right, Home, or End keys to navigate</p>
@@ -1850,7 +1965,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!-- Mobile Scrollable Tabs -->
+            <!--Mobile Scrollable Tabs-- >
             <div class="component-showcase">
                 <h3>Scrollable Tabs (Auto)</h3>
                 <p class="description">Tabs automatically scroll when content exceeds available space. Try resizing your
@@ -1873,7 +1988,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!-- Constrained Width Demo -->
+            <!--Constrained Width Demo-- >
             <div class="component-showcase">
                 <h3>Scrollable Tabs (Forced)</h3>
                 <p class="description">Container width limited to 400px to demonstrate scrolling behavior</p>
@@ -1895,7 +2010,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!-- Custom Styling -->
+            <!--Custom Styling-- >
             <div class="component-showcase">
                 <h3>Custom Styling</h3>
                 <p class="description">Customize colors, spacing, and animation timing</p>
@@ -1931,69 +2046,162 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!-- Usage Code -->
-            <div class="component-showcase">
-                <h3>Usage Example</h3>
-                <div class="carbon-container">
-                    <div class="code-window">
-                        <div class="window-header">
-                            <div class="dot dot-red"></div>
-                            <div class="dot dot-yellow"></div>
-                            <div class="dot dot-green"></div>
-                        </div>
-                        <pre class="code-content">
-                            <code class="language-markup">
-&lt;!-- Basic Usage --&gt;
-&lt;aeva-tab&gt;
-  &lt;aeva-tab-item label="Current location"&gt;&lt;/aeva-tab-item&gt;
-  &lt;aeva-tab-item label="Place"&gt;&lt;/aeva-tab-item&gt;
-&lt;/aeva-tab&gt;
+            <!--Usage Code-- >
+                <div class="component-showcase">
+                    <h3>Usage Example</h3>
+                    <div class="carbon-container">
+                        <div class="code-window">
+                            <div class="window-header">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                            </div>
+                            <pre class="code-content">
+                                <code class="language-markup">
+                                    &lt;!-- Basic Usage --&gt;
+                                    &lt;aeva-tab&gt;
+                                    &lt;aeva-tab-item label="Current location"&gt;&lt;/aeva-tab-item&gt;
+                                    &lt;aeva-tab-item label="Place"&gt;&lt;/aeva-tab-item&gt;
+                                    &lt;/aeva-tab&gt;
 
-&lt;!-- With Disabled Item --&gt;
-&lt;aeva-tab&gt;
-  &lt;aeva-tab-item label="Home"&gt;&lt;/aeva-tab-item&gt;
-  &lt;aeva-tab-item label="Profile"&gt;&lt;/aeva-tab-item&gt;
-  &lt;aeva-tab-item label="Premium" disabled&gt;&lt;/aeva-tab-item&gt;
-&lt;/aeva-tab&gt;
+                                    &lt;!-- With Disabled Item --&gt;
+                                    &lt;aeva-tab&gt;
+                                    &lt;aeva-tab-item label="Home"&gt;&lt;/aeva-tab-item&gt;
+                                    &lt;aeva-tab-item label="Profile"&gt;&lt;/aeva-tab-item&gt;
+                                    &lt;aeva-tab-item label="Premium" disabled&gt;&lt;/aeva-tab-item&gt;
+                                    &lt;/aeva-tab&gt;
 
-&lt;!-- Custom Styling --&gt;
-&lt;aeva-tab style="
-  --aeva-tab-bg: rgba(255, 255, 255, 0.1);
-  --aeva-tab-active-bg: rgba(255, 255, 255, 0.2);
-  --aeva-tab-padding: 12px;
-  --aeva-tab-gap: 12px;
-"&gt;
-  &lt;aeva-tab-item label="Tab 1"&gt;&lt;/aeva-tab-item&gt;
-  &lt;aeva-tab-item label="Tab 2"&gt;&lt;/aeva-tab-item&gt;
-&lt;/aeva-tab&gt;
+                                    &lt;!-- Custom Styling --&gt;
+                                    &lt;aeva-tab style="
+                                    --aeva-tab-bg: rgba(255, 255, 255, 0.1);
+                                    --aeva-tab-active-bg: rgba(255, 255, 255, 0.2);
+                                    --aeva-tab-padding: 12px;
+                                    --aeva-tab-gap: 12px;
+                                    "&gt;
+                                    &lt;aeva-tab-item label="Tab 1"&gt;&lt;/aeva-tab-item&gt;
+                                    &lt;aeva-tab-item label="Tab 2"&gt;&lt;/aeva-tab-item&gt;
+                                    &lt;/aeva-tab&gt;
 
-&lt;!-- JavaScript Event Handling --&gt;
-&lt;script&gt;
-  const tab = document.querySelector('aeva-tab');
-  
-  tab.addEventListener('on-tab-changed', (e) =&gt; {
-    console.log('Tab changed:', e.detail);
-    // { previousIndex: 0, currentIndex: 1, label: "Place" }
+                                    &lt;!-- JavaScript Event Handling --&gt;
+                                    &lt;script&gt;
+                                    const tab = document.querySelector('aeva-tab');
+
+                                    tab.addEventListener('on-tab-changed', (e) =&gt; {
+                                        console.log('Tab changed:', e.detail);
+    // {previousIndex: 0, currentIndex: 1, label: "Place" }
   });
-&lt;/script&gt;
-                            </code></pre>
+                                    &lt;/script&gt;
+                                </code></pre>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+        </div >
 
         <div class="section">
             <h2>🏗️ Organisms</h2>
             <div class="component-showcase">
                 <p>Complex components will be displayed here</p>
                 <!-- Organism components will be added here -->
-            </div>
-        </div>
-
-        <div class="info-box">
-            <p><strong>Hot Reload Active!</strong> Edit components in the src/ folder and see changes in real-time.</p>
         </div>
     </div>
+
+    <div class="info-box">
+        <p><strong>Hot Reload Active!</strong> Edit components in the src/ folder and see changes in real-time.</p>
+    </div>
+    </div>
+
+    <!-- Page Component Instances -->
+    <aeva-page id="basic-page">
+        <div style="padding: 2rem;">
+            <h1 style="margin-bottom: 1rem;">Basic Page</h1>
+            <p style="margin-bottom: 1rem;">This is a full-screen page with default white background.</p>
+            <aeva-button id="close-basic-page">Close Page</aeva-button>
+        </div>
+    </aeva-page>
+
+    <aeva-page id="gradient-page" background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+        <div style="padding: 2rem; color: white;">
+            <h1 style="margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">Gradient Background</h1>
+            <p style="margin-bottom: 1rem; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);">This page has a custom gradient
+                background set via the background property.</p>
+            <aeva-button id="close-gradient-page" variant="outline"
+                style="--aeva-button-outline-color: white; --aeva-button-outline-hover-bg: rgba(255, 255, 255, 0.2);">Close
+                Page</aeva-button>
+        </div>
+    </aeva-page>
+
+    <aeva-page id="content-page">
+        <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+            <aeva-text variant="h1" style="margin-bottom: 1rem;">Page with Content</aeva-text>
+            <aeva-text variant="body" style="margin-bottom: 2rem;">
+                This page demonstrates how you can nest other components inside the page component.
+            </aeva-text>
+
+            <div style="margin-bottom: 2rem;">
+                <aeva-text variant="h3" style="margin-bottom: 1rem;">Input Example</aeva-text>
+                <aeva-input label="Your Name" placeholder="Enter your name"></aeva-input>
+            </div>
+
+            <div style="margin-bottom: 2rem;">
+                <aeva-text variant="h3" style="margin-bottom: 1rem;">Button Examples</aeva-text>
+                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <aeva-button variant="primary">Primary</aeva-button>
+                    <aeva-button variant="secondary">Secondary</aeva-button>
+                    <aeva-button variant="outline">Outline</aeva-button>
+                </div>
+            </div>
+
+            <aeva-button id="close-content-page" variant="danger">Close Page</aeva-button>
+        </div>
+    </aeva-page>
+
+    <script>
+        // Page component event handlers
+        const basicPage = document.getElementById('basic-page');
+        const gradientPage = document.getElementById('gradient-page');
+        const contentPage = document.getElementById('content-page');
+
+        // Open buttons
+        document.getElementById('open-basic-page')?.addEventListener('click', () => {
+            basicPage.show();
+        });
+
+        document.getElementById('open-gradient-page')?.addEventListener('click', () => {
+            gradientPage.show();
+        });
+
+        document.getElementById('open-content-page')?.addEventListener('click', () => {
+            contentPage.show();
+        });
+
+        // Close buttons
+        document.getElementById('close-basic-page')?.addEventListener('click', () => {
+            basicPage.close();
+        });
+
+        document.getElementById('close-gradient-page')?.addEventListener('click', () => {
+            gradientPage.close();
+        });
+
+        document.getElementById('close-content-page')?.addEventListener('click', () => {
+            contentPage.close();
+        });
+
+        // Event listeners for logging
+        [basicPage, gradientPage, contentPage].forEach(page => {
+            page?.addEventListener('open', () => {
+                console.log('Page opened:', page.id);
+            });
+
+            page?.addEventListener('close', () => {
+                console.log('Page closed:', page.id);
+            });
+
+            page?.addEventListener('backdrop-click', () => {
+                console.log('Backdrop clicked:', page.id);
+            });
+        });
+    </script>
 
     <script type="module" src="/demo/main.ts"></script>
     <!-- Prism.js script -->
