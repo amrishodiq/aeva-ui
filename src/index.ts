@@ -12,6 +12,7 @@ export { AevaRadio } from './components/atoms/aeva-radio.js';
 export { AevaCheckbox } from './components/atoms/aeva-checkbox.js';
 export { AevaTabItem } from './components/atoms/aeva-tab-item.js';
 export { AevaCard } from './components/atoms/aeva-card.js';
+export { AevaProgress } from './components/atoms/aeva-progress.js';
 
 // Utils
 export { RadioGroupHelper } from './utils/radio-group-helper.js';
