@@ -13,6 +13,9 @@ export { AevaCheckbox } from './components/atoms/aeva-checkbox.js';
 export { AevaTabItem } from './components/atoms/aeva-tab-item.js';
 export { AevaCard } from './components/atoms/aeva-card.js';
 export { AevaProgress } from './components/atoms/aeva-progress.js';
+export { AevaBadge } from './components/atoms/aeva-badge.js';
+export { AevaRipple } from './components/atoms/aeva-ripple.js';
+export { AevaListItem } from './components/atoms/aeva-list-item.js';
 
 // Utils
 export { RadioGroupHelper } from './utils/radio-group-helper.js';
@@ -20,6 +23,7 @@ export { CheckboxGroupHelper } from './utils/checkbox-group-helper.js';
 
 // Molecules
 export { AevaTab } from './components/molecules/aeva-tab.js';
+export { AevaList } from './components/molecules/aeva-list.js';
 
 // Organisms
 // export * from './components/organisms/...';
