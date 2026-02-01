@@ -24,6 +24,11 @@ export { AevaTab } from './components/molecules/aeva-tab.js';
 // export * from './components/organisms/...';
 
 // Templates
-// export * from './components/templates/...';
+export { AevaContainer } from './components/templates/layout/aeva-container.js';
+export { AevaStack } from './components/templates/layout/aeva-stack.js';
+export { AevaGrid } from './components/templates/layout/aeva-grid.js';
+export { AevaGridItem } from './components/templates/layout/aeva-grid-item.js';
+export { AevaBentoGrid } from './components/templates/layout/aeva-bento-grid.js';
+export { AevaMasonry } from './components/templates/layout/aeva-masonry.js';
 
 console.log('@aeva/ui library loaded');

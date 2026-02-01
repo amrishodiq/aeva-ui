@@ -355,6 +355,7 @@
                 <li><a href="#atoms">Atoms</a></li>
                 <li><a href="#molecules">Molecules</a></li>
                 <li><a href="#organisms">Organisms</a></li>
+                <li><a href="#templates">Templates</a></li>
             </ul>
         </div>
     </nav>
@@ -1217,6 +1218,102 @@ aeva-text[variant="body"] {
                         </div>
                     </aeva-card>
                 </div>
+            </div>
+
+
+            <!-- Code Example -->
+            <div class="component-showcase">
+                <h3>Varied Heights - Right Side Taller</h3>
+                <p class="description">Demonstrating auto-layout with taller content on the right side</p>
+
+                <aeva-smart-bento>
+                    <!-- Left: Short card -->
+                    <aeva-card>
+                        <div style="padding: 1rem;">
+                            <aeva-text variant="h4">Quick Stat</aeva-text>
+                            <aeva-text variant="h2" style="margin-top: 0.5rem;">156</aeva-text>
+                        </div>
+                    </aeva-card>
+
+                    <!-- Right: Tall card with lots of content -->
+                    <aeva-card>
+                        <div style="padding: 2rem;">
+                            <aeva-text variant="h3" style="margin-bottom: 1rem;">Detailed Report</aeva-text>
+                            <aeva-text variant="body" size="sm" state="muted" style="margin-bottom: 1rem;">This card
+                                contains significantly more content than the one on the left, demonstrating how the
+                                smart bento grid automatically adjusts the layout based on content height.</aeva-text>
+                            <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1rem;">
+                                <div style="padding: 0.75rem; background: #f3f4f6; border-radius: 8px;">
+                                    <aeva-text variant="label" size="sm">Metric A</aeva-text>
+                                    <aeva-text variant="h4">92%</aeva-text>
+                                </div>
+                                <div style="padding: 0.75rem; background: #f3f4f6; border-radius: 8px;">
+                                    <aeva-text variant="label" size="sm">Metric B</aeva-text>
+                                    <aeva-text variant="h4">78%</aeva-text>
+                                </div>
+                                <div style="padding: 0.75rem; background: #f3f4f6; border-radius: 8px;">
+                                    <aeva-text variant="label" size="sm">Metric C</aeva-text>
+                                    <aeva-text variant="h4">85%</aeva-text>
+                                </div>
+                            </div>
+                        </div>
+                    </aeva-card>
+
+                    <!-- Left: Medium card -->
+                    <aeva-card>
+                        <div style="padding: 1.5rem;">
+                            <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Notifications</aeva-text>
+                            <aeva-text variant="body" size="sm" state="muted">You have 3 new messages</aeva-text>
+                            <aeva-text variant="body" size="sm" state="muted" style="margin-top: 0.5rem;">2 pending
+                                tasks</aeva-text>
+                        </div>
+                    </aeva-card>
+
+                    <!-- Right: Very tall card with extensive content -->
+                    <aeva-card>
+                        <div style="padding: 2rem;">
+                            <aeva-text variant="h3" style="margin-bottom: 1rem;">Project Timeline</aeva-text>
+                            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                                <div style="border-left: 3px solid #667eea; padding-left: 1rem;">
+                                    <aeva-text variant="label" size="sm" state="muted">Week 1</aeva-text>
+                                    <aeva-text variant="body" size="sm">Project kickoff and planning</aeva-text>
+                                </div>
+                                <div style="border-left: 3px solid #667eea; padding-left: 1rem;">
+                                    <aeva-text variant="label" size="sm" state="muted">Week 2</aeva-text>
+                                    <aeva-text variant="body" size="sm">Design and prototyping</aeva-text>
+                                </div>
+                                <div style="border-left: 3px solid #667eea; padding-left: 1rem;">
+                                    <aeva-text variant="label" size="sm" state="muted">Week 3</aeva-text>
+                                    <aeva-text variant="body" size="sm">Development phase begins</aeva-text>
+                                </div>
+                                <div style="border-left: 3px solid #667eea; padding-left: 1rem;">
+                                    <aeva-text variant="label" size="sm" state="muted">Week 4</aeva-text>
+                                    <aeva-text variant="body" size="sm">Testing and QA</aeva-text>
+                                </div>
+                                <div style="border-left: 3px solid #10b981; padding-left: 1rem;">
+                                    <aeva-text variant="label" size="sm" state="muted">Week 5</aeva-text>
+                                    <aeva-text variant="body" size="sm">Deployment and launch</aeva-text>
+                                </div>
+                            </div>
+                        </div>
+                    </aeva-card>
+
+                    <!-- Small cards to fill space -->
+                    <aeva-card>
+                        <div style="padding: 1rem;">
+                            <aeva-text variant="h4">Status</aeva-text>
+                            <aeva-text variant="body" size="sm"
+                                style="color: #10b981; margin-top: 0.5rem;">Active</aeva-text>
+                        </div>
+                    </aeva-card>
+
+                    <aeva-card>
+                        <div style="padding: 1rem;">
+                            <aeva-text variant="h4">Team</aeva-text>
+                            <aeva-text variant="h3" style="margin-top: 0.5rem;">12</aeva-text>
+                        </div>
+                    </aeva-card>
+                </aeva-smart-bento>
             </div>
 
             <!-- Code Example -->
@@ -2551,7 +2648,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
                 Tab Component</h3>
 
-            <!--Basic Tab-- >
+            <!--Basic Tab-->
             <div class="component-showcase">
                 <h3>Basic Tab</h3>
                 <p class="description">A tab component with morphing background animation</p>
@@ -2567,7 +2664,8 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!--Tab with Multiple Items-- >
+            <!-- Tab with Multiple Items -->
+
             <div class="component-showcase">
                 <h3>Multiple Tab Items</h3>
                 <p class="description">Tab with more options and disabled state</p>
@@ -2585,7 +2683,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!--Keyboard Navigation Demo-- >
+            <!--Keyboard Navigation Demo-->
             <div class="component-showcase">
                 <h3>Keyboard Navigation</h3>
                 <p class="description">Use Arrow Left/Right, Home, or End keys to navigate</p>
@@ -2603,7 +2701,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!--Mobile Scrollable Tabs-- >
+            <!-- Mobile Scrollable Tabs -->
             <div class="component-showcase">
                 <h3>Scrollable Tabs (Auto)</h3>
                 <p class="description">Tabs automatically scroll when content exceeds available space. Try resizing your
@@ -2626,7 +2724,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!--Constrained Width Demo-- >
+            <!--Constrained Width Demo-->
             <div class="component-showcase">
                 <h3>Scrollable Tabs (Forced)</h3>
                 <p class="description">Container width limited to 400px to demonstrate scrolling behavior</p>
@@ -2648,7 +2746,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!--Custom Styling-- >
+            <!--Custom Styling-->
             <div class="component-showcase">
                 <h3>Custom Styling</h3>
                 <p class="description">Customize colors, spacing, and animation timing</p>
@@ -2684,17 +2782,17 @@ const count = CheckboxGroupHelper.getCount('interests');
                 </div>
             </div>
 
-            <!--Usage Code-- >
-                <div class="component-showcase">
-                    <h3>Usage Example</h3>
-                    <div class="carbon-container">
-                        <div class="code-window">
-                            <div class="window-header">
-                                <div class="dot dot-red"></div>
-                                <div class="dot dot-yellow"></div>
-                                <div class="dot dot-green"></div>
-                            </div>
-                            <pre class="code-content">
+            <!--Usage Code-->
+            <div class="component-showcase">
+                <h3>Usage Example</h3>
+                <div class="carbon-container">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <pre class="code-content">
                                 <code class="language-markup">
                                     &lt;!-- Basic Usage --&gt;
                                     &lt;aeva-tab&gt;
@@ -2730,177 +2828,1095 @@ const count = CheckboxGroupHelper.getCount('interests');
   });
                                     &lt;/script&gt;
                                 </code></pre>
-                        </div>
                     </div>
                 </div>
-        </div >
+            </div>
+        </div>
 
         <div class="section" id="organisms">
             <h2>🏗️ Organisms</h2>
             <div class="component-showcase">
                 <p>Complex components will be displayed here</p>
                 <!-- Organism components will be added here -->
-        </div>
-    </div>
-
-    <div class="info-box">
-        <p><strong>Hot Reload Active!</strong> Edit components in the src/ folder and see changes in real-time.</p>
-    </div>
-    </div>
-
-    <!-- Page Component Instances -->
-    <aeva-page id="basic-page">
-        <div style="padding: 2rem;">
-            <h1 style="margin-bottom: 1rem;">Basic Page</h1>
-            <p style="margin-bottom: 1rem;">This is a full-screen page with default white background.</p>
-            <aeva-button id="close-basic-page">Close Page</aeva-button>
-        </div>
-    </aeva-page>
-
-    <aeva-page id="gradient-page" background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
-        <div style="padding: 2rem; color: white;">
-            <h1 style="margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">Gradient Background</h1>
-            <p style="margin-bottom: 1rem; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);">This page has a custom gradient
-                background set via the background property.</p>
-            <aeva-button id="close-gradient-page" variant="outline"
-                style="--aeva-button-outline-color: white; --aeva-button-outline-hover-bg: rgba(255, 255, 255, 0.2);">Close
-                Page</aeva-button>
-        </div>
-    </aeva-page>
-
-    <aeva-page id="content-page">
-        <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
-            <aeva-text variant="h1" style="margin-bottom: 1rem;">Page with Content</aeva-text>
-            <aeva-text variant="body" style="margin-bottom: 2rem;">
-                This page demonstrates how you can nest other components inside the page component.
-            </aeva-text>
-
-            <div style="margin-bottom: 2rem;">
-                <aeva-text variant="h3" style="margin-bottom: 1rem;">Input Example</aeva-text>
-                <aeva-input label="Your Name" placeholder="Enter your name"></aeva-input>
             </div>
+        </div>
 
-            <div style="margin-bottom: 2rem;">
-                <aeva-text variant="h3" style="margin-bottom: 1rem;">Button Examples</aeva-text>
-                <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                    <aeva-button variant="primary">Primary</aeva-button>
-                    <aeva-button variant="secondary">Secondary</aeva-button>
-                    <aeva-button variant="outline">Outline</aeva-button>
+        <div class="info-box">
+            <p><strong>Hot Reload Active!</strong> Edit components in the src/ folder and see changes in real-time.</p>
+        </div>
+    </div>
+
+    <!-- ===== TEMPLATES SECTION ===== -->
+    <div class="section" id="templates">
+        <h2>📐 Templates</h2>
+        <p class="description">Layout components for organizing and positioning content on your pages.</p>
+
+        <!-- Container Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 1rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Container Component</h3>
+
+        <!-- Container Sizes -->
+        <div class="component-showcase">
+            <h3>Container Sizes</h3>
+            <p class="description">Responsive max-width presets for consistent content sizing</p>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Small (640px)</span>
+                    <aeva-container size="sm" padding="md" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <aeva-card>
+                            <div style="padding: 1rem;">
+                                <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Small Container</aeva-text>
+                                <aeva-text variant="body" size="sm" state="muted">Max-width: 640px - Perfect for narrow
+                                    content like forms or single-column layouts</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-container>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Medium (768px)</span>
+                    <aeva-container size="md" padding="md" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <aeva-card>
+                            <div style="padding: 1rem;">
+                                <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Medium Container</aeva-text>
+                                <aeva-text variant="body" size="sm" state="muted">Max-width: 768px - Great for
+                                    tablet-sized content and article layouts</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-container>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Large (1024px) - Default</span>
+                    <aeva-container size="lg" padding="md" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <aeva-card>
+                            <div style="padding: 1rem;">
+                                <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Large Container</aeva-text>
+                                <aeva-text variant="body" size="sm" state="muted">Max-width: 1024px - Default size,
+                                    ideal for most desktop content and dashboards</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-container>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Extra Large (1280px)</span>
+                    <aeva-container size="xl" padding="md" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <aeva-card>
+                            <div style="padding: 1rem;">
+                                <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Extra Large Container</aeva-text>
+                                <aeva-text variant="body" size="sm" state="muted">Max-width: 1280px - Wide layout for
+                                    large screens and data-heavy interfaces</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-container>
                 </div>
             </div>
-
-            <aeva-button id="close-content-page" variant="danger">Close Page</aeva-button>
         </div>
-    </aeva-page>
 
-    <script>
-        // Page component event handlers
-        const basicPage = document.getElementById('basic-page');
-        const gradientPage = document.getElementById('gradient-page');
-        const contentPage = document.getElementById('content-page');
+        <!-- Container Padding -->
+        <div class="component-showcase">
+            <h3>Container Padding</h3>
+            <p class="description">Different padding options for content spacing</p>
 
-        // Open buttons
-        document.getElementById('open-basic-page')?.addEventListener('click', () => {
-            basicPage.show();
-        });
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">No Padding</span>
+                    <aeva-container size="md" padding="none" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <div style="background: #667eea; color: white; padding: 0.5rem;">
+                            <aeva-text variant="body" state="inverse">Content with no padding</aeva-text>
+                        </div>
+                    </aeva-container>
+                </div>
 
-        document.getElementById('open-gradient-page')?.addEventListener('click', () => {
-            gradientPage.show();
-        });
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Small Padding (1rem)</span>
+                    <aeva-container size="md" padding="sm" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <div style="background: #667eea; color: white; padding: 0.5rem;">
+                            <aeva-text variant="body" state="inverse">Content with small padding</aeva-text>
+                        </div>
+                    </aeva-container>
+                </div>
 
-        document.getElementById('open-content-page')?.addEventListener('click', () => {
-            contentPage.show();
-        });
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Medium Padding (1.5rem) -
+                        Default</span>
+                    <aeva-container size="md" padding="md" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <div style="background: #667eea; color: white; padding: 0.5rem;">
+                            <aeva-text variant="body" state="inverse">Content with medium padding</aeva-text>
+                        </div>
+                    </aeva-container>
+                </div>
 
-        // Close buttons
-        document.getElementById('close-basic-page')?.addEventListener('click', () => {
-            basicPage.close();
-        });
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Large Padding (2rem)</span>
+                    <aeva-container size="md" padding="lg" style="background: #f3f4f6; border: 2px dashed #667eea;">
+                        <div style="background: #667eea; color: white; padding: 0.5rem;">
+                            <aeva-text variant="body" state="inverse">Content with large padding</aeva-text>
+                        </div>
+                    </aeva-container>
+                </div>
+            </div>
+        </div>
 
-        document.getElementById('close-gradient-page')?.addEventListener('click', () => {
-            gradientPage.close();
-        });
+        <!-- Stack Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Stack Component</h3>
 
-        document.getElementById('close-content-page')?.addEventListener('click', () => {
-            contentPage.close();
-        });
+        <!-- Vertical Stack -->
+        <div class="component-showcase">
+            <h3>Vertical Stack</h3>
+            <p class="description">Arrange items vertically with consistent spacing</p>
 
-        // Event listeners for logging
-        [basicPage, gradientPage, contentPage].forEach(page => {
-            page?.addEventListener('open', () => {
-                console.log('Page opened:', page.id);
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Small Spacing (0.5rem)</span>
+                    <aeva-stack direction="vertical" spacing="sm"
+                        style="background: #f3f4f6; padding: 1rem; border-radius: 8px;">
+                        <aeva-button size="sm">Button 1</aeva-button>
+                        <aeva-button size="sm">Button 2</aeva-button>
+                        <aeva-button size="sm">Button 3</aeva-button>
+                    </aeva-stack>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Medium Spacing (1rem) -
+                        Default</span>
+                    <aeva-stack direction="vertical" spacing="md"
+                        style="background: #f3f4f6; padding: 1rem; border-radius: 8px;">
+                        <aeva-button>Button 1</aeva-button>
+                        <aeva-button>Button 2</aeva-button>
+                        <aeva-button>Button 3</aeva-button>
+                    </aeva-stack>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Large Spacing (1.5rem)</span>
+                    <aeva-stack direction="vertical" spacing="lg"
+                        style="background: #f3f4f6; padding: 1rem; border-radius: 8px;">
+                        <aeva-button>Button 1</aeva-button>
+                        <aeva-button>Button 2</aeva-button>
+                        <aeva-button>Button 3</aeva-button>
+                    </aeva-stack>
+                </div>
+            </div>
+        </div>
+
+        <!-- Horizontal Stack -->
+        <div class="component-showcase">
+            <h3>Horizontal Stack</h3>
+            <p class="description">Arrange items horizontally with flexible alignment</p>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Start Alignment</span>
+                    <aeva-stack direction="horizontal" spacing="md" justify="start"
+                        style="background: #f3f4f6; padding: 1rem; border-radius: 8px;">
+                        <aeva-button variant="primary">Save</aeva-button>
+                        <aeva-button variant="outline">Cancel</aeva-button>
+                        <aeva-button variant="ghost">Reset</aeva-button>
+                    </aeva-stack>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Center Alignment</span>
+                    <aeva-stack direction="horizontal" spacing="md" justify="center"
+                        style="background: #f3f4f6; padding: 1rem; border-radius: 8px;">
+                        <aeva-button variant="primary">Save</aeva-button>
+                        <aeva-button variant="outline">Cancel</aeva-button>
+                        <aeva-button variant="ghost">Reset</aeva-button>
+                    </aeva-stack>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Space Between</span>
+                    <aeva-stack direction="horizontal" spacing="md" justify="space-between"
+                        style="background: #f3f4f6; padding: 1rem; border-radius: 8px;">
+                        <aeva-button variant="primary">Save</aeva-button>
+                        <aeva-button variant="outline">Cancel</aeva-button>
+                        <aeva-button variant="ghost">Reset</aeva-button>
+                    </aeva-stack>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">With Wrapping</span>
+                    <aeva-stack direction="horizontal" spacing="md" wrap
+                        style="background: #f3f4f6; padding: 1rem; border-radius: 8px;">
+                        <aeva-button size="sm">Tag 1</aeva-button>
+                        <aeva-button size="sm">Tag 2</aeva-button>
+                        <aeva-button size="sm">Tag 3</aeva-button>
+                        <aeva-button size="sm">Tag 4</aeva-button>
+                        <aeva-button size="sm">Tag 5</aeva-button>
+                        <aeva-button size="sm">Tag 6</aeva-button>
+                        <aeva-button size="sm">Tag 7</aeva-button>
+                        <aeva-button size="sm">Tag 8</aeva-button>
+                    </aeva-stack>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Grid Component</h3>
+
+        <!-- Grid Columns -->
+        <div class="component-showcase">
+            <h3>Grid Columns</h3>
+            <p class="description">Create responsive multi-column layouts</p>
+
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">2 Columns</span>
+                    <aeva-grid columns="2" gap="md">
+                        <div
+                            style="background: #667eea; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 1</aeva-text>
+                        </div>
+                        <div
+                            style="background: #764ba2; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 2</aeva-text>
+                        </div>
+                        <div
+                            style="background: #f093fb; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 3</aeva-text>
+                        </div>
+                        <div
+                            style="background: #4facfe; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 4</aeva-text>
+                        </div>
+                    </aeva-grid>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">3 Columns - Default</span>
+                    <aeva-grid columns="3" gap="md">
+                        <div
+                            style="background: #667eea; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 1</aeva-text>
+                        </div>
+                        <div
+                            style="background: #764ba2; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 2</aeva-text>
+                        </div>
+                        <div
+                            style="background: #f093fb; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 3</aeva-text>
+                        </div>
+                        <div
+                            style="background: #4facfe; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 4</aeva-text>
+                        </div>
+                        <div
+                            style="background: #43e97b; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 5</aeva-text>
+                        </div>
+                        <div
+                            style="background: #fa709a; color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="body" state="inverse">Item 6</aeva-text>
+                        </div>
+                    </aeva-grid>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">4 Columns</span>
+                    <aeva-grid columns="4" gap="sm">
+                        <div
+                            style="background: #667eea; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm" state="inverse">1</aeva-text>
+                        </div>
+                        <div
+                            style="background: #764ba2; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm" state="inverse">2</aeva-text>
+                        </div>
+                        <div
+                            style="background: #f093fb; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm" state="inverse">3</aeva-text>
+                        </div>
+                        <div
+                            style="background: #4facfe; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm" state="inverse">4</aeva-text>
+                        </div>
+                        <div
+                            style="background: #43e97b; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm" state="inverse">5</aeva-text>
+                        </div>
+                        <div
+                            style="background: #fa709a; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm" state="inverse">6</aeva-text>
+                        </div>
+                        <div
+                            style="background: #fee140; color: #333; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm">7</aeva-text>
+                        </div>
+                        <div
+                            style="background: #30cfd0; color: white; padding: 1rem; border-radius: 8px; text-align: center;">
+                            <aeva-text variant="label" size="sm" state="inverse">8</aeva-text>
+                        </div>
+                    </aeva-grid>
+                </div>
+            </div>
+        </div>
+
+        <!-- Auto-fit Grid -->
+        <div class="component-showcase">
+            <h3>Responsive Auto-fit Grid</h3>
+            <p class="description">Grid that automatically adjusts columns based on available space (resize window to
+                see effect)</p>
+
+            <aeva-grid columns="auto-fit" gap="lg" style="--aeva-grid-auto-min-width: 200px;">
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 1</aeva-text>
+                        <aeva-text variant="body" size="sm" state="muted">Auto-fit grid item</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 2</aeva-text>
+                        <aeva-text variant="body" size="sm" state="muted">Auto-fit grid item</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 3</aeva-text>
+                        <aeva-text variant="body" size="sm" state="muted">Auto-fit grid item</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 4</aeva-text>
+                        <aeva-text variant="body" size="sm" state="muted">Auto-fit grid item</aeva-text>
+                    </div>
+                </aeva-card>
+            </aeva-grid>
+        </div>
+
+        <!-- Combined Layout Example -->
+        <div class="component-showcase">
+            <h3>Combined Layout Example</h3>
+            <p class="description">Combining Container, Stack, and Grid for complex layouts</p>
+
+            <aeva-container size="lg" padding="lg" style="background: #f9fafb; border-radius: 12px;">
+                <aeva-stack direction="vertical" spacing="xl">
+                    <!-- Header -->
+                    <aeva-stack direction="horizontal" spacing="md" justify="space-between" align="center">
+                        <aeva-text variant="h2">Dashboard</aeva-text>
+                        <aeva-stack direction="horizontal" spacing="sm">
+                            <aeva-button size="sm" variant="outline">Settings</aeva-button>
+                            <aeva-button size="sm" variant="primary">New Project</aeva-button>
+                        </aeva-stack>
+                    </aeva-stack>
+
+                    <!-- Stats Grid -->
+                    <aeva-grid columns="3" gap="md">
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="label" size="sm" state="muted">Total Users</aeva-text>
+                                <aeva-text variant="h2" style="margin-top: 0.5rem;">1,234</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="label" size="sm" state="muted">Active Projects</aeva-text>
+                                <aeva-text variant="h2" style="margin-top: 0.5rem;">42</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="label" size="sm" state="muted">Completion Rate</aeva-text>
+                                <aeva-text variant="h2" style="margin-top: 0.5rem;">87%</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-grid>
+
+                    <!-- Action Buttons -->
+                    <aeva-stack direction="horizontal" spacing="md" wrap>
+                        <aeva-button variant="primary">
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4v16m8-8H4"></path>
+                            </svg>
+                            Create New
+                        </aeva-button>
+                        <aeva-button variant="outline">View All</aeva-button>
+                        <aeva-button variant="ghost">Export Data</aeva-button>
+                    </aeva-stack>
+                </aeva-stack>
+            </aeva-container>
+        </div>
+
+        <!-- Bento Grid Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Bento Grid Component</h3>
+
+        <!-- Bento Grid Presets -->
+        <div class="component-showcase">
+            <h3>Bento Grid Presets</h3>
+            <p class="description">Pre-configured asymmetric layouts inspired by Japanese bento boxes</p>
+
+            <div style="display: flex; flex-direction: column; gap: 3rem;">
+                <!-- Feature Preset -->
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Feature Preset - 1 Large + 3
+                        Small</span>
+                    <aeva-bento-grid preset="feature">
+                        <aeva-card>
+                            <div
+                                style="padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <aeva-text variant="h2" state="inverse" style="margin-bottom: 0.5rem;">Featured
+                                    Content</aeva-text>
+                                <aeva-text variant="body" state="inverse">This large card spans 2 columns and 2
+                                    rows</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Stat 1</aeva-text>
+                                <aeva-text variant="h2">1,234</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Stat 2</aeva-text>
+                                <aeva-text variant="h2">567</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Stat 3</aeva-text>
+                                <aeva-text variant="h2">89%</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-bento-grid>
+                </div>
+
+                <!-- Dashboard Preset -->
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Dashboard Preset</span>
+                    <aeva-bento-grid preset="dashboard">
+                        <aeva-card>
+                            <div
+                                style="padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <aeva-text variant="h3" state="inverse">Main Chart</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="label" size="sm" state="muted">Revenue</aeva-text>
+                                <aeva-text variant="h3" style="margin-top: 0.5rem;">$45K</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="label" size="sm" state="muted">Growth</aeva-text>
+                                <aeva-text variant="h3" style="margin-top: 0.5rem;">+23%</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="h4">Activity</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;">
+                                <aeva-text variant="h4">Actions</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-bento-grid>
+                </div>
+
+                <!-- Spotlight Preset -->
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Spotlight Preset</span>
+                    <aeva-bento-grid preset="spotlight">
+                        <aeva-card>
+                            <div
+                                style="padding: 3rem; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <aeva-text variant="h1" state="inverse" style="margin-bottom: 1rem;">Hero
+                                    Section</aeva-text>
+                                <aeva-text variant="body" size="lg" state="inverse">Full-width spotlight
+                                    area</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;"><aeva-text variant="h4">Feature 1</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;"><aeva-text variant="h4">Feature 2</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;"><aeva-text variant="h4">Feature 3</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;"><aeva-text variant="h4">Feature 4</aeva-text></div>
+                        </aeva-card>
+                    </aeva-bento-grid>
+                </div>
+            </div>
+        </div>
+
+        <!-- Custom Bento with Grid Items -->
+        <div class="component-showcase">
+            <h3>Custom Bento with Grid Items</h3>
+            <p class="description">Use col-span and row-span for full control</p>
+
+            <aeva-grid columns="4" gap="md">
+                <aeva-grid-item col-span="2" row-span="2">
+                    <aeva-card style="height: 100%;">
+                        <div
+                            style="padding: 2rem; height: 100%; display: flex; flex-direction: column; justify-content: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                            <aeva-text variant="h3" state="inverse">2x2 Card</aeva-text>
+                        </div>
+                    </aeva-card>
+                </aeva-grid-item>
+                <aeva-grid-item col-span="1" row-span="1">
+                    <aeva-card>
+                        <div style="padding: 1.5rem;"><aeva-text variant="h4">1x1</aeva-text></div>
+                    </aeva-card>
+                </aeva-grid-item>
+                <aeva-grid-item col-span="1" row-span="1">
+                    <aeva-card>
+                        <div style="padding: 1.5rem;"><aeva-text variant="h4">1x1</aeva-text></div>
+                    </aeva-card>
+                </aeva-grid-item>
+                <aeva-grid-item col-span="2" row-span="1">
+                    <aeva-card>
+                        <div style="padding: 1.5rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                            <aeva-text variant="h4" state="inverse">2x1 Wide</aeva-text>
+                        </div>
+                    </aeva-card>
+                </aeva-grid-item>
+                <aeva-grid-item col-span="1" row-span="2">
+                    <aeva-card style="height: 100%;">
+                        <div
+                            style="padding: 1.5rem; height: 100%; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                            <aeva-text variant="h4" state="inverse">1x2 Tall</aeva-text>
+                        </div>
+                    </aeva-card>
+                </aeva-grid-item>
+                <aeva-grid-item col-span="1" row-span="1">
+                    <aeva-card>
+                        <div style="padding: 1.5rem;"><aeva-text variant="h4">1x1</aeva-text></div>
+                    </aeva-card>
+                </aeva-grid-item>
+                <aeva-grid-item col-span="1" row-span="1">
+                    <aeva-card>
+                        <div style="padding: 1.5rem;"><aeva-text variant="h4">1x1</aeva-text></div>
+                    </aeva-card>
+                </aeva-grid-item>
+                <aeva-grid-item col-span="1" row-span="1">
+                    <aeva-card>
+                        <div style="padding: 1.5rem;"><aeva-text variant="h4">1x1</aeva-text></div>
+                    </aeva-card>
+                </aeva-grid-item>
+            </aeva-grid>
+        </div>
+
+        <!-- Masonry Layout Component -->
+        <h3
+            style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+            Masonry Layout Component</h3>
+
+        <!-- Basic Masonry -->
+        <div class="component-showcase">
+            <h3>Basic Masonry Layout</h3>
+            <p class="description">Compact grid layout that arranges cards efficiently without vertical gaps. Cards with
+                varying heights are positioned optimally.</p>
+
+            <aeva-masonry columns="auto" gap="16">
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 1</aeva-text>
+                        <aeva-text variant="body" size="sm">Short content</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 2</aeva-text>
+                        <aeva-text variant="body" size="sm">This card has much more content to demonstrate how the
+                            masonry layout handles varying heights. The layout automatically positions cards to minimize
+                            vertical gaps.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 3</aeva-text>
+                        <aeva-text variant="body" size="sm">Medium length content here.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 4</aeva-text>
+                        <aeva-text variant="body" size="sm">Another card with different content length to show the
+                            compact positioning.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 5</aeva-text>
+                        <aeva-text variant="body" size="sm">Compact!</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card>
+                    <div style="padding: 1.5rem;">
+                        <aeva-text variant="h4" style="margin-bottom: 0.5rem;">Card 6</aeva-text>
+                        <aeva-text variant="body" size="sm">The masonry layout uses CSS Grid with JavaScript to
+                            calculate optimal positioning. This ensures no wasted vertical space while maintaining a
+                            clean, organized appearance.</aeva-text>
+                    </div>
+                </aeva-card>
+            </aeva-masonry>
+
+            <div class="info-box" style="margin-top: 1rem;">
+                <p>✨ Resize your browser window to see the responsive behavior! Columns adjust automatically: 1 column
+                    (mobile) → 2 columns (tablet) → 3+ columns (desktop)</p>
+            </div>
+        </div>
+
+        <!-- Custom Gap -->
+        <div class="component-showcase">
+            <h3>Custom Gap Spacing</h3>
+            <p class="description">Adjust the spacing between cards using the gap property</p>
+
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Small Gap (8px)</span>
+                    <aeva-masonry columns="3" gap="8">
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 1</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 2 with more content</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 3</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 4</aeva-text></div>
+                        </aeva-card>
+                    </aeva-masonry>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">Large Gap (32px)</span>
+                    <aeva-masonry columns="3" gap="32">
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 1</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 2 with more content</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 3</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Card 4</aeva-text></div>
+                        </aeva-card>
+                    </aeva-masonry>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fixed Columns -->
+        <div class="component-showcase">
+            <h3>Fixed Column Layouts</h3>
+            <p class="description">Set a specific number of columns instead of auto-responsive</p>
+
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">2 Columns</span>
+                    <aeva-masonry columns="2" gap="16">
+                        <aeva-card>
+                            <div
+                                style="padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <aeva-text variant="h4" state="inverse">Feature A</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body">Short</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;"><aeva-text variant="body">Medium length content
+                                    here</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 2rem; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <aeva-text variant="h4" state="inverse">Feature B</aeva-text>
+                            </div>
+                        </aeva-card>
+                    </aeva-masonry>
+                </div>
+
+                <div>
+                    <span class="label" style="display: block; margin-bottom: 0.5rem;">4 Columns</span>
+                    <aeva-masonry columns="4" gap="12">
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body" size="sm">1</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;"><aeva-text variant="body" size="sm">2 - Taller</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body" size="sm">3</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 2rem;"><aeva-text variant="body" size="sm">4 - Much taller
+                                    card</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body" size="sm">5</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body" size="sm">6</aeva-text></div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1.5rem;"><aeva-text variant="body" size="sm">7 - Taller</aeva-text>
+                            </div>
+                        </aeva-card>
+                        <aeva-card>
+                            <div style="padding: 1rem;"><aeva-text variant="body" size="sm">8</aeva-text></div>
+                        </aeva-card>
+                    </aeva-masonry>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Cards in Masonry -->
+        <div class="component-showcase">
+            <h3>Interactive Cards in Masonry</h3>
+            <p class="description">Masonry layout works perfectly with interactive aeva-card components</p>
+
+            <aeva-masonry columns="auto" gap="16">
+                <aeva-card interactive id="masonry-card-1">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 1</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Click me! This card is interactive.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-2">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 2</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">This card has more content to demonstrate varying heights in
+                            an interactive masonry layout. Click to see the hover effect!</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-3">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 3</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Compact and clickable!</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-4">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 4</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">The masonry layout maintains compact positioning even with
+                            interactive elements. Hover to see the border color change.</aeva-text>
+                        <aeva-text variant="body" size="sm">This component uses CSS columns to create a Pinterest-style
+                            layout that automatically adjusts to different screen sizes.</aeva-text>
+                        <aeva-text variant="body" size="sm">Cards are distributed across columns to minimize vertical
+                            gaps and create an efficient, visually appealing grid.</aeva-text>
+                        <aeva-text variant="body" size="sm">Perfect for galleries, dashboards, and content-heavy
+                            interfaces where space optimization is important.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-5">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 5</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Short content here.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-6">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 6</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">This card demonstrates how the masonry layout handles
+                            multiple cards with different heights. The compact positioning ensures efficient use of
+                            space.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-7">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 7</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Medium length content.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-8">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 8</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Click me!</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-9">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 9</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Another card with some content to show the layout
+                            distribution across columns.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-10">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 10</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Compact!</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-11">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 11</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">This is a taller card with more content to demonstrate how
+                            the masonry layout efficiently fills vertical space without leaving gaps.</aeva-text>
+                    </div>
+                </aeva-card>
+                <aeva-card interactive id="masonry-card-12">
+                    <div slot="header">
+                        <aeva-text variant="h4">Interactive Card 12</aeva-text>
+                    </div>
+                    <div slot="body">
+                        <aeva-text variant="body" size="sm">Final card in the demo!</aeva-text>
+                    </div>
+                </aeva-card>
+            </aeva-masonry>
+
+            <div style="margin-top: 1rem; padding: 1rem; background: #f3f4f6; border-radius: 8px;">
+                <aeva-text variant="label" size="sm" id="masonry-card-log">Click on any card above to see the
+                    event</aeva-text>
+            </div>
+        </div>
+
+        <!-- Usage Example -->
+        <div class="component-showcase">
+            <h3>Usage Example</h3>
+            <p class="description">How to use the masonry layout component</p>
+            <div class="carbon-container">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <pre class="code-content">
+                        <code class="language-markup">&lt;!-- Auto-responsive columns --&gt;
+&lt;aeva-masonry columns="auto" gap="16"&gt;
+  &lt;aeva-card&gt;Card 1&lt;/aeva-card&gt;
+  &lt;aeva-card&gt;Card 2 with more content&lt;/aeva-card&gt;
+  &lt;aeva-card&gt;Card 3&lt;/aeva-card&gt;
+&lt;/aeva-masonry&gt;
+
+&lt;!-- Fixed 3 columns --&gt;
+&lt;aeva-masonry columns="3" gap="24"&gt;
+  &lt;aeva-card&gt;Card 1&lt;/aeva-card&gt;
+  &lt;aeva-card&gt;Card 2&lt;/aeva-card&gt;
+  &lt;aeva-card&gt;Card 3&lt;/aeva-card&gt;
+&lt;/aeva-masonry&gt;
+
+&lt;!-- Custom styling with CSS --&gt;
+&lt;style&gt;
+  aeva-masonry {
+    --masonry-gap: 24px;
+  }
+&lt;/style&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+
+
+        <aeva-page id="basic-page">
+            <div style="padding: 2rem;">
+                <h1 style="margin-bottom: 1rem;">Basic Page</h1>
+                <p style="margin-bottom: 1rem;">This is a full-screen page with default white background.</p>
+                <aeva-button id="close-basic-page">Close Page</aeva-button>
+            </div>
+        </aeva-page>
+
+        <aeva-page id="gradient-page" background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+            <div style="padding: 2rem; color: white;">
+                <h1 style="margin-bottom: 1rem; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);">Gradient Background</h1>
+                <p style="margin-bottom: 1rem; text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);">This page has a custom
+                    gradient
+                    background set via the background property.</p>
+                <aeva-button id="close-gradient-page" variant="outline"
+                    style="--aeva-button-outline-color: white; --aeva-button-outline-hover-bg: rgba(255, 255, 255, 0.2);">Close
+                    Page</aeva-button>
+            </div>
+        </aeva-page>
+
+        <aeva-page id="content-page">
+            <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+                <aeva-text variant="h1" style="margin-bottom: 1rem;">Page with Content</aeva-text>
+                <aeva-text variant="body" style="margin-bottom: 2rem;">
+                    This page demonstrates how you can nest other components inside the page component.
+                </aeva-text>
+
+                <div style="margin-bottom: 2rem;">
+                    <aeva-text variant="h3" style="margin-bottom: 1rem;">Input Example</aeva-text>
+                    <aeva-input label="Your Name" placeholder="Enter your name"></aeva-input>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <aeva-text variant="h3" style="margin-bottom: 1rem;">Button Examples</aeva-text>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <aeva-button variant="primary">Primary</aeva-button>
+                        <aeva-button variant="secondary">Secondary</aeva-button>
+                        <aeva-button variant="outline">Outline</aeva-button>
+                    </div>
+                </div>
+
+                <aeva-button id="close-content-page" variant="danger">Close Page</aeva-button>
+            </div>
+        </aeva-page>
+
+        <script>
+            // Page component event handlers
+            const basicPage = document.getElementById('basic-page');
+            const gradientPage = document.getElementById('gradient-page');
+            const contentPage = document.getElementById('content-page');
+
+            // Open buttons
+            document.getElementById('open-basic-page')?.addEventListener('click', () => {
+                basicPage.show();
             });
 
-            page?.addEventListener('close', () => {
-                console.log('Page closed:', page.id);
+            document.getElementById('open-gradient-page')?.addEventListener('click', () => {
+                gradientPage.show();
             });
 
-            page?.addEventListener('backdrop-click', () => {
-                console.log('Backdrop clicked:', page.id);
+            document.getElementById('open-content-page')?.addEventListener('click', () => {
+                contentPage.show();
             });
-        });
 
-        // Card Component Demo - Interactive Cards
-        const card1 = document.getElementById('card-1');
-        const card2 = document.getElementById('card-2');
-        const card3 = document.getElementById('card-3');
-        const cardLog = document.getElementById('card-click-log');
-
-        [card1, card2, card3].forEach(card => {
-            card?.addEventListener('card-click', (e) => {
-                const cardId = e.target.id;
-                const timestamp = new Date().toLocaleTimeString();
-                cardLog.textContent = `[${timestamp}] Card "${cardId}" clicked!`;
-                cardLog.style.color = '#667eea';
+            // Close buttons
+            document.getElementById('close-basic-page')?.addEventListener('click', () => {
+                basicPage.close();
             });
-        });
 
-        // Copy Code Button Functionality
-        document.addEventListener('DOMContentLoaded', () => {
-            // Add copy buttons to all code windows
-            const codeWindows = document.querySelectorAll('.code-window');
+            document.getElementById('close-gradient-page')?.addEventListener('click', () => {
+                gradientPage.close();
+            });
 
-            codeWindows.forEach((window) => {
-                // Create copy button
-                const copyButton = document.createElement('button');
-                copyButton.className = 'copy-button';
-                copyButton.textContent = 'Copy';
-                copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+            document.getElementById('close-content-page')?.addEventListener('click', () => {
+                contentPage.close();
+            });
 
-                // Add click handler
-                copyButton.addEventListener('click', async () => {
-                    const codeBlock = window.querySelector('code');
-                    if (!codeBlock) return;
-
-                    const code = codeBlock.textContent || '';
-
-                    try {
-                        await navigator.clipboard.writeText(code);
-                        copyButton.textContent = 'Copied!';
-                        copyButton.classList.add('copied');
-
-                        setTimeout(() => {
-                            copyButton.textContent = 'Copy';
-                            copyButton.classList.remove('copied');
-                        }, 2000);
-                    } catch (err) {
-                        console.error('Failed to copy:', err);
-                        copyButton.textContent = 'Failed';
-                        setTimeout(() => {
-                            copyButton.textContent = 'Copy';
-                        }, 2000);
-                    }
+            // Event listeners for logging
+            [basicPage, gradientPage, contentPage].forEach(page => {
+                page?.addEventListener('open', () => {
+                    console.log('Page opened:', page.id);
                 });
 
-                window.appendChild(copyButton);
-            });
-        });
-    </script>
+                page?.addEventListener('close', () => {
+                    console.log('Page closed:', page.id);
+                });
 
-    <script type="module" src="/demo/main.ts"></script>
-    <!-- Prism.js script -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+                page?.addEventListener('backdrop-click', () => {
+                    console.log('Backdrop clicked:', page.id);
+                });
+            });
+
+            // Card Component Demo - Interactive Cards
+            const card1 = document.getElementById('card-1');
+            const card2 = document.getElementById('card-2');
+            const card3 = document.getElementById('card-3');
+            const cardLog = document.getElementById('card-click-log');
+
+            [card1, card2, card3].forEach(card => {
+                card?.addEventListener('card-click', (e) => {
+                    const cardId = e.target.id;
+                    const timestamp = new Date().toLocaleTimeString();
+                    cardLog.textContent = `[${timestamp}] Card "${cardId}" clicked!`;
+                    cardLog.style.color = '#667eea';
+                });
+            });
+
+            // Masonry Interactive Cards Demo
+            const masonryCardLog = document.getElementById('masonry-card-log');
+            const masonryCards = [];
+            for (let i = 1; i <= 12; i++) {
+                masonryCards.push(document.getElementById(`masonry-card-${i}`));
+            }
+
+            masonryCards.forEach(card => {
+                card?.addEventListener('card-click', (e) => {
+                    const cardId = e.target.id;
+                    const timestamp = new Date().toLocaleTimeString();
+                    masonryCardLog.textContent = `[${timestamp}] Card "${cardId}" clicked!`;
+                    masonryCardLog.style.color = '#667eea';
+                });
+            });
+
+            // Copy Code Button Functionality
+            document.addEventListener('DOMContentLoaded', () => {
+                // Add copy buttons to all code windows
+                const codeWindows = document.querySelectorAll('.code-window');
+
+                codeWindows.forEach((window) => {
+                    // Create copy button
+                    const copyButton = document.createElement('button');
+                    copyButton.className = 'copy-button';
+                    copyButton.textContent = 'Copy';
+                    copyButton.setAttribute('aria-label', 'Copy code to clipboard');
+
+                    // Add click handler
+                    copyButton.addEventListener('click', async () => {
+                        const codeBlock = window.querySelector('code');
+                        if (!codeBlock) return;
+
+                        const code = codeBlock.textContent || '';
+
+                        try {
+                            await navigator.clipboard.writeText(code);
+                            copyButton.textContent = 'Copied!';
+                            copyButton.classList.add('copied');
+
+                            setTimeout(() => {
+                                copyButton.textContent = 'Copy';
+                                copyButton.classList.remove('copied');
+                            }, 2000);
+                        } catch (err) {
+                            console.error('Failed to copy:', err);
+                            copyButton.textContent = 'Failed';
+                            setTimeout(() => {
+                                copyButton.textContent = 'Copy';
+                            }, 2000);
+                        }
+                    });
+
+                    window.appendChild(copyButton);
+                });
+            });
+        </script>
+
+        <script type="module" src="/demo/main.ts"></script>
+        <!-- Prism.js script -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
 </body>
 
 </html>

@@ -5,8 +5,9 @@ import { customElement, property } from 'lit/decorators.js';
  * A simple card component for content containers.
  * Features clean design with white background, solid border, and no shadow.
  *
+ * @slot - Default slot for main content (rendered in body section)
  * @slot header - Header content area
- * @slot body - Main content area
+ * @slot body - Main content area (explicit)
  * @slot footer - Footer content area
  *
  * @fires card-click - Dispatched when the card is clicked (only when interactive=true)
@@ -24,13 +25,14 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-card')
 export class AevaCard extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       --aeva-card-bg: #ffffff;
       --aeva-card-border-color: #e5e7eb;
       --aeva-card-border-hover-color: #667eea;
       --aeva-card-border-radius: 12px;
       --aeva-card-transition: all 0.2s ease;
+      --aeva-card-height: 100%;
       
       --aeva-card-padding-sm: 1rem;
       --aeva-card-padding-md: 1.5rem;
@@ -38,6 +40,7 @@ export class AevaCard extends LitElement {
 
       display: block;
       width: 100%;
+      box-sizing: border-box;
     }
 
     .card {
@@ -47,7 +50,8 @@ export class AevaCard extends LitElement {
       border: 1px solid var(--aeva-card-border-color);
       border-radius: var(--aeva-card-border-radius);
       transition: var(--aeva-card-transition);
-      height: 100%;
+      height: var(--aeva-card-height);
+      box-sizing: border-box;
     }
 
     /* Padding variants */
@@ -111,39 +115,39 @@ export class AevaCard extends LitElement {
     }
   `;
 
-    /**
-     * Whether the card is interactive (clickable)
-     */
-    @property({ type: Boolean, reflect: true })
-    interactive = false;
+  /**
+   * Whether the card is interactive (clickable)
+   */
+  @property({ type: Boolean, reflect: true })
+  interactive = false;
 
-    /**
-     * Padding size
-     */
-    @property({ type: String, reflect: true })
-    padding: 'sm' | 'md' | 'lg' = 'md';
+  /**
+   * Padding size
+   */
+  @property({ type: String, reflect: true })
+  padding: 'sm' | 'md' | 'lg' = 'md';
 
-    private handleClick = () => {
-        if (this.interactive) {
-            this.dispatchEvent(
-                new CustomEvent('card-click', {
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        }
-    };
+  private handleClick = () => {
+    if (this.interactive) {
+      this.dispatchEvent(
+        new CustomEvent('card-click', {
+          bubbles: true,
+          composed: true,
+        })
+      );
+    }
+  };
 
-    render() {
-        const classes = [
-            'card',
-            `padding-${this.padding}`,
-            this.interactive ? 'interactive' : '',
-        ]
-            .filter(Boolean)
-            .join(' ');
+  render() {
+    const classes = [
+      'card',
+      `padding-${this.padding}`,
+      this.interactive ? 'interactive' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
 
-        return html`
+    return html`
       <div
         part="card"
         class="${classes}"
@@ -156,25 +160,25 @@ export class AevaCard extends LitElement {
           <slot name="header"></slot>
         </div>
         <div class="body">
-          <slot name="body"></slot>
+          <slot name="body"><slot></slot></slot>
         </div>
         <div class="footer">
           <slot name="footer"></slot>
         </div>
       </div>
     `;
-    }
+  }
 
-    private handleKeydown = (e: KeyboardEvent) => {
-        if (this.interactive && (e.key === 'Enter' || e.key === ' ')) {
-            e.preventDefault();
-            this.handleClick();
-        }
-    };
+  private handleKeydown = (e: KeyboardEvent) => {
+    if (this.interactive && (e.key === 'Enter' || e.key === ' ')) {
+      e.preventDefault();
+      this.handleClick();
+    }
+  };
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-card': AevaCard;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-card': AevaCard;
+  }
 }
