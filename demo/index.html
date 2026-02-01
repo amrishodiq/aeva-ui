@@ -1367,6 +1367,67 @@ aeva-text[variant="body"] {
                     </div>
                 </div>
 
+                <!-- Popup Menu Component -->
+                <h3
+                    style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                    Popup Menu Component</h3>
+                <div class="component-showcase">
+                    <h3>Anchored Popup Menu</h3>
+                    <p class="description">A menu that anchors to a trigger element with glassmorphism effect and list
+                        content. Its width automatically adjusts to content.</p>
+                    <div class="button-row">
+                        <div class="button-demo">
+                            <aeva-button id="menu-trigger-1" variant="primary">Open Profile Menu</aeva-button>
+                            <span class="label">Primary Trigger</span>
+                        </div>
+                        <div class="button-demo">
+                            <aeva-button id="menu-trigger-2" variant="outline">More Options</aeva-button>
+                            <span class="label">Outline Trigger (Auto-close: false)</span>
+                        </div>
+
+                        <aeva-popup-menu id="popup-menu-1" elevation="4">
+                            <aeva-list>
+                                <aeva-list-item label="View Profile">
+                                    <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                        </path>
+                                    </svg>
+                                </aeva-list-item>
+                                <aeva-list-item label="Account Settings">
+                                    <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                        </path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                </aeva-list-item>
+                                <aeva-list-item label="Logout">
+                                    <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                        xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                        </path>
+                                    </svg>
+                                </aeva-list-item>
+                            </aeva-list>
+                        </aeva-popup-menu>
+
+                        <aeva-popup-menu id="popup-menu-2" auto-close="false">
+                            <div style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+                                <aeva-text variant="h4">Sticky Selection</aeva-text>
+                                <aeva-text variant="body" size="sm">This popup stays open because auto-close is
+                                    false.</aeva-text>
+                                <aeva-button id="close-popup-2" size="sm" variant="outline"
+                                    full-width>Close</aeva-button>
+                            </div>
+                        </aeva-popup-menu>
+                    </div>
+                </div>
+
                 <!-- Progress Bar Component -->
                 <h3
                     style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
@@ -1832,7 +1893,7 @@ aeva-text[variant="body"] {
 &lt;!-- Handling Delete Event --&gt;
 &lt;script&gt;
   const badge = document.querySelector('aeva-badge');
-  badge.addEventListener('badge-delete', (e) => {
+  badge.addEventListener('badge-delete', (e) =&gt; {
     console.log('Badge deleted:', e.detail.badge);
     // Component handles its own removal by default
   });
@@ -3000,6 +3061,7 @@ const count = CheckboxGroupHelper.getCount('interests');
                     });
                 });
 
+
                 // Tab component event handlers
                 const basicTab = document.getElementById('basic-tab');
                 const multiTab = document.getElementById('multi-tab');
@@ -3415,7 +3477,7 @@ const count = CheckboxGroupHelper.getCount('interests');
 
 &lt;script&gt;
   const list = document.querySelector('aeva-list');
-  list.addEventListener('on-selection-change', (e) => {
+  list.addEventListener('on-selection-change', (e) =&gt; {
     console.log('Selected:', e.detail.label);
   });
 &lt;/script&gt;</code></pre>
@@ -4500,6 +4562,16 @@ const count = CheckboxGroupHelper.getCount('interests');
                             contentPage.close();
                         });
 
+                        // Popup Menu handlers
+                        const menu1 = document.getElementById('popup-menu-1');
+                        const trigger1 = document.getElementById('menu-trigger-1');
+                        trigger1?.addEventListener('click', () => menu1?.show(trigger1));
+
+                        const menu2 = document.getElementById('popup-menu-2');
+                        const trigger2 = document.getElementById('menu-trigger-2');
+                        trigger2?.addEventListener('click', () => menu2?.show(trigger2));
+
+                        document.getElementById('close-popup-2')?.addEventListener('click', () => menu2?.close());
                         // Event listeners for logging
                         [basicPage, gradientPage, contentPage].forEach(page => {
                             page?.addEventListener('open', () => {

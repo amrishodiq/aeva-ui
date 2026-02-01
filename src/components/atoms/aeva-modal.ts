@@ -27,7 +27,7 @@ export class AevaModal extends LitElement {
   static styles = css`
     :host {
       --aeva-modal-bg: rgba(255, 255, 255, 0.7);
-      --aeva-modal-border-radius: 24px;
+      --aeva-modal-border-radius: 23px;
       --aeva-modal-padding: 2rem;
       --aeva-modal-max-width: 600px;
       --aeva-modal-backdrop-bg: rgba(0, 0, 0, 0.4);

@@ -16,6 +16,7 @@ export { AevaProgress } from './components/atoms/aeva-progress.js';
 export { AevaBadge } from './components/atoms/aeva-badge.js';
 export { AevaRipple } from './components/atoms/aeva-ripple.js';
 export { AevaListItem } from './components/atoms/aeva-list-item.js';
+export { AevaPopupMenu } from './components/atoms/aeva-popup-menu.js';
 
 // Utils
 export { RadioGroupHelper } from './utils/radio-group-helper.js';
