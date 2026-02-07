@@ -3625,7 +3625,247 @@ const count = CheckboxGroupHelper.getCount('interests');
                     </div>
 
 
+                    <!-- Action Bar Component -->
+                    <h3
+                        style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                        Action Bar Component</h3>
+
+                    <!-- Basic Action Bar -->
+                    <div class="component-showcase">
+                        <h3>Basic Action Bar</h3>
+                        <p class="description">Simple action bar with primary and secondary actions</p>
+
+                        <div style="background: #f3f4f6; padding: 2rem; border-radius: 12px;">
+                            <aeva-text variant="body" style="margin-bottom: 1rem;">Form content goes here...</aeva-text>
+
+                            <aeva-action-bar>
+                                <aeva-button slot="secondary" variant="outline">Cancel</aeva-button>
+                                <aeva-button slot="primary" variant="primary">Save</aeva-button>
+                            </aeva-action-bar>
+                        </div>
+                    </div>
+
+                    <!-- Alignment Variants -->
+                    <div class="component-showcase">
+                        <h3>Alignment Options</h3>
+                        <p class="description">Different ways to align action buttons</p>
+
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div>
+                                <span class="label" style="display: block; margin-bottom: 0.5rem;">Space Between
+                                    (Default)</span>
+                                <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px;">
+                                    <aeva-action-bar align="space-between">
+                                        <aeva-button slot="secondary" variant="ghost">Delete</aeva-button>
+                                        <div slot="primary" style="display: flex; gap: 0.5rem;">
+                                            <aeva-button variant="outline">Cancel</aeva-button>
+                                            <aeva-button variant="primary">Save</aeva-button>
+                                        </div>
+                                    </aeva-action-bar>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="label" style="display: block; margin-bottom: 0.5rem;">End Aligned</span>
+                                <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px;">
+                                    <aeva-action-bar align="end">
+                                        <aeva-button slot="primary" variant="outline">Cancel</aeva-button>
+                                        <aeva-button slot="primary" variant="primary">Continue</aeva-button>
+                                    </aeva-action-bar>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="label" style="display: block; margin-bottom: 0.5rem;">Center Aligned</span>
+                                <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px;">
+                                    <aeva-action-bar align="center">
+                                        <aeva-button slot="primary" variant="primary">Submit</aeva-button>
+                                    </aeva-action-bar>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sticky Action Bar -->
+                    <div class="component-showcase">
+                        <h3>Sticky Action Bar</h3>
+                        <p class="description">Action bar that sticks to the bottom when scrolling</p>
+
+                        <div
+                            style="background: #f3f4f6; border-radius: 12px; height: 400px; overflow: auto; position: relative;">
+                            <div style="padding: 2rem; padding-bottom: 5rem;">
+                                <aeva-text variant="h3" style="margin-bottom: 1rem;">Long Form</aeva-text>
+                                <aeva-text variant="body" style="margin-bottom: 1rem;">Scroll down to see the sticky
+                                    action bar...</aeva-text>
+
+                                <div
+                                    style="height: 600px; background: linear-gradient(to bottom, #667eea, #764ba2); border-radius: 8px; margin-top: 1rem; display: flex; align-items: center; justify-content: center;">
+                                    <aeva-text variant="h3" state="inverse">Form Content</aeva-text>
+                                </div>
+                            </div>
+
+                            <aeva-action-bar sticky glassmorphism>
+                                <aeva-button slot="secondary" variant="outline">Cancel</aeva-button>
+                                <aeva-button slot="primary" variant="primary">Submit</aeva-button>
+                            </aeva-action-bar>
+                        </div>
+                    </div>
+
+                    <!-- Vertical Layout -->
+                    <div class="component-showcase">
+                        <h3>Vertical Layout</h3>
+                        <p class="description">Stack buttons vertically (useful for mobile)</p>
+
+                        <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px; max-width: 400px;">
+                            <aeva-action-bar layout="vertical">
+                                <aeva-button slot="primary" variant="primary">Save Changes</aeva-button>
+                                <aeva-button slot="secondary" variant="outline">Cancel</aeva-button>
+                            </aeva-action-bar>
+                        </div>
+                    </div>
+
+                    <!-- Responsive Layout -->
+                    <div class="component-showcase">
+                        <h3>Responsive Layout</h3>
+                        <p class="description">Automatically switches to vertical on mobile (resize window to test)</p>
+
+                        <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px;">
+                            <aeva-action-bar layout="responsive">
+                                <aeva-button slot="secondary" variant="outline">Back</aeva-button>
+                                <aeva-button slot="primary" variant="primary">Continue</aeva-button>
+                            </aeva-action-bar>
+                        </div>
+                        <div class="info-box" style="margin-top: 1rem;">
+                            <p><strong>Try this:</strong> Resize your browser window to less than 640px to see the
+                                layout change!</p>
+                        </div>
+                    </div>
+
+                    <!-- Integration with Section -->
+                    <div class="component-showcase">
+                        <h3>Integration Example: Form with Section</h3>
+                        <p class="description">Using Action Bar with Section component for a complete form layout</p>
+
+                        <aeva-section gap="lg" padding="lg"
+                            style="background: white; border: 1px solid #e5e7eb; border-radius: 12px;">
+                            <div slot="header">
+                                <aeva-text variant="h3">Create Account</aeva-text>
+                                <aeva-text variant="body" size="sm" state="muted">Fill in your details to get
+                                    started</aeva-text>
+                            </div>
+
+                            <div>
+                                <aeva-stack direction="vertical" spacing="md">
+                                    <aeva-input label="Full Name" placeholder="John Doe"></aeva-input>
+                                    <aeva-input label="Email" type="email" placeholder="john@example.com"></aeva-input>
+                                    <aeva-input label="Password" type="password" placeholder="••••••••"></aeva-input>
+                                </aeva-stack>
+                            </div>
+
+                            <div slot="footer">
+                                <aeva-action-bar padding="none">
+                                    <aeva-button slot="secondary" variant="ghost">Already have an account?</aeva-button>
+                                    <aeva-button slot="primary" variant="primary">Create Account</aeva-button>
+                                </aeva-action-bar>
+                            </div>
+                        </aeva-section>
+                    </div>
+
+                    <!-- App Bar Example -->
+                    <div class="component-showcase">
+                        <h3>App Bar / Navbar Example</h3>
+                        <p class="description">Responsive app bar with home icon, title, and action icons (collapses on
+                            mobile)</p>
+
+                        <div
+                            style="background: white; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden;">
+                            <aeva-action-bar padding="md" style="--aeva-action-bar-border-top: 1px solid #e5e7eb;">
+                                <!-- Left: Home icon -->
+                                <div slot="secondary" style="display: flex; align-items: center; gap: 1rem;">
+                                    <aeva-button icon-only variant="ghost" aria-label="Home">
+                                        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                                            </path>
+                                        </svg>
+                                    </aeva-button>
+                                    <aeva-text variant="h4">Aeva UI</aeva-text>
+                                </div>
+
+                                <!-- Right: Action icons -->
+                                <div slot="primary" style="display: flex; gap: 0.5rem; align-items: center;">
+                                    <!-- Desktop: Show all 3 icons -->
+                                    <aeva-button class="desktop-only-icon" icon-only variant="ghost"
+                                        aria-label="Search">
+                                        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                        </svg>
+                                    </aeva-button>
+
+                                    <aeva-button icon-only variant="ghost" aria-label="Notifications">
+                                        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                            </path>
+                                        </svg>
+                                    </aeva-button>
+
+                                    <aeva-button icon-only variant="ghost" aria-label="Profile">
+                                        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z">
+                                            </path>
+                                        </svg>
+                                    </aeva-button>
+
+                                    <!-- Mobile: Show more menu instead of first icon -->
+                                    <aeva-button class="mobile-only-icon" icon-only variant="ghost"
+                                        aria-label="More options" style="display: none;">
+                                        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+                                            </path>
+                                        </svg>
+                                    </aeva-button>
+                                </div>
+                            </aeva-action-bar>
+                        </div>
+
+                        <div class="info-box" style="margin-top: 1rem;">
+                            <p><strong>Responsive behavior:</strong> On mobile (<640px), the search icon is hidden and
+                                    replaced with a "more" menu icon, showing only 2 icons on the right.</p>
+                        </div>
+
+                        <style>
+                            /* Desktop: Show all icons, hide more button */
+                            @media (min-width: 641px) {
+                                .desktop-only-icon {
+                                    display: inline-flex !important;
+                                }
+
+                                .mobile-only-icon {
+                                    display: none !important;
+                                }
+                            }
+
+                            /* Mobile: Hide first icon, show more button */
+                            @media (max-width: 640px) {
+                                .desktop-only-icon {
+                                    display: none !important;
+                                }
+
+                                .mobile-only-icon {
+                                    display: inline-flex !important;
+                                }
+                            }
+                        </style>
+                    </div>
+
+
                     <!-- List Component -->
+
+
                     <h3
                         style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
                         List Component</h3>
@@ -3970,7 +4210,153 @@ const count = CheckboxGroupHelper.getCount('interests');
                         </div>
                     </div>
 
+                    <!-- Section Component -->
+                    <h3
+                        style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                        Section Component</h3>
+
+                    <!-- Basic Section -->
+                    <div class="component-showcase">
+                        <h3>Basic Header-Body-Footer Layout</h3>
+                        <p class="description">Flexible layout for organizing content into three distinct sections</p>
+
+                        <aeva-section gap="md" padding="md" style="background: #f3f4f6; border-radius: 12px;">
+                            <div slot="header">
+                                <aeva-text variant="h3">Section Header</aeva-text>
+                                <aeva-text variant="body" size="sm" state="muted">This is the header area</aeva-text>
+                            </div>
+
+                            <div>
+                                <aeva-text variant="body">This is the main body content. It automatically takes up the
+                                    remaining space.</aeva-text>
+                                <aeva-text variant="body">You can put any content here - text, buttons, forms,
+                                    etc.</aeva-text>
+                            </div>
+
+                            <div slot="footer">
+                                <aeva-stack direction="horizontal" spacing="sm" justify="end">
+                                    <aeva-button variant="outline">Cancel</aeva-button>
+                                    <aeva-button variant="primary">Save</aeva-button>
+                                </aeva-stack>
+                            </div>
+                        </aeva-section>
+                    </div>
+
+                    <!-- Gap Variants -->
+                    <div class="component-showcase">
+                        <h3>Gap Between Sections</h3>
+                        <p class="description">Control spacing between header, body, and footer</p>
+
+                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                            <div>
+                                <span class="label" style="display: block; margin-bottom: 0.5rem;">No Gap</span>
+                                <aeva-section gap="none" padding="md" style="background: #f3f4f6; border-radius: 12px;">
+                                    <div slot="header"
+                                        style="background: #667eea; color: white; padding: 0.5rem; border-radius: 6px;">
+                                        Header</div>
+                                    <div style="background: #764ba2; color: white; padding: 1rem; border-radius: 6px;">
+                                        Body</div>
+                                    <div slot="footer"
+                                        style="background: #667eea; color: white; padding: 0.5rem; border-radius: 6px;">
+                                        Footer</div>
+                                </aeva-section>
+                            </div>
+
+                            <div>
+                                <span class="label" style="display: block; margin-bottom: 0.5rem;">Medium Gap
+                                    (1rem)</span>
+                                <aeva-section gap="md" padding="md" style="background: #f3f4f6; border-radius: 12px;">
+                                    <div slot="header"
+                                        style="background: #667eea; color: white; padding: 0.5rem; border-radius: 6px;">
+                                        Header</div>
+                                    <div style="background: #764ba2; color: white; padding: 1rem; border-radius: 6px;">
+                                        Body</div>
+                                    <div slot="footer"
+                                        style="background: #667eea; color: white; padding: 0.5rem; border-radius: 6px;">
+                                        Footer</div>
+                                </aeva-section>
+                            </div>
+
+                            <div>
+                                <span class="label" style="display: block; margin-bottom: 0.5rem;">Large Gap
+                                    (1.5rem)</span>
+                                <aeva-section gap="lg" padding="md" style="background: #f3f4f6; border-radius: 12px;">
+                                    <div slot="header"
+                                        style="background: #667eea; color: white; padding: 0.5rem; border-radius: 6px;">
+                                        Header</div>
+                                    <div style="background: #764ba2; color: white; padding: 1rem; border-radius: 6px;">
+                                        Body</div>
+                                    <div slot="footer"
+                                        style="background: #667eea; color: white; padding: 0.5rem; border-radius: 6px;">
+                                        Footer</div>
+                                </aeva-section>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sticky Header/Footer -->
+                    <div class="component-showcase">
+                        <h3>Sticky Header & Footer</h3>
+                        <p class="description">Keep header or footer visible when scrolling</p>
+
+                        <aeva-section gap="md" padding="md" sticky-header sticky-footer full-height
+                            style="background: #f3f4f6; border-radius: 12px; height: 400px; overflow: hidden;">
+                            <div slot="header"
+                                style="background: #667eea; color: white; padding: 1rem; border-radius: 6px;">
+                                <aeva-text variant="h4" state="inverse">Sticky Header</aeva-text>
+                            </div>
+
+                            <div style="padding: 1rem;">
+                                <aeva-text variant="body">Scroll this content to see the sticky header and footer in
+                                    action.</aeva-text>
+                                <div
+                                    style="height: 600px; background: linear-gradient(to bottom, #764ba2, #667eea); border-radius: 8px; margin-top: 1rem; display: flex; align-items: center; justify-content: center;">
+                                    <aeva-text variant="h3" state="inverse">Long Content Area</aeva-text>
+                                </div>
+                            </div>
+
+                            <div slot="footer"
+                                style="background: #667eea; color: white; padding: 1rem; border-radius: 6px;">
+                                <aeva-text variant="body" state="inverse">Sticky Footer - Always visible</aeva-text>
+                            </div>
+                        </aeva-section>
+                    </div>
+
+                    <!-- Practical Example -->
+                    <div class="component-showcase">
+                        <h3>Practical Example: Form Layout</h3>
+                        <p class="description">Using Section for a typical form with header and action buttons</p>
+
+                        <aeva-section gap="lg" padding="lg"
+                            style="background: white; border: 1px solid #e5e7eb; border-radius: 12px;">
+                            <div slot="header">
+                                <aeva-text variant="h3">User Profile</aeva-text>
+                                <aeva-text variant="body" size="sm" state="muted">Update your personal
+                                    information</aeva-text>
+                            </div>
+
+                            <div>
+                                <aeva-stack direction="vertical" spacing="md">
+                                    <aeva-input label="Full Name" placeholder="Enter your name"></aeva-input>
+                                    <aeva-input label="Email" type="email" placeholder="your@email.com"></aeva-input>
+                                    <aeva-input label="Phone" type="tel" placeholder="+62 xxx xxxx xxxx"></aeva-input>
+                                </aeva-stack>
+                            </div>
+
+                            <div slot="footer">
+                                <aeva-stack direction="horizontal" spacing="sm" justify="space-between">
+                                    <aeva-button variant="ghost">Delete Account</aeva-button>
+                                    <aeva-stack direction="horizontal" spacing="sm">
+                                        <aeva-button variant="outline">Cancel</aeva-button>
+                                        <aeva-button variant="primary">Save Changes</aeva-button>
+                                    </aeva-stack>
+                                </aeva-stack>
+                            </div>
+                        </aeva-section>
+                    </div>
+
                     <!-- Grid Component -->
+
                     <h3
                         style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
                         Grid Component</h3>

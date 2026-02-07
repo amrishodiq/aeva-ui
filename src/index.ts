@@ -27,6 +27,8 @@ export { CheckboxGroupHelper } from './utils/checkbox-group-helper.js';
 export { AevaTab } from './components/molecules/aeva-tab.js';
 export { AevaList } from './components/molecules/aeva-list.js';
 export { AevaToast } from './components/molecules/aeva-toast.js';
+export { AevaActionBar } from './components/molecules/aeva-action-bar.js';
+
 
 // Organisms
 // export * from './components/organisms/...';
@@ -38,5 +40,7 @@ export { AevaGrid } from './components/templates/layout/aeva-grid.js';
 export { AevaGridItem } from './components/templates/layout/aeva-grid-item.js';
 export { AevaBentoGrid } from './components/templates/layout/aeva-bento-grid.js';
 export { AevaMasonry } from './components/templates/layout/aeva-masonry.js';
+export { AevaSection } from './components/templates/layout/aeva-section.js';
+
 
 console.log('@aeva/ui library loaded');
