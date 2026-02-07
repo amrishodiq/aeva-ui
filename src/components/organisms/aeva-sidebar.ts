@@ -48,9 +48,15 @@ export class AevaSidebar extends LitElement {
         top: 0;
         left: 0;
         bottom: 0;
-        z-index: var(--aeva-sidebar-z-index);
+        z-index: -1; /* Start hidden behind content */
         width: var(--aeva-sidebar-width-md);
         max-width: 85vw;
+        transition: z-index 0s var(--aeva-sidebar-transition); /* Delay z-index change */
+      }
+
+      :host([open]) {
+        z-index: var(--aeva-sidebar-z-index); /* Bring to front when open */
+        transition: z-index 0s 0s; /* Immediate z-index change when opening */
       }
 
       .sidebar {
@@ -85,6 +91,7 @@ export class AevaSidebar extends LitElement {
         position: relative;
         width: var(--aeva-sidebar-icon-width);
         height: 100%;
+        z-index: 1000 !important;
       }
 
       .backdrop {
@@ -104,6 +111,7 @@ export class AevaSidebar extends LitElement {
       :host {
         position: relative;
         height: 100%;
+        z-index: 1000 !important;
       }
 
       :host([width="sm"]) {
@@ -171,20 +179,16 @@ export class AevaSidebar extends LitElement {
 
     /* Header */
     .header {
-      padding: 1.5rem 1rem;
-      border-bottom: 1px solid #e5e7eb;
       flex-shrink: 0;
     }
-
-    .header:not(:has(*)) {
-      display: none;
+    
+    :host([has-header]) .header {
+      padding: 1.5rem 1rem;
+      border-bottom: 1px solid #e5e7eb;
     }
 
-    /* Fallback for browsers that don't support :has() */
-    @supports not selector(:has(*)) {
-      .header {
-        display: block;
-      }
+    :host(:not([has-header])) .header {
+      display: none;
     }
 
     /* Content */
@@ -196,20 +200,16 @@ export class AevaSidebar extends LitElement {
 
     /* Footer */
     .footer {
-      padding: 1rem;
-      border-top: 1px solid #e5e7eb;
       flex-shrink: 0;
     }
 
-    .footer:not(:has(*)) {
-      display: none;
+    :host([has-footer]) .footer {
+      padding: 1rem;
+      border-top: 1px solid #e5e7eb;
     }
 
-    /* Fallback for browsers that don't support :has() */
-    @supports not selector(:has(*)) {
-      .footer {
-        display: block;
-      }
+    :host(:not([has-footer])) .footer {
+      display: none;
     }
 
     /* Tablet mode: reduce padding and hide header */
@@ -284,9 +284,22 @@ export class AevaSidebar extends LitElement {
   @state()
   private viewport: 'mobile' | 'tablet' | 'desktop' = 'desktop';
 
+  /**
+   * Whether header slot has content
+   */
+  @state()
+  private hasHeader = false;
+
+  /**
+   * Whether footer slot has content
+   */
+  @state()
+  private hasFooter = false;
+
   connectedCallback() {
     super.connectedCallback();
     this.updateViewport();
+    this.checkSlots();
     window.addEventListener('resize', this.handleResize);
     this.addEventListener('click', this.handleContentClick);
   }
@@ -344,11 +357,70 @@ export class AevaSidebar extends LitElement {
     if (changedProperties.has('viewport')) {
       this.updateListItems();
     }
+
+    // Handle z-index management for mobile drawer
+    if (changedProperties.has('open')) {
+      this.handleZIndexTransition();
+    }
   }
 
   firstUpdated() {
     // Ensure list items are updated on initial render
     this.updateListItems();
+    this.checkSlots();
+  }
+
+  private checkSlots() {
+    // Check header slot
+    const headerSlot = this.shadowRoot?.querySelector('slot[name="header"]') as HTMLSlotElement;
+    if (headerSlot) {
+      const headerNodes = headerSlot.assignedNodes({ flatten: true });
+      this.hasHeader = headerNodes.some(node =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+      );
+    }
+
+    // Check footer slot
+    const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
+    if (footerSlot) {
+      const footerNodes = footerSlot.assignedNodes({ flatten: true });
+      this.hasFooter = footerNodes.some(node =>
+        node.nodeType === Node.ELEMENT_NODE ||
+        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+      );
+    }
+
+    // Update attributes for CSS
+    if (this.hasHeader) {
+      this.setAttribute('has-header', '');
+    } else {
+      this.removeAttribute('has-header');
+    }
+
+    if (this.hasFooter) {
+      this.setAttribute('has-footer', '');
+    } else {
+      this.removeAttribute('has-footer');
+    }
+  }
+
+  private handleZIndexTransition() {
+    // Only manage z-index in mobile viewport
+    if (this.viewport !== 'mobile') return;
+
+    if (this.open) {
+      // When opening, immediately set z-index to bring sidebar to front
+      this.style.zIndex = '1000';
+    } else {
+      // When closing, wait for animation to complete before hiding
+      const transitionDuration = 300; // Match --aeva-sidebar-transition (0.3s)
+      setTimeout(() => {
+        if (!this.open) { // Double-check it's still closed
+          this.style.zIndex = '-1';
+        }
+      }, transitionDuration);
+    }
   }
 
   private handleBackdropClick = () => {
