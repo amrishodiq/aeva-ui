@@ -32,6 +32,11 @@ export class AevaListItem extends LitElement {
       --aeva-list-item-active-bg: rgba(102, 126, 234, 0.08);
       --aeva-list-item-border-radius: 0;
       --aeva-list-item-transition: background-color 0.2s ease;
+      
+      /* Responsive variables for sidebar integration */
+      --list-item-text-display: block;
+      --list-item-justify: flex-start;
+      --list-item-padding: var(--aeva-list-item-padding);
 
       display: block;
       width: 100%;
@@ -50,7 +55,7 @@ export class AevaListItem extends LitElement {
       position: relative;
       display: flex;
       align-items: center;
-      padding: var(--aeva-list-item-padding);
+      padding: var(--list-item-padding);
       gap: var(--aeva-list-item-gap);
       background-color: var(--aeva-list-item-bg);
       border-radius: var(--aeva-list-item-border-radius);
@@ -59,6 +64,7 @@ export class AevaListItem extends LitElement {
       outline: none;
       -webkit-tap-highlight-color: transparent;
       overflow: hidden;
+      justify-content: var(--list-item-justify);
     }
     
 
@@ -77,9 +83,33 @@ export class AevaListItem extends LitElement {
 
     .content {
       flex: 1;
-      display: flex;
+      display: var(--list-item-text-display);
       flex-direction: column;
       min-width: 0; /* Enable truncation in children */
+    }
+
+    /* Icon-only mode */
+    :host([icon-only]) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    :host([icon-only]) .content {
+      display: none;
+    }
+
+    :host([icon-only]) .item {
+      justify-content: center;
+      padding: 0;
+      gap: 0; /* Remove gap in icon-only mode */
+      border-radius: 50%; /* Circular ripple effect */
+      width: 48px;
+      height: 48px;
+    }
+
+    :host([icon-only]) .icon-container.trail-icon {
+      display: none; /* Hide trailing icon in icon-only mode */
     }
 
     .icon-container {
@@ -116,6 +146,12 @@ export class AevaListItem extends LitElement {
    */
   @property({ type: Boolean, reflect: true })
   active = false;
+
+  /**
+   * Show only icon, hide text content
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'icon-only' })
+  iconOnly = false;
 
   /**
    * Internal index for navigation

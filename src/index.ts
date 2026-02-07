@@ -31,16 +31,16 @@ export { AevaActionBar } from './components/molecules/aeva-action-bar.js';
 
 
 // Organisms
-// export * from './components/organisms/...';
+export { AevaSidebar } from './components/organisms/aeva-sidebar.js';
 
 // Templates
-export { AevaContainer } from './components/templates/layout/aeva-container.js';
 export { AevaStack } from './components/templates/layout/aeva-stack.js';
 export { AevaGrid } from './components/templates/layout/aeva-grid.js';
 export { AevaGridItem } from './components/templates/layout/aeva-grid-item.js';
 export { AevaBentoGrid } from './components/templates/layout/aeva-bento-grid.js';
 export { AevaMasonry } from './components/templates/layout/aeva-masonry.js';
 export { AevaSection } from './components/templates/layout/aeva-section.js';
+
 
 
 console.log('@aeva/ui library loaded');
