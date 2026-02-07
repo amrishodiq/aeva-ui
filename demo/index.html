@@ -3084,6 +3084,86 @@ const count = CheckboxGroupHelper.getCount('interests');
             </script>
 
 
+            <!-- Tooltip Component -->
+            <h3
+                style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                Tooltip Component</h3>
+
+            <!-- Basic Tooltips -->
+            <div class="component-showcase">
+                <h3>Basic Tooltips</h3>
+                <p class="description">Hover over elements to see tooltips with different positions</p>
+                <div class="button-row">
+                    <div class="button-demo">
+                        <aeva-tooltip content="This appears on top" position="top">
+                            <aeva-button variant="outline">Top</aeva-button>
+                        </aeva-tooltip>
+                        <span class="label">Top Position</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-tooltip content="This appears on the bottom" position="bottom">
+                            <aeva-button variant="outline">Bottom</aeva-button>
+                        </aeva-tooltip>
+                        <span class="label">Bottom Position</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-tooltip content="This appears on the left" position="left">
+                            <aeva-button variant="outline">Left</aeva-button>
+                        </aeva-tooltip>
+                        <span class="label">Left Position</span>
+                    </div>
+                    <div class="button-demo">
+                        <aeva-tooltip content="This appears on the right" position="right">
+                            <aeva-button variant="outline">Right</aeva-button>
+                        </aeva-tooltip>
+                        <span class="label">Right Position</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tooltips on Different Elements -->
+            <div class="component-showcase">
+                <h3>Tooltips on Various Elements</h3>
+                <p class="description">Tooltips work on any element - buttons, text, icons, etc.</p>
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div>
+                        <aeva-tooltip content="Click to save your changes">
+                            <aeva-button variant="primary">Save</aeva-button>
+                        </aeva-tooltip>
+                    </div>
+                    <div>
+                        <p>Hover over <aeva-tooltip content="This is helpful information!" position="top">
+                                <span style="color: #667eea; text-decoration: underline; cursor: help;">this text</span>
+                            </aeva-tooltip> to see a tooltip.</p>
+                    </div>
+                    <div>
+                        <aeva-tooltip content="Settings" position="right">
+                            <aeva-button icon-only variant="ghost" aria-label="Settings">
+                                <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z">
+                                    </path>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                </svg>
+                            </aeva-button>
+                        </aeva-tooltip>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Smart Positioning -->
+            <div class="component-showcase">
+                <h3>Smart Positioning</h3>
+                <p class="description">Tooltips automatically adjust position when near viewport edges</p>
+                <div class="info-box">
+                    <p><strong>Try this:</strong> Scroll the page and hover over tooltips near the edges. They will
+                        automatically flip to stay visible!</p>
+                </div>
+            </div>
+
+
+
             <div class="section" id="molecules">
                 <h2>🧬 Molecules</h2>
 
@@ -3395,6 +3475,155 @@ const count = CheckboxGroupHelper.getCount('interests');
                                 </code></pre>
                         </div>
                     </div>
+
+                    <!-- Toast Component -->
+                    <h3
+                        style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                        Toast Component</h3>
+
+                    <!-- Toast Variants -->
+                    <div class="component-showcase">
+                        <h3>Toast Variants</h3>
+                        <p class="description">Different toast styles for various notification types</p>
+                        <div class="button-row">
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-success" variant="primary">Success</aeva-button>
+                                <span class="label">Success Toast</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-error" variant="danger">Error</aeva-button>
+                                <span class="label">Error Toast</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-warning" variant="secondary">Warning</aeva-button>
+                                <span class="label">Warning Toast</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-info" variant="outline">Info</aeva-button>
+                                <span class="label">Info Toast</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-default" variant="ghost">Default</aeva-button>
+                                <span class="label">Default Toast</span>
+                            </div>
+                        </div>
+
+                        <!-- Toast elements -->
+                        <aeva-toast id="toast-success" variant="success" position="top-right">
+                            Operation completed successfully!
+                        </aeva-toast>
+                        <aeva-toast id="toast-error" variant="error" position="top-right">
+                            An error occurred. Please try again.
+                        </aeva-toast>
+                        <aeva-toast id="toast-warning" variant="warning" position="top-right">
+                            Warning: This action cannot be undone.
+                        </aeva-toast>
+                        <aeva-toast id="toast-info" variant="info" position="top-right">
+                            New updates are available.
+                        </aeva-toast>
+                        <aeva-toast id="toast-default" variant="default" position="top-right">
+                            This is a default notification.
+                        </aeva-toast>
+                    </div>
+
+                    <!-- Toast Positions -->
+                    <div class="component-showcase">
+                        <h3>Toast Positions</h3>
+                        <p class="description">Toasts can appear in different positions on the screen</p>
+                        <div class="button-row">
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-top-right" size="sm">Top Right</aeva-button>
+                                <span class="label">Top Right</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-top-left" size="sm">Top Left</aeva-button>
+                                <span class="label">Top Left</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-top-center" size="sm">Top Center</aeva-button>
+                                <span class="label">Top Center</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-bottom-right" size="sm">Bottom Right</aeva-button>
+                                <span class="label">Bottom Right</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-bottom-left" size="sm">Bottom Left</aeva-button>
+                                <span class="label">Bottom Left</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-bottom-center" size="sm">Bottom Center</aeva-button>
+                                <span class="label">Bottom Center</span>
+                            </div>
+                        </div>
+
+                        <!-- Position toast elements -->
+                        <aeva-toast id="toast-top-right" variant="info" position="top-right">
+                            Toast at top right
+                        </aeva-toast>
+                        <aeva-toast id="toast-top-left" variant="info" position="top-left">
+                            Toast at top left
+                        </aeva-toast>
+                        <aeva-toast id="toast-top-center" variant="info" position="top-center">
+                            Toast at top center
+                        </aeva-toast>
+                        <aeva-toast id="toast-bottom-right" variant="success" position="bottom-right">
+                            Toast at bottom right
+                        </aeva-toast>
+                        <aeva-toast id="toast-bottom-left" variant="success" position="bottom-left">
+                            Toast at bottom left
+                        </aeva-toast>
+                        <aeva-toast id="toast-bottom-center" variant="success" position="bottom-center">
+                            Toast at bottom center
+                        </aeva-toast>
+                    </div>
+
+                    <!-- Auto-dismiss and Manual Close -->
+                    <div class="component-showcase">
+                        <h3>Auto-dismiss & Manual Close</h3>
+                        <p class="description">Toasts can auto-dismiss after a duration or require manual close</p>
+                        <div class="button-row">
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-auto">Auto-dismiss (3s)</aeva-button>
+                                <span class="label">Auto-dismiss</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-manual">Manual Close</aeva-button>
+                                <span class="label">No auto-dismiss</span>
+                            </div>
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-no-close">No Close Button</aeva-button>
+                                <span class="label">Auto-only</span>
+                            </div>
+                        </div>
+
+                        <aeva-toast id="toast-auto" variant="success" position="top-right" duration="3000">
+                            This will auto-close in 3 seconds
+                        </aeva-toast>
+                        <aeva-toast id="toast-manual" variant="warning" position="top-right" duration="0">
+                            This requires manual close
+                        </aeva-toast>
+                        <aeva-toast id="toast-no-close" variant="info" position="top-right" duration="3000"
+                            closable="false">
+                            Auto-dismiss only, no close button
+                        </aeva-toast>
+                    </div>
+
+                    <!-- Interactive Features -->
+                    <div class="component-showcase">
+                        <h3>Interactive Features</h3>
+                        <p class="description">Toasts support stacking and smooth animations</p>
+                        <div class="info-box">
+                            <p><strong>Try this:</strong> Click "Show Multiple" to see toast stacking in action!</p>
+                        </div>
+                        <div class="button-row">
+                            <div class="button-demo">
+                                <aeva-button id="show-toast-multiple" variant="primary">Show Multiple</aeva-button>
+                                <span class="label">Stack Toasts</span>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <!-- List Component -->
                     <h3
@@ -4570,6 +4799,76 @@ const count = CheckboxGroupHelper.getCount('interests');
                         const menu2 = document.getElementById('popup-menu-2');
                         const trigger2 = document.getElementById('menu-trigger-2');
                         trigger2?.addEventListener('click', () => menu2?.show(trigger2));
+
+                        // Toast Component handlers
+                        // Toast Variants
+                        document.getElementById('show-toast-success')?.addEventListener('click', () => {
+                            document.getElementById('toast-success').open = true;
+                        });
+
+                        document.getElementById('show-toast-error')?.addEventListener('click', () => {
+                            document.getElementById('toast-error').open = true;
+                        });
+
+                        document.getElementById('show-toast-warning')?.addEventListener('click', () => {
+                            document.getElementById('toast-warning').open = true;
+                        });
+
+                        document.getElementById('show-toast-info')?.addEventListener('click', () => {
+                            document.getElementById('toast-info').open = true;
+                        });
+
+                        document.getElementById('show-toast-default')?.addEventListener('click', () => {
+                            document.getElementById('toast-default').open = true;
+                        });
+
+                        // Toast Positions
+                        document.getElementById('show-toast-top-right')?.addEventListener('click', () => {
+                            document.getElementById('toast-top-right').open = true;
+                        });
+
+                        document.getElementById('show-toast-top-left')?.addEventListener('click', () => {
+                            document.getElementById('toast-top-left').open = true;
+                        });
+
+                        document.getElementById('show-toast-top-center')?.addEventListener('click', () => {
+                            document.getElementById('toast-top-center').open = true;
+                        });
+
+                        document.getElementById('show-toast-bottom-right')?.addEventListener('click', () => {
+                            document.getElementById('toast-bottom-right').open = true;
+                        });
+
+                        document.getElementById('show-toast-bottom-left')?.addEventListener('click', () => {
+                            document.getElementById('toast-bottom-left').open = true;
+                        });
+
+                        document.getElementById('show-toast-bottom-center')?.addEventListener('click', () => {
+                            document.getElementById('toast-bottom-center').open = true;
+                        });
+
+                        // Auto-dismiss and Manual Close
+                        document.getElementById('show-toast-auto')?.addEventListener('click', () => {
+                            document.getElementById('toast-auto').open = true;
+                        });
+
+                        document.getElementById('show-toast-manual')?.addEventListener('click', () => {
+                            document.getElementById('toast-manual').open = true;
+                        });
+
+                        document.getElementById('show-toast-no-close')?.addEventListener('click', () => {
+                            document.getElementById('toast-no-close').open = true;
+                        });
+
+                        // Show Multiple Toasts
+                        document.getElementById('show-toast-multiple')?.addEventListener('click', () => {
+                            // Show multiple toasts with slight delays to demonstrate stacking
+                            setTimeout(() => document.getElementById('toast-success').open = true, 0);
+                            setTimeout(() => document.getElementById('toast-info').open = true, 200);
+                            setTimeout(() => document.getElementById('toast-warning').open = true, 400);
+                        });
+
+
 
                         document.getElementById('close-popup-2')?.addEventListener('click', () => menu2?.close());
                         // Event listeners for logging
