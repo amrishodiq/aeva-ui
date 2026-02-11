@@ -29,6 +29,7 @@ export { AevaTab } from './components/molecules/aeva-tab.js';
 export { AevaList } from './components/molecules/aeva-list.js';
 export { AevaToast } from './components/molecules/aeva-toast.js';
 export { AevaActionBar } from './components/molecules/aeva-action-bar.js';
+export { AevaCarousel } from './components/molecules/aeva-carousel.js';
 
 
 // Organisms

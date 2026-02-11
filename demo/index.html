@@ -5233,6 +5233,191 @@ const count = CheckboxGroupHelper.getCount('interests');
                     </div>
 
 
+                    <!-- Carousel Component -->
+                    <h3
+                        style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                        Carousel Component</h3>
+
+                    <!-- Basic Carousel -->
+                    <div class="component-showcase">
+                        <h3>Basic Carousel</h3>
+                        <p class="description">A sliding carousel with navigation buttons and indicators</p>
+
+                        <aeva-carousel id="basic-carousel">
+                            <div
+                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; height: 100%; color: white;">
+                                <aeva-text variant="h2" state="inverse">Slide 1</aeva-text>
+                            </div>
+                            <div
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; height: 100%; color: white;">
+                                <aeva-text variant="h2" state="inverse">Slide 2</aeva-text>
+                            </div>
+                            <div
+                                style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; height: 100%; color: white;">
+                                <aeva-text variant="h2" state="inverse">Slide 3</aeva-text>
+                            </div>
+                        </aeva-carousel>
+                    </div>
+
+                    <!-- Auto-play Carousel -->
+                    <div class="component-showcase">
+                        <h3>Auto-play Carousel</h3>
+                        <p class="description">Automatically advances to the next slide every 3 seconds</p>
+
+                        <aeva-carousel auto-play auto-play-interval="3000">
+                            <div
+                                style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; padding: 2rem;">
+                                <aeva-text variant="h3" state="inverse" style="margin-bottom: 0.5rem;">Feature
+                                    1</aeva-text>
+                                <aeva-text variant="body" state="inverse">Auto-advancing carousel</aeva-text>
+                            </div>
+                            <div
+                                style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; padding: 2rem;">
+                                <aeva-text variant="h3" state="inverse" style="margin-bottom: 0.5rem;">Feature
+                                    2</aeva-text>
+                                <aeva-text variant="body" state="inverse">Smooth transitions</aeva-text>
+                            </div>
+                            <div
+                                style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: white; padding: 2rem;">
+                                <aeva-text variant="h3" state="inverse" style="margin-bottom: 0.5rem;">Feature
+                                    3</aeva-text>
+                                <aeva-text variant="body" state="inverse">Touch/swipe support</aeva-text>
+                            </div>
+                        </aeva-carousel>
+                    </div>
+
+                    <!-- Carousel with Cards -->
+                    <div class="component-showcase">
+                        <h3>Carousel with Cards</h3>
+                        <p class="description">Use carousel to display any content, like cards</p>
+
+                        <aeva-carousel style="--aeva-carousel-height: 500px;">
+                            <div
+                                style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 2rem; background: #f3f4f6;">
+                                <aeva-card style="max-width: 400px; width: 100%;">
+                                    <div slot="header">
+                                        <aeva-text variant="h3">Product 1</aeva-text>
+                                    </div>
+                                    <div slot="body">
+                                        <aeva-text variant="body">This is a carousel showcasing different products.
+                                            Swipe or use the navigation buttons to browse.</aeva-text>
+                                    </div>
+                                    <div slot="footer">
+                                        <aeva-button variant="primary">Learn More</aeva-button>
+                                    </div>
+                                </aeva-card>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 2rem; background: #f3f4f6;">
+                                <aeva-card style="max-width: 400px; width: 100%;">
+                                    <div slot="header">
+                                        <aeva-text variant="h3">Product 2</aeva-text>
+                                    </div>
+                                    <div slot="body">
+                                        <aeva-text variant="body">Another amazing product with great features and
+                                            benefits for your needs.</aeva-text>
+                                    </div>
+                                    <div slot="footer">
+                                        <aeva-button variant="primary">Learn More</aeva-button>
+                                    </div>
+                                </aeva-card>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; justify-content: center; height: 100%; padding: 2rem; background: #f3f4f6;">
+                                <aeva-card style="max-width: 400px; width: 100%;">
+                                    <div slot="header">
+                                        <aeva-text variant="h3">Product 3</aeva-text>
+                                    </div>
+                                    <div slot="body">
+                                        <aeva-text variant="body">The final product in our carousel demonstration.
+                                            Perfect for showcasing multiple items.</aeva-text>
+                                    </div>
+                                    <div slot="footer">
+                                        <aeva-button variant="primary">Learn More</aeva-button>
+                                    </div>
+                                </aeva-card>
+                            </div>
+                        </aeva-carousel>
+                    </div>
+
+                    <!-- Minimal Carousel -->
+                    <div class="component-showcase">
+                        <h3>Minimal Carousel</h3>
+                        <p class="description">Hide navigation and indicators for a clean look</p>
+
+                        <aeva-carousel hide-nav hide-indicators style="--aeva-carousel-height: 300px;">
+                            <div
+                                style="background: #667eea; display: flex; align-items: center; justify-content: center; height: 100%; color: white;">
+                                <aeva-text variant="h3" state="inverse">Swipe to navigate →</aeva-text>
+                            </div>
+                            <div
+                                style="background: #764ba2; display: flex; align-items: center; justify-content: center; height: 100%; color: white;">
+                                <aeva-text variant="h3" state="inverse">← Swipe left or right →</aeva-text>
+                            </div>
+                            <div
+                                style="background: #f093fb; display: flex; align-items: center; justify-content: center; height: 100%; color: white;">
+                                <aeva-text variant="h3" state="inverse">← Keep swiping!</aeva-text>
+                            </div>
+                        </aeva-carousel>
+                    </div>
+
+                    <!-- Usage Example -->
+                    <div class="component-showcase">
+                        <h3>Usage Example</h3>
+                        <p class="description">How to use the carousel component in your code</p>
+                        <div class="carbon-container">
+                            <div class="code-window">
+                                <div class="window-header">
+                                    <div class="dot dot-red"></div>
+                                    <div class="dot dot-yellow"></div>
+                                    <div class="dot dot-green"></div>
+                                </div>
+                                <pre class="code-content">
+                            <code class="language-markup">&lt;!-- Basic Carousel --&gt;
+&lt;aeva-carousel&gt;
+  &lt;div&gt;Carousel item 1&lt;/div&gt;
+  &lt;div&gt;Carousel item 2&lt;/div&gt;
+  &lt;div&gt;Carousel item 3&lt;/div&gt;
+&lt;/aeva-carousel&gt;
+
+&lt;!-- Auto-play Carousel --&gt;
+&lt;aeva-carousel auto-play auto-play-interval="3000"&gt;
+  &lt;div&gt;Slide 1&lt;/div&gt;
+  &lt;div&gt;Slide 2&lt;/div&gt;
+  &lt;div&gt;Slide 3&lt;/div&gt;
+&lt;/aeva-carousel&gt;
+
+&lt;!-- Custom Height --&gt;
+&lt;aeva-carousel style="--aeva-carousel-height: 500px;"&gt;
+  &lt;div&gt;Tall slide 1&lt;/div&gt;
+  &lt;div&gt;Tall slide 2&lt;/div&gt;
+&lt;/aeva-carousel&gt;
+
+&lt;!-- Minimal (no controls) --&gt;
+&lt;aeva-carousel hide-nav hide-indicators&gt;
+  &lt;div&gt;Swipe to navigate&lt;/div&gt;
+  &lt;div&gt;Another slide&lt;/div&gt;
+&lt;/aeva-carousel&gt;
+
+&lt;!-- JavaScript API --&gt;
+&lt;script&gt;
+  const carousel = document.querySelector('aeva-carousel');
+  
+  // Navigate programmatically
+  carousel.next();  // Go to next slide
+  carousel.prev();  // Go to previous slide
+  carousel.goTo(2); // Go to specific slide (0-indexed)
+  
+  // Listen to slide changes
+  carousel.addEventListener('slide-change', (e) =&gt; {
+    console.log('Active slide:', e.detail.activeIndex);
+  });
+&lt;/script&gt;</code></pre>
+                            </div>
+                        </div>
+                    </div>
+
+
                     <aeva-page id="basic-page">
                         <div style="padding: 2rem;">
                             <h1 style="margin-bottom: 1rem;">Basic Page</h1>
