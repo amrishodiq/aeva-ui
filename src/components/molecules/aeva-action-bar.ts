@@ -20,7 +20,7 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-action-bar')
 export class AevaActionBar extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       --aeva-action-bar-bg: transparent;
       --aeva-action-bar-padding: 1rem;
@@ -37,11 +37,12 @@ export class AevaActionBar extends LitElement {
     .action-bar {
       display: flex;
       align-items: center;
-      padding: var(--aeva-action-bar-padding);
+      margin: var(--aeva-action-bar-padding);
       background: var(--aeva-action-bar-bg);
       border-top: var(--aeva-action-bar-border-top);
       box-sizing: border-box;
       gap: var(--aeva-action-bar-gap);
+      border-radius: 12px;
     }
 
     /* Layout variants */
@@ -195,50 +196,50 @@ export class AevaActionBar extends LitElement {
     }
   `;
 
-    /**
-     * Layout direction
-     */
-    @property({ type: String, reflect: true })
-    layout: 'horizontal' | 'vertical' | 'responsive' = 'horizontal';
+  /**
+   * Layout direction
+   */
+  @property({ type: String, reflect: true })
+  layout: 'horizontal' | 'vertical' | 'responsive' = 'horizontal';
 
-    /**
-     * Alignment of action groups
-     */
-    @property({ type: String, reflect: true })
-    align: 'start' | 'end' | 'center' | 'space-between' | 'space-around' = 'space-between';
+  /**
+   * Alignment of action groups
+   */
+  @property({ type: String, reflect: true })
+  align: 'start' | 'end' | 'center' | 'space-between' | 'space-around' = 'space-between';
 
-    /**
-     * Gap between buttons
-     */
-    @property({ type: String, reflect: true })
-    gap: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  /**
+   * Gap between buttons
+   */
+  @property({ type: String, reflect: true })
+  gap: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
 
-    /**
-     * Padding around the action bar
-     */
-    @property({ type: String, reflect: true })
-    padding: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  /**
+   * Padding around the action bar
+   */
+  @property({ type: String, reflect: true })
+  padding: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
 
-    /**
-     * Whether the action bar should stick to the bottom
-     */
-    @property({ type: Boolean, reflect: true })
-    sticky = false;
+  /**
+   * Whether the action bar should stick to the bottom
+   */
+  @property({ type: Boolean, reflect: true })
+  sticky = false;
 
-    /**
-     * Whether to apply glassmorphism effect
-     */
-    @property({ type: Boolean, reflect: true })
-    glassmorphism = false;
+  /**
+   * Whether to apply glassmorphism effect
+   */
+  @property({ type: Boolean, reflect: true })
+  glassmorphism = false;
 
-    render() {
-        const classes = [
-            'action-bar',
-            `layout-${this.layout}`,
-            `align-${this.align}`,
-        ].join(' ');
+  render() {
+    const classes = [
+      'action-bar',
+      `layout-${this.layout}`,
+      `align-${this.align}`,
+    ].join(' ');
 
-        return html`
+    return html`
       <div class="${classes}" part="action-bar">
         <div class="secondary">
           <slot name="secondary"></slot>
@@ -248,11 +249,11 @@ export class AevaActionBar extends LitElement {
         </div>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-action-bar': AevaActionBar;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-action-bar': AevaActionBar;
+  }
 }

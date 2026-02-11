@@ -1903,6 +1903,142 @@ aeva-text[variant="body"] {
                 </div>
 
 
+                <!-- Rating Component -->
+                <h3
+                    style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">
+                    Rating Component</h3>
+
+                <!-- Read-only Ratings -->
+                <div class="component-showcase">
+                    <h3>Read-only Display</h3>
+                    <p class="description">Display star ratings for reviews, products, or user feedback</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <aeva-rating value="4.5" show-label></aeva-rating>
+                            <span class="label">4.5 stars with label</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <aeva-rating value="3"></aeva-rating>
+                            <span class="label">3 stars without label</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <aeva-rating value="5"></aeva-rating>
+                            <span class="label">Perfect 5 star rating</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <aeva-rating value="2.5" show-label></aeva-rating>
+                            <span class="label">Half star support</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive Rating -->
+                <div class="component-showcase">
+                    <h3>Interactive Mode</h3>
+                    <p class="description">Allow users to submit their own ratings with click interaction</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem;">
+                                <aeva-rating id="interactive-rating-demo" value="0" interactive
+                                    show-label></aeva-rating>
+                                <span class="label">Click stars to rate</span>
+                            </div>
+                            <div id="rating-feedback"
+                                style="padding: 0.75rem; background: #f3f4f6; border-radius: 8px; font-size: 0.875rem; color: #666; min-height: 2rem;">
+                                Select a rating above...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Size Variants -->
+                <div class="component-showcase">
+                    <h3>Size Variants</h3>
+                    <p class="description">Three sizes to fit different contexts</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <aeva-rating value="4" size="sm"></aeva-rating>
+                            <span class="label">Small (16px) - Compact displays</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <aeva-rating value="4" size="md"></aeva-rating>
+                            <span class="label">Medium (24px) - Default size</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <aeva-rating value="4" size="lg"></aeva-rating>
+                            <span class="label">Large (32px) - Prominent displays</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Styling -->
+                <div class="component-showcase">
+                    <h3>Custom Styling</h3>
+                    <p class="description">Customize colors using CSS custom properties</p>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; max-width: 600px;">
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <aeva-rating value="4.5" show-label
+                                style="--aeva-rating-color: #ef4444; --aeva-rating-empty-color: #fecaca;"></aeva-rating>
+                            <span class="label">Red theme</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <aeva-rating value="5" show-label
+                                style="--aeva-rating-color: #10b981; --aeva-rating-empty-color: #d1fae5;"></aeva-rating>
+                            <span class="label">Green theme</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <aeva-rating value="3.5" show-label
+                                style="--aeva-rating-color: #8b5cf6; --aeva-rating-empty-color: #ede9fe;"></aeva-rating>
+                            <span class="label">Purple theme</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usage Example -->
+                <div class="component-showcase">
+                    <h3>Usage Example</h3>
+                    <p class="description">How to use the rating component in your code</p>
+                    <div class="carbon-container">
+                        <div class="code-window">
+                            <div class="window-header">
+                                <div class="dot dot-red"></div>
+                                <div class="dot dot-yellow"></div>
+                                <div class="dot dot-green"></div>
+                            </div>
+                            <pre class="code-content">
+                            <code class="language-markup">&lt;!-- Read-only Rating --&gt;
+&lt;aeva-rating value="4.5" show-label&gt;&lt;/aeva-rating&gt;
+
+&lt;!-- Interactive Rating --&gt;
+&lt;aeva-rating 
+  id="user-rating" 
+  value="0" 
+  interactive 
+  show-label&gt;
+&lt;/aeva-rating&gt;
+
+&lt;!-- Handle Rating Change --&gt;
+&lt;script&gt;
+  const rating = document.getElementById('user-rating');
+  rating.addEventListener('rating-change', (e) =&gt; {
+    console.log('New rating:', e.detail.value);
+  });
+&lt;/script&gt;
+
+&lt;!-- Custom Styling --&gt;
+&lt;aeva-rating 
+  value="5" 
+  size="lg"
+  style="
+    --aeva-rating-color: #ef4444;
+    --aeva-rating-empty-color: #fecaca;
+  "&gt;
+&lt;/aeva-rating&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- Input Component -->
                 <h3
                     style="font-size: 1.75rem; color: #667eea; margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;">

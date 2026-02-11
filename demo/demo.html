@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aeva UI - Demo</title>
     <style>
+        :root {
+            --aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -42,8 +46,15 @@
 
         /* Card styling adjustments */
         aeva-card {
-            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
+        }
+
+        /* Action bar frosted glass effect */
+        aeva-action-bar::part(action-bar) {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* SVG icon sizing */
@@ -55,7 +66,7 @@
 </head>
 
 <body>
-    <aeva-page>
+    <aeva-page style="--aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
         <div style="display: flex; height: 100%;">
             <!-- Sidebar -->
             <aeva-sidebar id="main-sidebar" width="md">
@@ -96,22 +107,23 @@
             <aeva-section full-height gap="none" padding="none" style="flex: 1;">
                 <!-- Header with Action Bar -->
                 <div slot="header">
-                    <aeva-action-bar padding="md"
-                        style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0, 0, 0, 0.1);">
+                    <aeva-action-bar padding="md" style="backdrop-filter: blur(10px);">
                         <!-- Left: Menu icon + Title -->
                         <div slot="secondary" style="display: flex; align-items: center; gap: 1rem;">
-                            <aeva-button id="menu-toggle" icon-only variant="ghost" aria-label="Menu">
+                            <aeva-button id="menu-toggle" icon-only variant="ghost" aria-label="Menu"
+                                style="--aeva-button-ghost-color: white;">
                                 <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M4 6h16M4 12h16M4 18h16"></path>
                                 </svg>
                             </aeva-button>
-                            <aeva-text variant="h4">Aeva UI</aeva-text>
+                            <aeva-text variant="h4" style="--aeva-text-color: white;">Aeva UI</aeva-text>
                         </div>
 
                         <!-- Right: Dark mode toggle -->
                         <div slot="primary">
-                            <aeva-button icon-only variant="ghost" aria-label="Toggle dark mode">
+                            <aeva-button icon-only variant="ghost" aria-label="Toggle dark mode"
+                                style="--aeva-button-ghost-color: white;">
                                 <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
