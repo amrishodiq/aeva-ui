@@ -5450,6 +5450,20 @@ const count = CheckboxGroupHelper.getCount('interests');
                             console.log('List selection changed:', e.detail);
                         });
 
+                        // Rating Component Interactive Demo
+                        const interactiveRating = document.getElementById('interactive-rating-demo');
+                        const ratingFeedback = document.getElementById('rating-feedback');
+
+                        interactiveRating?.addEventListener('rating-change', (e) => {
+                            const value = e.detail.value;
+                            const stars = '⭐'.repeat(Math.floor(value));
+                            const halfStar = (value % 1 !== 0) ? '½' : '';
+                            ratingFeedback.textContent = `You rated: ${value} ${stars}${halfStar}`;
+                            ratingFeedback.style.background = '#f0fdf4';
+                            ratingFeedback.style.color = '#15803d';
+                            ratingFeedback.style.borderLeft = '3px solid #22c55e';
+                        });
+
                         // Copy Code Button Functionality
                         document.addEventListener('DOMContentLoaded', () => {
                             // Add copy buttons to all code windows
