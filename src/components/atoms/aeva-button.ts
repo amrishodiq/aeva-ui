@@ -129,6 +129,7 @@ export class AevaButton extends LitElement {
     .icon-only {
       padding: var(--aeva-button-icon-padding-md);
       gap: 0;
+      aspect-ratio: 1;
     }
 
     .icon-only.size-sm {

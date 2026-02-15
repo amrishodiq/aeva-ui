@@ -25,9 +25,12 @@
 
         /* Ensure aeva-page takes full height */
         aeva-page {
-            display: block;
             height: 100vh;
             width: 100vw;
+        }
+
+        #detail-page {
+            --aeva-page-z-index: 2000;
         }
 
         /* Section styling */
@@ -65,13 +68,14 @@
 
 <body>
     <aeva-theme theme="dark">
-        <aeva-page style="--aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+        <aeva-page open disable-history
+            style="--aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 0;">
             <div style="display: flex; height: 100%;">
                 <!-- Sidebar -->
                 <aeva-sidebar id="main-sidebar" width="md">
                     <!-- Navigation -->
                     <aeva-list>
-                        <aeva-list-item active>
+                        <aeva-list-item active data-content="main-content">
                             <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
@@ -80,7 +84,15 @@
                             <span slot="title">Docs</span>
                         </aeva-list-item>
 
-                        <aeva-list-item>
+                        <aeva-list-item data-content="components">
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7"></path>
+                            </svg>
+                            <span slot="title">Components</span>
+                        </aeva-list-item>
+
+                        <aeva-list-item data-content="blog-content">
                             <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
@@ -89,7 +101,7 @@
                             <span slot="title">Blog</span>
                         </aeva-list-item>
 
-                        <aeva-list-item>
+                        <aeva-list-item data-content="playground-content">
                             <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
@@ -166,85 +178,100 @@
                         </aeva-action-bar>
                     </div>
 
-                    <!-- Body with Bento Grid -->
-                    <div class="content-area">
-                        <aeva-bento-grid preset="feature">
-                            <!-- Getting Started Card - 2x2 -->
-                            <aeva-card padding="lg" style="grid-column: span 2; grid-row: span 2;">
-                                <div slot="header">
-                                    <aeva-text variant="h3">Getting Started</aeva-text>
-                                </div>
-                                <div>
-                                    <aeva-text variant="body">
-                                        Welcome to Aeva UI! This is a modern design system built with Lit Element and
-                                        TypeScript.
-                                    </aeva-text>
-                                    <aeva-text variant="body" style="margin-top: 1rem;">
-                                        Explore our components and start building beautiful interfaces.
-                                    </aeva-text>
-                                </div>
-                                <div slot="footer">
-                                    <aeva-button variant="primary">Learn More</aeva-button>
-                                </div>
-                            </aeva-card>
-
-                            <!-- Atomic Design Card -->
-                            <aeva-card padding="lg">
-                                <div slot="header">
-                                    <aeva-text variant="h3">Atomic Design</aeva-text>
-                                </div>
-                                <div>
-                                    <aeva-text variant="body">
-                                        Our components follow the Atomic Design methodology.
-                                    </aeva-text>
-                                </div>
-                            </aeva-card>
-
-                            <!-- Atomic Design Card -->
-                            <aeva-card padding="lg">
-                                <div slot="header">
-                                    <aeva-text variant="h3">Atomic Design</aeva-text>
-                                </div>
-                                <div>
-                                    <aeva-text variant="body">
-                                        Our components follow the Atomic Design methodology.
-                                    </aeva-text>
-                                </div>
-                            </aeva-card>
-
-                            <!-- Atomic Design Card -->
-
-                            <aeva-card padding="lg">
-                                <div slot="header">
-                                    <aeva-text variant="h3">Atomic Design</aeva-text>
-                                </div>
-                                <div>
-                                    <aeva-text variant="body">
-                                        Our components follow the Atomic Design methodology.
-                                    </aeva-text>
-                                </div>
-                            </aeva-card>
-                        </aeva-bento-grid>
+                    <!-- Body with Dynamic Content -->
+                    <div id="content-area" class="content-area">
+                        <!-- Content will be loaded here dynamically -->
                     </div>
                 </aeva-section>
             </div>
+        </aeva-page>
+
+        <!-- Detail Page Overlay -->
+        <aeva-page id="detail-page" background="var(--aeva-page-bg)" close-on-backdrop>
         </aeva-page>
     </aeva-theme>
 
     <!-- Load Aeva UI Library -->
     <script type="module" src="./main.ts"></script>
 
-    <!-- Sidebar toggle for mobile -->
+    <!-- Dynamic Content Loading -->
     <script>
+        // Content loader utility
+        // Content loader utility
+        async function showComponentDetail(contentFile) {
+            const detailPage = document.getElementById('detail-page');
+            if (!detailPage) return;
+
+            // 1. Show empty/loading page first
+            detailPage.innerHTML = '<div style="padding: 2rem;"><aeva-text variant="body">Loading...</aeva-text></div>';
+            if (detailPage.show) detailPage.show();
+
+            // 2. Use loadContent to populate detail-page
+            await loadContent(contentFile, 'detail-page');
+        }
+
+        async function loadContent(contentFile, targetId = 'content-area') {
+            const target = document.getElementById(targetId);
+            if (!target) return;
+
+            try {
+                const response = await fetch(`./content/${contentFile}.html`);
+                if (!response.ok) throw new Error(`Failed: ${response.statusText}`);
+                const html = await response.text();
+                target.innerHTML = html;
+            } catch (error) {
+                console.error('Error loading content:', error);
+                target.innerHTML = `
+                    <aeva-card padding="lg">
+                        <div slot="header">
+                            <aeva-text variant="h3">Error Loading Content</aeva-text>
+                        </div>
+                        <div>
+                            <aeva-text variant="body">Failed to load content. Please try again.</aeva-text>
+                        </div>
+                    </aeva-card>
+                `;
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            // Sidebar toggle for mobile
             const menuToggle = document.getElementById('menu-toggle');
             const sidebar = document.getElementById('main-sidebar');
 
             if (menuToggle && sidebar) {
-                // Wrap button in clickable div approach
                 menuToggle.parentElement.addEventListener('click', () => {
                     sidebar.toggle();
                 });
+            }
+
+            // Content switching
+            const listItems = document.querySelectorAll('aeva-list-item[data-content]');
+            listItems.forEach(item => {
+                item.addEventListener('click', async () => {
+                    // Remove active state from all items
+                    listItems.forEach(li => li.removeAttribute('active'));
+                    // Set active state on clicked item
+                    item.setAttribute('active', '');
+
+                    // Load the content
+                    const contentFile = item.getAttribute('data-content');
+                    if (contentFile) {
+                        await loadContent(contentFile);
+                    }
+                });
+            });
+
+            // Load initial content
+            const activeItem = document.querySelector('aeva-list-item[active][data-content]');
+            if (activeItem) {
+                const contentFile = activeItem.getAttribute('data-content');
+                if (contentFile) {
+                    loadContent(contentFile);
+                }
+            } else {
+                // Fallback: load main-content if no active item found
+                loadContent('main-content');
             }
         });
     </script>

@@ -130,6 +130,12 @@ export class AevaPage extends LitElement {
   @property({ type: Boolean, reflect: true })
   closing = false;
 
+  /**
+   * Whether to disable history integration (prevents closing on back button)
+   */
+  @property({ type: Boolean, attribute: 'disable-history' })
+  disableHistory = false;
+
   private previousFocus: HTMLElement | null = null;
 
   connectedCallback() {
@@ -164,7 +170,7 @@ export class AevaPage extends LitElement {
     document.body.style.overflow = 'hidden';
 
     // Add to history for back button support
-    if (window.history.state?.aevaPage !== true) {
+    if (!this.disableHistory && window.history.state?.aevaPage !== true) {
       window.history.pushState({ aevaPage: true }, '');
     }
 
@@ -201,7 +207,7 @@ export class AevaPage extends LitElement {
   };
 
   private handlePopState = () => {
-    if (this.open) {
+    if (this.open && !this.disableHistory) {
       this.close();
     }
   };
@@ -223,7 +229,7 @@ export class AevaPage extends LitElement {
       this.closing = true;
 
       // Remove from history if we added it
-      if (window.history.state?.aevaPage === true) {
+      if (!this.disableHistory && window.history.state?.aevaPage === true) {
         window.history.back();
       }
 

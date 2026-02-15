@@ -19,6 +19,7 @@ export { AevaListItem } from './components/atoms/aeva-list-item.js';
 export { AevaPopupMenu } from './components/atoms/aeva-popup-menu.js';
 export { AevaTooltip } from './components/atoms/aeva-tooltip.js';
 export { AevaRating } from './components/atoms/aeva-rating.js';
+export { AevaCode } from './components/atoms/aeva-code.js';
 
 // Utils
 export { RadioGroupHelper } from './utils/radio-group-helper.js';

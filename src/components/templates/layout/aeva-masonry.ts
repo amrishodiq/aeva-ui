@@ -70,12 +70,12 @@ export class AevaMasonry extends LitElement {
       }
     }
 
-    /* Slotted items - prevent breaking across columns */
+    /* Slotted items - prevent breaking across columns and ensure spacing */
     ::slotted(*) {
       break-inside: avoid;
-      margin-bottom: var(--aeva-masonry-gap);
+      display: inline-block !important;
       width: 100%;
-      display: block;
+      margin-bottom: var(--aeva-masonry-gap, 16px) !important;
     }
   `;
 
@@ -86,40 +86,40 @@ export class AevaMasonry extends LitElement {
   columns: 'auto' | '1' | '2' | '3' | '4' | '5' = 'auto';
 
   /**
-   * Gap between items in pixels
+   * Gap between items. Can be a number (px) or a token (xs, sm, md, lg, xl).
    */
-  @property({ type: Number, reflect: true })
-  gap = 16;
+  @property({ type: String, reflect: true })
+  gap: string | number = 16;
+
+  private getGapValue(): string {
+    const gapMap: Record<string, string> = {
+      'xs': '4px',
+      'sm': '8px',
+      'md': '16px',
+      'lg': '24px',
+      'xl': '32px'
+    };
+
+    if (typeof this.gap === 'number') return `${this.gap}px`;
+    if (gapMap[this.gap]) return gapMap[this.gap];
+    if (!isNaN(Number(this.gap))) return `${this.gap}px`;
+    return this.gap;
+  }
 
   firstUpdated() {
-    // Apply gap styling to children
-    this.applyGapToChildren();
+    this.updateGap();
   }
 
   updated(changedProperties: Map<string, any>) {
     super.updated(changedProperties);
 
-    // Update CSS custom properties
     if (changedProperties.has('gap')) {
-      this.style.setProperty('--aeva-masonry-gap', `${this.gap}px`);
-      this.applyGapToChildren();
+      this.updateGap();
     }
   }
 
-  private applyGapToChildren() {
-    const slot = this.shadowRoot?.querySelector('slot');
-    if (slot) {
-      const children = slot.assignedElements() as HTMLElement[];
-      children.forEach((child) => {
-        child.style.marginBottom = `${this.gap}px`;
-        child.style.display = 'block';
-        child.style.breakInside = 'avoid';
-      });
-    }
-  }
-
-  private handleSlotChange() {
-    this.applyGapToChildren();
+  private updateGap() {
+    this.style.setProperty('--aeva-masonry-gap', this.getGapValue());
   }
 
   render() {
@@ -127,8 +127,8 @@ export class AevaMasonry extends LitElement {
       }`;
 
     return html`
-      <div class="${containerClass}" part="container">
-        <slot @slotchange="${this.handleSlotChange}"></slot>
+      <div class="${containerClass}" part="container" style="column-gap: var(--aeva-masonry-gap)">
+        <slot></slot>
       </div>
     `;
   }
