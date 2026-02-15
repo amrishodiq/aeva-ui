@@ -21,6 +21,11 @@ import '../src/components/atoms/aeva-checkbox';
 import { RadioGroupHelper } from '../src/utils/radio-group-helper';
 import { CheckboxGroupHelper } from '../src/utils/checkbox-group-helper';
 
+// Internal Documentation Components (not exported in library)
+import './src/components/aeva-doc-page';
+import './src/components/aeva-doc-section';
+import './src/components/aeva-doc-example';
+
 // Demo: Getting Selected Value examples
 document.addEventListener('DOMContentLoaded', () => {
     const valueResult = document.getElementById('value-result');

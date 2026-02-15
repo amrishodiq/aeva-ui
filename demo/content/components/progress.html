@@ -1,0 +1,50 @@
+<aeva-doc-page title="Progress"
+    description="Flexible progress indicator component supporting both horizontal and circular shapes. Ideal for displaying task completion or loading states.">
+
+    <aeva-doc-section title="Horizontal Progress" description="The classic progress bar for wide containers.">
+        <aeva-doc-example code='<!-- Finite Mode -->
+<aeva-progress progress="45" label="Uploading files..."></aeva-progress>
+
+<!-- Infinite Mode -->
+<aeva-progress mode="infinite" label="Processing..."></aeva-progress>
+
+<!-- Sizes -->
+<aeva-progress size="sm" progress="60"></aeva-progress>
+<aeva-progress size="md" progress="60"></aeva-progress>
+<aeva-progress size="lg" progress="60"></aeva-progress>'>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%; max-width: 400px;">
+                <aeva-progress progress="45" label="Uploading files..."></aeva-progress>
+                <aeva-progress mode="infinite" label="Processing..."></aeva-progress>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                    <aeva-progress size="sm" progress="60"></aeva-progress>
+                    <aeva-progress size="md" progress="60"></aeva-progress>
+                    <aeva-progress size="lg" progress="60"></aeva-progress>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Circular Progress" description="Space-efficient indicators with percentage support.">
+        <aeva-doc-example code='<!-- Finite with Percentage -->
+<aeva-circular-progress shape="circular" progress="75" show-percentage></aeva-circular-progress>
+
+<!-- Infinite Loader -->
+<aeva-progress shape="circular" mode="infinite" size="lg"></aeva-progress>
+
+<!-- Sizes -->
+<aeva-progress shape="circular" size="sm" progress="40"></aeva-progress>
+<aeva-progress shape="circular" size="md" progress="40"></aeva-progress>
+<aeva-progress shape="circular" size="lg" progress="40"></aeva-progress>'>
+            <div style="display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;">
+                <aeva-progress shape="circular" progress="75" show-percentage></aeva-progress>
+                <aeva-progress shape="circular" mode="infinite" size="lg"></aeva-progress>
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                    <aeva-progress shape="circular" size="sm" progress="40"></aeva-progress>
+                    <aeva-progress shape="circular" size="md" progress="40"></aeva-progress>
+                    <aeva-progress shape="circular" size="lg" progress="40"></aeva-progress>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+</aeva-doc-page>

@@ -1,0 +1,39 @@
+<aeva-doc-page title="Checkbox"
+    description="A custom checkbox component with a modern rectangular design and smooth transitions. Built for touch targets and high accessibility.">
+
+    <aeva-doc-section title="Basic Usage" description="The standard checkbox states.">
+        <aeva-doc-example code='<aeva-checkbox label="Unchecked"></aeva-checkbox>
+<aeva-checkbox checked label="Checked by default"></aeva-checkbox>
+<aeva-checkbox disabled label="Disabled state"></aeva-checkbox>'>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <aeva-checkbox id="cb1"></aeva-checkbox>
+                    <label for="cb1" style="color: white; cursor: pointer;">Unchecked</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <aeva-checkbox id="cb2" checked></aeva-checkbox>
+                    <label for="cb2" style="color: white; cursor: pointer;">Checked by default</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; opacity: 0.5;">
+                    <aeva-checkbox id="cb3" disabled></aeva-checkbox>
+                    <label for="cb3" style="color: white; cursor: not-allowed;">Disabled state</label>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Custom Styling" description="Easily customizable via CSS variables.">
+        <aeva-doc-example
+            code='<aeva-checkbox style="--aeva-checkbox-checked-bg: #10b981; --aeva-checkbox-checked-stroke: #10b981;" checked></aeva-checkbox>'>
+            <div style="display: flex; gap: 1rem;">
+                <aeva-checkbox style="--aeva-checkbox-checked-bg: #10b981; --aeva-checkbox-checked-stroke: #10b981;"
+                    checked></aeva-checkbox>
+                <aeva-checkbox style="--aeva-checkbox-checked-bg: #f59e0b; --aeva-checkbox-checked-stroke: #f59e0b;"
+                    checked></aeva-checkbox>
+                <aeva-checkbox style="--aeva-checkbox-checked-bg: #ef4444; --aeva-checkbox-checked-stroke: #ef4444;"
+                    checked></aeva-checkbox>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+</aeva-doc-page>

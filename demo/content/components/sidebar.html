@@ -1,0 +1,134 @@
+<aeva-doc-page title="Sidebar"
+    description="A responsive navigation organism that adapts to mobile, tablet, and desktop viewports.">
+
+    <aeva-doc-section title="Desktop Mode"
+        description="Full navigation with icons and labels. Recommended for screens >1024px.">
+        <aeva-doc-example>
+            <div
+                style="height: 400px; width: 100%; border: 1px solid var(--aeva-border-color); border-radius: 12px; overflow: hidden; background: var(--aeva-surface-bg);">
+                <aeva-sidebar static width="md" style="height: 100%;">
+                    <div slot="header" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <div style="width: 32px; height: 32px; background: var(--aeva-primary); border-radius: 8px;">
+                        </div>
+                        <aeva-text style="font-weight: 600;">Aeva UI</aeva-text>
+                    </div>
+
+                    <aeva-list>
+                        <aeva-list-item active icon="grid_view">Dashboard</aeva-list-item>
+                        <aeva-list-item icon="analytics">Analytics</aeva-list-item>
+                        <aeva-list-item icon="people">Users</aeva-list-item>
+                        <aeva-list-item icon="settings">Settings</aeva-list-item>
+                    </aeva-list>
+
+                    <div slot="footer" style="display: flex; align-items: center; gap: 0.75rem;">
+                        <div
+                            style="width: 32px; height: 32px; background: var(--aeva-surface-bg-alt); border-radius: 50%; border: 1px solid var(--aeva-border-color);">
+                        </div>
+                        <aeva-text variant="caption">Amri Kurnia</aeva-text>
+                    </div>
+                </aeva-sidebar>
+            </div>
+            <div slot="code">
+                <aeva-sidebar width="md">
+                    <div slot="header">...</div>
+                    <aeva-list>
+                        <aeva-list-item active icon="grid_view">Dashboard</aeva-list-item>
+                        <aeva-list-item icon="analytics">Analytics</aeva-list-item>
+                    </aeva-list>
+                    <div slot="footer">...</div>
+                </aeva-sidebar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Tablet Mode (Icon Only)"
+        description="Optimized for medium screens (768px - 1024px). Text labels are hidden.">
+        <aeva-doc-example>
+            <div
+                style="height: 400px; width: 100%; border: 1px solid var(--aeva-border-color); border-radius: 12px; overflow: hidden; background: var(--aeva-surface-bg);">
+                <aeva-sidebar static style="height: 100%; width: 72px;">
+                    <!-- Simulating tablet behavior by forcing width -->
+                    <aeva-list>
+                        <aeva-list-item active icon="grid_view" icon-only></aeva-list-item>
+                        <aeva-list-item icon="analytics" icon-only></aeva-list-item>
+                        <aeva-list-item icon="people" icon-only></aeva-list-item>
+                        <aeva-list-item icon="settings" icon-only></aeva-list-item>
+                    </aeva-list>
+                </aeva-sidebar>
+            </div>
+            <div slot="code">
+                <!-- Sidebar automatically enters icon-only mode on tablet viewports -->
+                <aeva-sidebar>
+                    <aeva-list>
+                        <aeva-list-item icon="grid_view" icon-only></aeva-list-item>
+                    </aeva-list>
+                </aeva-sidebar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Glassmorphism" description="A themed variant with transparency and backdrop blur.">
+        <aeva-doc-example>
+            <div
+                style="height: 400px; width: 100%; border: 1px solid var(--aeva-border-color); border-radius: 12px; overflow: hidden; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                <aeva-sidebar static glassmorphism style="height: 100%;">
+                    <div slot="header">
+                        <aeva-text style="color: white; font-weight: 600;">Glass Sidebar</aeva-text>
+                    </div>
+
+                    <aeva-list style="--aeva-list-item-color: white;">
+                        <aeva-list-item icon="face" active>Profile</aeva-list-item>
+                        <aeva-list-item icon="notifications">Notifications</aeva-list-item>
+                        <aeva-list-item icon="security">Security</aeva-list-item>
+                    </aeva-list>
+                </aeva-sidebar>
+            </div>
+            <div slot="code">
+                <aeva-sidebar glassmorphism>
+                    ...
+                </aeva-sidebar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties" description="Configuration options for the sidebar.">
+        <div style="overflow-x: auto; width: 100%;">
+            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+                <thead>
+                    <tr style="border-bottom: 2px solid var(--aeva-border-color); text-align: left;">
+                        <th style="padding: 0.75rem;">Property</th>
+                        <th style="padding: 0.75rem;">Type</th>
+                        <th style="padding: 0.75rem;">Default</th>
+                        <th style="padding: 0.75rem;">Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
+                        <td style="padding: 0.75rem;"><code>position</code></td>
+                        <td style="padding: 0.75rem;">'left' | 'right'</td>
+                        <td style="padding: 0.75rem;">'left'</td>
+                        <td style="padding: 0.75rem;">Placement of the sidebar.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
+                        <td style="padding: 0.75rem;"><code>width</code></td>
+                        <td style="padding: 0.75rem;">'sm' | 'md' | 'lg'</td>
+                        <td style="padding: 0.75rem;">'md'</td>
+                        <td style="padding: 0.75rem;">Width variant for desktop.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
+                        <td style="padding: 0.75rem;"><code>open</code></td>
+                        <td style="padding: 0.75rem;">boolean</td>
+                        <td style="padding: 0.75rem;">false</td>
+                        <td style="padding: 0.75rem;">Whether the mobile drawer is open.</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
+                        <td style="padding: 0.75rem;"><code>glassmorphism</code></td>
+                        <td style="padding: 0.75rem;">boolean</td>
+                        <td style="padding: 0.75rem;">false</td>
+                        <td style="padding: 0.75rem;">Enables glass effect.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

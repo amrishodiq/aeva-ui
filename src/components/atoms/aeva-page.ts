@@ -53,7 +53,8 @@ export class AevaPage extends LitElement {
       width: 100%;
       height: 100%;
       background: var(--aeva-page-background);
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
       animation: slideInFromRight var(--aeva-page-animation-duration) cubic-bezier(0.34, 1.2, 0.64, 1);
     }
 

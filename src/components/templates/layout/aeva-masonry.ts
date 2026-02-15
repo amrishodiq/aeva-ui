@@ -75,6 +75,7 @@ export class AevaMasonry extends LitElement {
       break-inside: avoid;
       display: inline-block !important;
       width: 100%;
+      height: auto !important;
       margin-bottom: var(--aeva-masonry-gap, 16px) !important;
     }
   `;

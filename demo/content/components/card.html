@@ -1,0 +1,86 @@
+<aeva-doc-page title="Card"
+    description="The card component is a versatile content container used to group related information. It provides a clean, structured way to present content with support for headers, footers, and interactive states.">
+
+    <aeva-doc-section title="Basic Usage" description="A simple card with default padding and a border.">
+        <aeva-doc-example code='<aeva-card>
+    <aeva-text variant="body">This is a basic card content...</aeva-text>
+</aeva-card>'>
+            <aeva-card>
+                <aeva-text variant="body">This is a basic card with some content inside it.</aeva-text>
+            </aeva-card>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slots (Header, Body, Footer)"
+        description="Use named slots to create more complex internal layouts.">
+        <aeva-doc-example code='<aeva-card>
+    <div slot="header"><aeva-text variant="h4">Header</aeva-text></div>
+    <div><aeva-text variant="body">Main body content...</aeva-text></div>
+    <div slot="footer"><aeva-button size="sm">Action</aeva-button></div>
+</aeva-card>'>
+            <aeva-card>
+                <div slot="header">
+                    <aeva-text variant="h4">Header Title</aeva-text>
+                </div>
+                <div>
+                    <aeva-text variant="body">Main body content goes here. The card automatically distributes
+                        space.</aeva-text>
+                </div>
+                <div slot="footer" style="display: flex; justify-content: flex-end;">
+                    <aeva-button size="sm">Action</aeva-button>
+                </div>
+            </aeva-card>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Interactive State"
+        description="Use the <span class='property-tag'>interactive</span> property to add hover effects and click behavior.">
+        <aeva-doc-example code='<aeva-card interactive padding="md">
+    <div slot="header"><aeva-text variant="h4">Click Me</aeva-text></div>
+    <aeva-text variant="body">Interactive content...</aeva-text>
+</aeva-card>'>
+            <aeva-card interactive padding="md">
+                <div slot="header">
+                    <aeva-text variant="h4" color="primary">Click Me</aeva-text>
+                </div>
+                <aeva-text variant="body">Interactive cards show a hover state and function as buttons for navigation or
+                    actions.</aeva-text>
+            </aeva-card>
+        </aeva-doc-example>
+        </section>
+
+        <aeva-doc-section title="Padding Variants"
+            description="Adjust the internal spacing using the <span class='property-tag'>padding</span> property.">
+            <aeva-doc-example code='<aeva-card padding="sm">Small Padding</aeva-card>'>
+                <aeva-card padding="sm">
+                    <aeva-text variant="body">Small Padding (1rem)</aeva-text>
+                </aeva-card>
+            </aeva-doc-example>
+
+            <aeva-doc-example code='<aeva-card padding="md">Medium Padding</aeva-card>'>
+                <aeva-card padding="md">
+                    <aeva-text variant="body">Medium Padding (1.5rem)</aeva-text>
+                </aeva-card>
+            </aeva-doc-example>
+
+            <aeva-doc-example code='<aeva-card padding="lg">Large Padding</aeva-card>'>
+                <aeva-card padding="lg">
+                    <aeva-text variant="body">Large Padding (2rem)</aeva-text>
+                </aeva-card>
+            </aeva-doc-example>
+        </aeva-doc-section>
+
+        <aeva-doc-section title="Theming" columns="1" description="Customize card appearance using CSS variables.">
+            <aeva-doc-example language="css" code="aeva-card {
+    --aeva-card-bg: rgba(255, 255, 255, 0.05);
+    --aeva-card-border-color: var(--aeva-primary-color);
+    --aeva-card-border-radius: 24px;
+}">
+                <aeva-card
+                    style="--aeva-card-bg: rgba(255, 255, 255, 0.05); --aeva-card-border-color: var(--aeva-primary-color); --aeva-card-border-radius: 24px; width: 100%;">
+                    <aeva-text variant="body">Customized Card Style</aeva-text>
+                </aeva-card>
+            </aeva-doc-example>
+        </aeva-doc-section>
+
+</aeva-doc-page>

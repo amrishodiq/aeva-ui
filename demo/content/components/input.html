@@ -1,0 +1,38 @@
+<aeva-doc-page title="Input"
+    description="A versatile and robust input component with regex-based validation, multiple variants, and premium aesthetics.">
+
+    <aeva-doc-section title="Standard Variants" description="Presets for common input types.">
+        <aeva-doc-example code='<aeva-input variant="text" placeholder="Full Name"></aeva-input>
+<aeva-input variant="password" placeholder="Password"></aeva-input>
+<aeva-input variant="email" placeholder="Email Address"></aeva-input>
+<aeva-input variant="multiline" placeholder="Your Message" rows="4"></aeva-input>'>
+            <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 400px;">
+                <aeva-input variant="text" placeholder="Full Name"></aeva-input>
+                <aeva-input variant="password" placeholder="Password"></aeva-input>
+                <aeva-input variant="email" placeholder="Email Address"></aeva-input>
+                <aeva-input variant="multiline" placeholder="Your Message" rows="4"></aeva-input>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Numeric Inputs" description="Strict validation for integer and decimal numbers.">
+        <aeva-doc-example code='<aeva-input variant="integer" placeholder="Age (e.g. 25)" min="0" max="120"></aeva-input>
+<aeva-input variant="decimal" placeholder="Price (e.g. 9.99)" min="0" step="0.01"></aeva-input>'>
+            <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 400px;">
+                <aeva-input variant="integer" placeholder="Age (e.g. 25)" min="0" max="120"></aeva-input>
+                <aeva-input variant="decimal" placeholder="Price (e.g. 9.99)" min="0" step="0.01"></aeva-input>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Appearances" description="Choose between classic bordered or modern flat styles.">
+        <aeva-doc-example code='<aeva-input placeholder="Bordered Appearance"></aeva-input>
+<aeva-input appearance="flat" placeholder="Flat Appearance"></aeva-input>'>
+            <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 400px;">
+                <aeva-input placeholder="Bordered Appearance"></aeva-input>
+                <aeva-input appearance="flat" placeholder="Flat Appearance"></aeva-input>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+</aeva-doc-page>

@@ -1,0 +1,100 @@
+<aeva-doc-page title="Carousel"
+    description="A sliding container for browsing through multiple items of content. Supports navigation, indicators, and touch gestures.">
+    <aeva-doc-section title="Basic Usage" description="Standard carousel with navigation buttons and indicators.">
+        <aeva-doc-example>
+            <aeva-carousel style="--aeva-carousel-height: 250px;">
+                <aeva-card
+                    style="background: var(--aeva-primary-color); color: white; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                    <aeva-text variant="h3">Slide 1</aeva-text>
+                </aeva-card>
+                <aeva-card
+                    style="background: var(--aeva-secondary-color); color: white; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                    <aeva-text variant="h3">Slide 2</aeva-text>
+                </aeva-card>
+                <aeva-card
+                    style="background: #e53e3e; color: white; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                    <aeva-text variant="h3">Slide 3</aeva-text>
+                </aeva-card>
+            </aeva-carousel>
+            <div slot="code">
+                <aeva-carousel>
+                    <div class="slide">Slide 1</div>
+                    <div class="slide">Slide 2</div>
+                    <div class="slide">Slide 3</div>
+                </aeva-carousel>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Auto Play" description="Automatically rotate slides at a specified interval.">
+        <aeva-doc-example>
+            <aeva-carousel auto-play auto-play-interval="2000" style="--aeva-carousel-height: 200px;">
+                <div
+                    style="background: rgba(255,255,255,0.05); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <aeva-text>Auto-rotating Slide A</aeva-text>
+                </div>
+                <div
+                    style="background: rgba(255,255,255,0.1); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                    <aeva-text>Auto-rotating Slide B</aeva-text>
+                </div>
+            </aeva-carousel>
+            <div slot="code">
+                <aeva-carousel auto-play auto-play-interval="2000">
+                    <div>Slide A</div>
+                    <div>Slide B</div>
+                </aeva-carousel>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Navigation Options" description="Hide navigation buttons or indicators if needed.">
+        <aeva-doc-example columns="2">
+            <div>
+                <aeva-text variant="caption">No Navigation Buttons</aeva-text>
+                <aeva-carousel hide-nav style="--aeva-carousel-height: 150px;">
+                    <div
+                        style="background: #4a5568; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                        1</div>
+                    <div
+                        style="background: #718096; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                        2</div>
+                </aeva-carousel>
+            </div>
+            <div>
+                <aeva-text variant="caption">No Indicators</aeva-text>
+                <aeva-carousel hide-indicators style="--aeva-carousel-height: 150px;">
+                    <div
+                        style="background: #2d3748; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                        A</div>
+                    <div
+                        style="background: #1a202c; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;">
+                        B</div>
+                </aeva-carousel>
+            </div>
+            <div slot="code">
+                <!-- Hide Navigation -->
+                <aeva-carousel hide-nav>...</aeva-carousel>
+
+                <!-- Hide Indicators -->
+                <aeva-carousel hide-indicators>...</aeva-carousel>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Looping & Custom Height" description="Control looping behavior and dimensions.">
+        <aeva-doc-example>
+            <aeva-carousel .loop="${false}"
+                style="--aeva-carousel-height: 150px; border: 2px dashed rgba(255,255,255,0.2);">
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">No Loop
+                    - End of slide stops</div>
+                <div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center;">Slide 2
+                </div>
+            </aeva-carousel>
+            <div slot="code">
+                <aeva-carousel .loop="${false}" style="--aeva-carousel-height: 150px;">
+                    ...
+                </aeva-carousel>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+</aeva-doc-page>

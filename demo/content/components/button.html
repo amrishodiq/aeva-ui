@@ -1,192 +1,72 @@
-<style>
-    .doc-section {
-        margin-bottom: 2rem;
-    }
+<aeva-doc-page title="Button"
+    description="The button component is a fundamental interactive element that allows users to perform actions. It supports multiple visual variants, sizes, and icon integration.">
 
-    .demo-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin: 1.5rem 0;
-    }
+    <aeva-doc-section title="Primary Variants"
+        description="Use the <span class='property-tag'>variant</span> property to change the visual importance.">
+        <aeva-doc-example code='<aeva-button variant="primary">Primary</aeva-button>'>
+            <aeva-button variant="primary">Primary Button</aeva-button>
+        </aeva-doc-example>
 
-    @media (min-width: 640px) {
-        .demo-grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
-    }
+        <aeva-doc-example code='<aeva-button variant="secondary">Secondary</aeva-button>'>
+            <aeva-button variant="secondary">Secondary Button</aeva-button>
+        </aeva-doc-example>
 
-    @media (min-width: 1024px) {
-        .demo-grid {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
+        <aeva-doc-example code='<aeva-button variant="ghost">Ghost</aeva-button>'>
+            <aeva-button variant="ghost">Ghost Button</aeva-button>
+        </aeva-doc-example>
 
-    .demo-item {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-        padding: 1rem;
-        background: rgba(255, 255, 255, 0.03);
-        border-radius: 8px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        <aeva-doc-example code='<aeva-button variant="danger">Danger</aeva-button>'>
+            <aeva-button variant="danger">Danger Button</aeva-button>
+        </aeva-doc-example>
+    </aeva-doc-section>
 
-    .property-tag {
-        background: #1e1e1e;
-        color: #d4d4d4;
-        padding: 0.2rem 0.4rem;
-        border-radius: 6px;
-        font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-        font-size: 0.85em;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        font-weight: 600;
-    }
-</style>
+    <aeva-doc-section title="Sizes"
+        description="Use the <span class='property-tag'>size</span> property to adjust the button's scale for different contexts.">
+        <aeva-doc-example code='<aeva-button size="sm">Small</aeva-button>'>
+            <aeva-button size="sm">Small Button</aeva-button>
+        </aeva-doc-example>
 
-<div class="doc-container" style="position: relative; padding: 2rem;">
-    <!-- Close Button - Fixed position to stay visible while scrolling -->
-    <aeva-button variant="danger" icon-only onclick="document.getElementById('detail-page').close()"
-        style="position: fixed; top: 1.5rem; right: 2rem; --aeva-button-ghost-color: white; z-index: 2100; background: rgba(0,0,0,0.2); backdrop-filter: blur(4px); border-radius: 50%;">
-        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-        </svg>
-    </aeva-button>
+        <aeva-doc-example code='<aeva-button size="md">Medium</aeva-button>'>
+            <aeva-button size="md">Medium Button</aeva-button>
+        </aeva-doc-example>
 
-    <aeva-text variant="h2" style="margin-bottom: 1rem;">Button</aeva-text>
-    <aeva-text variant="body" style="margin-bottom: 2rem; display: block;">
-        The button component is a fundamental interactive element that allows users to perform actions.
-        Aeva UI Button supports various style variations, sizes, and states for modern interface needs.
-    </aeva-text>
+        <aeva-doc-example code='<aeva-button size="lg">Large</aeva-button>'>
+            <aeva-button size="lg">Large Button</aeva-button>
+        </aeva-doc-example>
+    </aeva-doc-section>
 
-    <!-- Variants -->
-    <section class="doc-section">
-        <aeva-text variant="h3">Variants</aeva-text>
-        <aeva-text variant="body">Use the <span class="property-tag">variant</span> property to change the visual style
-            of the
-            button.</aeva-text>
+    <aeva-doc-section title="Icon Integration"
+        description="Enhance buttons with icons or use the <span class='property-tag'>icon-only</span> variant.">
+        <aeva-doc-example code='<aeva-button icon-left="search">Search</aeva-button>'>
+            <aeva-button>
+                <svg slot="icon-left" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+                Search
+            </aeva-button>
+        </aeva-doc-example>
 
-        <div class="demo-grid">
-            <div class="demo-item">
-                <aeva-button variant="primary">Primary</aeva-button>
-                <aeva-code language="html" code='<aeva-button variant="primary">Primary</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button variant="secondary">Secondary</aeva-button>
-                <aeva-code language="html" code='<aeva-button variant="secondary">Secondary</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button variant="outline">Outline</aeva-button>
-                <aeva-code language="html" code='<aeva-button variant="outline">Outline</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button variant="ghost">Ghost</aeva-button>
-                <aeva-code language="html" code='<aeva-button variant="ghost">Ghost</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button variant="danger">Danger</aeva-button>
-                <aeva-code language="html" code='<aeva-button variant="danger">Danger</aeva-button>'></aeva-code>
-            </div>
-        </div>
-    </section>
+        <aeva-doc-example code='<aeva-button icon-only>...</aeva-button>'>
+            <aeva-button icon-only>
+                <svg slot="icon-only" width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 4v16m8-8H4"></path>
+                </svg>
+            </aeva-button>
+        </aeva-doc-example>
+    </aeva-doc-section>
 
-    <!-- Sizes -->
-    <section class="doc-section">
-        <aeva-text variant="h3">Sizes</aeva-text>
-        <aeva-text variant="body">Use the <span class="property-tag">size</span> property to adjust the button
-            dimensions.</aeva-text>
+    <aeva-doc-section title="Customization" columns="1"
+        description="Adjust button appearance using CSS Custom Properties.">
+        <aeva-doc-example language="css" code="aeva-button {
+    --aeva-button-primary-bg: #8e44ad;
+    --aeva-button-border-radius: 4px;
+    --aeva-button-font-weight: 700;
+}">
+            <aeva-button
+                style="--aeva-button-primary-bg: #8e44ad; --aeva-button-border-radius: 4px; --aeva-button-font-weight: 700;">
+                Custom Button
+            </aeva-button>
+        </aeva-doc-example>
+    </aeva-doc-section>
 
-        <div class="demo-grid">
-            <div class="demo-item">
-                <aeva-button size="sm">Small</aeva-button>
-                <aeva-code language="html" code='<aeva-button size="sm">Small</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button size="md">Medium</aeva-button>
-                <aeva-code language="html" code='<aeva-button size="md">Medium</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button size="lg">Large</aeva-button>
-                <aeva-code language="html" code='<aeva-button size="lg">Large</aeva-button>'></aeva-code>
-            </div>
-        </div>
-    </section>
-
-    <!-- States -->
-    <section class="doc-section">
-        <aeva-text variant="h3">States</aeva-text>
-        <aeva-text variant="body">Buttons support interactive states such as Disabled and Loading.</aeva-text>
-
-        <div class="demo-grid">
-            <div class="demo-item">
-                <aeva-button disabled>Disabled</aeva-button>
-                <aeva-code language="html" code='<aeva-button disabled>Disabled</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button loading>Loading</aeva-button>
-                <aeva-code language="html" code='<aeva-button loading>Loading</aeva-button>'></aeva-code>
-            </div>
-        </div>
-    </section>
-
-    <!-- Icons -->
-    <section class="doc-section">
-        <aeva-text variant="h3">Icons</aeva-text>
-        <aeva-text variant="body">Add icons using the <span class="property-tag">icon-left</span>, <span
-                class="property-tag">icon-right</span>, or <span class="property-tag">icon-only</span>
-            slots.</aeva-text>
-
-        <div class="demo-grid">
-            <div class="demo-item">
-                <aeva-button>
-                    <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Left Icon
-                </aeva-button>
-                <aeva-code language="html" code='<aeva-button>
-    <svg slot="icon-left" ...></svg>
-    Left Icon
-</aeva-button>'></aeva-code>
-            </div>
-            <div class="demo-item">
-                <aeva-button icon-only aria-label="Action">
-                    <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
-                    </svg>
-                </aeva-button>
-                <aeva-code language="html" code='<aeva-button icon-only aria-label="Action">
-    <svg slot="icon-only" ...></svg>
-</aeva-button>'></aeva-code>
-            </div>
-        </div>
-    </section>
-
-    <!-- Theming -->
-    <section class="doc-section">
-        <aeva-text variant="h3">Theming</aeva-text>
-        <aeva-text variant="body" style="margin-bottom: 1rem; display: block;">
-            You can customize the button appearance using CSS Variables. Here are some of the main variables
-            available:
-        </aeva-text>
-
-        <aeva-code language="css" title="custom-styles.css" code="/* Example customization in your CSS */
-aeva-button {
-    --aeva-button-border-radius: 99px; /* Fully rounded button */
-    --aeva-button-primary-bg: #8b5cf6; /* Change primary color for this page only */
-    --aeva-button-transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}"></aeva-code>
-
-        <aeva-text variant="body" style="margin-top: 1rem; display: block;">
-            Other main CSS variables include:
-        </aeva-text>
-        <ul style="color: rgba(255, 255, 255, 0.8); margin-left: 1.5rem; margin-top: 0.5rem; line-height: 1.8;">
-            <li><span class="property-tag">--aeva-button-padding-[sm|md|lg]</span></li>
-            <li><span class="property-tag">--aeva-button-font-size-[sm|md|lg]</span></li>
-            <li><span class="property-tag">--aeva-button-focus-ring-color</span></li>
-            <li><span class="property-tag">--aeva-button-[primary|secondary|danger]-hover-bg</span></li>
-        </ul>
-    </section>
-</div>
+</aeva-doc-page>

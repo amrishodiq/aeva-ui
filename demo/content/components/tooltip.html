@@ -1,0 +1,55 @@
+<aeva-doc-page title="Tooltip"
+    description="Contextual information shown on hover or focus. Features smart positioning that auto-adjusts to stay within the viewport.">
+
+    <aeva-doc-section title="Basic Usage" description="Wrap any element with aeva-tooltip to show a message.">
+        <aeva-doc-example code='<aeva-tooltip content="I am a tooltip!">
+    <aeva-button variant="flat">Hover Me</aeva-button>
+</aeva-tooltip>'>
+            <aeva-tooltip content="I am a tooltip!">
+                <aeva-button variant="flat">Hover Me</aeva-button>
+            </aeva-tooltip>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Positions" description="Tooltips can be positioned on any side of the trigger.">
+        <aeva-doc-example code='<aeva-tooltip content="Top Tooltip" position="top">
+    <aeva-button variant="bordered" size="sm">Top</aeva-button>
+</aeva-tooltip>
+<aeva-tooltip content="Bottom Tooltip" position="bottom">
+    <aeva-button variant="bordered" size="sm">Bottom</aeva-button>
+</aeva-tooltip>
+<aeva-tooltip content="Left Tooltip" position="left">
+    <aeva-button variant="bordered" size="sm">Left</aeva-button>
+</aeva-tooltip>
+<aeva-tooltip content="Right Tooltip" position="right">
+    <aeva-button variant="bordered" size="sm">Right</aeva-button>
+</aeva-tooltip>'>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <aeva-tooltip content="Top Tooltip" position="top">
+                    <aeva-button variant="bordered" size="sm">Top</aeva-button>
+                </aeva-tooltip>
+                <aeva-tooltip content="Bottom Tooltip" position="bottom">
+                    <aeva-button variant="bordered" size="sm">Bottom</aeva-button>
+                </aeva-tooltip>
+                <aeva-tooltip content="Left Tooltip" position="left">
+                    <aeva-button variant="bordered" size="sm">Left</aeva-button>
+                </aeva-tooltip>
+                <aeva-tooltip content="Right Tooltip" position="right">
+                    <aeva-button variant="bordered" size="sm">Right</aeva-button>
+                </aeva-tooltip>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Custom Content" description="Tooltips support long text and will wrap automatically.">
+        <aeva-doc-example code='<aeva-tooltip content="This is a much longer tooltip message that will automatically wrap to multiple lines if it exceeds the maximum width.">
+    <aeva-text>Hover for long message</aeva-text>
+</aeva-tooltip>'>
+            <aeva-tooltip
+                content="This is a much longer tooltip message that will automatically wrap to multiple lines if it exceeds the maximum width.">
+                <aeva-text>Hover for long message</aeva-text>
+            </aeva-tooltip>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+</aeva-doc-page>

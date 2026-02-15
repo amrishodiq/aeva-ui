@@ -1,0 +1,79 @@
+<aeva-doc-page title="Page Shell"
+    description="The structural skeleton of every page. Supports full-screen modal behavior, hardware back button integration, and smooth slide animations.">
+
+    <aeva-doc-section title="Basic Usage"
+        description="Use aeva-page to create specialized overlays or standalone pages.">
+        <aeva-doc-example>
+            <div slot="example">
+                <aeva-button variant="primary" onclick="document.getElementById('demo-page').show()">Open Demo
+                    Page</aeva-button>
+
+                <aeva-page id="demo-page" background="linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+                    close-on-backdrop>
+                    <div style="padding: 2rem; color: white;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                            <aeva-text variant="h2" style="--aeva-text-color: white;">Full Screen Page</aeva-text>
+                            <aeva-button variant="ghost" style="--aeva-button-ghost-color: white;"
+                                onclick="document.getElementById('demo-page').close()">Close</aeva-button>
+                        </div>
+
+                        <aeva-card padding="lg" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);">
+                            <aeva-text variant="body">This is a full-screen page component. It automatically handles
+                                slide animations and body scroll locking.</aeva-text>
+                        </aeva-card>
+                    </div>
+                </aeva-page>
+            </div>
+            <pre slot="code">
+&lt;aeva-button onclick="page.show()"&gt;Open&lt;/aeva-button&gt;
+
+&lt;aeva-page id="demo-page" background="..." close-on-backdrop&gt;
+    &lt;div&gt;Your Content&lt;/div&gt;
+&lt;/aeva-page&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; color: white;">
+                <thead>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                        <th style="padding: 0.5rem;">Property</th>
+                        <th style="padding: 0.5rem;">Attribute</th>
+                        <th style="padding: 0.5rem;">Description</th>
+                        <th style="padding: 0.5rem;">Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">open</td>
+                        <td style="padding: 0.5rem;">open</td>
+                        <td style="padding: 0.5rem;">Whether the page is currently visible.</td>
+                        <td style="padding: 0.5rem;">false</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">background</td>
+                        <td style="padding: 0.5rem;">background</td>
+                        <td style="padding: 0.5rem;">Custom CSS background (color or gradient).</td>
+                        <td style="padding: 0.5rem;">'white'</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">closeOnBackdrop</td>
+                        <td style="padding: 0.5rem;">close-on-backdrop</td>
+                        <td style="padding: 0.5rem;">Whether clicking the backdrop automatically closes the page.</td>
+                        <td style="padding: 0.5rem;">true</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">disableHistory</td>
+                        <td style="padding: 0.5rem;">disable-history</td>
+                        <td style="padding: 0.5rem;">If true, prevents the page from interacting with the browser
+                            history.</td>
+                        <td style="padding: 0.5rem;">false</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+</aeva-doc-page>

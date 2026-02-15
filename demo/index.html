@@ -7,6 +7,8 @@
     <title>@aeva/ui - Component Library Demo</title>
     <!-- Prism.js for syntax highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -5634,6 +5636,23 @@ const count = CheckboxGroupHelper.getCount('interests');
                                     Page</aeva-button>
                             </div>
                         </aeva-page>
+
+                        <!-- Page Shell Component -->
+                        <h3
+                            style="font-size: 1.75rem; color: var(--aeva-primary-color); margin-top: 3rem; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--aeva-card-border-color);">
+                            Page Shell Component</h3>
+
+                        <div class="component-showcase">
+                            <h3>Page Demos</h3>
+                            <p class="description">Click the buttons below to open various page examples</p>
+
+                            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <aeva-button variant="primary" id="open-basic-page">Open Basic Page</aeva-button>
+                                <aeva-button variant="secondary" id="open-gradient-page">Open Gradient
+                                    Page</aeva-button>
+                                <aeva-button variant="outline" id="open-content-page">Open Content Page</aeva-button>
+                            </div>
+                        </div>
 
                         <aeva-page id="content-page">
                             <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">

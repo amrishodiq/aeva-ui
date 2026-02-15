@@ -1,0 +1,76 @@
+<aeva-doc-page title="Masonry"
+    description="A masonry layout component that arranges child elements in a compact grid using CSS columns for a Pinterest-style experience.">
+
+    <aeva-doc-section title="Basic Usage" description="Default auto-columns that adjust based on the viewport width.">
+        <aeva-doc-example>
+            <div slot="example">
+                <aeva-masonry gap="md">
+                    <aeva-card padding="md" style="height: 100px;"><aeva-text>Item 1</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 200px;"><aeva-text>Item 2</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 150px;"><aeva-text>Item 3</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 120px;"><aeva-text>Item 4</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 180px;"><aeva-text>Item 5</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 140px;"><aeva-text>Item 6</aeva-text></aeva-card>
+                </aeva-masonry>
+            </div>
+            <pre slot="code">
+&lt;aeva-masonry gap="md"&gt;
+    &lt;aeva-card style="height: 100px;"&gt;Item 1&lt;/aeva-card&gt;
+    &lt;aeva-card style="height: 200px;"&gt;Item 2&lt;/aeva-card&gt;
+    &lt;aeva-card style="height: 150px;"&gt;Item 3&lt;/aeva-card&gt;
+&lt;/aeva-masonry&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Fixed Columns" description="Force a specific number of columns across all breakpoints.">
+        <aeva-doc-example>
+            <div slot="example">
+                <aeva-masonry columns="2" gap="sm">
+                    <aeva-card padding="md" style="height: 100px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            1</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 150px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            2</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 120px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            3</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 180px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            4</aeva-text></aeva-card>
+                </aeva-masonry>
+            </div>
+            <pre slot="code">
+&lt;aeva-masonry columns="2" gap="sm"&gt;
+    &lt;aeva-card&gt;...&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;...&lt;/aeva-card&gt;
+&lt;/aeva-masonry&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; color: white;">
+                <thead>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                        <th style="padding: 0.5rem;">Property</th>
+                        <th style="padding: 0.5rem;">Attribute</th>
+                        <th style="padding: 0.5rem;">Description</th>
+                        <th style="padding: 0.5rem;">Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">columns</td>
+                        <td style="padding: 0.5rem;">columns</td>
+                        <td style="padding: 0.5rem;">Number of columns: 'auto', '1', '2', '3', '4', '5'</td>
+                        <td style="padding: 0.5rem;">'auto'</td>
+                    </tr>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">gap</td>
+                        <td style="padding: 0.5rem;">gap</td>
+                        <td style="padding: 0.5rem;">Gap size (number in px or 'xs', 'sm', 'md', 'lg', 'xl')</td>
+                        <td style="padding: 0.5rem;">16</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+</aeva-doc-page>

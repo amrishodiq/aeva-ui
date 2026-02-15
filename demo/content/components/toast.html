@@ -1,0 +1,106 @@
+<aeva-doc-page title="Toast"
+    description="Temporary notification messages that appear at the edge of the screen. Used for feedback on user actions.">
+    <aeva-doc-section title="Basic Usage" description="Display a simple toast message.">
+        <aeva-doc-example>
+            <!-- Static Preview -->
+            <aeva-toast open style="position: relative; display: block; z-index: 1;">
+                Feedback saved successfully
+            </aeva-toast>
+
+            <!-- Triggers -->
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                <aeva-button variant="primary"
+                    onclick="const t = document.createElement('aeva-toast'); t.innerText = 'Feedback saved successfully'; document.body.appendChild(t); t.open = true;">Show
+                    Live Toast</aeva-button>
+            </div>
+            <div slot="code">
+                <aeva-toast open>Feedback saved successfully</aeva-toast>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Variants" description="Different visual styles for different types of messages.">
+        <aeva-doc-example>
+            <div style="display: flex; flex-direction: column; gap: 1rem; width: 100%;">
+                <aeva-toast open variant="success" style="position: relative; display: block; z-index: 1;">
+                    Success! Action completed.
+                </aeva-toast>
+                <aeva-toast open variant="error" style="position: relative; display: block; z-index: 1;">
+                    An error occurred.
+                </aeva-toast>
+                <aeva-toast open variant="warning" style="position: relative; display: block; z-index: 1;">
+                    System maintenance in 5m.
+                </aeva-toast>
+                <aeva-toast open variant="info" style="position: relative; display: block; z-index: 1;">
+                    New update available.
+                </aeva-toast>
+            </div>
+
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.5rem;">
+                <aeva-text variant="caption" style="width: 100%; margin-bottom: 0.5rem;">Try live variants:</aeva-text>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.variant='success'; t.innerText = 'Success! Action completed.'; document.body.appendChild(t); t.open = true;">Success</aeva-button>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.variant='error'; t.innerText = 'An error occurred.'; document.body.appendChild(t); t.open = true;">Error</aeva-button>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.variant='warning'; t.innerText = 'System maintenance in 5m.'; document.body.appendChild(t); t.open = true;">Warning</aeva-button>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.variant='info'; t.innerText = 'New update available.'; document.body.appendChild(t); t.open = true;">Info</aeva-button>
+            </div>
+            <div slot="code">
+                <aeva-toast variant="success">Success message</aeva-toast>
+                <aeva-toast variant="error">Error message</aeva-toast>
+                <aeva-toast variant="warning">Warning message</aeva-toast>
+                <aeva-toast variant="info">Info message</aeva-toast>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Positions" description="Place toasts in any corner or at the center of the screen.">
+        <aeva-doc-example>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.position='top-right'; t.innerText = 'Top Right'; document.body.appendChild(t); t.open = true;">Top
+                    Right</aeva-button>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.position='top-center'; t.innerText = 'Top Center'; document.body.appendChild(t); t.open = true;">Top
+                    Center</aeva-button>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.position='bottom-left'; t.innerText = 'Bottom Left'; document.body.appendChild(t); t.open = true;">Bottom
+                    Left</aeva-button>
+            </div>
+            <div slot="code">
+                <aeva-toast position="top-right">...</aeva-toast>
+                <aeva-toast position="top-center">...</aeva-toast>
+                <aeva-toast position="bottom-left">...</aeva-toast>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Duration & Closability"
+        description="Control how long toasts stay visible and if users can dismiss them manually.">
+        <aeva-doc-example>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.duration=10000; t.innerText = 'Stays for 10 seconds'; document.body.appendChild(t); t.open = true;">Long
+                    Duration</aeva-button>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.duration=0; t.innerText = 'Sticky - must close manually'; document.body.appendChild(t); t.open = true;">Sticky
+                    Toast</aeva-button>
+                <aeva-button variant="ghost" size="sm"
+                    onclick="const t = document.createElement('aeva-toast'); t.closable=false; t.innerText = 'No close button'; document.body.appendChild(t); t.open = true;">Not
+                    Closable</aeva-button>
+            </div>
+            <div slot="code">
+                <!-- Stays for 10 seconds -->
+                <aeva-toast duration="10000">...</aeva-toast>
+
+                <!-- Sticky (won't auto-dismiss) -->
+                <aeva-toast duration="0">...</aeva-toast>
+
+                <!-- No close button -->
+                <aeva-toast .closable="${false}">...</aeva-toast>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+</aeva-doc-page>

@@ -52,6 +52,7 @@ export class AevaProgress extends LitElement {
       background-color: var(--aeva-progress-bg);
       border-radius: var(--aeva-progress-border-radius);
       position: relative;
+      overflow: hidden;
     }
 
     .horizontal-bar {

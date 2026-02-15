@@ -31,7 +31,7 @@
         </div>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/badge', true)">
         <div slot="header"><aeva-text variant="h4">Badge</aeva-text></div>
         <aeva-text variant="body">Small status indicators for numbers, labels, or categories.</aeva-text>
         <div slot="footer" class="card-footer-flex">
@@ -40,20 +40,30 @@
         </div>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/checkbox', true)">
         <div slot="header"><aeva-text variant="h4">Checkbox</aeva-text></div>
         <aeva-text variant="body">Allow users to select one or more items from a set.</aeva-text>
         <div slot="footer" class="card-footer">
-            <aeva-checkbox label="Check me"></aeva-checkbox>
+            <aeva-checkbox></aeva-checkbox>
         </div>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/card', true)">
+        <div slot="header"><aeva-text variant="h4">Card</aeva-text></div>
+        <aeva-text variant="body">Flexible content container with support for headers, footers, and interactive
+            states.</aeva-text>
+        <div slot="footer" class="card-footer">
+            <aeva-button variant="primary" size="sm">View
+                Details</aeva-button>
+        </div>
+    </aeva-card>
+
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/input', true)">
         <div slot="header"><aeva-text variant="h4">Input</aeva-text></div>
         <aeva-text variant="body">Captures user text input with support for icons and validation states.</aeva-text>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/progress', true)">
         <div slot="header"><aeva-text variant="h4">Progress</aeva-text></div>
         <aeva-text variant="body">Visual representation of task completion or loading states.</aeva-text>
         <div slot="footer" class="card-footer">
@@ -61,59 +71,64 @@
         </div>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/rating', true)">
         <div slot="header"><aeva-text variant="h4">Rating</aeva-text></div>
-        <aeva-text variant="body">Allows users to provide feedback on a numeric scale.</aeva-text>
+        <aeva-text variant="body">Star-based rating component with support for half-stars and custom icons.</aeva-text>
         <div slot="footer" class="card-footer">
-            <aeva-rating value="4"></aeva-rating>
+            <aeva-rating value="4" max="5"></aeva-rating>
         </div>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/tooltip', true)">
         <div slot="header"><aeva-text variant="h4">Tooltip</aeva-text></div>
-        <aeva-text variant="body">Contextual information shown on hover or focus.</aeva-text>
+        <aeva-text variant="body">Contextual information shown on hover or focus with smart positioning.</aeva-text>
     </aeva-card>
 
     <!-- MOLECULES SECTION -->
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/action-bar', true)">
         <div slot="header"><aeva-text variant="h4">Action Bar</aeva-text></div>
         <aeva-text variant="body">Command center for pages, holding titles and primary actions.</aeva-text>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/carousel', true)">
         <div slot="header"><aeva-text variant="h4">Carousel</aeva-text></div>
         <aeva-text variant="body">Slider component for browsing through multiple items of content.</aeva-text>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/list', true)">
         <div slot="header"><aeva-text variant="h4">List</aeva-text></div>
-        <aeva-text variant="body">Vertical collection of related information items.</aeva-text>
+        <aeva-text variant="body">A flexible container for vertical collections of information items.</aeva-text>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/toast', true)">
         <div slot="header"><aeva-text variant="h4">Toast</aeva-text></div>
-        <aeva-text variant="body">Brief, non-intrusive feedback messages at the edge of the screen.</aeva-text>
+        <aeva-text variant="body">Temporary notification messages that appear at the edge of the screen.</aeva-text>
+    </aeva-card>
+
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/tab', true)">
+        <div slot="header"><aeva-text variant="h4">Tabs</aeva-text></div>
+        <aeva-text variant="body">Navigation component with smooth morphing background animations.</aeva-text>
     </aeva-card>
 
     <!-- ORGANISMS SECTION -->
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/sidebar', true)">
         <div slot="header"><aeva-text variant="h4">Sidebar</aeva-text></div>
         <aeva-text variant="body">Primary navigation container for complex applications.</aeva-text>
     </aeva-card>
 
     <!-- TEMPLATES SECTION -->
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/bento-grid', true)">
         <div slot="header"><aeva-text variant="h4">Bento Grid</aeva-text></div>
         <aeva-text variant="body">Modern, dense grid layout for feature showcases.</aeva-text>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/masonry', true)">
         <div slot="header"><aeva-text variant="h4">Masonry</aeva-text></div>
         <aeva-text variant="body">Responsive grid layout that optimizes space vertically.</aeva-text>
     </aeva-card>
 
-    <aeva-card padding="md">
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/page-shell', true)">
         <div slot="header"><aeva-text variant="h4">Page Shell</aeva-text></div>
-        <aeva-text variant="body">The structural skeleton ofEvery page in Aeva UI.</aeva-text>
+        <aeva-text variant="body">The structural skeleton of every page in Aeva UI.</aeva-text>
     </aeva-card>
 </aeva-masonry>

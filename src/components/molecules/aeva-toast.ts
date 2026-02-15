@@ -64,17 +64,17 @@ export class AevaToast extends LitElement {
 
     .toast {
       position: relative;
-      background: var(--aeva-toast-bg);
-      backdrop-filter: blur(var(--aeva-toast-blur));
-      -webkit-backdrop-filter: blur(var(--aeva-toast-blur));
-      border-radius: var(--aeva-toast-border-radius);
-      padding: var(--aeva-toast-padding);
-      min-width: var(--aeva-toast-min-width);
-      max-width: var(--aeva-toast-max-width);
-      border: 1px solid var(--aeva-toast-border-color);
+      background: var(--aeva-toast-bg, rgba(255, 255, 255, 0.95));
+      backdrop-filter: blur(var(--aeva-toast-blur, 8px));
+      -webkit-backdrop-filter: blur(var(--aeva-toast-blur, 8px));
+      border-radius: var(--aeva-toast-border-radius, 12px);
+      padding: var(--aeva-toast-padding, 1rem 1.25rem);
+      min-width: var(--aeva-toast-min-width, 300px);
+      max-width: var(--aeva-toast-max-width, 500px);
+      border: 1px solid var(--aeva-toast-border-color, rgba(255, 255, 255, 0.1));
       box-shadow: 
-        0 10px 15px -3px var(--aeva-toast-shadow-color),
-        0 4px 6px -2px var(--aeva-toast-shadow-color);
+        0 10px 15px -3px var(--aeva-toast-shadow-color, rgba(0, 0, 0, 0.1)),
+        0 4px 6px -2px var(--aeva-toast-shadow-color, rgba(0, 0, 0, 0.05));
       
       display: flex;
       align-items: center;
@@ -215,7 +215,6 @@ export class AevaToast extends LitElement {
     /* Mobile responsive */
     @media (max-width: 767px) {
       :host {
-        --aeva-toast-min-width: calc(100vw - 2rem);
         --aeva-toast-max-width: calc(100vw - 2rem);
       }
 

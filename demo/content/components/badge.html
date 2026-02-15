@@ -1,0 +1,57 @@
+<aeva-doc-page title="Badge"
+    description="Versatile badge component for tags, labels, and status indicators. Supports multiple variants, sizes, and interactive features like deletable states.">
+
+    <aeva-doc-section title="Color Variants" description="Use different variants to convey meaning or hierarchy.">
+        <aeva-doc-example code='<aeva-badge variant="primary">Primary</aeva-badge>
+<aeva-badge variant="secondary">Secondary</aeva-badge>
+<aeva-badge variant="success">Success</aeva-badge>
+<aeva-badge variant="warning">Warning</aeva-badge>
+<aeva-badge variant="danger">Danger</aeva-badge>
+<aeva-badge variant="info">Info</aeva-badge>'>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                <aeva-badge variant="primary">Primary</aeva-badge>
+                <aeva-badge variant="secondary">Secondary</aeva-badge>
+                <aeva-badge variant="success">Success</aeva-badge>
+                <aeva-badge variant="warning">Warning</aeva-badge>
+                <aeva-badge variant="danger">Danger</aeva-badge>
+                <aeva-badge variant="info">Info</aeva-badge>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Sizes" description="Available in three sizes to fit different contexts.">
+        <aeva-doc-example code='<aeva-badge size="sm" variant="success">Small</aeva-badge>
+<aeva-badge size="md" variant="success">Medium</aeva-badge>
+<aeva-badge size="lg" variant="success">Large</aeva-badge>'>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <aeva-badge size="sm" variant="success">Small</aeva-badge>
+                <aeva-badge size="md" variant="success">Medium</aeva-badge>
+                <aeva-badge size="lg" variant="success">Large</aeva-badge>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Interactive & Icons"
+        description="Badges can be deletable or contain icons for richer information.">
+        <aeva-doc-example code='<aeva-badge deletable variant="primary">Deletable</aeva-badge>
+<aeva-badge variant="info">
+    <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+    </svg>
+    With Icon
+</aeva-badge>'>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <aeva-badge deletable variant="primary">Deletable</aeva-badge>
+                <aeva-badge variant="info">
+                    <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        style="width: 1rem; height: 1rem;">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                    With Icon
+                </aeva-badge>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+</aeva-doc-page>

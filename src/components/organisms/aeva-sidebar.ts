@@ -31,47 +31,67 @@ export class AevaSidebar extends LitElement {
     :host {
       display: block;
       box-sizing: border-box;
+      --aeva-sidebar-bg-default: var(--aeva-surface-bg, #ffffff);
+      --aeva-sidebar-border-default: 1px solid var(--aeva-border-color, rgba(0, 0, 0, 0.1));
+      --aeva-sidebar-width-sm-default: 200px;
+      --aeva-sidebar-width-md-default: 280px;
+      --aeva-sidebar-width-lg-default: 320px;
+      --aeva-sidebar-icon-width-default: 72px;
+      --aeva-sidebar-transition-default: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --aeva-sidebar-z-index-default: 1000;
+      --aeva-sidebar-backdrop-bg-default: rgba(0, 0, 0, 0.5);
+      --aeva-sidebar-shadow-default: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    }
+
+    :host([static]) {
+      position: relative !important;
+      z-index: 1 !important;
+      height: 100% !important;
     }
 
     /* Mobile: Hidden drawer */
     @media (max-width: 767px) {
-      :host {
+      :host(:not([static])) {
         position: fixed;
         top: 0;
         left: 0;
         bottom: 0;
-        z-index: -1; /* Start hidden behind content */
-        width: var(--aeva-sidebar-width-md);
+        z-index: -1;
+        width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default));
         max-width: 85vw;
-        transition: z-index 0s var(--aeva-sidebar-transition); /* Delay z-index change */
+        transition: z-index 0s var(--aeva-sidebar-transition, var(--aeva-sidebar-transition-default));
       }
 
-      :host([open]) {
-        z-index: var(--aeva-sidebar-z-index); /* Bring to front when open */
-        transition: z-index 0s 0s; /* Immediate z-index change when opening */
+      :host([open]:not([static])) {
+        z-index: var(--aeva-sidebar-z-index, var(--aeva-sidebar-z-index-default));
+        transition: z-index 0s 0s;
       }
 
       .sidebar {
         transform: translateX(-100%);
-        transition: transform var(--aeva-sidebar-transition);
-        box-shadow: var(--aeva-sidebar-shadow);
+        transition: transform var(--aeva-sidebar-transition, var(--aeva-sidebar-transition-default));
+        box-shadow: var(--aeva-sidebar-shadow, var(--aeva-sidebar-shadow-default));
       }
 
-      :host([open]) .sidebar {
+      :host([open]:not([static])) .sidebar {
         transform: translateX(0);
+      }
+
+      :host([static]) .sidebar {
+        transform: none !important;
       }
 
       .backdrop {
         position: fixed;
         inset: 0;
-        background: var(--aeva-sidebar-backdrop-bg);
+        background: var(--aeva-sidebar-backdrop-bg, var(--aeva-sidebar-backdrop-bg-default));
         opacity: 0;
         pointer-events: none;
-        transition: opacity var(--aeva-sidebar-transition);
+        transition: opacity var(--aeva-sidebar-transition, var(--aeva-sidebar-transition-default));
         z-index: -1;
       }
 
-      :host([open]) .backdrop {
+      :host([open]:not([static])) .backdrop {
         opacity: 1;
         pointer-events: auto;
       }
@@ -79,9 +99,9 @@ export class AevaSidebar extends LitElement {
 
     /* Tablet: Icon-only mode */
     @media (min-width: 768px) and (max-width: 1023px) {
-      :host {
+      :host(:not([static])) {
         position: relative;
-        width: var(--aeva-sidebar-icon-width);
+        width: var(--aeva-sidebar-icon-width, var(--aeva-sidebar-icon-width-default));
         height: 100%;
         z-index: 1000 !important;
       }
@@ -91,7 +111,7 @@ export class AevaSidebar extends LitElement {
       }
 
       /* Hide text in icon-only mode */
-      :host {
+      :host(:not([static])) {
         --list-item-text-display: none;
         --list-item-justify: center;
         --list-item-padding: 0.75rem;
@@ -100,22 +120,22 @@ export class AevaSidebar extends LitElement {
 
     /* Desktop: Full mode */
     @media (min-width: 1024px) {
-      :host {
+      :host(:not([static])) {
         position: relative;
         height: 100%;
         z-index: 1000 !important;
       }
 
-      :host([width="sm"]) {
-        width: var(--aeva-sidebar-width-sm);
+      :host([width="sm"]:not([static])) {
+        width: var(--aeva-sidebar-width-sm, var(--aeva-sidebar-width-sm-default));
       }
 
-      :host([width="md"]) {
-        width: var(--aeva-sidebar-width-md);
+      :host([width="md"]:not([static])) {
+        width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default));
       }
 
-      :host([width="lg"]) {
-        width: var(--aeva-sidebar-width-lg);
+      :host([width="lg"]:not([static])) {
+        width: var(--aeva-sidebar-width-lg, var(--aeva-sidebar-width-lg-default));
       }
 
       .backdrop {
@@ -123,18 +143,20 @@ export class AevaSidebar extends LitElement {
       }
     }
 
+    /* Static mode forcing widths */
+    :host([static][width="sm"]) { width: var(--aeva-sidebar-width-sm, var(--aeva-sidebar-width-sm-default)); }
+    :host([static][width="md"]) { width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default)); }
+    :host([static][width="lg"]) { width: var(--aeva-sidebar-width-lg, var(--aeva-sidebar-width-lg-default)); }
+    :host([static]:not([width])) { width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default)); }
+
     /* Right position */
-    :host([position="right"]) {
+    :host([position="right"]:not([static])) {
       left: auto;
       right: 0;
     }
 
     @media (max-width: 767px) {
-      :host([position="right"]) .sidebar {
-        transform: translateX(100%);
-      }
-
-      :host([position="right"][open]) .sidebar {
+      :host([position="right"][open]:not([static])) .sidebar {
         transform: translateX(0);
       }
     }
@@ -144,8 +166,8 @@ export class AevaSidebar extends LitElement {
       display: flex;
       flex-direction: column;
       height: 100%;
-      background: var(--aeva-sidebar-bg);
-      border-right: var(--aeva-sidebar-border);
+      background: var(--aeva-sidebar-bg, var(--aeva-sidebar-bg-default));
+      border-right: var(--aeva-sidebar-border, var(--aeva-sidebar-border-default));
       overflow: hidden;
       box-sizing: border-box;
       border-top-right-radius: 24px;
@@ -271,6 +293,13 @@ export class AevaSidebar extends LitElement {
   closeOnNavigate = true;
 
   /**
+   * Whether the sidebar is in static mode (no fixed positioning, always visible)
+   * Useful for documentation and embedding.
+   */
+  @property({ type: Boolean, reflect: true })
+  static = false;
+
+  /**
    * Current viewport mode
    */
   @state()
@@ -290,7 +319,9 @@ export class AevaSidebar extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.updateViewport();
+    if (!this.static) {
+      this.updateViewport();
+    }
     this.checkSlots();
     window.addEventListener('resize', this.handleResize);
     this.addEventListener('click', this.handleContentClick);
@@ -303,7 +334,9 @@ export class AevaSidebar extends LitElement {
   }
 
   private handleResize = () => {
-    this.updateViewport();
+    if (!this.static) {
+      this.updateViewport();
+    }
   };
 
   private updateViewport() {
@@ -330,6 +363,8 @@ export class AevaSidebar extends LitElement {
   }
 
   private updateListItems() {
+    if (this.static) return;
+
     // Apply icon-only to all list items ONLY in tablet mode
     // Mobile drawer should show full items (icon + text)
     const listItems = this.querySelectorAll('aeva-list-item');

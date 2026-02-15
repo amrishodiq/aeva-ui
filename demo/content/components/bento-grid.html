@@ -1,0 +1,133 @@
+<aeva-doc-page title="Bento Grid"
+    description="A bento grid component with preset asymmetric layouts. Perfect for creating visually interesting dashboard-style layouts.">
+
+    <aeva-doc-section title="Preset: Feature"
+        description="1 large item followed by 3 smaller items. Good for highlighting a main feature.">
+        <aeva-doc-example>
+            <aeva-bento-grid preset="feature">
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h3">Main
+                        Feature</aeva-text></aeva-card>
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h4">Sub 1</aeva-text></aeva-card>
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h4">Sub 2</aeva-text></aeva-card>
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h4">Sub 3</aeva-text></aeva-card>
+            </aeva-bento-grid>
+            <pre slot="code">
+&lt;aeva-bento-grid preset="feature"&gt;
+    &lt;aeva-card&gt;Main Feature&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Sub 1&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Sub 2&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Sub 3&lt;/aeva-card&gt;
+&lt;/aeva-bento-grid&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Preset: Dashboard" description="A more complex grid layout designed for data dashboards.">
+        <aeva-doc-example>
+            <aeva-bento-grid preset="dashboard">
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h3">Main
+                        Chart</aeva-text></aeva-card>
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h4">Metric
+                        A</aeva-text></aeva-card>
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h4">Metric
+                        B</aeva-text></aeva-card>
+                <aeva-card padding="md" style="height: 100%;"><aeva-text variant="h4">Activity</aeva-text></aeva-card>
+                <aeva-card padding="md" style="height: 100%;"><aeva-text
+                        variant="h4">Notifications</aeva-text></aeva-card>
+            </aeva-bento-grid>
+            <pre slot="code">
+&lt;aeva-bento-grid preset="dashboard"&gt;
+    &lt;aeva-card&gt;Main Chart&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Metric A&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Metric B&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Activity&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Notifications&lt;/aeva-card&gt;
+&lt;/aeva-bento-grid&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Generic Grid" description="Use aeva-grid for standard responsive multi-column layouts.">
+        <aeva-doc-example>
+            <div slot="example">
+                <aeva-grid columns="3" gap="md">
+                    <aeva-card padding="md" style="background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            1</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            2</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            3</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            4</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            5</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="background: rgba(0,0,0,0.1);"><aeva-text>Item
+                            6</aeva-text></aeva-card>
+                </aeva-grid>
+            </div>
+            <pre slot="code">
+&lt;aeva-grid columns="3" gap="md"&gt;
+    &lt;aeva-card&gt;Item 1&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Item 2&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;Item 3&lt;/aeva-card&gt;
+&lt;/aeva-grid&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Custom Grid Items"
+        description="Use aeva-grid-item for precise control over spanning within an aeva-grid.">
+        <aeva-doc-example>
+            <div slot="example">
+                <aeva-grid columns="4" gap="md">
+                    <aeva-grid-item col-span="3">
+                        <aeva-card padding="md"
+                            style="background: rgba(102, 126, 234, 0.1); height: 100%;"><aeva-text>Col Span
+                                3</aeva-text></aeva-card>
+                    </aeva-grid-item>
+                    <aeva-grid-item>
+                        <aeva-card padding="md" style="background: rgba(0,0,0,0.1); height: 100%;"><aeva-text>Col
+                                1</aeva-text></aeva-card>
+                    </aeva-grid-item>
+                    <aeva-grid-item col-span="2">
+                        <aeva-card padding="md" style="background: rgba(0,0,0,0.1); height: 100%;"><aeva-text>Col Span
+                                2</aeva-text></aeva-card>
+                    </aeva-grid-item>
+                    <aeva-grid-item col-span="2">
+                        <aeva-card padding="md" style="background: rgba(0,0,0,0.1); height: 100%;"><aeva-text>Col Span
+                                2</aeva-text></aeva-card>
+                    </aeva-grid-item>
+                </aeva-grid>
+            </div>
+            <pre slot="code">
+&lt;aeva-grid columns="4" gap="md"&gt;
+    &lt;aeva-grid-item col-span="3"&gt;...&lt;/aeva-grid-item&gt;
+    &lt;aeva-grid-item&gt;...&lt;/aeva-grid-item&gt;
+    &lt;aeva-grid-item col-span="2"&gt;...&lt;/aeva-grid-item&gt;
+    &lt;aeva-grid-item col-span="2"&gt;...&lt;/aeva-grid-item&gt;
+&lt;/aeva-grid&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table style="width: 100%; border-collapse: collapse; color: white;">
+                <thead>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left;">
+                        <th style="padding: 0.5rem;">Property</th>
+                        <th style="padding: 0.5rem;">Attribute</th>
+                        <th style="padding: 0.5rem;">Description</th>
+                        <th style="padding: 0.5rem;">Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">preset</td>
+                        <td style="padding: 0.5rem;">preset</td>
+                        <td style="padding: 0.5rem;">Layout pattern: 'feature', 'masonry', 'dashboard', 'sidebar',
+                            'spotlight', 'custom'</td>
+                        <td style="padding: 0.5rem;">'feature'</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+</aeva-doc-page>

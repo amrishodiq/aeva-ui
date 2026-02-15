@@ -1,0 +1,125 @@
+<aeva-doc-page title="Action Bar"
+    description="A flexible container for grouping actions and navigation items. Typically used at the header or footer of a page or component.">
+    <aeva-doc-section title="Basic Usage" description="Standard action bar with primary and secondary slots.">
+        <aeva-doc-example>
+            <aeva-action-bar padding="sm"
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <div slot="secondary">
+                    <aeva-button variant="ghost" size="sm">Cancel</aeva-button>
+                </div>
+                <div slot="primary" style="display: flex; gap: 0.5rem;">
+                    <aeva-button variant="ghost" size="sm">Save Draft</aeva-button>
+                    <aeva-button variant="primary" size="sm">Publish</aeva-button>
+                </div>
+            </aeva-action-bar>
+            <div slot="code">
+                <aeva-action-bar padding="sm">
+                    <div slot="secondary">
+                        <aeva-button variant="ghost" size="sm">Cancel</aeva-button>
+                    </div>
+                    <div slot="primary">
+                        <aeva-button variant="ghost" size="sm">Save Draft</aeva-button>
+                        <aeva-button variant="primary" size="sm">Publish</aeva-button>
+                    </div>
+                </aeva-action-bar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Alignments" description="Action groups can be aligned in various ways.">
+        <aeva-doc-example>
+            <aeva-text variant="caption">Space Between (Default)</aeva-text>
+            <aeva-action-bar align="space-between" padding="sm"
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <div slot="secondary"><aeva-button variant="ghost" icon-only><svg viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2">
+                            <path d="M15 19l-7-7 7-7" />
+                        </svg></aeva-button></div>
+                <div slot="primary"><aeva-button variant="primary" size="sm">Next</aeva-button></div>
+            </aeva-action-bar>
+
+            <aeva-text variant="caption" style="margin-top: 1rem;">Center</aeva-text>
+            <aeva-action-bar align="center" padding="sm"
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <div slot="primary">
+                    <aeva-button variant="ghost" size="sm">Skip</aeva-button>
+                    <aeva-button variant="primary" size="sm">Continue</aeva-button>
+                </div>
+            </aeva-action-bar>
+
+            <aeva-text variant="caption" style="margin-top: 1rem;">End</aeva-text>
+            <aeva-action-bar align="end" padding="sm"
+                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <div slot="primary">
+                    <aeva-button variant="ghost" size="sm">Cancel</aeva-button>
+                    <aeva-button variant="primary" size="sm">Confirm</aeva-button>
+                </div>
+            </aeva-action-bar>
+
+            <div slot="code">
+                <!-- Space Between -->
+                <aeva-action-bar align="space-between">...</aeva-action-bar>
+
+                <!-- Center -->
+                <aeva-action-bar align="center">...</aeva-action-bar>
+
+                <!-- End -->
+                <aeva-action-bar align="end">...</aeva-action-bar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Layouts" description="Switch between horizontal and vertical layouts.">
+        <aeva-doc-example>
+            <div style="width: 100%; display: flex; flex-direction: column; gap: 2rem;">
+                <div>
+                    <aeva-text variant="caption">Vertical Layout (Stacks actions)</aeva-text>
+                    <aeva-action-bar layout="vertical" padding="sm"
+                        style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1);">
+                        <div slot="primary">
+                            <aeva-button variant="primary">Create Account</aeva-button>
+                        </div>
+                        <div slot="secondary">
+                            <aeva-button variant="ghost">Already have an account? Log in</aeva-button>
+                        </div>
+                    </aeva-action-bar>
+                </div>
+            </div>
+            <div slot="code">
+                <aeva-action-bar layout="vertical">
+                    <div slot="primary">
+                        <aeva-button variant="primary">Create Account</aeva-button>
+                    </div>
+                    <div slot="secondary">
+                        <aeva-button variant="ghost">Log in</aeva-button>
+                    </div>
+                </aeva-action-bar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Visual States" description="Apply glassmorphism and sticky behavior.">
+        <aeva-doc-example>
+            <div
+                style="height: 150px; overflow-y: auto; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 12px; position: relative; background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop'); background-size: cover;">
+                <div style="height: 300px; padding: 1rem;">
+                    <aeva-text style="--aeva-text-color: white;">Scroll down to see the sticky glass action
+                        bar...</aeva-text>
+                </div>
+                <aeva-action-bar sticky glassmorphism padding="sm"
+                    style="--aeva-action-bar-sticky-bg: rgba(0,0,0,0.5);">
+                    <div slot="primary">
+                        <aeva-button variant="primary" size="sm">Sticky Action</aeva-button>
+                    </div>
+                </aeva-action-bar>
+            </div>
+            <div slot="code">
+                <aeva-action-bar sticky glassmorphism>
+                    <div slot="primary">
+                        <aeva-button variant="primary">Sticky Action</aeva-button>
+                    </div>
+                </aeva-action-bar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+</aeva-doc-page>
