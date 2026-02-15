@@ -15,20 +15,18 @@ import { customElement, property } from 'lit/decorators.js';
  * @cssprop --aeva-action-bar-padding - Padding for the action bar
  * @cssprop --aeva-action-bar-gap - Gap between button groups
  * @cssprop --aeva-action-bar-border-top - Border top style
+ * @cssprop --aeva-action-bar-border-bottom - Border bottom style
+ * @cssprop --aeva-action-bar-backdrop-filter - Backdrop filter effect (default: none)
+ * @cssprop --aeva-action-bar-drop-shadow - Drop shadow effect (default: none)
  * @cssprop --aeva-action-bar-sticky-bg - Background when sticky (default: rgba(255, 255, 255, 0.95))
  * @cssprop --aeva-action-bar-sticky-blur - Backdrop blur when sticky (default: 10px)
+ * @cssprop --aeva-action-bar-glassmorphism-border - Border style for glassmorphism effect
+ * @cssprop --aeva-action-bar-glassmorphism-shadow - Box shadow for glassmorphism effect
  */
 @customElement('aeva-action-bar')
 export class AevaActionBar extends LitElement {
   static styles = css`
     :host {
-      --aeva-action-bar-bg: transparent;
-      --aeva-action-bar-padding: 1rem;
-      --aeva-action-bar-gap: 0.75rem;
-      --aeva-action-bar-border-top: none;
-      --aeva-action-bar-sticky-bg: rgba(255, 255, 255, 0.95);
-      --aeva-action-bar-sticky-blur: 10px;
-
       display: block;
       width: 100%;
       box-sizing: border-box;
@@ -40,6 +38,10 @@ export class AevaActionBar extends LitElement {
       margin: var(--aeva-action-bar-padding);
       background: var(--aeva-action-bar-bg);
       border-top: var(--aeva-action-bar-border-top);
+      border-bottom: var(--aeva-action-bar-border-bottom);
+      backdrop-filter: var(--aeva-action-bar-backdrop-filter);
+      -webkit-backdrop-filter: var(--aeva-action-bar-backdrop-filter);
+      box-shadow: var(--aeva-action-bar-drop-shadow);
       box-sizing: border-box;
       gap: var(--aeva-action-bar-gap);
       border-radius: 12px;
@@ -161,8 +163,8 @@ export class AevaActionBar extends LitElement {
       background: var(--aeva-action-bar-sticky-bg);
       backdrop-filter: blur(var(--aeva-action-bar-sticky-blur));
       -webkit-backdrop-filter: blur(var(--aeva-action-bar-sticky-blur));
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+      border-top: var(--aeva-action-bar-glassmorphism-border);
+      box-shadow: var(--aeva-action-bar-glassmorphism-shadow);
     }
 
     /* Responsive layout */

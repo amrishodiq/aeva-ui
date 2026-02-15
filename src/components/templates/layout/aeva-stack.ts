@@ -18,18 +18,10 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-stack')
 export class AevaStack extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       width: 100%;
-      
-      /* Gap presets */
-      --aeva-stack-gap-none: 0;
-      --aeva-stack-gap-xs: 0.25rem;
-      --aeva-stack-gap-sm: 0.5rem;
-      --aeva-stack-gap-md: 1rem;
-      --aeva-stack-gap-lg: 1.5rem;
-      --aeva-stack-gap-xl: 2rem;
     }
 
     .stack {
@@ -119,56 +111,56 @@ export class AevaStack extends LitElement {
     }
   `;
 
-    /**
-     * Stack direction
-     */
-    @property({ type: String, reflect: true })
-    direction: 'vertical' | 'horizontal' = 'vertical';
+  /**
+   * Stack direction
+   */
+  @property({ type: String, reflect: true })
+  direction: 'vertical' | 'horizontal' = 'vertical';
 
-    /**
-     * Spacing between items
-     */
-    @property({ type: String, reflect: true })
-    spacing: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  /**
+   * Spacing between items
+   */
+  @property({ type: String, reflect: true })
+  spacing: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
 
-    /**
-     * Alignment of items on cross-axis
-     */
-    @property({ type: String, reflect: true })
-    align: 'start' | 'center' | 'end' | 'stretch' = 'stretch';
+  /**
+   * Alignment of items on cross-axis
+   */
+  @property({ type: String, reflect: true })
+  align: 'start' | 'center' | 'end' | 'stretch' = 'stretch';
 
-    /**
-     * Justification of items on main-axis
-     */
-    @property({ type: String, reflect: true })
-    justify: 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly' = 'start';
+  /**
+   * Justification of items on main-axis
+   */
+  @property({ type: String, reflect: true })
+  justify: 'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly' = 'start';
 
-    /**
-     * Whether items should wrap
-     */
-    @property({ type: Boolean, reflect: true })
-    wrap = false;
+  /**
+   * Whether items should wrap
+   */
+  @property({ type: Boolean, reflect: true })
+  wrap = false;
 
-    render() {
-        const classes = [
-            'stack',
-            `direction-${this.direction}`,
-            `spacing-${this.spacing}`,
-            `align-${this.align}`,
-            `justify-${this.justify}`,
-            this.wrap ? 'wrap' : '',
-        ].filter(Boolean).join(' ');
+  render() {
+    const classes = [
+      'stack',
+      `direction-${this.direction}`,
+      `spacing-${this.spacing}`,
+      `align-${this.align}`,
+      `justify-${this.justify}`,
+      this.wrap ? 'wrap' : '',
+    ].filter(Boolean).join(' ');
 
-        return html`
+    return html`
       <div class="${classes}" part="stack">
         <slot></slot>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-stack': AevaStack;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-stack': AevaStack;
+  }
 }

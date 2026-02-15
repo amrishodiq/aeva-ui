@@ -22,23 +22,10 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-container')
 export class AevaContainer extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       width: 100%;
-      
-      /* Max-width presets */
-      --aeva-container-max-width-sm: 640px;
-      --aeva-container-max-width-md: 768px;
-      --aeva-container-max-width-lg: 1024px;
-      --aeva-container-max-width-xl: 1280px;
-      --aeva-container-max-width-full: 100%;
-      
-      /* Padding presets */
-      --aeva-container-padding-none: 0;
-      --aeva-container-padding-sm: 1rem;
-      --aeva-container-padding-md: 1.5rem;
-      --aeva-container-padding-lg: 2rem;
     }
 
     .container {
@@ -91,42 +78,42 @@ export class AevaContainer extends LitElement {
     }
   `;
 
-    /**
-     * Container size preset
-     */
-    @property({ type: String, reflect: true })
-    size: 'sm' | 'md' | 'lg' | 'xl' | 'full' = 'lg';
+  /**
+   * Container size preset
+   */
+  @property({ type: String, reflect: true })
+  size: 'sm' | 'md' | 'lg' | 'xl' | 'full' = 'lg';
 
-    /**
-     * Whether the container should be centered
-     */
-    @property({ type: Boolean, reflect: true })
-    centered = true;
+  /**
+   * Whether the container should be centered
+   */
+  @property({ type: Boolean, reflect: true })
+  centered = true;
 
-    /**
-     * Padding size
-     */
-    @property({ type: String, reflect: true })
-    padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
+  /**
+   * Padding size
+   */
+  @property({ type: String, reflect: true })
+  padding: 'none' | 'sm' | 'md' | 'lg' = 'md';
 
-    render() {
-        const classes = [
-            'container',
-            `size-${this.size}`,
-            `padding-${this.padding}`,
-            this.centered ? 'centered' : '',
-        ].filter(Boolean).join(' ');
+  render() {
+    const classes = [
+      'container',
+      `size-${this.size}`,
+      `padding-${this.padding}`,
+      this.centered ? 'centered' : '',
+    ].filter(Boolean).join(' ');
 
-        return html`
+    return html`
       <div class="${classes}" part="container">
         <slot></slot>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-container': AevaContainer;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-container': AevaContainer;
+  }
 }

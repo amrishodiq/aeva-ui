@@ -26,14 +26,6 @@ import { customElement, property } from 'lit/decorators.js';
 export class AevaModal extends LitElement {
   static styles = css`
     :host {
-      --aeva-modal-bg: rgba(255, 255, 255, 0.7);
-      --aeva-modal-border-radius: 23px;
-      --aeva-modal-padding: 2rem;
-      --aeva-modal-max-width: 600px;
-      --aeva-modal-backdrop-bg: rgba(0, 0, 0, 0.4);
-      --aeva-modal-border-color: rgba(255, 255, 255, 0.5);
-      --aeva-modal-shadow-color: rgba(0, 0, 0, 0.1);
-
       display: none;
       position: fixed;
       top: 0;
@@ -130,12 +122,7 @@ export class AevaModal extends LitElement {
       bottom: 0;
       border-radius: var(--aeva-modal-border-radius);
       padding: 1px;
-      background: linear-gradient(
-        135deg,
-        rgba(255, 255, 255, 0.6) 0%,
-        rgba(255, 255, 255, 0.1) 50%,
-        rgba(255, 255, 255, 0.6) 100%
-      );
+      background: var(--aeva-modal-shimmer-gradient);
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;

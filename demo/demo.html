@@ -49,12 +49,10 @@
             backdrop-filter: blur(10px);
         }
 
-        /* Action bar frosted glass effect */
-        aeva-action-bar::part(action-bar) {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        /* Action bar frosted glass effect - using CSS variables */
+        aeva-action-bar {
+            --aeva-action-bar-backdrop-filter: blur(20px);
+            --aeva-action-bar-border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         /* SVG icon sizing */
@@ -66,136 +64,172 @@
 </head>
 
 <body>
-    <aeva-page style="--aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
-        <div style="display: flex; height: 100%;">
-            <!-- Sidebar -->
-            <aeva-sidebar id="main-sidebar" width="md">
-                <!-- Navigation -->
-                <aeva-list>
-                    <aeva-list-item active>
-                        <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                            </path>
-                        </svg>
-                        <span slot="title">Docs</span>
-                    </aeva-list-item>
+    <aeva-theme theme="dark">
+        <aeva-page style="--aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+            <div style="display: flex; height: 100%;">
+                <!-- Sidebar -->
+                <aeva-sidebar id="main-sidebar" width="md">
+                    <!-- Navigation -->
+                    <aeva-list>
+                        <aeva-list-item active>
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                                </path>
+                            </svg>
+                            <span slot="title">Docs</span>
+                        </aeva-list-item>
 
-                    <aeva-list-item>
-                        <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
-                            </path>
-                        </svg>
-                        <span slot="title">Blog</span>
-                    </aeva-list-item>
+                        <aeva-list-item>
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                                </path>
+                            </svg>
+                            <span slot="title">Blog</span>
+                        </aeva-list-item>
 
-                    <aeva-list-item>
-                        <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                            </path>
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                        <span slot="title">Playground</span>
-                    </aeva-list-item>
-                </aeva-list>
-            </aeva-sidebar>
+                        <aeva-list-item>
+                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                                </path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                            <span slot="title">Playground</span>
+                        </aeva-list-item>
+                    </aeva-list>
+                </aeva-sidebar>
 
-            <!-- Main Content -->
-            <aeva-section full-height gap="none" padding="none" style="flex: 1;">
-                <!-- Header with Action Bar -->
-                <div slot="header">
-                    <aeva-action-bar padding="md" style="backdrop-filter: blur(10px);">
-                        <!-- Left: Menu icon + Title -->
-                        <div slot="secondary" style="display: flex; align-items: center; gap: 1rem;">
-                            <aeva-button id="menu-toggle" icon-only variant="ghost" aria-label="Menu"
-                                style="--aeva-button-ghost-color: white;">
-                                <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 6h16M4 12h16M4 18h16"></path>
-                                </svg>
-                            </aeva-button>
-                            <aeva-text variant="h4" style="--aeva-text-color: white;">Aeva UI</aeva-text>
-                        </div>
+                <!-- Main Content -->
+                <aeva-section full-height gap="none" padding="none" style="flex: 1;">
+                    <!-- Header with Action Bar -->
+                    <div slot="header">
+                        <aeva-action-bar padding="md" style="backdrop-filter: blur(10px);">
+                            <!-- Left: Menu icon + Title -->
+                            <div slot="secondary" style="display: flex; align-items: center; gap: 1rem;">
+                                <aeva-button id="menu-toggle" icon-only variant="ghost" aria-label="Menu"
+                                    style="--aeva-button-ghost-color: white;">
+                                    <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M4 6h16M4 12h16M4 18h16"></path>
+                                    </svg>
+                                </aeva-button>
+                                <aeva-text variant="h4" style="--aeva-text-color: white;">Aeva UI</aeva-text>
+                            </div>
 
-                        <!-- Right: Dark mode toggle -->
-                        <div slot="primary">
-                            <aeva-button icon-only variant="ghost" aria-label="Toggle dark mode"
-                                style="--aeva-button-ghost-color: white;">
-                                <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                                    </path>
-                                </svg>
-                            </aeva-button>
-                        </div>
-                    </aeva-action-bar>
-                </div>
+                            <!-- Right: Dark mode toggle -->
+                            <div slot="primary">
+                                <aeva-button id="halloween-toggle" icon-only variant="ghost"
+                                    aria-label="Toggle Halloween mode" style="--aeva-button-ghost-color: white;">
+                                    <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                    </svg>
+                                </aeva-button>
+                                <script>
+                                    const themeEl = document.querySelector('aeva-theme');
+                                    const halloweenToggle = document.querySelector('#halloween-toggle');
 
-                <!-- Body with Bento Grid -->
-                <div class="content-area">
-                    <aeva-bento-grid preset="feature">
-                        <!-- Getting Started Card - 2x2 -->
-                        <aeva-card padding="lg" style="grid-column: span 2; grid-row: span 2;">
-                            <div slot="header">
-                                <aeva-text variant="h3">Getting Started</aeva-text>
-                            </div>
-                            <div>
-                                <aeva-text variant="body">
-                                    Welcome to Aeva UI! This is a modern design system built with Lit Element and
-                                    TypeScript.
-                                </aeva-text>
-                                <aeva-text variant="body" style="margin-top: 1rem;">
-                                    Explore our components and start building beautiful interfaces.
-                                </aeva-text>
-                            </div>
-                            <div slot="footer">
-                                <aeva-button variant="primary">Learn More</aeva-button>
-                            </div>
-                        </aeva-card>
+                                    let isHalloween = false;
+                                    const halloweenStyles = {
+                                        '--aeva-page-bg': '#1a1a1a',
+                                        '--aeva-page-background': 'radial-gradient(circle, #2c1810 0%, #000000 100%)',
+                                        '--aeva-primary-color': '#ff7518',
+                                        '--aeva-text-color': '#ff7518',
+                                        '--aeva-card-bg': '#2a2a2a',
+                                        '--aeva-card-border-color': '#ff7518',
+                                        '--aeva-card-border-hover-color': '#ffffff'
+                                    };
 
-                        <!-- Atomic Design Card -->
-                        <aeva-card padding="lg">
-                            <div slot="header">
-                                <aeva-text variant="h3">Atomic Design</aeva-text>
+                                    halloweenToggle.addEventListener('click', () => {
+                                        isHalloween = !isHalloween;
+                                        if (isHalloween) {
+                                            themeEl.theme = 'halloween';
+                                            themeEl.customStyles = halloweenStyles;
+                                        } else {
+                                            themeEl.theme = 'dark';
+                                            themeEl.customStyles = null;
+                                        }
+                                    });
+                                </script>
+                                <aeva-button icon-only variant="ghost" aria-label="Toggle dark mode"
+                                    style="--aeva-button-ghost-color: white;">
+                                    <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                                        </path>
+                                    </svg>
+                                </aeva-button>
                             </div>
-                            <div>
-                                <aeva-text variant="body">
-                                    Our components follow the Atomic Design methodology.
-                                </aeva-text>
-                            </div>
-                        </aeva-card>
+                        </aeva-action-bar>
+                    </div>
 
-                        <!-- Atomic Design Card -->
-                        <aeva-card padding="lg">
-                            <div slot="header">
-                                <aeva-text variant="h3">Atomic Design</aeva-text>
-                            </div>
-                            <div>
-                                <aeva-text variant="body">
-                                    Our components follow the Atomic Design methodology.
-                                </aeva-text>
-                            </div>
-                        </aeva-card>
+                    <!-- Body with Bento Grid -->
+                    <div class="content-area">
+                        <aeva-bento-grid preset="feature">
+                            <!-- Getting Started Card - 2x2 -->
+                            <aeva-card padding="lg" style="grid-column: span 2; grid-row: span 2;">
+                                <div slot="header">
+                                    <aeva-text variant="h3">Getting Started</aeva-text>
+                                </div>
+                                <div>
+                                    <aeva-text variant="body">
+                                        Welcome to Aeva UI! This is a modern design system built with Lit Element and
+                                        TypeScript.
+                                    </aeva-text>
+                                    <aeva-text variant="body" style="margin-top: 1rem;">
+                                        Explore our components and start building beautiful interfaces.
+                                    </aeva-text>
+                                </div>
+                                <div slot="footer">
+                                    <aeva-button variant="primary">Learn More</aeva-button>
+                                </div>
+                            </aeva-card>
 
-                        <!-- Atomic Design Card -->
-                        <aeva-card padding="lg">
-                            <div slot="header">
-                                <aeva-text variant="h3">Atomic Design</aeva-text>
-                            </div>
-                            <div>
-                                <aeva-text variant="body">
-                                    Our components follow the Atomic Design methodology.
-                                </aeva-text>
-                            </div>
-                        </aeva-card>
-                    </aeva-bento-grid>
-                </div>
-            </aeva-section>
-        </div>
-    </aeva-page>
+                            <!-- Atomic Design Card -->
+                            <aeva-card padding="lg">
+                                <div slot="header">
+                                    <aeva-text variant="h3">Atomic Design</aeva-text>
+                                </div>
+                                <div>
+                                    <aeva-text variant="body">
+                                        Our components follow the Atomic Design methodology.
+                                    </aeva-text>
+                                </div>
+                            </aeva-card>
+
+                            <!-- Atomic Design Card -->
+                            <aeva-card padding="lg">
+                                <div slot="header">
+                                    <aeva-text variant="h3">Atomic Design</aeva-text>
+                                </div>
+                                <div>
+                                    <aeva-text variant="body">
+                                        Our components follow the Atomic Design methodology.
+                                    </aeva-text>
+                                </div>
+                            </aeva-card>
+
+                            <!-- Atomic Design Card -->
+
+                            <aeva-card padding="lg">
+                                <div slot="header">
+                                    <aeva-text variant="h3">Atomic Design</aeva-text>
+                                </div>
+                                <div>
+                                    <aeva-text variant="body">
+                                        Our components follow the Atomic Design methodology.
+                                    </aeva-text>
+                                </div>
+                            </aeva-card>
+                        </aeva-bento-grid>
+                    </div>
+                </aeva-section>
+            </div>
+        </aeva-page>
+    </aeva-theme>
 
     <!-- Load Aeva UI Library -->
     <script type="module" src="./main.ts"></script>

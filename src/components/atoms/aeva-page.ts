@@ -23,11 +23,6 @@ import { customElement, property } from 'lit/decorators.js';
 export class AevaPage extends LitElement {
   static styles = css`
     :host {
-      --aeva-page-background: white;
-      --aeva-page-animation-duration: 350ms;
-      --aeva-page-backdrop-bg: rgba(0, 0, 0, 0.5);
-      --aeva-page-z-index: 2000;
-
       display: none;
       position: fixed;
       top: 0;

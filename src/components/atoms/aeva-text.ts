@@ -56,94 +56,26 @@ import { classMap } from 'lit/directives/class-map.js';
 export class AevaText extends LitElement {
   static styles = css`
     :host {
-      /* Font Families */
-      --aeva-text-font-family: -apple-system, BlinkMacSystemFont,
-        'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --aeva-text-display-font-family: var(
-        --aeva-text-font-family
-      );
-      --aeva-text-heading-font-family: var(
-        --aeva-text-font-family
-      );
-      --aeva-text-body-font-family: var(--aeva-text-font-family);
-      --aeva-text-label-font-family: var(--aeva-text-font-family);
-
-      /* Font Weights */
-      --aeva-text-display-weight: 800;
-      --aeva-text-heading-weight: 700;
-      --aeva-text-body-weight: 400;
-      --aeva-text-label-weight: 500;
-
-      /* Line Heights */
-      --aeva-text-display-line-height: 1.1;
-      --aeva-text-heading-line-height: 1.2;
-      --aeva-text-body-line-height: 1.6;
-      --aeva-text-label-line-height: 1.4;
-
-      /* Colors */
-      --aeva-text-color: #1a1a1a;
-      --aeva-text-muted-color: #6b7280;
-      --aeva-text-inverse-color: #ffffff;
-      --aeva-text-error-color: #dc2626;
-
-      /* States */
-      --aeva-text-muted-opacity: 0.7;
-
-      /* Link Colors */
-      --aeva-text-link-color: #667eea;
-      --aeva-text-link-hover-color: #5568d3;
-
-      /* Font Sizes */
-      --aeva-text-size-xs: 0.75rem;
-      --aeva-text-size-sm: 0.875rem;
-      --aeva-text-size-md: 1rem;
-      --aeva-text-size-lg: 1.125rem;
-      --aeva-text-size-xl: 1.25rem;
-      --aeva-text-size-2xl: 1.5rem;
-      --aeva-text-size-3xl: 1.875rem;
-
-      /* Letter Spacing */
-      --aeva-text-letter-spacing-display: -0.02em;
-      --aeva-text-letter-spacing-heading: -0.01em;
-      --aeva-text-letter-spacing-body: normal;
-      --aeva-text-letter-spacing-label: 0.01em;
-
-      /* Spacing */
-      --aeva-text-margin-top: 0;
-      --aeva-text-margin-bottom: 0;
-
-      /* Max Width */
-      --aeva-text-max-width: none;
-
       display: block;
-    }
-
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      :host {
-        --aeva-text-color: #f5f5f5;
-        --aeva-text-muted-color: #9ca3af;
-        --aeva-text-inverse-color: #1a1a1a;
-      }
     }
 
     /* Base typography styles */
     .typography {
-      margin-top: var(--aeva-text-margin-top);
-      margin-bottom: var(--aeva-text-margin-bottom);
+      margin-top: var(--aeva-text-margin-top, 0);
+      margin-bottom: var(--aeva-text-margin-bottom, 0);
       padding: 0;
       color: var(--aeva-text-color);
       font-family: var(--aeva-text-font-family);
-      max-width: var(--aeva-text-max-width);
+      max-width: var(--aeva-text-max-width, none);
     }
 
     /* Variant: Display/Hero */
     .variant-display,
     .variant-hero {
-      font-family: var(--aeva-text-display-font-family);
-      font-weight: var(--aeva-text-display-weight);
-      line-height: var(--aeva-text-display-line-height);
-      letter-spacing: var(--aeva-text-letter-spacing-display);
+      font-family: var(--aeva-text-display-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-weight: var(--aeva-text-display-weight, 800);
+      line-height: var(--aeva-text-display-line-height, 1.1);
+      letter-spacing: var(--aeva-text-letter-spacing-display, -0.02em);
     }
 
     /* Variant: Headings */
@@ -153,55 +85,55 @@ export class AevaText extends LitElement {
     .variant-h4,
     .variant-h5,
     .variant-h6 {
-      font-family: var(--aeva-text-heading-font-family);
-      font-weight: var(--aeva-text-heading-weight);
-      line-height: var(--aeva-text-heading-line-height);
-      letter-spacing: var(--aeva-text-letter-spacing-heading);
+      font-family: var(--aeva-text-heading-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-weight: var(--aeva-text-heading-weight, 700);
+      line-height: var(--aeva-text-heading-line-height, 1.2);
+      letter-spacing: var(--aeva-text-letter-spacing-heading, -0.01em);
     }
 
     /* Variant: Body */
     .variant-body {
-      font-family: var(--aeva-text-body-font-family);
-      font-weight: var(--aeva-text-body-weight);
-      line-height: var(--aeva-text-body-line-height);
-      letter-spacing: var(--aeva-text-letter-spacing-body);
+      font-family: var(--aeva-text-body-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-weight: var(--aeva-text-body-weight, 400);
+      line-height: var(--aeva-text-body-line-height, 1.6);
+      letter-spacing: var(--aeva-text-letter-spacing-body, normal);
     }
 
     /* Variant: Label */
     .variant-label {
-      font-family: var(--aeva-text-label-font-family);
-      font-weight: var(--aeva-text-label-weight);
-      line-height: var(--aeva-text-label-line-height);
-      letter-spacing: var(--aeva-text-letter-spacing-label);
+      font-family: var(--aeva-text-label-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-weight: var(--aeva-text-label-weight, 500);
+      line-height: var(--aeva-text-label-line-height, 1.4);
+      letter-spacing: var(--aeva-text-letter-spacing-label, 0.01em);
     }
 
     /* Sizes */
     .size-xs {
-      font-size: var(--aeva-text-size-xs);
+      font-size: var(--aeva-text-size-xs, 0.75rem);
     }
 
     .size-sm {
-      font-size: var(--aeva-text-size-sm);
+      font-size: var(--aeva-text-size-sm, 0.875rem);
     }
 
     .size-md {
-      font-size: var(--aeva-text-size-md);
+      font-size: var(--aeva-text-size-md, 1rem);
     }
 
     .size-lg {
-      font-size: var(--aeva-text-size-lg);
+      font-size: var(--aeva-text-size-lg, 1.125rem);
     }
 
     .size-xl {
-      font-size: var(--aeva-text-size-xl);
+      font-size: var(--aeva-text-size-xl, 1.25rem);
     }
 
     .size-2xl {
-      font-size: var(--aeva-text-size-2xl);
+      font-size: var(--aeva-text-size-2xl, 1.5rem);
     }
 
     .size-3xl {
-      font-size: var(--aeva-text-size-3xl);
+      font-size: var(--aeva-text-size-3xl, 1.875rem);
     }
 
     /* Default sizes for variants when size is not specified */
@@ -261,16 +193,16 @@ export class AevaText extends LitElement {
 
     /* States */
     .state-muted {
-      color: var(--aeva-text-muted-color);
+      color: var(--aeva-text-muted-color, #6b7280);
       /* Removed opacity to avoid double effect - color is already lighter */
     }
 
     .state-inverse {
-      color: var(--aeva-text-inverse-color);
+      color: var(--aeva-text-inverse-color, #ffffff);
     }
 
     .state-error {
-      color: var(--aeva-text-error-color);
+      color: var(--aeva-text-error-color, #dc2626);
     }
 
     /* Text Transform */
@@ -346,19 +278,19 @@ export class AevaText extends LitElement {
     }
 
     ::slotted(a) {
-      color: var(--aeva-text-link-color);
+      color: var(--aeva-text-link-color, #667eea);
       text-decoration: none;
       transition: color 0.2s ease;
     }
 
     ::slotted(a:hover) {
-      color: var(--aeva-text-link-hover-color);
+      color: var(--aeva-text-link-hover-color, #5568d3);
       text-decoration: underline;
     }
 
     ::slotted(code) {
       font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace;
-      background-color: rgba(0, 0, 0, 0.05);
+      background-color: var(--aeva-text-code-bg);
       padding: 0.125rem 0.25rem;
       border-radius: 0.25rem;
       font-size: 0.9em;

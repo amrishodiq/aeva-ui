@@ -29,19 +29,8 @@ import { classMap } from 'lit/directives/class-map.js';
  */
 @customElement('aeva-progress')
 export class AevaProgress extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
-      --aeva-progress-color: #667eea;
-      --aeva-progress-bg: #e5e7eb;
-      --aeva-progress-thickness: 8px;
-      --aeva-progress-border-radius: 50vh;
-      --aeva-progress-size-sm: 80px;
-      --aeva-progress-size-md: 120px;
-      --aeva-progress-size-lg: 160px;
-      --aeva-progress-animation-duration: 1.5s;
-      --aeva-progress-label-color: #333;
-      --aeva-progress-label-font-size: 14px;
-
       display: inline-block;
     }
 
@@ -62,7 +51,6 @@ export class AevaProgress extends LitElement {
       height: var(--aeva-progress-thickness);
       background-color: var(--aeva-progress-bg);
       border-radius: var(--aeva-progress-border-radius);
-      overflow: hidden;
       position: relative;
     }
 
@@ -209,96 +197,96 @@ export class AevaProgress extends LitElement {
     }
   `;
 
-    /**
-     * Shape of the progress indicator
-     */
-    @property({ type: String, reflect: true })
-    shape: 'circular' | 'horizontal' = 'horizontal';
+  /**
+   * Shape of the progress indicator
+   */
+  @property({ type: String, reflect: true })
+  shape: 'circular' | 'horizontal' = 'horizontal';
 
-    /**
-     * Mode of the progress indicator
-     */
-    @property({ type: String, reflect: true })
-    mode: 'finite' | 'infinite' = 'finite';
+  /**
+   * Mode of the progress indicator
+   */
+  @property({ type: String, reflect: true })
+  mode: 'finite' | 'infinite' = 'finite';
 
-    /**
-     * Current progress value (used in finite mode)
-     */
-    @property({ type: Number })
-    progress = 0;
+  /**
+   * Current progress value (used in finite mode)
+   */
+  @property({ type: Number })
+  progress = 0;
 
-    /**
-     * Minimum value for progress
-     */
-    @property({ type: Number })
-    min = 0;
+  /**
+   * Minimum value for progress
+   */
+  @property({ type: Number })
+  min = 0;
 
-    /**
-     * Maximum value for progress
-     */
-    @property({ type: Number })
-    max = 100;
+  /**
+   * Maximum value for progress
+   */
+  @property({ type: Number })
+  max = 100;
 
-    /**
-     * Size variant
-     */
-    @property({ type: String, reflect: true })
-    size: 'sm' | 'md' | 'lg' = 'md';
+  /**
+   * Size variant
+   */
+  @property({ type: String, reflect: true })
+  size: 'sm' | 'md' | 'lg' = 'md';
 
-    /**
-     * Optional label for accessibility
-     */
-    @property({ type: String })
-    label = '';
+  /**
+   * Optional label for accessibility
+   */
+  @property({ type: String })
+  label = '';
 
-    /**
-     * Show percentage text (circular only)
-     */
-    @property({ type: Boolean, attribute: 'show-percentage' })
-    showPercentage = true;
+  /**
+   * Show percentage text (circular only)
+   */
+  @property({ type: Boolean, attribute: 'show-percentage' })
+  showPercentage = true;
 
-    /**
-     * Calculate the percentage based on current progress
-     */
-    private get percentage(): number {
-        if (this.max === this.min) return 0;
-        const clampedProgress = Math.max(
-            this.min,
-            Math.min(this.max, this.progress)
-        );
-        return ((clampedProgress - this.min) / (this.max - this.min)) * 100;
-    }
+  /**
+   * Calculate the percentage based on current progress
+   */
+  private get percentage(): number {
+    if (this.max === this.min) return 0;
+    const clampedProgress = Math.max(
+      this.min,
+      Math.min(this.max, this.progress)
+    );
+    return ((clampedProgress - this.min) / (this.max - this.min)) * 100;
+  }
 
-    /**
-     * Calculate stroke-dasharray and stroke-dashoffset for circular progress
-     */
-    private getCircularProgress() {
-        const radius = 50 - parseFloat(getComputedStyle(this).getPropertyValue('--aeva-progress-thickness') || '8') / 2;
-        const circumference = 2 * Math.PI * radius;
-        const offset = circumference - (this.percentage / 100) * circumference;
+  /**
+   * Calculate stroke-dasharray and stroke-dashoffset for circular progress
+   */
+  private getCircularProgress() {
+    const radius = 50 - parseFloat(getComputedStyle(this).getPropertyValue('--aeva-progress-thickness') || '8') / 2;
+    const circumference = 2 * Math.PI * radius;
+    const offset = circumference - (this.percentage / 100) * circumference;
 
-        return {
-            radius,
-            circumference,
-            offset,
-        };
-    }
+    return {
+      radius,
+      circumference,
+      offset,
+    };
+  }
 
-    private renderHorizontal() {
-        const classes = {
-            'horizontal-track': true,
-            [`size-${this.size}`]: true,
-        };
+  private renderHorizontal() {
+    const classes = {
+      'horizontal-track': true,
+      [`size-${this.size}`]: true,
+    };
 
-        const barClasses = {
-            'horizontal-bar': true,
-            infinite: this.mode === 'infinite',
-        };
+    const barClasses = {
+      'horizontal-bar': true,
+      infinite: this.mode === 'infinite',
+    };
 
-        const barStyle =
-            this.mode === 'finite' ? `width: ${this.percentage}%` : '';
+    const barStyle =
+      this.mode === 'finite' ? `width: ${this.percentage}%` : '';
 
-        return html`
+    return html`
       <div class="horizontal-container">
         <div part="track" class="${classMap(classes)}">
           <div
@@ -309,32 +297,32 @@ export class AevaProgress extends LitElement {
         </div>
       </div>
     `;
-    }
+  }
 
-    private renderCircular() {
-        const { radius, circumference, offset } = this.getCircularProgress();
+  private renderCircular() {
+    const { radius, circumference, offset } = this.getCircularProgress();
 
-        const containerClasses = {
-            'circular-container': true,
-            [`size-${this.size}`]: true,
-        };
+    const containerClasses = {
+      'circular-container': true,
+      [`size-${this.size}`]: true,
+    };
 
-        const svgClasses = {
-            'circular-svg': true,
-            infinite: this.mode === 'infinite',
-        };
+    const svgClasses = {
+      'circular-svg': true,
+      infinite: this.mode === 'infinite',
+    };
 
-        const progressClasses = {
-            'circle-progress': true,
-            infinite: this.mode === 'infinite',
-        };
+    const progressClasses = {
+      'circle-progress': true,
+      infinite: this.mode === 'infinite',
+    };
 
-        const progressStyle =
-            this.mode === 'finite'
-                ? `stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset}`
-                : '';
+    const progressStyle =
+      this.mode === 'finite'
+        ? `stroke-dasharray: ${circumference}; stroke-dashoffset: ${offset}`
+        : '';
 
-        return html`
+    return html`
       <div part="container" class="${classMap(containerClasses)}">
         <svg part="svg" class="${classMap(svgClasses)}" viewBox="0 0 100 100">
           <circle
@@ -354,18 +342,18 @@ export class AevaProgress extends LitElement {
           ></circle>
         </svg>
         ${this.mode === 'finite' && this.showPercentage
-                ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
-                : ''}
+        ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
+        : ''}
       </div>
     `;
-    }
+  }
 
-    render() {
-        const ariaValueNow = this.mode === 'finite' ? this.progress : undefined;
-        const ariaValueMin = this.mode === 'finite' ? this.min : undefined;
-        const ariaValueMax = this.mode === 'finite' ? this.max : undefined;
+  render() {
+    const ariaValueNow = this.mode === 'finite' ? this.progress : undefined;
+    const ariaValueMin = this.mode === 'finite' ? this.min : undefined;
+    const ariaValueMax = this.mode === 'finite' ? this.max : undefined;
 
-        return html`
+    return html`
       <div
         class="container"
         role="progressbar"
@@ -374,23 +362,23 @@ export class AevaProgress extends LitElement {
         aria-valuemin="${ariaValueMin}"
         aria-valuemax="${ariaValueMax}"
         aria-valuetext="${this.mode === 'finite'
-                ? `${Math.round(this.percentage)}%`
-                : 'Loading'}"
+        ? `${Math.round(this.percentage)}%`
+        : 'Loading'}"
       >
         ${this.shape === 'horizontal'
-                ? this.renderHorizontal()
-                : this.renderCircular()}
+        ? this.renderHorizontal()
+        : this.renderCircular()}
         ${this.label
-                ? html`<div part="label" class="label">${this.label}</div>`
-                : ''}
+        ? html`<div part="label" class="label">${this.label}</div>`
+        : ''}
         <slot></slot>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-progress': AevaProgress;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-progress': AevaProgress;
+  }
 }

@@ -18,8 +18,6 @@ export class AevaGridItem extends LitElement {
       display: block;
       width: 100%;
       box-sizing: border-box;
-      
-      --aeva-grid-item-min-height: auto;
     }
 
     .item {

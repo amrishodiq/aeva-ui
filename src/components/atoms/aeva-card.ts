@@ -27,17 +27,6 @@ import { customElement, property } from 'lit/decorators.js';
 export class AevaCard extends LitElement {
   static styles = css`
     :host {
-      --aeva-card-bg: #ffffff;
-      --aeva-card-border-color: #e5e7eb;
-      --aeva-card-border-hover-color: #667eea;
-      --aeva-card-border-radius: 12px;
-      --aeva-card-transition: all 0.2s ease;
-      --aeva-card-height: 100%;
-      
-      --aeva-card-padding-sm: 1rem;
-      --aeva-card-padding-md: 1.5rem;
-      --aeva-card-padding-lg: 2rem;
-
       display: block;
       width: 100%;
       box-sizing: border-box;
@@ -46,25 +35,25 @@ export class AevaCard extends LitElement {
     .card {
       display: flex;
       flex-direction: column;
-      background: var(--aeva-card-bg);
-      border: 1px solid var(--aeva-card-border-color);
-      border-radius: var(--aeva-card-border-radius);
-      transition: var(--aeva-card-transition);
-      height: var(--aeva-card-height);
+      background: var(--aeva-card-bg, #ffffff);
+      border: 1px solid var(--aeva-card-border-color, #e5e7eb);
+      border-radius: var(--aeva-card-border-radius, 12px);
+      transition: var(--aeva-card-transition, all 0.2s ease);
+      height: var(--aeva-card-height, 100%);
       box-sizing: border-box;
     }
 
     /* Padding variants */
     .padding-sm {
-      padding: var(--aeva-card-padding-sm);
+      padding: var(--aeva-card-padding-sm, 1rem);
     }
 
     .padding-md {
-      padding: var(--aeva-card-padding-md);
+      padding: var(--aeva-card-padding-md, 1.5rem);
     }
 
     .padding-lg {
-      padding: var(--aeva-card-padding-lg);
+      padding: var(--aeva-card-padding-lg, 2rem);
     }
 
     /* Interactive state */
@@ -73,7 +62,7 @@ export class AevaCard extends LitElement {
     }
 
     .interactive:hover {
-      border-color: var(--aeva-card-border-hover-color);
+      border-color: var(--aeva-card-border-hover-color, #667eea);
     }
 
     /* Slot sections */

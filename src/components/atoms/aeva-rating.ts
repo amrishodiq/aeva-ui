@@ -19,15 +19,8 @@ import { customElement, property, state } from 'lit/decorators.js';
  */
 @customElement('aeva-rating')
 export class AevaRating extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
-      --aeva-rating-color: #fbbf24;
-      --aeva-rating-empty-color: #e5e7eb;
-      --aeva-rating-hover-color: #f59e0b;
-      --aeva-rating-size-sm: 16px;
-      --aeva-rating-size-md: 24px;
-      --aeva-rating-size-lg: 32px;
-
       display: inline-flex;
       align-items: center;
       gap: 4px;
@@ -115,61 +108,61 @@ export class AevaRating extends LitElement {
     }
   `;
 
-    /**
-     * Current rating value (0-5, supports decimals for half stars)
-     */
-    @property({ type: Number })
-    value = 0;
+  /**
+   * Current rating value (0-5, supports decimals for half stars)
+   */
+  @property({ type: Number })
+  value = 0;
 
-    /**
-     * Maximum rating value
-     */
-    @property({ type: Number })
-    max = 5;
+  /**
+   * Maximum rating value
+   */
+  @property({ type: Number })
+  max = 5;
 
-    /**
-     * Size variant
-     */
-    @property({ type: String, reflect: true })
-    size: 'sm' | 'md' | 'lg' = 'md';
+  /**
+   * Size variant
+   */
+  @property({ type: String, reflect: true })
+  size: 'sm' | 'md' | 'lg' = 'md';
 
-    /**
-     * Whether the rating is interactive (user can change it)
-     */
-    @property({ type: Boolean })
-    interactive = false;
+  /**
+   * Whether the rating is interactive (user can change it)
+   */
+  @property({ type: Boolean })
+  interactive = false;
 
-    /**
-     * Whether to show the numeric label
-     */
-    @property({ type: Boolean, attribute: 'show-label' })
-    showLabel = false;
+  /**
+   * Whether to show the numeric label
+   */
+  @property({ type: Boolean, attribute: 'show-label' })
+  showLabel = false;
 
-    /**
-     * Whether to allow half stars
-     */
-    @property({ type: Boolean, attribute: 'allow-half' })
-    allowHalf = true;
+  /**
+   * Whether to allow half stars
+   */
+  @property({ type: Boolean, attribute: 'allow-half' })
+  allowHalf = true;
 
-    @state()
-    private hoverValue = 0;
+  @state()
+  private hoverValue = 0;
 
-    private renderStar(index: number) {
-        const starValue = index + 1;
-        const currentValue = this.hoverValue || this.value;
+  private renderStar(index: number) {
+    const starValue = index + 1;
+    const currentValue = this.hoverValue || this.value;
 
-        let starType: 'empty' | 'half' | 'filled' = 'empty';
+    let starType: 'empty' | 'half' | 'filled' = 'empty';
 
-        if (currentValue >= starValue) {
-            starType = 'filled';
-        } else if (this.allowHalf && currentValue >= starValue - 0.5) {
-            starType = 'half';
-        }
+    if (currentValue >= starValue) {
+      starType = 'filled';
+    } else if (this.allowHalf && currentValue >= starValue - 0.5) {
+      starType = 'half';
+    }
 
-        const starPath = 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
+    const starPath = 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
 
-        if (starType === 'half') {
-            return html`
+    if (starType === 'half') {
+      return html`
         <div 
           class="star star-half ${this.hoverValue >= starValue ? 'hover' : ''}"
           @click=${() => this.handleStarClick(starValue)}
@@ -184,9 +177,9 @@ export class AevaRating extends LitElement {
           </svg>
         </div>
       `;
-        }
+    }
 
-        return html`
+    return html`
       <div 
         class="star ${starType === 'filled' ? 'star-filled' : 'star-empty'} ${this.hoverValue >= starValue ? 'hover' : ''}"
         @click=${() => this.handleStarClick(starValue)}
@@ -198,61 +191,61 @@ export class AevaRating extends LitElement {
         </svg>
       </div>
     `;
+  }
+
+  private handleStarClick(value: number) {
+    if (!this.interactive) return;
+
+    // If clicking the same star, allow half star on second click
+    if (this.allowHalf && this.value === value) {
+      this.value = value - 0.5;
+    } else {
+      this.value = value;
     }
 
-    private handleStarClick(value: number) {
-        if (!this.interactive) return;
+    this.dispatchEvent(
+      new CustomEvent('rating-change', {
+        detail: { value: this.value },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
 
-        // If clicking the same star, allow half star on second click
-        if (this.allowHalf && this.value === value) {
-            this.value = value - 0.5;
-        } else {
-            this.value = value;
-        }
+  private handleStarHover(value: number) {
+    if (!this.interactive) return;
+    this.hoverValue = value;
+  }
 
-        this.dispatchEvent(
-            new CustomEvent('rating-change', {
-                detail: { value: this.value },
-                bubbles: true,
-                composed: true,
-            })
-        );
-    }
+  private handleStarLeave() {
+    if (!this.interactive) return;
+    this.hoverValue = 0;
+  }
 
-    private handleStarHover(value: number) {
-        if (!this.interactive) return;
-        this.hoverValue = value;
-    }
+  render() {
+    const classes = [
+      'rating-container',
+      `size-${this.size}`,
+      this.interactive ? 'interactive' : '',
+    ]
+      .filter(Boolean)
+      .join(' ');
 
-    private handleStarLeave() {
-        if (!this.interactive) return;
-        this.hoverValue = 0;
-    }
+    const stars = Array.from({ length: this.max }, (_, i) => this.renderStar(i));
 
-    render() {
-        const classes = [
-            'rating-container',
-            `size-${this.size}`,
-            this.interactive ? 'interactive' : '',
-        ]
-            .filter(Boolean)
-            .join(' ');
-
-        const stars = Array.from({ length: this.max }, (_, i) => this.renderStar(i));
-
-        return html`
+    return html`
       <div part="container" class="${classes}">
         ${stars}
         ${this.showLabel
-                ? html`<span class="rating-label">${this.value.toFixed(1)}</span>`
-                : ''}
+        ? html`<span class="rating-label">${this.value.toFixed(1)}</span>`
+        : ''}
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-rating': AevaRating;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-rating': AevaRating;
+  }
 }

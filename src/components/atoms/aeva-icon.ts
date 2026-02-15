@@ -21,14 +21,6 @@ import { customElement, property } from 'lit/decorators.js';
 export class AevaIcon extends LitElement {
   static styles = css`
     :host {
-      --aeva-icon-bg: #f5f5f5;
-      --aeva-icon-color: #667eea;
-      --aeva-icon-border-color: #000000;  /* Monochrome: black for light mode */
-      --aeva-icon-border-width: 2px;
-      --aeva-icon-size-sm: 40px;
-      --aeva-icon-size-md: 56px;
-      --aeva-icon-size-lg: 72px;
-
       display: inline-flex;
     }
 

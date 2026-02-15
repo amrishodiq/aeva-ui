@@ -25,15 +25,8 @@ import { customElement, property, state, query } from 'lit/decorators.js';
  */
 @customElement('aeva-carousel')
 export class AevaCarousel extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
-      --aeva-carousel-height: 400px;
-      --aeva-carousel-nav-bg: rgba(0, 0, 0, 0.5);
-      --aeva-carousel-nav-color: white;
-      --aeva-carousel-indicator-color: rgba(255, 255, 255, 0.5);
-      --aeva-carousel-indicator-active-color: white;
-      --aeva-carousel-transition-duration: 300ms;
-
       display: block;
       position: relative;
       width: 100%;
@@ -86,7 +79,7 @@ export class AevaCarousel extends LitElement {
     }
 
     .nav-button:hover {
-      background: rgba(0, 0, 0, 0.7);
+      background: var(--aeva-carousel-nav-hover-bg);
       transform: translateY(-50%) scale(1.1);
     }
 
@@ -144,7 +137,7 @@ export class AevaCarousel extends LitElement {
     }
 
     .indicator:hover {
-      background: rgba(255, 255, 255, 0.7);
+      background: var(--aeva-carousel-indicator-hover-bg);
       transform: scale(1.2);
     }
 
@@ -160,219 +153,219 @@ export class AevaCarousel extends LitElement {
     }
   `;
 
-    /**
-     * Current active slide index
-     */
-    @property({ type: Number })
-    activeIndex = 0;
+  /**
+   * Current active slide index
+   */
+  @property({ type: Number })
+  activeIndex = 0;
 
-    /**
-     * Whether to hide navigation buttons
-     */
-    @property({ type: Boolean, attribute: 'hide-nav', reflect: true })
-    hideNav = false;
+  /**
+   * Whether to hide navigation buttons
+   */
+  @property({ type: Boolean, attribute: 'hide-nav', reflect: true })
+  hideNav = false;
 
-    /**
-     * Whether to hide indicators
-     */
-    @property({ type: Boolean, attribute: 'hide-indicators', reflect: true })
-    hideIndicators = false;
+  /**
+   * Whether to hide indicators
+   */
+  @property({ type: Boolean, attribute: 'hide-indicators', reflect: true })
+  hideIndicators = false;
 
-    /**
-     * Whether to enable auto-play
-     */
-    @property({ type: Boolean, attribute: 'auto-play' })
-    autoPlay = false;
+  /**
+   * Whether to enable auto-play
+   */
+  @property({ type: Boolean, attribute: 'auto-play' })
+  autoPlay = false;
 
-    /**
-     * Auto-play interval in milliseconds
-     */
-    @property({ type: Number, attribute: 'auto-play-interval' })
-    autoPlayInterval = 3000;
+  /**
+   * Auto-play interval in milliseconds
+   */
+  @property({ type: Number, attribute: 'auto-play-interval' })
+  autoPlayInterval = 3000;
 
-    /**
-     * Whether to loop the carousel
-     */
-    @property({ type: Boolean })
-    loop = true;
+  /**
+   * Whether to loop the carousel
+   */
+  @property({ type: Boolean })
+  loop = true;
 
-    @state()
-    private slideCount = 0;
+  @state()
+  private slideCount = 0;
 
-    @state()
-    private touchStartX = 0;
+  @state()
+  private touchStartX = 0;
 
-    @state()
-    private touchEndX = 0;
+  @state()
+  private touchEndX = 0;
 
-    @query('.slides-wrapper')
-    private slidesWrapper!: HTMLElement;
+  @query('.slides-wrapper')
+  private slidesWrapper!: HTMLElement;
 
-    @query('slot')
-    private slotElement!: HTMLSlotElement;
+  @query('slot')
+  private slotElement!: HTMLSlotElement;
 
-    private autoPlayTimer?: number;
+  private autoPlayTimer?: number;
 
-    connectedCallback() {
-        super.connectedCallback();
-        this.addEventListener('touchstart', this.handleTouchStart);
-        this.addEventListener('touchmove', this.handleTouchMove);
-        this.addEventListener('touchend', this.handleTouchEnd);
+  connectedCallback() {
+    super.connectedCallback();
+    this.addEventListener('touchstart', this.handleTouchStart);
+    this.addEventListener('touchmove', this.handleTouchMove);
+    this.addEventListener('touchend', this.handleTouchEnd);
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this.removeEventListener('touchstart', this.handleTouchStart);
+    this.removeEventListener('touchmove', this.handleTouchMove);
+    this.removeEventListener('touchend', this.handleTouchEnd);
+    this.stopAutoPlay();
+  }
+
+  firstUpdated() {
+    this.updateSlideCount();
+    if (this.autoPlay) {
+      this.startAutoPlay();
+    }
+  }
+
+  updated(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('activeIndex')) {
+      this.updateTransform();
+      this.dispatchSlideChangeEvent();
     }
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        this.removeEventListener('touchstart', this.handleTouchStart);
-        this.removeEventListener('touchmove', this.handleTouchMove);
-        this.removeEventListener('touchend', this.handleTouchEnd);
+    if (changedProperties.has('autoPlay')) {
+      if (this.autoPlay) {
+        this.startAutoPlay();
+      } else {
         this.stopAutoPlay();
+      }
     }
+  }
 
-    firstUpdated() {
-        this.updateSlideCount();
-        if (this.autoPlay) {
-            this.startAutoPlay();
-        }
+  private handleSlotChange = () => {
+    this.updateSlideCount();
+  };
+
+  private updateSlideCount() {
+    const assignedElements = this.slotElement?.assignedElements() || [];
+    this.slideCount = assignedElements.length;
+  }
+
+  private updateTransform() {
+    if (this.slidesWrapper) {
+      const translateX = -this.activeIndex * 100;
+      this.slidesWrapper.style.transform = `translateX(${translateX}%)`;
     }
+  }
 
-    updated(changedProperties: Map<string, unknown>) {
-        if (changedProperties.has('activeIndex')) {
-            this.updateTransform();
-            this.dispatchSlideChangeEvent();
-        }
+  private goToSlide(index: number) {
+    if (index < 0 || index >= this.slideCount) return;
+    this.activeIndex = index;
+  }
 
-        if (changedProperties.has('autoPlay')) {
-            if (this.autoPlay) {
-                this.startAutoPlay();
-            } else {
-                this.stopAutoPlay();
-            }
-        }
+  private nextSlide = () => {
+    if (this.activeIndex < this.slideCount - 1) {
+      this.activeIndex++;
+    } else if (this.loop) {
+      this.activeIndex = 0;
     }
+  };
 
-    private handleSlotChange = () => {
-        this.updateSlideCount();
-    };
-
-    private updateSlideCount() {
-        const assignedElements = this.slotElement?.assignedElements() || [];
-        this.slideCount = assignedElements.length;
+  private prevSlide = () => {
+    if (this.activeIndex > 0) {
+      this.activeIndex--;
+    } else if (this.loop) {
+      this.activeIndex = this.slideCount - 1;
     }
+  };
 
-    private updateTransform() {
-        if (this.slidesWrapper) {
-            const translateX = -this.activeIndex * 100;
-            this.slidesWrapper.style.transform = `translateX(${translateX}%)`;
-        }
-    }
+  private handleTouchStart = (e: TouchEvent) => {
+    this.touchStartX = e.touches[0].clientX;
+  };
 
-    private goToSlide(index: number) {
-        if (index < 0 || index >= this.slideCount) return;
-        this.activeIndex = index;
-    }
+  private handleTouchMove = (e: TouchEvent) => {
+    this.touchEndX = e.touches[0].clientX;
+  };
 
-    private nextSlide = () => {
-        if (this.activeIndex < this.slideCount - 1) {
-            this.activeIndex++;
-        } else if (this.loop) {
-            this.activeIndex = 0;
-        }
-    };
+  private handleTouchEnd = () => {
+    const swipeThreshold = 50;
+    const diff = this.touchStartX - this.touchEndX;
 
-    private prevSlide = () => {
-        if (this.activeIndex > 0) {
-            this.activeIndex--;
-        } else if (this.loop) {
-            this.activeIndex = this.slideCount - 1;
-        }
-    };
-
-    private handleTouchStart = (e: TouchEvent) => {
-        this.touchStartX = e.touches[0].clientX;
-    };
-
-    private handleTouchMove = (e: TouchEvent) => {
-        this.touchEndX = e.touches[0].clientX;
-    };
-
-    private handleTouchEnd = () => {
-        const swipeThreshold = 50;
-        const diff = this.touchStartX - this.touchEndX;
-
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left - next slide
-                this.nextSlide();
-            } else {
-                // Swipe right - previous slide
-                this.prevSlide();
-            }
-        }
-
-        this.touchStartX = 0;
-        this.touchEndX = 0;
-    };
-
-    private handleKeydown = (e: KeyboardEvent) => {
-        if (e.key === 'ArrowLeft') {
-            e.preventDefault();
-            this.prevSlide();
-        } else if (e.key === 'ArrowRight') {
-            e.preventDefault();
-            this.nextSlide();
-        }
-    };
-
-    private startAutoPlay() {
-        this.stopAutoPlay();
-        this.autoPlayTimer = window.setInterval(() => {
-            this.nextSlide();
-        }, this.autoPlayInterval);
-    }
-
-    private stopAutoPlay() {
-        if (this.autoPlayTimer) {
-            clearInterval(this.autoPlayTimer);
-            this.autoPlayTimer = undefined;
-        }
-    }
-
-    private dispatchSlideChangeEvent() {
-        this.dispatchEvent(
-            new CustomEvent('slide-change', {
-                detail: { activeIndex: this.activeIndex },
-                bubbles: true,
-                composed: true,
-            })
-        );
-    }
-
-    /**
-     * Navigate to a specific slide
-     */
-    public goTo(index: number) {
-        this.goToSlide(index);
-    }
-
-    /**
-     * Navigate to the next slide
-     */
-    public next() {
+    if (Math.abs(diff) > swipeThreshold) {
+      if (diff > 0) {
+        // Swipe left - next slide
         this.nextSlide();
-    }
-
-    /**
-     * Navigate to the previous slide
-     */
-    public prev() {
+      } else {
+        // Swipe right - previous slide
         this.prevSlide();
+      }
     }
 
-    render() {
-        const canGoPrev = this.loop || this.activeIndex > 0;
-        const canGoNext = this.loop || this.activeIndex < this.slideCount - 1;
+    this.touchStartX = 0;
+    this.touchEndX = 0;
+  };
 
-        return html`
+  private handleKeydown = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowLeft') {
+      e.preventDefault();
+      this.prevSlide();
+    } else if (e.key === 'ArrowRight') {
+      e.preventDefault();
+      this.nextSlide();
+    }
+  };
+
+  private startAutoPlay() {
+    this.stopAutoPlay();
+    this.autoPlayTimer = window.setInterval(() => {
+      this.nextSlide();
+    }, this.autoPlayInterval);
+  }
+
+  private stopAutoPlay() {
+    if (this.autoPlayTimer) {
+      clearInterval(this.autoPlayTimer);
+      this.autoPlayTimer = undefined;
+    }
+  }
+
+  private dispatchSlideChangeEvent() {
+    this.dispatchEvent(
+      new CustomEvent('slide-change', {
+        detail: { activeIndex: this.activeIndex },
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
+
+  /**
+   * Navigate to a specific slide
+   */
+  public goTo(index: number) {
+    this.goToSlide(index);
+  }
+
+  /**
+   * Navigate to the next slide
+   */
+  public next() {
+    this.nextSlide();
+  }
+
+  /**
+   * Navigate to the previous slide
+   */
+  public prev() {
+    this.prevSlide();
+  }
+
+  render() {
+    const canGoPrev = this.loop || this.activeIndex > 0;
+    const canGoNext = this.loop || this.activeIndex < this.slideCount - 1;
+
+    return html`
       <div 
         part="container" 
         class="carousel-container"
@@ -386,7 +379,7 @@ export class AevaCarousel extends LitElement {
         </div>
 
         ${!this.hideNav
-                ? html`
+        ? html`
               <button
                 part="nav-button"
                 class="nav-button prev"
@@ -410,10 +403,10 @@ export class AevaCarousel extends LitElement {
                 </svg>
               </button>
             `
-                : ''}
+        : ''}
 
         ${!this.hideIndicators && this.slideCount > 1
-                ? html`
+        ? html`
               <div part="indicators" class="indicators">
                 ${Array.from({ length: this.slideCount }, (_, i) => html`
                   <button
@@ -425,14 +418,14 @@ export class AevaCarousel extends LitElement {
                 `)}
               </div>
             `
-                : ''}
+        : ''}
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-carousel': AevaCarousel;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-carousel': AevaCarousel;
+  }
 }

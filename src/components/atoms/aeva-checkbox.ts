@@ -26,16 +26,6 @@ import { customElement, property } from 'lit/decorators.js';
 export class AevaCheckbox extends LitElement {
   static styles = css`
     :host {
-      --aeva-checkbox-size: 20px;
-      --aeva-checkbox-border-radius: 6px;
-      --aeva-checkbox-unchecked-stroke: #9ca3af;
-      --aeva-checkbox-unchecked-bg: transparent;
-      --aeva-checkbox-checked-stroke: #3b82f6;
-      --aeva-checkbox-checked-bg: #3b82f6;
-      --aeva-checkbox-checkmark-color: #ffffff;
-      --aeva-checkbox-transition: all 0.2s ease-in-out;
-      --aeva-checkbox-disabled-opacity: 0.5;
-
       display: inline-block;
       cursor: pointer;
     }

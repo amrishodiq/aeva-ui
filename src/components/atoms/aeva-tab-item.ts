@@ -24,18 +24,6 @@ import { customElement, property } from 'lit/decorators.js';
 export class AevaTabItem extends LitElement {
   static styles = css`
     :host {
-      --aeva-tab-item-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --aeva-tab-item-font-size: 14px;
-      --aeva-tab-item-padding: 8px 16px;
-      --aeva-tab-item-border-radius: 8px;
-      --aeva-tab-item-transition: color 0.2s ease-in-out;
-      --aeva-tab-item-color-active: #ffffff;
-      --aeva-tab-item-color-inactive: rgba(255, 255, 255, 0.6);
-      --aeva-tab-item-color-disabled: rgba(255, 255, 255, 0.3);
-      --aeva-tab-item-cursor: pointer;
-      --aeva-tab-item-disabled-opacity: 0.5;
-
       display: inline-block;
     }
 

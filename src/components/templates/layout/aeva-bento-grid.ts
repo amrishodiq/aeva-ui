@@ -14,13 +14,10 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-bento-grid')
 export class AevaBentoGrid extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       width: 100%;
-      
-      --aeva-bento-grid-gap: 1rem;
-      --aeva-bento-grid-min-height: 200px;
     }
 
     .grid {
@@ -153,28 +150,28 @@ export class AevaBentoGrid extends LitElement {
     }
   `;
 
-    /**
-     * Preset bento layout pattern
-     */
-    @property({ type: String, reflect: true })
-    preset: 'feature' | 'masonry' | 'dashboard' | 'sidebar' | 'spotlight' | 'custom' = 'feature';
+  /**
+   * Preset bento layout pattern
+   */
+  @property({ type: String, reflect: true })
+  preset: 'feature' | 'masonry' | 'dashboard' | 'sidebar' | 'spotlight' | 'custom' = 'feature';
 
-    render() {
-        const classes = [
-            'grid',
-            this.preset !== 'custom' ? `preset-${this.preset}` : '',
-        ].filter(Boolean).join(' ');
+  render() {
+    const classes = [
+      'grid',
+      this.preset !== 'custom' ? `preset-${this.preset}` : '',
+    ].filter(Boolean).join(' ');
 
-        return html`
+    return html`
       <div class="${classes}" part="grid">
         <slot></slot>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-bento-grid': AevaBentoGrid;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-bento-grid': AevaBentoGrid;
+  }
 }

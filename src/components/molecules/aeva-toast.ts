@@ -18,17 +18,8 @@ import { customElement, property, state } from 'lit/decorators.js';
  */
 @customElement('aeva-toast')
 export class AevaToast extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
-      --aeva-toast-bg: rgba(255, 255, 255, 0.9);
-      --aeva-toast-border-radius: 12px;
-      --aeva-toast-padding: 1rem 1.25rem;
-      --aeva-toast-min-width: 300px;
-      --aeva-toast-max-width: 500px;
-      --aeva-toast-blur: 10px;
-      --aeva-toast-border-color: rgba(255, 255, 255, 0.5);
-      --aeva-toast-shadow-color: rgba(0, 0, 0, 0.1);
-
       display: none;
       position: fixed;
       z-index: 9999;
@@ -175,7 +166,7 @@ export class AevaToast extends LitElement {
     }
 
     .close-button:hover {
-      background: rgba(0, 0, 0, 0.1);
+      background: var(--aeva-toast-close-hover-bg);
       color: #333;
     }
 
@@ -237,107 +228,107 @@ export class AevaToast extends LitElement {
     }
   `;
 
-    @property({ type: String, reflect: true })
-    variant: 'default' | 'success' | 'error' | 'warning' | 'info' = 'default';
+  @property({ type: String, reflect: true })
+  variant: 'default' | 'success' | 'error' | 'warning' | 'info' = 'default';
 
-    @property({ type: String, reflect: true })
-    position: 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center' = 'top-right';
+  @property({ type: String, reflect: true })
+  position: 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center' = 'top-right';
 
-    @property({ type: Number })
-    duration = 3000;
+  @property({ type: Number })
+  duration = 3000;
 
-    @property({ type: Boolean, reflect: true })
-    open = false;
+  @property({ type: Boolean, reflect: true })
+  open = false;
 
-    @property({ type: Boolean })
-    closable = true;
+  @property({ type: Boolean })
+  closable = true;
 
-    @state()
-    private closing = false;
+  @state()
+  private closing = false;
 
-    private autoCloseTimer?: number;
+  private autoCloseTimer?: number;
 
-    updated(changedProperties: Map<string, unknown>) {
-        if (changedProperties.has('open')) {
-            if (this.open) {
-                this.handleOpen();
-            }
-        }
+  updated(changedProperties: Map<string, unknown>) {
+    if (changedProperties.has('open')) {
+      if (this.open) {
+        this.handleOpen();
+      }
     }
+  }
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        if (this.autoCloseTimer) {
-            clearTimeout(this.autoCloseTimer);
-        }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this.autoCloseTimer) {
+      clearTimeout(this.autoCloseTimer);
     }
+  }
 
-    private handleOpen() {
-        this.closing = false;
-        this.dispatchEvent(new CustomEvent('open', { bubbles: true, composed: true }));
+  private handleOpen() {
+    this.closing = false;
+    this.dispatchEvent(new CustomEvent('open', { bubbles: true, composed: true }));
 
-        // Auto-dismiss if duration > 0
-        if (this.duration > 0) {
-            if (this.autoCloseTimer) {
-                clearTimeout(this.autoCloseTimer);
-            }
-            this.autoCloseTimer = window.setTimeout(() => {
-                this.close();
-            }, this.duration);
-        }
-    }
-
-    public close() {
-        if (!this.open || this.closing) return;
-
-        this.closing = true;
-        this.setAttribute('closing', '');
-
-        setTimeout(() => {
-            this.open = false;
-            this.closing = false;
-            this.removeAttribute('closing');
-            this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
-        }, 200);
-    }
-
-    private handleClose = () => {
+    // Auto-dismiss if duration > 0
+    if (this.duration > 0) {
+      if (this.autoCloseTimer) {
+        clearTimeout(this.autoCloseTimer);
+      }
+      this.autoCloseTimer = window.setTimeout(() => {
         this.close();
-    };
+      }, this.duration);
+    }
+  }
 
-    private getIcon() {
-        switch (this.variant) {
-            case 'success':
-                return html`
+  public close() {
+    if (!this.open || this.closing) return;
+
+    this.closing = true;
+    this.setAttribute('closing', '');
+
+    setTimeout(() => {
+      this.open = false;
+      this.closing = false;
+      this.removeAttribute('closing');
+      this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
+    }, 200);
+  }
+
+  private handleClose = () => {
+    this.close();
+  };
+
+  private getIcon() {
+    switch (this.variant) {
+      case 'success':
+        return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
           </svg>
         `;
-            case 'error':
-                return html`
+      case 'error':
+        return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         `;
-            case 'warning':
-                return html`
+      case 'warning':
+        return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
           </svg>
         `;
-            case 'info':
-                return html`
+      case 'info':
+        return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
         `;
-            default:
-                return null;
-        }
+      default:
+        return null;
     }
+  }
 
-    render() {
-        return html`
+  render() {
+    return html`
       <div class="toast" role="alert" aria-live="polite">
         ${this.variant !== 'default' ? html`<div class="icon">${this.getIcon()}</div>` : ''}
         <div class="content">
@@ -352,11 +343,11 @@ export class AevaToast extends LitElement {
         ` : ''}
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-toast': AevaToast;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-toast': AevaToast;
+  }
 }

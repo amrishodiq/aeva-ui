@@ -26,14 +26,6 @@ import '../atoms/aeva-tab-item';
 export class AevaTab extends LitElement {
     static styles = css`
     :host {
-      --aeva-tab-bg: rgba(0, 0, 0, 0.2);
-      --aeva-tab-active-bg: rgba(0, 0, 0, 0.4);
-      --aeva-tab-padding: 12px;
-      --aeva-tab-gap: 12px;
-      --aeva-tab-border-radius: 50vh;
-      --aeva-tab-transition-duration: 300ms;
-      --aeva-tab-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
-
       display: flex;
       justify-content: center;
       width: 100%;

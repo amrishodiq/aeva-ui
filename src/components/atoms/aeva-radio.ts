@@ -23,17 +23,8 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-radio')
 export class AevaRadio extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
-      --aeva-radio-size: 20px;
-      --aeva-radio-unchecked-stroke: #9ca3af;
-      --aeva-radio-unchecked-bg: transparent;
-      --aeva-radio-checked-stroke: #3b82f6;
-      --aeva-radio-checked-bg: #3b82f6;
-      --aeva-radio-checkmark-color: #ffffff;
-      --aeva-radio-transition: all 0.2s ease-in-out;
-      --aeva-radio-disabled-opacity: 0.5;
-
       display: inline-block;
       cursor: pointer;
     }
@@ -87,71 +78,71 @@ export class AevaRadio extends LitElement {
     }
   `;
 
-    /**
-     * Whether the radio button is checked
-     */
-    @property({ type: Boolean, reflect: true })
-    checked = false;
+  /**
+   * Whether the radio button is checked
+   */
+  @property({ type: Boolean, reflect: true })
+  checked = false;
 
-    /**
-     * Whether the radio button is disabled
-     */
-    @property({ type: Boolean, reflect: true })
-    disabled = false;
+  /**
+   * Whether the radio button is disabled
+   */
+  @property({ type: Boolean, reflect: true })
+  disabled = false;
 
-    /**
-     * Name attribute for form grouping
-     */
-    @property({ type: String })
-    name = '';
+  /**
+   * Name attribute for form grouping
+   */
+  @property({ type: String })
+  name = '';
 
-    /**
-     * Value attribute
-     */
-    @property({ type: String })
-    value = '';
+  /**
+   * Value attribute
+   */
+  @property({ type: String })
+  value = '';
 
-    private _handleClick() {
-        if (this.disabled) return;
+  private _handleClick() {
+    if (this.disabled) return;
 
-        // If clicking to check this radio
-        if (!this.checked) {
-            // Uncheck all other radios with the same name
-            if (this.name) {
-                const radios = document.querySelectorAll(`aeva-radio[name="${this.name}"]`);
-                radios.forEach((radio) => {
-                    if (radio !== this && radio instanceof AevaRadio) {
-                        radio.checked = false;
-                    }
-                });
-            }
+    // If clicking to check this radio
+    if (!this.checked) {
+      // Uncheck all other radios with the same name
+      if (this.name) {
+        const radios = document.querySelectorAll(`aeva-radio[name="${this.name}"]`);
+        radios.forEach((radio) => {
+          if (radio !== this && radio instanceof AevaRadio) {
+            radio.checked = false;
+          }
+        });
+      }
 
-            this.checked = true;
+      this.checked = true;
 
-            this.dispatchEvent(
-                new CustomEvent('change', {
-                    detail: {
-                        checked: this.checked,
-                        value: this.value,
-                        name: this.name,
-                    },
-                    bubbles: true,
-                    composed: true,
-                })
-            );
-        }
-        // If clicking an already checked radio, do nothing (radio buttons stay checked)
+      this.dispatchEvent(
+        new CustomEvent('change', {
+          detail: {
+            checked: this.checked,
+            value: this.value,
+            name: this.name,
+          },
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
+    // If clicking an already checked radio, do nothing (radio buttons stay checked)
+  }
 
-    render() {
-        const strokeColor = this.checked
-            ? 'var(--aeva-radio-checked-stroke)'
-            : 'var(--aeva-radio-unchecked-stroke)';
-        const fillColor = this.checked
-            ? 'var(--aeva-radio-checked-bg)'
-            : 'var(--aeva-radio-unchecked-bg)';
+  render() {
+    const strokeColor = this.checked
+      ? 'var(--aeva-radio-checked-stroke)'
+      : 'var(--aeva-radio-unchecked-stroke)';
+    const fillColor = this.checked
+      ? 'var(--aeva-radio-checked-bg)'
+      : 'var(--aeva-radio-unchecked-bg)';
 
-        return html`
+    return html`
       <div
         class="container"
         part="container"
@@ -187,11 +178,11 @@ export class AevaRadio extends LitElement {
         </svg>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-radio': AevaRadio;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-radio': AevaRadio;
+  }
 }

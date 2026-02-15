@@ -43,6 +43,9 @@ export { AevaBentoGrid } from './components/templates/layout/aeva-bento-grid.js'
 export { AevaMasonry } from './components/templates/layout/aeva-masonry.js';
 export { AevaSection } from './components/templates/layout/aeva-section.js';
 
+// Theme
+export { AevaTheme } from './theme/aeva-theme.js';
+
 
 
 console.log('@aeva/ui library loaded');

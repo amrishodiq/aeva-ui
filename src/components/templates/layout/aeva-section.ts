@@ -23,14 +23,8 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-section')
 export class AevaSection extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
-      --aeva-section-gap: 0;
-      --aeva-section-padding: 0;
-      --aeva-section-header-padding: 0;
-      --aeva-section-body-padding: 0;
-      --aeva-section-footer-padding: 0;
-
       display: block;
       width: 100%;
       box-sizing: border-box;
@@ -152,38 +146,38 @@ export class AevaSection extends LitElement {
     }
   `;
 
-    /**
-     * Gap between sections
-     */
-    @property({ type: String, reflect: true })
-    gap: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'none';
+  /**
+   * Gap between sections
+   */
+  @property({ type: String, reflect: true })
+  gap: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'none';
 
-    /**
-     * Padding for the entire section
-     */
-    @property({ type: String, reflect: true })
-    padding: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'none';
+  /**
+   * Padding for the entire section
+   */
+  @property({ type: String, reflect: true })
+  padding: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'none';
 
-    /**
-     * Whether the section should take full height
-     */
-    @property({ type: Boolean, reflect: true, attribute: 'full-height' })
-    fullHeight = false;
+  /**
+   * Whether the section should take full height
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'full-height' })
+  fullHeight = false;
 
-    /**
-     * Whether the header should be sticky
-     */
-    @property({ type: Boolean, reflect: true, attribute: 'sticky-header' })
-    stickyHeader = false;
+  /**
+   * Whether the header should be sticky
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'sticky-header' })
+  stickyHeader = false;
 
-    /**
-     * Whether the footer should be sticky
-     */
-    @property({ type: Boolean, reflect: true, attribute: 'sticky-footer' })
-    stickyFooter = false;
+  /**
+   * Whether the footer should be sticky
+   */
+  @property({ type: Boolean, reflect: true, attribute: 'sticky-footer' })
+  stickyFooter = false;
 
-    render() {
-        return html`
+  render() {
+    return html`
       <div class="section" part="section">
         <div class="header" part="header">
           <slot name="header"></slot>
@@ -196,11 +190,11 @@ export class AevaSection extends LitElement {
         </div>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-section': AevaSection;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-section': AevaSection;
+  }
 }

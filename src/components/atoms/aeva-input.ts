@@ -59,70 +59,8 @@ import { classMap } from 'lit/directives/class-map.js';
 export class AevaInput extends LitElement {
   static styles = css`
     :host {
-      --aeva-input-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --aeva-input-border-radius: 8px;
-      --aeva-input-transition: all 0.2s ease-in-out;
-
-      /* Colors */
-      --aeva-input-bg: #ffffff;
-      --aeva-input-border-color: #d1d5db;
-      --aeva-input-text-color: #1a1a1a;
-      --aeva-input-placeholder-color: #9ca3af;
-      --aeva-input-error-border-color: #dc2626;
-
-      /* Focus state */
-      --aeva-input-focus-border-color: #667eea;
-      --aeva-input-focus-ring-color: rgba(102, 126, 234, 0.3);
-      --aeva-input-focus-ring-width: 3px;
-      --aeva-input-focus-ring-offset: 0px;
-
-      /* Hover state */
-      --aeva-input-hover-border-color: #9ca3af;
-
-      /* Disabled state */
-      --aeva-input-disabled-bg: #f3f4f6;
-      --aeva-input-disabled-border-color: #e5e7eb;
-      --aeva-input-disabled-text-color: #9ca3af;
-      --aeva-input-disabled-opacity: 0.6;
-
-      /* Flat appearance */
-      --aeva-input-flat-bg: transparent;
-      --aeva-input-flat-hover-bg: rgba(0, 0, 0, 0.05);
-      --aeva-input-flat-focus-bg: rgba(0, 0, 0, 0.08);
-
-      /* Sizes */
-      --aeva-input-padding-sm: 8px 12px;
-      --aeva-input-font-size-sm: 14px;
-      --aeva-input-height-sm: 36px;
-
-      --aeva-input-padding-md: 12px 16px;
-      --aeva-input-font-size-md: 16px;
-      --aeva-input-height-md: 44px;
-
-      --aeva-input-padding-lg: 16px 20px;
-      --aeva-input-font-size-lg: 18px;
-      --aeva-input-height-lg: 52px;
-
-      /* Multiline */
-      --aeva-input-multiline-min-height: 100px;
-
       display: block;
       width: 100%;
-    }
-
-    /* Dark mode support */
-    @media (prefers-color-scheme: dark) {
-      :host {
-        --aeva-input-bg: #1f2937;
-        --aeva-input-border-color: #4b5563;
-        --aeva-input-text-color: #f9fafb;
-        --aeva-input-placeholder-color: #6b7280;
-        --aeva-input-disabled-bg: #111827;
-        --aeva-input-disabled-border-color: #374151;
-        --aeva-input-flat-hover-bg: rgba(255, 255, 255, 0.1);
-        --aeva-input-flat-focus-bg: rgba(255, 255, 255, 0.15);
-      }
     }
 
     .container {

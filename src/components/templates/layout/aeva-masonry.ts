@@ -16,15 +16,12 @@ import { customElement, property } from 'lit/decorators.js';
 export class AevaMasonry extends LitElement {
   static styles = css`
     :host {
-      --masonry-gap: 16px;
-      --masonry-column-count: auto;
-
       display: block;
       width: 100%;
     }
 
     .masonry-container {
-      column-gap: var(--masonry-gap);
+      column-gap: var(--aeva-masonry-gap);
       width: 100%;
     }
 
@@ -76,7 +73,7 @@ export class AevaMasonry extends LitElement {
     /* Slotted items - prevent breaking across columns */
     ::slotted(*) {
       break-inside: avoid;
-      margin-bottom: var(--masonry-gap);
+      margin-bottom: var(--aeva-masonry-gap);
       width: 100%;
       display: block;
     }
@@ -104,7 +101,7 @@ export class AevaMasonry extends LitElement {
 
     // Update CSS custom properties
     if (changedProperties.has('gap')) {
-      this.style.setProperty('--masonry-gap', `${this.gap}px`);
+      this.style.setProperty('--aeva-masonry-gap', `${this.gap}px`);
       this.applyGapToChildren();
     }
   }

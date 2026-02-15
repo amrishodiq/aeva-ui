@@ -67,69 +67,6 @@ import { classMap } from 'lit/directives/class-map.js';
 export class AevaButton extends LitElement {
   static styles = css`
     :host {
-      --aeva-button-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --aeva-button-border-radius: 50vh;
-      --aeva-button-transition: all 0.2s ease-in-out;
-      --aeva-button-gap: 8px;
-      --aeva-button-focus-ring-color: #667eea;
-      --aeva-button-focus-ring-width: 3px;
-      --aeva-button-focus-ring-offset: 2px;
-
-      /* Primary variant */
-      --aeva-button-primary-bg: #667eea;
-      --aeva-button-primary-color: #ffffff;
-      --aeva-button-primary-hover-bg: #5568d3;
-      --aeva-button-primary-active-bg: #4451b8;
-
-      /* Secondary variant */
-      --aeva-button-secondary-bg: #6c757d;
-      --aeva-button-secondary-color: #ffffff;
-      --aeva-button-secondary-hover-bg: #5a6268;
-      --aeva-button-secondary-active-bg: #545b62;
-
-      /* Outline variant */
-      --aeva-button-outline-border-color: #667eea;
-      --aeva-button-outline-color: #667eea;
-      --aeva-button-outline-hover-bg: rgba(102, 126, 234, 0.1);
-      --aeva-button-outline-active-bg: rgba(102, 126, 234, 0.2);
-
-      /* Ghost variant */
-      --aeva-button-ghost-color: #667eea;
-      --aeva-button-ghost-hover-bg: rgba(102, 126, 234, 0.1);
-      --aeva-button-ghost-active-bg: rgba(102, 126, 234, 0.2);
-
-      /* Danger variant */
-      --aeva-button-danger-bg: #dc3545;
-      --aeva-button-danger-color: #ffffff;
-      --aeva-button-danger-hover-bg: #c82333;
-      --aeva-button-danger-active-bg: #bd2130;
-
-      /* Disabled state */
-      --aeva-button-disabled-opacity: 0.5;
-      --aeva-button-disabled-cursor: not-allowed;
-
-      /* Sizes */
-      --aeva-button-padding-sm: 8px 32px;
-      --aeva-button-font-size-sm: 14px;
-
-      --aeva-button-padding-md: 12px 48px;
-      --aeva-button-font-size-md: 16px;
-
-      --aeva-button-padding-lg: 16px 64px;
-      --aeva-button-font-size-lg: 18px;
-
-      /* Icon-only sizes */
-      --aeva-button-icon-padding-sm: 10px;
-      --aeva-button-icon-width-sm: 44px;
-
-      --aeva-button-icon-padding-md: 12px;
-      --aeva-button-icon-width-md: 44px;
-
-      --aeva-button-icon-padding-lg: 14px;
-      --aeva-button-icon-width-lg: 48px;
-
-      /* Default styles */
       display: inline-block;
       max-width: 80%;
     }

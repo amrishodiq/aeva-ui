@@ -18,10 +18,6 @@ import '../atoms/aeva-list-item';
 export class AevaList extends LitElement {
     static styles = css`
     :host {
-      --aeva-list-padding: 0;
-      --aeva-list-gap: 0;
-      --aeva-list-border-radius: 23px;
-
       display: block;
       width: 100%;      
     }
@@ -32,20 +28,6 @@ export class AevaList extends LitElement {
       padding: var(--aeva-list-padding);
       gap: var(--aeva-list-gap);
       border-radius: var(--aeva-list-border-radius);
-    }
-
-    /* Apply border radius to first and last items to match container */
-    ::slotted(aeva-list-item:first-of-type) {
-      --aeva-list-item-border-radius: var(--aeva-list-border-radius) var(--aeva-list-border-radius) 0 0;
-    }
-
-    ::slotted(aeva-list-item:last-of-type) {
-      --aeva-list-item-border-radius: 0 0 var(--aeva-list-border-radius) var(--aeva-list-border-radius);
-    }
-
-    /* If there's only one item, apply full border radius */
-    ::slotted(aeva-list-item:first-of-type:last-of-type) {
-      --aeva-list-item-border-radius: var(--aeva-list-border-radius);
     }
   `;
 

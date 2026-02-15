@@ -21,22 +21,10 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-grid')
 export class AevaGrid extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       width: 100%;
-      
-      /* Gap presets */
-      --aeva-grid-gap-none: 0;
-      --aeva-grid-gap-xs: 0.25rem;
-      --aeva-grid-gap-sm: 0.5rem;
-      --aeva-grid-gap-md: 1rem;
-      --aeva-grid-gap-lg: 1.5rem;
-      --aeva-grid-gap-xl: 2rem;
-      
-      /* Auto-fit/fill settings */
-      --aeva-grid-auto-min-width: 250px;
-      --aeva-grid-auto-max-width: 1fr;
     }
 
     .grid {
@@ -164,49 +152,49 @@ export class AevaGrid extends LitElement {
     }
   `;
 
-    /**
-     * Number of columns or auto-fit/auto-fill
-     */
-    @property({ type: String, reflect: true })
-    columns: '1' | '2' | '3' | '4' | '6' | '12' | 'auto-fit' | 'auto-fill' = '3';
+  /**
+   * Number of columns or auto-fit/auto-fill
+   */
+  @property({ type: String, reflect: true })
+  columns: '1' | '2' | '3' | '4' | '6' | '12' | 'auto-fit' | 'auto-fill' = '3';
 
-    /**
-     * Gap between grid items
-     */
-    @property({ type: String, reflect: true })
-    gap: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
+  /**
+   * Gap between grid items
+   */
+  @property({ type: String, reflect: true })
+  gap: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
 
-    /**
-     * Alignment of items on block axis
-     */
-    @property({ type: String, reflect: true, attribute: 'align-items' })
-    alignItems: 'start' | 'center' | 'end' | 'stretch' = 'stretch';
+  /**
+   * Alignment of items on block axis
+   */
+  @property({ type: String, reflect: true, attribute: 'align-items' })
+  alignItems: 'start' | 'center' | 'end' | 'stretch' = 'stretch';
 
-    /**
-     * Alignment of items on inline axis
-     */
-    @property({ type: String, reflect: true, attribute: 'justify-items' })
-    justifyItems: 'start' | 'center' | 'end' | 'stretch' = 'stretch';
+  /**
+   * Alignment of items on inline axis
+   */
+  @property({ type: String, reflect: true, attribute: 'justify-items' })
+  justifyItems: 'start' | 'center' | 'end' | 'stretch' = 'stretch';
 
-    render() {
-        const classes = [
-            'grid',
-            `columns-${this.columns}`,
-            `gap-${this.gap}`,
-            `align-items-${this.alignItems}`,
-            `justify-items-${this.justifyItems}`,
-        ].join(' ');
+  render() {
+    const classes = [
+      'grid',
+      `columns-${this.columns}`,
+      `gap-${this.gap}`,
+      `align-items-${this.alignItems}`,
+      `justify-items-${this.justifyItems}`,
+    ].join(' ');
 
-        return html`
+    return html`
       <div class="${classes}" part="grid">
         <slot></slot>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-grid': AevaGrid;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-grid': AevaGrid;
+  }
 }

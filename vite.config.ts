@@ -13,11 +13,17 @@ export default defineConfig({
         },
         rollupOptions: {
             // Externalize Lit - jangan bundle Lit ke dalam library
-            external: ['lit', 'lit/decorators.js', 'lit/directives/class-map.js'],
+            external: [
+                'lit',
+                'lit/decorators.js',
+                'lit/directives/class-map.js',
+                '@lit-labs/context'
+            ],
             output: {
                 // Global variables untuk UMD build
                 globals: {
-                    lit: 'Lit'
+                    lit: 'Lit',
+                    '@lit-labs/context': 'LitContext'
                 }
             }
         },

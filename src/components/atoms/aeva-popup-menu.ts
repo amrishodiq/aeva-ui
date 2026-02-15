@@ -19,14 +19,6 @@ import { customElement, property, state } from 'lit/decorators.js';
 export class AevaPopupMenu extends LitElement {
   static styles = css`
     :host {
-      --aeva-popup-bg: rgba(255, 255, 255, 0.7);
-      --aeva-popup-border-radius: 23px;
-      --aeva-popup-min-width: 200px;
-      --aeva-popup-max-width: 600px;
-      --aeva-popup-blur: 10px;
-      --aeva-popup-border-color: rgba(255, 255, 255, 0.5);
-      --aeva-popup-shadow-color: rgba(0, 0, 0, 0.1);
-
       display: none;
       position: fixed;
       top: 0;

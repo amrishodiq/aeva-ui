@@ -25,14 +25,6 @@ import './aeva-text';
 export class AevaListItem extends LitElement {
   static styles = css`
     :host {
-      --aeva-list-item-padding: 12px 16px;
-      --aeva-list-item-gap: 16px;
-      --aeva-list-item-bg: transparent;
-      --aeva-list-item-hover-bg: rgba(0, 0, 0, 0.04);
-      --aeva-list-item-active-bg: rgba(102, 126, 234, 0.08);
-      --aeva-list-item-border-radius: 0;
-      --aeva-list-item-transition: background-color 0.2s ease;
-      
       /* Responsive variables for sidebar integration */
       --list-item-text-display: block;
       --list-item-justify: flex-start;
@@ -43,14 +35,6 @@ export class AevaListItem extends LitElement {
       user-select: none;
     }
 
-    /* Dark mode adjustments */
-    @media (prefers-color-scheme: dark) {
-      :host {
-        --aeva-list-item-hover-bg: rgba(255, 255, 255, 0.08);
-        --aeva-list-item-active-bg: rgba(102, 126, 234, 0.15);
-      }
-    }
-
     .item {
       position: relative;
       display: flex;
@@ -58,6 +42,7 @@ export class AevaListItem extends LitElement {
       padding: var(--list-item-padding);
       gap: var(--aeva-list-item-gap);
       background-color: var(--aeva-list-item-bg);
+      color: var(--aeva-list-item-color);
       border-radius: var(--aeva-list-item-border-radius);
       transition: var(--aeva-list-item-transition);
       cursor: pointer;

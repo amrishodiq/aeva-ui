@@ -29,14 +29,6 @@ import { customElement, property, state } from 'lit/decorators.js';
 export class AevaSidebar extends LitElement {
   static styles = css`
     :host {
-      --aeva-sidebar-bg: #ffffff;
-      --aeva-sidebar-width-sm: 200px;
-      --aeva-sidebar-width-md: 280px;
-      --aeva-sidebar-width-lg: 320px;
-      --aeva-sidebar-icon-width: 72px;
-      --aeva-sidebar-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      --aeva-sidebar-z-index: 1000;
-
       display: block;
       box-sizing: border-box;
     }
@@ -62,7 +54,7 @@ export class AevaSidebar extends LitElement {
       .sidebar {
         transform: translateX(-100%);
         transition: transform var(--aeva-sidebar-transition);
-        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+        box-shadow: var(--aeva-sidebar-shadow);
       }
 
       :host([open]) .sidebar {
@@ -72,7 +64,7 @@ export class AevaSidebar extends LitElement {
       .backdrop {
         position: fixed;
         inset: 0;
-        background: rgba(0, 0, 0, 0.5);
+        background: var(--aeva-sidebar-backdrop-bg);
         opacity: 0;
         pointer-events: none;
         transition: opacity var(--aeva-sidebar-transition);
@@ -153,7 +145,7 @@ export class AevaSidebar extends LitElement {
       flex-direction: column;
       height: 100%;
       background: var(--aeva-sidebar-bg);
-      border-right: 1px solid #e5e7eb;
+      border-right: var(--aeva-sidebar-border);
       overflow: hidden;
       box-sizing: border-box;
       border-top-right-radius: 24px;
@@ -162,7 +154,7 @@ export class AevaSidebar extends LitElement {
 
     :host([position="right"]) .sidebar {
       border-right: none;
-      border-left: 1px solid #e5e7eb;
+      border-left: var(--aeva-sidebar-border);
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
       border-top-left-radius: 24px;
@@ -171,10 +163,10 @@ export class AevaSidebar extends LitElement {
 
     /* Glassmorphism */
     :host([glassmorphism]) .sidebar {
-      background: rgba(255, 255, 255, 0.95);
+      background: var(--aeva-sidebar-glassmorphism-bg);
       backdrop-filter: blur(10px);
       -webkit-backdrop-filter: blur(10px);
-      border-color: rgba(0, 0, 0, 0.1);
+      border-color: var(--aeva-sidebar-glassmorphism-border);
     }
 
     /* Header */
@@ -184,7 +176,7 @@ export class AevaSidebar extends LitElement {
     
     :host([has-header]) .header {
       padding: 1.5rem 1rem;
-      border-bottom: 1px solid #e5e7eb;
+      border-bottom: var(--aeva-sidebar-border);
     }
 
     :host(:not([has-header])) .header {
@@ -205,7 +197,7 @@ export class AevaSidebar extends LitElement {
 
     :host([has-footer]) .footer {
       padding: 1rem;
-      border-top: 1px solid #e5e7eb;
+      border-top: var(--aeva-sidebar-border);
     }
 
     :host(:not([has-footer])) .footer {
@@ -239,12 +231,12 @@ export class AevaSidebar extends LitElement {
     }
 
     .content::-webkit-scrollbar-thumb {
-      background: #d1d5db;
+      background: var(--aeva-sidebar-scrollbar-thumb);
       border-radius: 3px;
     }
 
     .content::-webkit-scrollbar-thumb:hover {
-      background: #9ca3af;
+      background: var(--aeva-sidebar-scrollbar-thumb-hover);
     }
   `;
 

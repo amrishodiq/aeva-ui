@@ -56,58 +56,8 @@ import { classMap } from 'lit/directives/class-map.js';
  */
 @customElement('aeva-badge')
 export class AevaBadge extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
-      --aeva-badge-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-        Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      --aeva-badge-border-radius: 16px;
-      --aeva-badge-transition: all 0.2s ease-in-out;
-      --aeva-badge-gap: 6px;
-
-      /* Primary variant */
-      --aeva-badge-primary-bg: #e8eaf6;
-      --aeva-badge-primary-color: #3f51b5;
-      --aeva-badge-primary-border: #c5cae9;
-
-      /* Secondary variant */
-      --aeva-badge-secondary-bg: #f5f5f5;
-      --aeva-badge-secondary-color: #616161;
-      --aeva-badge-secondary-border: #e0e0e0;
-
-      /* Success variant */
-      --aeva-badge-success-bg: #e8f5e9;
-      --aeva-badge-success-color: #2e7d32;
-      --aeva-badge-success-border: #c8e6c9;
-
-      /* Warning variant */
-      --aeva-badge-warning-bg: #fff3e0;
-      --aeva-badge-warning-color: #e65100;
-      --aeva-badge-warning-border: #ffe0b2;
-
-      /* Danger variant */
-      --aeva-badge-danger-bg: #ffebee;
-      --aeva-badge-danger-color: #c62828;
-      --aeva-badge-danger-border: #ffcdd2;
-
-      /* Info variant */
-      --aeva-badge-info-bg: #e3f2fd;
-      --aeva-badge-info-color: #1565c0;
-      --aeva-badge-info-border: #bbdefb;
-
-      /* Sizes */
-      --aeva-badge-padding-sm: 4px 10px;
-      --aeva-badge-font-size-sm: 12px;
-
-      --aeva-badge-padding-md: 6px 12px;
-      --aeva-badge-font-size-md: 14px;
-
-      --aeva-badge-padding-lg: 8px 16px;
-      --aeva-badge-font-size-lg: 16px;
-
-      /* Delete button */
-      --aeva-badge-delete-size: 16px;
-      --aeva-badge-delete-hover-bg: rgba(0, 0, 0, 0.1);
-
       display: inline-flex;
       align-items: center;
     }
@@ -265,72 +215,72 @@ export class AevaBadge extends LitElement {
     }
   `;
 
-    /**
-     * Badge variant/color
-     */
-    @property({ type: String, reflect: true })
-    variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' =
-        'primary';
+  /**
+   * Badge variant/color
+   */
+  @property({ type: String, reflect: true })
+  variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' =
+    'primary';
 
-    /**
-     * Badge size
-     */
-    @property({ type: String, reflect: true })
-    size: 'sm' | 'md' | 'lg' = 'md';
+  /**
+   * Badge size
+   */
+  @property({ type: String, reflect: true })
+  size: 'sm' | 'md' | 'lg' = 'md';
 
-    /**
-     * Whether the badge can be deleted
-     */
-    @property({ type: Boolean, reflect: true })
-    deletable = false;
+  /**
+   * Whether the badge can be deleted
+   */
+  @property({ type: Boolean, reflect: true })
+  deletable = false;
 
-    /**
-     * Aria label for the delete button
-     */
-    @property({ type: String, attribute: 'delete-label' })
-    deleteLabel = 'Remove badge';
+  /**
+   * Aria label for the delete button
+   */
+  @property({ type: String, attribute: 'delete-label' })
+  deleteLabel = 'Remove badge';
 
-    private handleDelete(e: Event) {
-        e.stopPropagation();
+  private handleDelete(e: Event) {
+    e.stopPropagation();
 
-        // Dispatch custom event
-        this.dispatchEvent(
-            new CustomEvent('badge-delete', {
-                bubbles: true,
-                composed: true,
-                detail: {
-                    badge: this,
-                },
-            })
-        );
+    // Dispatch custom event
+    this.dispatchEvent(
+      new CustomEvent('badge-delete', {
+        bubbles: true,
+        composed: true,
+        detail: {
+          badge: this,
+        },
+      })
+    );
 
-        // Animate out and remove
-        const badge = this.shadowRoot?.querySelector('.badge') as HTMLElement;
-        if (badge) {
-            badge.style.transform = 'scale(0)';
-            badge.style.opacity = '0';
+    // Animate out and remove
+    const badge = this.shadowRoot?.querySelector('.badge') as HTMLElement;
+    if (badge) {
+      badge.style.transform = 'scale(0)';
+      badge.style.opacity = '0';
 
-            setTimeout(() => {
-                this.remove();
-            }, 200);
-        }
+      setTimeout(() => {
+        this.remove();
+      }, 200);
     }
+  }
 
-    render() {
-        const classes = {
-            badge: true,
-            [`variant-${this.variant}`]: true,
-            [`size-${this.size}`]: true,
-        };
+  render() {
+    const classes = {
+      badge: true,
+      [`variant-${this.variant}`]: true,
+      [`size-${this.size}`]: true,
+    };
 
-        return html`
+    return html`
       <div part="badge" class="${classMap(classes)}">
         <div part="content" class="content">
           <slot name="icon"></slot>
           <slot></slot>
         </div>
         ${this.deletable
-                ? html`
+        ? html`
               <button
                 part="delete-button"
                 class="delete-button"
@@ -341,14 +291,14 @@ export class AevaBadge extends LitElement {
                 <span class="delete-icon" aria-hidden="true"></span>
               </button>
             `
-                : ''}
+        : ''}
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-badge': AevaBadge;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-badge': AevaBadge;
+  }
 }
