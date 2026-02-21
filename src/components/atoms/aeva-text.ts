@@ -57,6 +57,7 @@ export class AevaText extends LitElement {
   static styles = css`
     :host {
       display: block;
+      color: var(--aeva-text-color);
     }
 
     /* Base typography styles */
@@ -64,7 +65,7 @@ export class AevaText extends LitElement {
       margin-top: var(--aeva-text-margin-top, 0);
       margin-bottom: var(--aeva-text-margin-bottom, 0);
       padding: 0;
-      color: var(--aeva-text-color);
+      color: inherit;
       font-family: var(--aeva-text-font-family);
       max-width: var(--aeva-text-max-width, none);
     }

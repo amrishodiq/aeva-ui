@@ -228,11 +228,11 @@ export class AevaSidebar extends LitElement {
 
     /* Tablet mode: reduce padding and hide header */
     @media (min-width: 768px) and (max-width: 1023px) {
-      .header {
+      :host(:not([static])) .header {
         display: none;
       }
 
-      .footer {
+      :host(:not([static])) .footer {
         padding: 1rem 0.5rem;
         text-align: center;
       }

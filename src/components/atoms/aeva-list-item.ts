@@ -39,6 +39,7 @@ export class AevaListItem extends LitElement {
       gap: var(--aeva-list-item-gap, var(--list-item-gap-default));
       background-color: var(--aeva-list-item-bg, transparent);
       color: var(--aeva-list-item-color, var(--list-item-color-default));
+      --aeva-text-color: inherit;
       border-radius: var(--aeva-list-item-border-radius, var(--list-item-border-radius-default));
       transition: var(--aeva-list-item-transition, var(--list-item-transition-default));
       cursor: pointer;
@@ -229,7 +230,8 @@ export class AevaListItem extends LitElement {
         <div class="content">
           <div class="title-container">
             <slot name="title">
-              ${this.label ? html`<aeva-text variant="body" size="md">${this.label}</aeva-text>` : html`<slot></slot>`}
+              ${this.label ? html`<aeva-text variant="body" size="md">${this.label}</aeva-text>` : ''}
+              <slot></slot>
             </slot>
           </div>
           <div class="description-container">
