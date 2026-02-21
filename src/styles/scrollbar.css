@@ -1,0 +1,29 @@
+/* Aeva UI Global Scrollbar Styles */
+
+/* Webkit browsers (Chrome, Safari, Edge, etc.) */
+*::-webkit-scrollbar {
+    width: var(--aeva-scrollbar-width, 8px);
+    height: var(--aeva-scrollbar-width, 8px);
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--aeva-scrollbar-track, transparent);
+}
+
+*::-webkit-scrollbar-thumb {
+    background: var(--aeva-scrollbar-thumb, #cbd5e1);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: var(--aeva-scrollbar-thumb-hover, #94a3b8);
+    background-clip: content-box;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--aeva-scrollbar-thumb, #cbd5e1) var(--aeva-scrollbar-track, transparent);
+}

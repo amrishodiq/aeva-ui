@@ -106,20 +106,21 @@ export class AevaCode extends LitElement {
 
     /* Scrollbar styling */
     .code-container::-webkit-scrollbar {
-      height: 8px;
+      width: var(--aeva-scrollbar-width);
+      height: var(--aeva-scrollbar-width);
     }
 
     .code-container::-webkit-scrollbar-track {
-      background: transparent;
+      background: var(--aeva-scrollbar-track);
     }
 
     .code-container::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--aeva-scrollbar-thumb);
       border-radius: 10px;
     }
 
     .code-container::-webkit-scrollbar-thumb:hover {
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--aeva-scrollbar-thumb-hover);
     }
   `;
 

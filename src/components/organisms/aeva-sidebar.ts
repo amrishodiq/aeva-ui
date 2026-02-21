@@ -245,20 +245,20 @@ export class AevaSidebar extends LitElement {
 
     /* Scrollbar styling */
     .content::-webkit-scrollbar {
-      width: 6px;
+      width: var(--aeva-scrollbar-width);
     }
 
     .content::-webkit-scrollbar-track {
-      background: transparent;
+      background: var(--aeva-scrollbar-track);
     }
 
     .content::-webkit-scrollbar-thumb {
-      background: var(--aeva-sidebar-scrollbar-thumb);
-      border-radius: 3px;
+      background: var(--aeva-scrollbar-thumb);
+      border-radius: 10px;
     }
 
     .content::-webkit-scrollbar-thumb:hover {
-      background: var(--aeva-sidebar-scrollbar-thumb-hover);
+      background: var(--aeva-scrollbar-thumb-hover);
     }
   `;
 

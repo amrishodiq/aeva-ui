@@ -373,6 +373,12 @@ export const darkTheme: ThemeVariables = {
     '--aeva-sidebar-scrollbar-thumb': 'var(--aeva-color-gray-600)',
     '--aeva-sidebar-scrollbar-thumb-hover': 'var(--aeva-color-gray-500)',
 
+    // Global Scrollbar
+    '--aeva-scrollbar-width': '8px',
+    '--aeva-scrollbar-thumb': 'var(--aeva-color-gray-600)',
+    '--aeva-scrollbar-thumb-hover': 'var(--aeva-color-gray-500)',
+    '--aeva-scrollbar-track': 'transparent',
+
     // Container
     '--aeva-container-max-width-sm': '40rem',
     '--aeva-container-max-width-md': '48rem',
