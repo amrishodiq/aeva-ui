@@ -18,79 +18,62 @@ A lightweight, customizable design system library built with [Lit](https://lit.d
 
 ## 📦 Installation
 
+### Via NPM
 ```bash
 npm install @aeva/ui lit
 ```
 
-## 🚀 Quick Start
+### Via CDN (jsDelivr)
+Perfect for quick prototypes or static sites.
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@aeva/ui/dist/aeva-ui.js"></script>
+```
+
+Or a specific version:
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@aeva/ui@0.1.0/dist/aeva-ui.js"></script>
+```
+
+## 🚀 Quick Start (jsDelivr)
 
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <script type="module">
-    import '@aeva/ui';
-  </script>
+    <meta charset="UTF-8">
+    <title>Aeva UI Example</title>
+    <!-- Import official styles or use your own custom tokens -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@aeva/ui/dist/style.css">
+    <!-- Import components from CDN -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@aeva/ui/dist/aeva-ui.js"></script>
 </head>
 <body>
-  <!-- Components akan tersedia di sini -->
+    <aeva-button variant="primary">Hello Aeva!</aeva-button>
 </body>
 </html>
 ```
 
 ## 🎨 Theming
 
-Customize the design system by overriding CSS Custom Properties:
+Aeva UI uses CSS variables for theming. You can override them in your global CSS:
 
 ```css
 :root {
-  --aeva-color-primary: #your-color;
-  --aeva-spacing-md: 1.5rem;
-  --aeva-radius-md: 0.75rem;
-  /* See src/styles/tokens.css for all available tokens */
+  --aeva-color-primary: #6366f1;
+  --aeva-border-radius: 12px;
 }
 ```
 
-## 🛠️ Development
-
-```bash
-# Install dependencies
-npm install
-
-# Start dev server with hot reload
-npm run dev
-
-# Build library
-npm run build
-
-# Lint code
-npm run lint
-
-# Format code
-npm run format
-```
-
 ## 📁 Project Structure
-
-```
-@aeva/ui/
-├── src/
-│   ├── components/
-│   │   ├── atoms/       # Basic building blocks
-│   │   ├── molecules/   # Combinations of atoms
-│   │   ├── organisms/   # Complex components
-│   │   └── templates/   # Page layouts
-│   ├── styles/
-│   │   └── tokens.css   # Design tokens
-│   └── index.ts         # Main entry point
-├── demo/                # Demo playground
-└── dist/                # Build output
-```
+... (same as before) ...
 
 ## 📝 License
 
-MIT © [Your Name]
+Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+

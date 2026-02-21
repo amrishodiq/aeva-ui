@@ -3,9 +3,12 @@
     "version": "0.1.0",
     "description": "A modern design system library built with Lit web components for rapid web development",
     "type": "module",
+    "sideEffects": false,
     "main": "./dist/aeva-ui.umd.cjs",
     "module": "./dist/aeva-ui.js",
     "types": "./dist/index.d.ts",
+    "unpkg": "./dist/aeva-ui.umd.cjs",
+    "jsdelivr": "./dist/aeva-ui.umd.cjs",
     "exports": {
         ".": {
             "types": "./dist/index.d.ts",
@@ -13,6 +16,14 @@
             "require": "./dist/aeva-ui.umd.cjs"
         }
     },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/amrishodiq/aeva-ui.git"
+    },
+    "bugs": {
+        "url": "https://github.com/amrishodiq/aeva-ui/issues"
+    },
+    "homepage": "https://github.com/amrishodiq/aeva-ui#readme",
     "files": [
         "dist"
     ],
