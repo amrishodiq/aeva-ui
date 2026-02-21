@@ -59,7 +59,8 @@ export class AevaSidebar extends LitElement {
         z-index: -1;
         width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default));
         max-width: 85vw;
-        transition: z-index 0s var(--aeva-sidebar-transition, var(--aeva-sidebar-transition-default));
+        transition: z-index 0s
+          var(--aeva-sidebar-transition, var(--aeva-sidebar-transition-default));
       }
 
       :host([open]:not([static])) {
@@ -126,15 +127,15 @@ export class AevaSidebar extends LitElement {
         z-index: 1000 !important;
       }
 
-      :host([width="sm"]:not([static])) {
+      :host([width='sm']:not([static])) {
         width: var(--aeva-sidebar-width-sm, var(--aeva-sidebar-width-sm-default));
       }
 
-      :host([width="md"]:not([static])) {
+      :host([width='md']:not([static])) {
         width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default));
       }
 
-      :host([width="lg"]:not([static])) {
+      :host([width='lg']:not([static])) {
         width: var(--aeva-sidebar-width-lg, var(--aeva-sidebar-width-lg-default));
       }
 
@@ -144,19 +145,27 @@ export class AevaSidebar extends LitElement {
     }
 
     /* Static mode forcing widths */
-    :host([static][width="sm"]) { width: var(--aeva-sidebar-width-sm, var(--aeva-sidebar-width-sm-default)); }
-    :host([static][width="md"]) { width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default)); }
-    :host([static][width="lg"]) { width: var(--aeva-sidebar-width-lg, var(--aeva-sidebar-width-lg-default)); }
-    :host([static]:not([width])) { width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default)); }
+    :host([static][width='sm']) {
+      width: var(--aeva-sidebar-width-sm, var(--aeva-sidebar-width-sm-default));
+    }
+    :host([static][width='md']) {
+      width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default));
+    }
+    :host([static][width='lg']) {
+      width: var(--aeva-sidebar-width-lg, var(--aeva-sidebar-width-lg-default));
+    }
+    :host([static]:not([width])) {
+      width: var(--aeva-sidebar-width-md, var(--aeva-sidebar-width-md-default));
+    }
 
     /* Right position */
-    :host([position="right"]:not([static])) {
+    :host([position='right']:not([static])) {
       left: auto;
       right: 0;
     }
 
     @media (max-width: 767px) {
-      :host([position="right"][open]:not([static])) .sidebar {
+      :host([position='right'][open]:not([static])) .sidebar {
         transform: translateX(0);
       }
     }
@@ -174,7 +183,7 @@ export class AevaSidebar extends LitElement {
       border-bottom-right-radius: 24px;
     }
 
-    :host([position="right"]) .sidebar {
+    :host([position='right']) .sidebar {
       border-right: none;
       border-left: var(--aeva-sidebar-border);
       border-top-right-radius: 0;
@@ -195,7 +204,7 @@ export class AevaSidebar extends LitElement {
     .header {
       flex-shrink: 0;
     }
-    
+
     :host([has-header]) .header {
       padding: 1.5rem 1rem;
       border-bottom: var(--aeva-sidebar-border);
@@ -402,9 +411,10 @@ export class AevaSidebar extends LitElement {
     const headerSlot = this.shadowRoot?.querySelector('slot[name="header"]') as HTMLSlotElement;
     if (headerSlot) {
       const headerNodes = headerSlot.assignedNodes({ flatten: true });
-      this.hasHeader = headerNodes.some(node =>
-        node.nodeType === Node.ELEMENT_NODE ||
-        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+      this.hasHeader = headerNodes.some(
+        (node) =>
+          node.nodeType === Node.ELEMENT_NODE ||
+          (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
       );
     }
 
@@ -412,9 +422,10 @@ export class AevaSidebar extends LitElement {
     const footerSlot = this.shadowRoot?.querySelector('slot[name="footer"]') as HTMLSlotElement;
     if (footerSlot) {
       const footerNodes = footerSlot.assignedNodes({ flatten: true });
-      this.hasFooter = footerNodes.some(node =>
-        node.nodeType === Node.ELEMENT_NODE ||
-        (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
+      this.hasFooter = footerNodes.some(
+        (node) =>
+          node.nodeType === Node.ELEMENT_NODE ||
+          (node.nodeType === Node.TEXT_NODE && node.textContent?.trim())
       );
     }
 
@@ -443,7 +454,8 @@ export class AevaSidebar extends LitElement {
       // When closing, wait for animation to complete before hiding
       const transitionDuration = 300; // Match --aeva-sidebar-transition (0.3s)
       setTimeout(() => {
-        if (!this.open) { // Double-check it's still closed
+        if (!this.open) {
+          // Double-check it's still closed
           this.style.zIndex = '-1';
         }
       }, transitionDuration);

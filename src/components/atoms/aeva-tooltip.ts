@@ -52,7 +52,7 @@ export class AevaTooltip extends LitElement {
       word-wrap: break-word;
       white-space: normal;
       box-shadow: var(--aeva-tooltip-shadow);
-      
+
       animation: tooltipIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
@@ -77,25 +77,25 @@ export class AevaTooltip extends LitElement {
     }
 
     /* Arrow positions */
-    .tooltip-container[data-position="top"] .arrow {
+    .tooltip-container[data-position='top'] .arrow {
       bottom: -4px;
       left: 50%;
       margin-left: -4px;
     }
 
-    .tooltip-container[data-position="bottom"] .arrow {
+    .tooltip-container[data-position='bottom'] .arrow {
       top: -4px;
       left: 50%;
       margin-left: -4px;
     }
 
-    .tooltip-container[data-position="left"] .arrow {
+    .tooltip-container[data-position='left'] .arrow {
       right: -4px;
       top: 50%;
       margin-top: -4px;
     }
 
-    .tooltip-container[data-position="right"] .arrow {
+    .tooltip-container[data-position='right'] .arrow {
       left: -4px;
       top: 50%;
       margin-top: -4px;
@@ -272,8 +272,8 @@ export class AevaTooltip extends LitElement {
       <div class="trigger" role="button" tabindex="0">
         <slot></slot>
       </div>
-      
-      <div 
+
+      <div
         class="tooltip-container ${this.visible ? 'visible' : ''}"
         data-position="${this.actualPosition}"
         style="left: ${this.tooltipX}px; top: ${this.tooltipY}px;"

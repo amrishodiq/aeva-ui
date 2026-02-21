@@ -4,7 +4,7 @@ import { customElement, property, state } from 'lit/decorators.js';
 /**
  * A code block component with MacOS-style window decorations (Carbon style).
  * Supports syntax highlighting, line numbers (planned), and copy to clipboard.
- * 
+ *
  * @cssprop --aeva-code-bg - Background color of the code area
  * @cssprop --aeva-code-header-bg - Background color of the window header
  * @cssprop --aeva-code-font-family - Font family for the code
@@ -17,7 +17,16 @@ export class AevaCode extends LitElement {
     :host {
       display: block;
       margin: 1.5rem 0;
-      font-family: var(--aeva-code-font-family, 'Fira Code', 'Cascadia Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace);
+      font-family: var(
+        --aeva-code-font-family,
+        'Fira Code',
+        'Cascadia Code',
+        Consolas,
+        Monaco,
+        'Andale Mono',
+        'Ubuntu Mono',
+        monospace
+      );
     }
 
     .code-window {
@@ -44,9 +53,15 @@ export class AevaCode extends LitElement {
       border-radius: 50%;
     }
 
-    .dot-red { background: #ff5f56; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
+    .dot-red {
+      background: #ff5f56;
+    }
+    .dot-yellow {
+      background: #ffbd2e;
+    }
+    .dot-green {
+      background: #27c93f;
+    }
 
     .window-title {
       flex: 1;
@@ -166,15 +181,13 @@ export class AevaCode extends LitElement {
           <div class="dot dot-green"></div>
           ${this.title ? html`<div class="window-title">${this.title}</div>` : ''}
         </div>
-        
+
         <div class="code-container">
-          <button 
-            class="copy-button ${this.copied ? 'copied' : ''}" 
-            @click=${this.handleCopy}
-          >
+          <button class="copy-button ${this.copied ? 'copied' : ''}" @click=${this.handleCopy}>
             ${this.copied ? 'Copied!' : 'Copy'}
           </button>
-          <pre class="language-${this.language}"><code class="language-${this.language}">${this.code}<slot></slot></code></pre>
+          <pre class="language-${this.language}"><code class="language-${this.language}">${this
+            .code}<slot></slot></code></pre>
         </div>
       </div>
     `;

@@ -65,8 +65,7 @@ export class AevaProgress extends LitElement {
     /* Horizontal Infinite Animation */
     .horizontal-bar.infinite {
       width: 30%;
-      animation: horizontal-infinite var(--aeva-progress-animation-duration)
-        ease-in-out infinite;
+      animation: horizontal-infinite var(--aeva-progress-animation-duration) ease-in-out infinite;
     }
 
     @keyframes horizontal-infinite {
@@ -127,8 +126,7 @@ export class AevaProgress extends LitElement {
 
     /* Circular Infinite Animation */
     .circle-progress.infinite {
-      animation: circular-infinite var(--aeva-progress-animation-duration)
-        linear infinite;
+      animation: circular-infinite var(--aeva-progress-animation-duration) linear infinite;
       transform-origin: center;
     }
 
@@ -148,8 +146,7 @@ export class AevaProgress extends LitElement {
     }
 
     .circular-svg.infinite {
-      animation: circular-rotate var(--aeva-progress-animation-duration)
-        linear infinite;
+      animation: circular-rotate var(--aeva-progress-animation-duration) linear infinite;
     }
 
     @keyframes circular-rotate {
@@ -252,10 +249,7 @@ export class AevaProgress extends LitElement {
    */
   private get percentage(): number {
     if (this.max === this.min) return 0;
-    const clampedProgress = Math.max(
-      this.min,
-      Math.min(this.max, this.progress)
-    );
+    const clampedProgress = Math.max(this.min, Math.min(this.max, this.progress));
     return ((clampedProgress - this.min) / (this.max - this.min)) * 100;
   }
 
@@ -287,17 +281,12 @@ export class AevaProgress extends LitElement {
       infinite: this.mode === 'infinite',
     };
 
-    const barStyle =
-      this.mode === 'finite' ? `width: ${this.percentage}%` : '';
+    const barStyle = this.mode === 'finite' ? `width: ${this.percentage}%` : '';
 
     return html`
       <div class="horizontal-container">
         <div part="track" class="${classMap(classes)}">
-          <div
-            part="bar"
-            class="${classMap(barClasses)}"
-            style="${barStyle}"
-          ></div>
+          <div part="bar" class="${classMap(barClasses)}" style="${barStyle}"></div>
         </div>
       </div>
     `;
@@ -329,13 +318,7 @@ export class AevaProgress extends LitElement {
     return html`
       <div part="container" class="${classMap(containerClasses)}">
         <svg part="svg" class="${classMap(svgClasses)}" viewBox="0 0 100 100">
-          <circle
-            part="circle-bg"
-            class="circle-bg"
-            cx="50"
-            cy="50"
-            r="${radius}"
-          ></circle>
+          <circle part="circle-bg" class="circle-bg" cx="50" cy="50" r="${radius}"></circle>
           <circle
             part="circle-progress"
             class="${classMap(progressClasses)}"
@@ -346,8 +329,8 @@ export class AevaProgress extends LitElement {
           ></circle>
         </svg>
         ${this.mode === 'finite' && this.showPercentage
-        ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
-        : ''}
+          ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
+          : ''}
       </div>
     `;
   }
@@ -365,16 +348,10 @@ export class AevaProgress extends LitElement {
         aria-valuenow="${ariaValueNow}"
         aria-valuemin="${ariaValueMin}"
         aria-valuemax="${ariaValueMax}"
-        aria-valuetext="${this.mode === 'finite'
-        ? `${Math.round(this.percentage)}%`
-        : 'Loading'}"
+        aria-valuetext="${this.mode === 'finite' ? `${Math.round(this.percentage)}%` : 'Loading'}"
       >
-        ${this.shape === 'horizontal'
-        ? this.renderHorizontal()
-        : this.renderCircular()}
-        ${this.label
-        ? html`<div part="label" class="label">${this.label}</div>`
-        : ''}
+        ${this.shape === 'horizontal' ? this.renderHorizontal() : this.renderCircular()}
+        ${this.label ? html`<div part="label" class="label">${this.label}</div>` : ''}
         <slot></slot>
       </div>
     `;

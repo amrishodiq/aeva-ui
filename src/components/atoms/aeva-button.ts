@@ -104,8 +104,7 @@ export class AevaButton extends LitElement {
 
     /* Focus ring for accessibility */
     button:focus-visible {
-      outline: var(--aeva-button-focus-ring-width) solid
-        var(--aeva-button-focus-ring-color);
+      outline: var(--aeva-button-focus-ring-width) solid var(--aeva-button-focus-ring-color);
       outline-offset: var(--aeva-button-focus-ring-offset);
     }
 
@@ -318,8 +317,7 @@ export class AevaButton extends LitElement {
    * Button variant style
    */
   @property({ type: String, reflect: true })
-  variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' =
-    'primary';
+  variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' = 'primary';
 
   /**
    * Button size
@@ -386,7 +384,7 @@ export class AevaButton extends LitElement {
       if (filledSlots.includes('icon-only') && filledSlots.length > 1) {
         console.warn(
           '[aeva-button] Using slot="icon-only" with other slots may cause unexpected layout. ' +
-          'Use icon-only alone, or use icon-left/icon-right with default slot.',
+            'Use icon-only alone, or use icon-left/icon-right with default slot.',
           { filledSlots }
         );
       }

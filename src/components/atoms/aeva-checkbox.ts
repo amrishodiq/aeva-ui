@@ -154,7 +154,7 @@ export class AevaCheckbox extends LitElement {
             stroke="${strokeColor}"
             stroke-width="2"
           />
-          
+
           <!-- Checkmark with padding -->
           <g class="checkmark" part="checkmark">
             <path

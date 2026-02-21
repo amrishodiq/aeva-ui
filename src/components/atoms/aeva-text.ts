@@ -73,7 +73,20 @@ export class AevaText extends LitElement {
     /* Variant: Display/Hero */
     .variant-display,
     .variant-hero {
-      font-family: var(--aeva-text-display-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-family: var(
+        --aeva-text-display-font-family,
+        var(
+          --aeva-text-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif
+        )
+      );
       font-weight: var(--aeva-text-display-weight, 800);
       line-height: var(--aeva-text-display-line-height, 1.1);
       letter-spacing: var(--aeva-text-letter-spacing-display, -0.02em);
@@ -86,7 +99,20 @@ export class AevaText extends LitElement {
     .variant-h4,
     .variant-h5,
     .variant-h6 {
-      font-family: var(--aeva-text-heading-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-family: var(
+        --aeva-text-heading-font-family,
+        var(
+          --aeva-text-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif
+        )
+      );
       font-weight: var(--aeva-text-heading-weight, 700);
       line-height: var(--aeva-text-heading-line-height, 1.2);
       letter-spacing: var(--aeva-text-letter-spacing-heading, -0.01em);
@@ -94,7 +120,20 @@ export class AevaText extends LitElement {
 
     /* Variant: Body */
     .variant-body {
-      font-family: var(--aeva-text-body-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-family: var(
+        --aeva-text-body-font-family,
+        var(
+          --aeva-text-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif
+        )
+      );
       font-weight: var(--aeva-text-body-weight, 400);
       line-height: var(--aeva-text-body-line-height, 1.6);
       letter-spacing: var(--aeva-text-letter-spacing-body, normal);
@@ -102,7 +141,20 @@ export class AevaText extends LitElement {
 
     /* Variant: Label */
     .variant-label {
-      font-family: var(--aeva-text-label-font-family, var(--aeva-text-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif));
+      font-family: var(
+        --aeva-text-label-font-family,
+        var(
+          --aeva-text-font-family,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          Roboto,
+          Oxygen,
+          Ubuntu,
+          Cantarell,
+          sans-serif
+        )
+      );
       font-weight: var(--aeva-text-label-weight, 500);
       line-height: var(--aeva-text-label-line-height, 1.4);
       letter-spacing: var(--aeva-text-letter-spacing-label, 0.01em);
@@ -320,17 +372,7 @@ export class AevaText extends LitElement {
    * Typography variant
    */
   @property({ type: String, reflect: true })
-  variant:
-    | 'display'
-    | 'hero'
-    | 'h1'
-    | 'h2'
-    | 'h3'
-    | 'h4'
-    | 'h5'
-    | 'h6'
-    | 'body'
-    | 'label' = 'body';
+  variant: 'display' | 'hero' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'label' = 'body';
 
   /**
    * Typography size

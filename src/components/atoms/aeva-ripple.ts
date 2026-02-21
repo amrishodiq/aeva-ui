@@ -4,14 +4,14 @@ import { customElement, property } from 'lit/decorators.js';
 /**
  * A reusable ripple effect component that can be added to any position:relative element.
  * It listens for pointer events on its parent and creates expanding ripple circles.
- * 
+ *
  * @cssprop --aeva-ripple-color - Color of the ripple (default: currentColor)
  * @cssprop --aeva-ripple-duration - Duration of the ripple animation (default: 600ms)
  * @cssprop --aeva-ripple-opacity - Maximum opacity of the ripple (default: 0.15)
  */
 @customElement('aeva-ripple')
 export class AevaRipple extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       position: absolute;
@@ -47,77 +47,77 @@ export class AevaRipple extends LitElement {
     }
   `;
 
-    /**
-     * The duration of the ripple animation in milliseconds
-     */
-    @property({ type: Number })
-    duration = 600;
+  /**
+   * The duration of the ripple animation in milliseconds
+   */
+  @property({ type: Number })
+  duration = 600;
 
-    /**
-     * Opacity of the ripple
-     */
-    @property({ type: Number })
-    opacity = 0.15;
+  /**
+   * Opacity of the ripple
+   */
+  @property({ type: Number })
+  opacity = 0.15;
 
-    private parent: HTMLElement | null = null;
+  private parent: HTMLElement | null = null;
 
-    connectedCallback() {
-        super.connectedCallback();
-        this.parent = this.parentElement;
-        if (this.parent) {
-            this.parent.addEventListener('mousedown', this.handlePointerDown);
-            this.parent.addEventListener('touchstart', this.handlePointerDown, { passive: true });
-        }
+  connectedCallback() {
+    super.connectedCallback();
+    this.parent = this.parentElement;
+    if (this.parent) {
+      this.parent.addEventListener('mousedown', this.handlePointerDown);
+      this.parent.addEventListener('touchstart', this.handlePointerDown, { passive: true });
+    }
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    if (this.parent) {
+      this.parent.removeEventListener('mousedown', this.handlePointerDown);
+      this.parent.removeEventListener('touchstart', this.handlePointerDown);
+    }
+  }
+
+  private handlePointerDown = (e: MouseEvent | TouchEvent) => {
+    if (!this.shadowRoot) return;
+
+    // Get coordinates relative to parent
+    const rect = this.parent!.getBoundingClientRect();
+    let x, y;
+
+    if (e instanceof MouseEvent) {
+      x = e.clientX - rect.left;
+      y = e.clientY - rect.top;
+    } else {
+      x = e.touches[0].clientX - rect.left;
+      y = e.touches[0].clientY - rect.top;
     }
 
-    disconnectedCallback() {
-        super.disconnectedCallback();
-        if (this.parent) {
-            this.parent.removeEventListener('mousedown', this.handlePointerDown);
-            this.parent.removeEventListener('touchstart', this.handlePointerDown);
-        }
-    }
+    // Determine the size of the ripple
+    const size = Math.max(rect.width, rect.height);
 
-    private handlePointerDown = (e: MouseEvent | TouchEvent) => {
-        if (!this.shadowRoot) return;
+    // Create the ripple element
+    const ripple = document.createElement('div');
+    ripple.className = 'ripple';
+    ripple.style.width = ripple.style.height = `${size}px`;
+    ripple.style.left = `${x - size / 2}px`;
+    ripple.style.top = `${y - size / 2}px`;
 
-        // Get coordinates relative to parent
-        const rect = this.parent!.getBoundingClientRect();
-        let x, y;
+    this.shadowRoot.appendChild(ripple);
 
-        if (e instanceof MouseEvent) {
-            x = e.clientX - rect.left;
-            y = e.clientY - rect.top;
-        } else {
-            x = e.touches[0].clientX - rect.left;
-            y = e.touches[0].clientY - rect.top;
-        }
+    // Remove the ripple element after animation
+    setTimeout(() => {
+      ripple.remove();
+    }, this.duration);
+  };
 
-        // Determine the size of the ripple
-        const size = Math.max(rect.width, rect.height);
-
-        // Create the ripple element
-        const ripple = document.createElement('div');
-        ripple.className = 'ripple';
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${x - size / 2}px`;
-        ripple.style.top = `${y - size / 2}px`;
-
-        this.shadowRoot.appendChild(ripple);
-
-        // Remove the ripple element after animation
-        setTimeout(() => {
-            ripple.remove();
-        }, this.duration);
-    };
-
-    render() {
-        return html``;
-    }
+  render() {
+    return html``;
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-ripple': AevaRipple;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-ripple': AevaRipple;
+  }
 }

@@ -30,33 +30,33 @@ export class AevaToast extends LitElement {
     }
 
     /* Position variants */
-    :host([position="top-right"]) {
+    :host([position='top-right']) {
       top: 1rem;
       right: 1rem;
     }
 
-    :host([position="top-left"]) {
+    :host([position='top-left']) {
       top: 1rem;
       left: 1rem;
     }
 
-    :host([position="top-center"]) {
+    :host([position='top-center']) {
       top: 1rem;
       left: 50%;
       transform: translateX(-50%);
     }
 
-    :host([position="bottom-right"]) {
+    :host([position='bottom-right']) {
       bottom: 1rem;
       right: 1rem;
     }
 
-    :host([position="bottom-left"]) {
+    :host([position='bottom-left']) {
       bottom: 1rem;
       left: 1rem;
     }
 
-    :host([position="bottom-center"]) {
+    :host([position='bottom-center']) {
       bottom: 1rem;
       left: 50%;
       transform: translateX(-50%);
@@ -72,14 +72,14 @@ export class AevaToast extends LitElement {
       min-width: var(--aeva-toast-min-width, 300px);
       max-width: var(--aeva-toast-max-width, 500px);
       border: 1px solid var(--aeva-toast-border-color, rgba(255, 255, 255, 0.1));
-      box-shadow: 
+      box-shadow:
         0 10px 15px -3px var(--aeva-toast-shadow-color, rgba(0, 0, 0, 0.1)),
         0 4px 6px -2px var(--aeva-toast-shadow-color, rgba(0, 0, 0, 0.05));
-      
+
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      
+
       animation: toastIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
@@ -99,7 +99,7 @@ export class AevaToast extends LitElement {
       }
     }
 
-    :host([position*="bottom"]) .toast {
+    :host([position*='bottom']) .toast {
       animation: toastInBottom 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
@@ -176,39 +176,39 @@ export class AevaToast extends LitElement {
     }
 
     /* Variant styles */
-    :host([variant="success"]) .toast {
+    :host([variant='success']) .toast {
       --aeva-toast-bg: rgba(220, 252, 231, 0.95);
       --aeva-toast-border-color: rgba(34, 197, 94, 0.3);
     }
 
-    :host([variant="success"]) .icon {
+    :host([variant='success']) .icon {
       color: #16a34a;
     }
 
-    :host([variant="error"]) .toast {
+    :host([variant='error']) .toast {
       --aeva-toast-bg: rgba(254, 226, 226, 0.95);
       --aeva-toast-border-color: rgba(239, 68, 68, 0.3);
     }
 
-    :host([variant="error"]) .icon {
+    :host([variant='error']) .icon {
       color: #dc2626;
     }
 
-    :host([variant="warning"]) .toast {
+    :host([variant='warning']) .toast {
       --aeva-toast-bg: rgba(254, 243, 199, 0.95);
       --aeva-toast-border-color: rgba(245, 158, 11, 0.3);
     }
 
-    :host([variant="warning"]) .icon {
+    :host([variant='warning']) .icon {
       color: #d97706;
     }
 
-    :host([variant="info"]) .toast {
+    :host([variant='info']) .toast {
       --aeva-toast-bg: rgba(219, 234, 254, 0.95);
       --aeva-toast-border-color: rgba(59, 130, 246, 0.3);
     }
 
-    :host([variant="info"]) .icon {
+    :host([variant='info']) .icon {
       color: #2563eb;
     }
 
@@ -218,8 +218,8 @@ export class AevaToast extends LitElement {
         --aeva-toast-max-width: calc(100vw - 2rem);
       }
 
-      :host([position="top-center"]),
-      :host([position="bottom-center"]) {
+      :host([position='top-center']),
+      :host([position='bottom-center']) {
         left: 1rem;
         right: 1rem;
         transform: none;
@@ -231,7 +231,13 @@ export class AevaToast extends LitElement {
   variant: 'default' | 'success' | 'error' | 'warning' | 'info' = 'default';
 
   @property({ type: String, reflect: true })
-  position: 'top-right' | 'top-left' | 'top-center' | 'bottom-right' | 'bottom-left' | 'bottom-center' = 'top-right';
+  position:
+    | 'top-right'
+    | 'top-left'
+    | 'top-center'
+    | 'bottom-right'
+    | 'bottom-left'
+    | 'bottom-center' = 'top-right';
 
   @property({ type: Number })
   duration = 3000;
@@ -300,25 +306,45 @@ export class AevaToast extends LitElement {
       case 'success':
         return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M5 13l4 4L19 7"
+            ></path>
           </svg>
         `;
       case 'error':
         return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
           </svg>
         `;
       case 'warning':
         return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+            ></path>
           </svg>
         `;
       case 'info':
         return html`
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
           </svg>
         `;
       default:
@@ -333,13 +359,20 @@ export class AevaToast extends LitElement {
         <div class="content">
           <slot></slot>
         </div>
-        ${this.closable ? html`
-          <button class="close-button" @click=${this.handleClose} aria-label="Close">
-            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-            </svg>
-          </button>
-        ` : ''}
+        ${this.closable
+          ? html`
+              <button class="close-button" @click=${this.handleClose} aria-label="Close">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>
+              </button>
+            `
+          : ''}
       </div>
     `;
   }

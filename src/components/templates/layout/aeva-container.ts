@@ -102,7 +102,9 @@ export class AevaContainer extends LitElement {
       `size-${this.size}`,
       `padding-${this.padding}`,
       this.centered ? 'centered' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     return html`
       <div class="${classes}" part="container">

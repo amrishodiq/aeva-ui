@@ -106,48 +106,48 @@ export class AevaActionBar extends LitElement {
     }
 
     /* Gap variants */
-    :host([gap="xs"]) {
+    :host([gap='xs']) {
       --aeva-action-bar-gap: 0.25rem;
     }
 
-    :host([gap="sm"]) {
+    :host([gap='sm']) {
       --aeva-action-bar-gap: 0.5rem;
     }
 
-    :host([gap="md"]) {
+    :host([gap='md']) {
       --aeva-action-bar-gap: 0.75rem;
     }
 
-    :host([gap="lg"]) {
+    :host([gap='lg']) {
       --aeva-action-bar-gap: 1rem;
     }
 
-    :host([gap="xl"]) {
+    :host([gap='xl']) {
       --aeva-action-bar-gap: 1.5rem;
     }
 
     /* Padding variants */
-    :host([padding="none"]) {
+    :host([padding='none']) {
       --aeva-action-bar-padding: 0;
     }
 
-    :host([padding="xs"]) {
+    :host([padding='xs']) {
       --aeva-action-bar-padding: 0.5rem;
     }
 
-    :host([padding="sm"]) {
+    :host([padding='sm']) {
       --aeva-action-bar-padding: 0.75rem;
     }
 
-    :host([padding="md"]) {
+    :host([padding='md']) {
       --aeva-action-bar-padding: 1rem;
     }
 
-    :host([padding="lg"]) {
+    :host([padding='lg']) {
       --aeva-action-bar-padding: 1.5rem;
     }
 
-    :host([padding="xl"]) {
+    :host([padding='xl']) {
       --aeva-action-bar-padding: 2rem;
     }
 
@@ -169,19 +169,19 @@ export class AevaActionBar extends LitElement {
 
     /* Responsive layout */
     @media (max-width: 640px) {
-      :host([layout="responsive"]) .action-bar {
+      :host([layout='responsive']) .action-bar {
         flex-direction: column;
         align-items: stretch;
       }
 
-      :host([layout="responsive"]) .secondary,
-      :host([layout="responsive"]) .primary {
+      :host([layout='responsive']) .secondary,
+      :host([layout='responsive']) .primary {
         width: 100%;
         flex-direction: column;
       }
 
-      :host([layout="responsive"]) .secondary ::slotted(*),
-      :host([layout="responsive"]) .primary ::slotted(*) {
+      :host([layout='responsive']) .secondary ::slotted(*),
+      :host([layout='responsive']) .primary ::slotted(*) {
         width: 100%;
       }
     }
@@ -235,11 +235,7 @@ export class AevaActionBar extends LitElement {
   glassmorphism = false;
 
   render() {
-    const classes = [
-      'action-bar',
-      `layout-${this.layout}`,
-      `align-${this.align}`,
-    ].join(' ');
+    const classes = ['action-bar', `layout-${this.layout}`, `align-${this.align}`].join(' ');
 
     return html`
       <div class="${classes}" part="action-bar">

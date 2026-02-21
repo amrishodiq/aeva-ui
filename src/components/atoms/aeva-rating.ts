@@ -104,7 +104,8 @@ export class AevaRating extends LitElement {
       margin-left: 8px;
       font-size: 14px;
       color: #6b7280;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     }
   `;
 
@@ -159,11 +160,12 @@ export class AevaRating extends LitElement {
       starType = 'half';
     }
 
-    const starPath = 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
+    const starPath =
+      'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z';
 
     if (starType === 'half') {
       return html`
-        <div 
+        <div
           class="star star-half ${this.hoverValue >= starValue ? 'hover' : ''}"
           @click=${() => this.handleStarClick(starValue)}
           @mouseenter=${() => this.handleStarHover(starValue)}
@@ -180,8 +182,11 @@ export class AevaRating extends LitElement {
     }
 
     return html`
-      <div 
-        class="star ${starType === 'filled' ? 'star-filled' : 'star-empty'} ${this.hoverValue >= starValue ? 'hover' : ''}"
+      <div
+        class="star ${starType === 'filled' ? 'star-filled' : 'star-empty'} ${this.hoverValue >=
+        starValue
+          ? 'hover'
+          : ''}"
         @click=${() => this.handleStarClick(starValue)}
         @mouseenter=${() => this.handleStarHover(starValue)}
         @mouseleave=${() => this.handleStarLeave()}
@@ -223,11 +228,7 @@ export class AevaRating extends LitElement {
   }
 
   render() {
-    const classes = [
-      'rating-container',
-      `size-${this.size}`,
-      this.interactive ? 'interactive' : '',
-    ]
+    const classes = ['rating-container', `size-${this.size}`, this.interactive ? 'interactive' : '']
       .filter(Boolean)
       .join(' ');
 
@@ -236,9 +237,7 @@ export class AevaRating extends LitElement {
     return html`
       <div part="container" class="${classes}">
         ${stars}
-        ${this.showLabel
-        ? html`<span class="rating-label">${this.value.toFixed(1)}</span>`
-        : ''}
+        ${this.showLabel ? html`<span class="rating-label">${this.value.toFixed(1)}</span>` : ''}
       </div>
     `;
   }

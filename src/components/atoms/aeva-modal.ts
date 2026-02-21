@@ -72,44 +72,43 @@ export class AevaModal extends LitElement {
       width: 100%;
       pointer-events: auto;
       animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      
+
       /* Edge shimmer effect */
       border: 1px solid var(--aeva-modal-border-color);
-      
+
       /* Elevation shadow */
-      box-shadow: 
+      box-shadow:
         0 4px 6px -1px var(--aeva-modal-shadow-color),
         0 2px 4px -1px var(--aeva-modal-shadow-color);
     }
 
     /* Elevation levels */
-    :host([elevation="1"]) .modal {
-      box-shadow: 
+    :host([elevation='1']) .modal {
+      box-shadow:
         0 1px 3px 0 var(--aeva-modal-shadow-color),
         0 1px 2px 0 var(--aeva-modal-shadow-color);
     }
 
-    :host([elevation="2"]) .modal {
-      box-shadow: 
+    :host([elevation='2']) .modal {
+      box-shadow:
         0 4px 6px -1px var(--aeva-modal-shadow-color),
         0 2px 4px -1px var(--aeva-modal-shadow-color);
     }
 
-    :host([elevation="3"]) .modal {
-      box-shadow: 
+    :host([elevation='3']) .modal {
+      box-shadow:
         0 10px 15px -3px var(--aeva-modal-shadow-color),
         0 4px 6px -2px var(--aeva-modal-shadow-color);
     }
 
-    :host([elevation="4"]) .modal {
-      box-shadow: 
+    :host([elevation='4']) .modal {
+      box-shadow:
         0 20px 25px -5px var(--aeva-modal-shadow-color),
         0 10px 10px -5px var(--aeva-modal-shadow-color);
     }
 
-    :host([elevation="5"]) .modal {
-      box-shadow: 
-        0 25px 50px -12px var(--aeva-modal-shadow-color);
+    :host([elevation='5']) .modal {
+      box-shadow: 0 25px 50px -12px var(--aeva-modal-shadow-color);
     }
 
     /* Shimmer effect using pseudo-element */
@@ -123,7 +122,9 @@ export class AevaModal extends LitElement {
       border-radius: var(--aeva-modal-border-radius);
       padding: 1px;
       background: var(--aeva-modal-shimmer-gradient);
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
       pointer-events: none;
@@ -180,7 +181,8 @@ export class AevaModal extends LitElement {
     }
 
     @keyframes shimmer {
-      0%, 100% {
+      0%,
+      100% {
         opacity: 0.5;
       }
       50% {
@@ -359,7 +361,9 @@ export class AevaModal extends LitElement {
 
   render() {
     return html`
-      ${this.backdrop ? html`<div part="backdrop" class="backdrop" @click=${this.handleBackdropClick}></div>` : ''}
+      ${this.backdrop
+        ? html`<div part="backdrop" class="backdrop" @click=${this.handleBackdropClick}></div>`
+        : ''}
       <div class="modal-container">
         <div part="modal" class="modal" tabindex="-1" role="dialog" aria-modal="true">
           <slot></slot>

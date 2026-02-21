@@ -128,11 +128,7 @@ export class AevaCard extends LitElement {
   };
 
   render() {
-    const classes = [
-      'card',
-      `padding-${this.padding}`,
-      this.interactive ? 'interactive' : '',
-    ]
+    const classes = ['card', `padding-${this.padding}`, this.interactive ? 'interactive' : '']
       .filter(Boolean)
       .join(' ');
 

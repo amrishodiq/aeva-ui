@@ -32,7 +32,6 @@ export { AevaToast } from './components/molecules/aeva-toast.js';
 export { AevaActionBar } from './components/molecules/aeva-action-bar.js';
 export { AevaCarousel } from './components/molecules/aeva-carousel.js';
 
-
 // Organisms
 export { AevaSidebar } from './components/organisms/aeva-sidebar.js';
 
@@ -46,7 +45,5 @@ export { AevaSection } from './components/templates/layout/aeva-section.js';
 
 // Theme
 export { AevaTheme } from './theme/aeva-theme.js';
-
-
 
 console.log('@aeva/ui library loaded');

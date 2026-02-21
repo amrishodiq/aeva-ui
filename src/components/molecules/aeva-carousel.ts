@@ -366,8 +366,8 @@ export class AevaCarousel extends LitElement {
     const canGoNext = this.loop || this.activeIndex < this.slideCount - 1;
 
     return html`
-      <div 
-        part="container" 
+      <div
+        part="container"
         class="carousel-container"
         @keydown=${this.handleKeydown}
         tabindex="0"
@@ -379,7 +379,7 @@ export class AevaCarousel extends LitElement {
         </div>
 
         ${!this.hideNav
-        ? html`
+          ? html`
               <button
                 part="nav-button"
                 class="nav-button prev"
@@ -388,7 +388,12 @@ export class AevaCarousel extends LitElement {
                 aria-label="Previous slide"
               >
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 19l-7-7 7-7"
+                  />
                 </svg>
               </button>
               <button
@@ -399,26 +404,33 @@ export class AevaCarousel extends LitElement {
                 aria-label="Next slide"
               >
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 5l7 7-7 7"
+                  />
                 </svg>
               </button>
             `
-        : ''}
-
+          : ''}
         ${!this.hideIndicators && this.slideCount > 1
-        ? html`
+          ? html`
               <div part="indicators" class="indicators">
-                ${Array.from({ length: this.slideCount }, (_, i) => html`
-                  <button
-                    part="indicator"
-                    class="indicator ${i === this.activeIndex ? 'active' : ''}"
-                    @click=${() => this.goToSlide(i)}
-                    aria-label="Go to slide ${i + 1}"
-                  ></button>
-                `)}
+                ${Array.from(
+                  { length: this.slideCount },
+                  (_, i) => html`
+                    <button
+                      part="indicator"
+                      class="indicator ${i === this.activeIndex ? 'active' : ''}"
+                      @click=${() => this.goToSlide(i)}
+                      aria-label="Go to slide ${i + 1}"
+                    ></button>
+                  `
+                )}
               </div>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }

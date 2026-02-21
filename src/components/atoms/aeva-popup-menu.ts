@@ -62,8 +62,8 @@ export class AevaPopupMenu extends LitElement {
       overflow: hidden;
       padding: 0;
       box-sizing: border-box;
-      
-      box-shadow: 
+
+      box-shadow:
         0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
         0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
 
@@ -98,27 +98,27 @@ export class AevaPopupMenu extends LitElement {
     }
 
     /* Elevation styles same as modal */
-    :host([elevation="1"]) .popup {
-      box-shadow: 
+    :host([elevation='1']) .popup {
+      box-shadow:
         0 1px 3px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
         0 1px 2px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
     }
-    :host([elevation="2"]) .popup {
-      box-shadow: 
+    :host([elevation='2']) .popup {
+      box-shadow:
         0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
         0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
     }
-    :host([elevation="3"]) .popup {
-      box-shadow: 
+    :host([elevation='3']) .popup {
+      box-shadow:
         0 10px 15px -3px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
         0 4px 6px -2px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
     }
-    :host([elevation="4"]) .popup {
-      box-shadow: 
+    :host([elevation='4']) .popup {
+      box-shadow:
         0 20px 25px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
         0 10px 10px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
     }
-    :host([elevation="5"]) .popup {
+    :host([elevation='5']) .popup {
       box-shadow: 0 25px 50px -12px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
     }
 
@@ -198,7 +198,8 @@ export class AevaPopupMenu extends LitElement {
     // If it's too close to the bottom edge, show above the anchor
     if (top + 200 > viewportHeight) {
       top = rect.top - 8 - 200; // Approximate height
-      if (top < 0) top = rect.bottom + 8; // fallback
+      if (top < 0)
+        top = rect.bottom + 8; // fallback
       else transformOrigin = 'bottom left';
     }
 
@@ -232,15 +233,8 @@ export class AevaPopupMenu extends LitElement {
   render() {
     return html`
       <div class="backdrop" @click=${this.handleBackdropClick}></div>
-      <div 
-        class="popup-container" 
-        style="top: ${this.y}px; left: ${this.x}px;"
-      >
-        <div 
-          part="popup" 
-          class="popup" 
-          style="transform-origin: ${this.origin};"
-        >
+      <div class="popup-container" style="top: ${this.y}px; left: ${this.x}px;">
+        <div part="popup" class="popup" style="transform-origin: ${this.origin};">
           <slot></slot>
         </div>
       </div>

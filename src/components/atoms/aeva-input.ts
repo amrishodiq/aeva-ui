@@ -95,8 +95,7 @@ export class AevaInput extends LitElement {
     input:focus,
     textarea:focus {
       border-color: var(--aeva-input-focus-border-color);
-      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width)
-        var(--aeva-input-focus-ring-color);
+      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width) var(--aeva-input-focus-ring-color);
     }
 
     /* Error state */
@@ -107,8 +106,7 @@ export class AevaInput extends LitElement {
 
     .error input:focus,
     .error textarea:focus {
-      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width)
-        rgba(220, 38, 38, 0.3);
+      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width) rgba(220, 38, 38, 0.3);
     }
 
     /* Disabled state */
@@ -191,8 +189,7 @@ export class AevaInput extends LitElement {
 
     .appearance-flat.error input:focus,
     .appearance-flat.error textarea:focus {
-      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width)
-        rgba(220, 38, 38, 0.3);
+      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width) rgba(220, 38, 38, 0.3);
     }
 
     /* Reduced motion support */
@@ -214,13 +211,7 @@ export class AevaInput extends LitElement {
    * - multiline: Textarea for longer text
    */
   @property({ type: String, reflect: true })
-  variant:
-    | 'text'
-    | 'password'
-    | 'integer'
-    | 'decimal'
-    | 'email'
-    | 'multiline' = 'text';
+  variant: 'text' | 'password' | 'integer' | 'decimal' | 'email' | 'multiline' = 'text';
 
   /**
    * Input size
@@ -367,16 +358,11 @@ export class AevaInput extends LitElement {
 
     // Check for leading zeros (except "0" or "0.xxx")
     if (/^0\d+/.test(value) || /^-0\d+/.test(value)) {
-      this._dispatchError(
-        'Number cannot have leading zeros',
-        'LEADING_ZERO'
-      );
+      this._dispatchError('Number cannot have leading zeros', 'LEADING_ZERO');
       return false;
     }
 
-    const numValue = this.variant === 'integer'
-      ? parseInt(value, 10)
-      : parseFloat(value);
+    const numValue = this.variant === 'integer' ? parseInt(value, 10) : parseFloat(value);
 
     if (isNaN(numValue)) {
       this._clearError();
@@ -385,19 +371,13 @@ export class AevaInput extends LitElement {
 
     // Check min
     if (this.min !== undefined && numValue < this.min) {
-      this._dispatchError(
-        `Value must be at least ${this.min}`,
-        'MIN_VALUE_ERROR'
-      );
+      this._dispatchError(`Value must be at least ${this.min}`, 'MIN_VALUE_ERROR');
       return false;
     }
 
     // Check max
     if (this.max !== undefined && numValue > this.max) {
-      this._dispatchError(
-        `Value must be at most ${this.max}`,
-        'MAX_VALUE_ERROR'
-      );
+      this._dispatchError(`Value must be at most ${this.max}`, 'MAX_VALUE_ERROR');
       return false;
     }
 
@@ -410,10 +390,7 @@ export class AevaInput extends LitElement {
    */
   private _validateTextLength(value: string): boolean {
     if (this.maxlength !== undefined && value.length > this.maxlength) {
-      this._dispatchError(
-        `Text cannot exceed ${this.maxlength} characters`,
-        'MAX_LENGTH_ERROR'
-      );
+      this._dispatchError(`Text cannot exceed ${this.maxlength} characters`, 'MAX_LENGTH_ERROR');
       return false;
     }
 
@@ -435,10 +412,7 @@ export class AevaInput extends LitElement {
         if (!regex.test(newValue)) {
           // Revert to previous value if regex doesn't match
           target.value = this._internalValue;
-          this._dispatchError(
-            'Input does not match required format',
-            'INVALID_FORMAT'
-          );
+          this._dispatchError('Input does not match required format', 'INVALID_FORMAT');
           return;
         }
       } catch (error) {
@@ -537,10 +511,10 @@ export class AevaInput extends LitElement {
           ?required="${this.required}"
           maxlength="${this.maxlength || ''}"
           inputmode="${this.variant === 'integer'
-        ? 'numeric'
-        : this.variant === 'decimal'
-          ? 'decimal'
-          : 'text'}"
+            ? 'numeric'
+            : this.variant === 'decimal'
+              ? 'decimal'
+              : 'text'}"
         />
       </div>
     `;

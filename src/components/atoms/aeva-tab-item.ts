@@ -47,7 +47,7 @@ export class AevaTabItem extends LitElement {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      
+
       /* Remove tap highlight on mobile */
       -webkit-tap-highlight-color: transparent;
       -webkit-touch-callout: none;

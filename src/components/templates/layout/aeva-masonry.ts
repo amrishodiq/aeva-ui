@@ -94,11 +94,11 @@ export class AevaMasonry extends LitElement {
 
   private getGapValue(): string {
     const gapMap: Record<string, string> = {
-      'xs': '4px',
-      'sm': '8px',
-      'md': '16px',
-      'lg': '24px',
-      'xl': '32px'
+      xs: '4px',
+      sm: '8px',
+      md: '16px',
+      lg: '24px',
+      xl: '32px',
     };
 
     if (typeof this.gap === 'number') return `${this.gap}px`;
@@ -124,8 +124,9 @@ export class AevaMasonry extends LitElement {
   }
 
   render() {
-    const containerClass = `masonry-container ${this.columns === 'auto' ? 'auto-columns' : `columns-${this.columns}`
-      }`;
+    const containerClass = `masonry-container ${
+      this.columns === 'auto' ? 'auto-columns' : `columns-${this.columns}`
+    }`;
 
     return html`
       <div class="${containerClass}" part="container" style="column-gap: var(--aeva-masonry-gap)">

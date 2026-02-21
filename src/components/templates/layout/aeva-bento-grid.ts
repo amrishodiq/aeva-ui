@@ -157,10 +157,9 @@ export class AevaBentoGrid extends LitElement {
   preset: 'feature' | 'masonry' | 'dashboard' | 'sidebar' | 'spotlight' | 'custom' = 'feature';
 
   render() {
-    const classes = [
-      'grid',
-      this.preset !== 'custom' ? `preset-${this.preset}` : '',
-    ].filter(Boolean).join(' ');
+    const classes = ['grid', this.preset !== 'custom' ? `preset-${this.preset}` : '']
+      .filter(Boolean)
+      .join(' ');
 
     return html`
       <div class="${classes}" part="grid">

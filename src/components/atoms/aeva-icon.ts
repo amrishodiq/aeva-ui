@@ -25,7 +25,7 @@ export class AevaIcon extends LitElement {
     }
 
     .icon-container {
-      display: flex;  /* Changed from inline-flex for better centering */
+      display: flex; /* Changed from inline-flex for better centering */
       align-items: center;
       justify-content: center;
       background: var(--aeva-icon-bg);
@@ -128,7 +128,7 @@ export class AevaIcon extends LitElement {
       'icon-container',
       `size-${this.size}`,
       `shape-${this.shape}`,
-      `border-${this.border}`
+      `border-${this.border}`,
     ].join(' ');
 
     return html`

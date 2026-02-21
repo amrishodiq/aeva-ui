@@ -79,44 +79,44 @@ export class AevaSection extends LitElement {
     }
 
     /* Gap variants */
-    :host([gap="xs"]) {
+    :host([gap='xs']) {
       --aeva-section-gap: 0.25rem;
     }
 
-    :host([gap="sm"]) {
+    :host([gap='sm']) {
       --aeva-section-gap: 0.5rem;
     }
 
-    :host([gap="md"]) {
+    :host([gap='md']) {
       --aeva-section-gap: 1rem;
     }
 
-    :host([gap="lg"]) {
+    :host([gap='lg']) {
       --aeva-section-gap: 1.5rem;
     }
 
-    :host([gap="xl"]) {
+    :host([gap='xl']) {
       --aeva-section-gap: 2rem;
     }
 
     /* Padding variants */
-    :host([padding="xs"]) {
+    :host([padding='xs']) {
       --aeva-section-padding: 0.5rem;
     }
 
-    :host([padding="sm"]) {
+    :host([padding='sm']) {
       --aeva-section-padding: 1rem;
     }
 
-    :host([padding="md"]) {
+    :host([padding='md']) {
       --aeva-section-padding: 1.5rem;
     }
 
-    :host([padding="lg"]) {
+    :host([padding='lg']) {
       --aeva-section-padding: 2rem;
     }
 
-    :host([padding="xl"]) {
+    :host([padding='xl']) {
       --aeva-section-padding: 3rem;
     }
 

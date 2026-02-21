@@ -55,7 +55,8 @@ export class AevaPage extends LitElement {
       background: var(--aeva-page-background);
       overflow-y: auto;
       overflow-x: hidden;
-      animation: slideInFromRight var(--aeva-page-animation-duration) cubic-bezier(0.34, 1.2, 0.64, 1);
+      animation: slideInFromRight var(--aeva-page-animation-duration)
+        cubic-bezier(0.34, 1.2, 0.64, 1);
     }
 
     /* Closing animations */
@@ -64,7 +65,8 @@ export class AevaPage extends LitElement {
     }
 
     :host([closing]) .page-container {
-      animation: slideOutToRight var(--aeva-page-animation-duration) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      animation: slideOutToRight var(--aeva-page-animation-duration) cubic-bezier(0.4, 0, 0.2, 1)
+        forwards;
     }
 
     /* Backdrop fade animations */

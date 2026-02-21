@@ -163,7 +163,7 @@ export class AevaRadio extends LitElement {
             stroke="${strokeColor}"
             stroke-width="2"
           />
-          
+
           <!-- Checkmark with 4px padding (scaled to fit) -->
           <g class="checkmark" part="checkmark">
             <path

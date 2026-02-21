@@ -13,7 +13,7 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-grid-item')
 export class AevaGridItem extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       width: 100%;
@@ -28,77 +28,77 @@ export class AevaGridItem extends LitElement {
     }
   `;
 
-    /**
-     * Number of columns to span
-     */
-    @property({ type: Number, reflect: true, attribute: 'col-span' })
-    colSpan = 1;
+  /**
+   * Number of columns to span
+   */
+  @property({ type: Number, reflect: true, attribute: 'col-span' })
+  colSpan = 1;
 
-    /**
-     * Number of rows to span
-     */
-    @property({ type: Number, reflect: true, attribute: 'row-span' })
-    rowSpan = 1;
+  /**
+   * Number of rows to span
+   */
+  @property({ type: Number, reflect: true, attribute: 'row-span' })
+  rowSpan = 1;
 
-    /**
-     * Column start position (1-indexed)
-     */
-    @property({ type: Number, reflect: true, attribute: 'col-start' })
-    colStart?: number;
+  /**
+   * Column start position (1-indexed)
+   */
+  @property({ type: Number, reflect: true, attribute: 'col-start' })
+  colStart?: number;
 
-    /**
-     * Row start position (1-indexed)
-     */
-    @property({ type: Number, reflect: true, attribute: 'row-start' })
-    rowStart?: number;
+  /**
+   * Row start position (1-indexed)
+   */
+  @property({ type: Number, reflect: true, attribute: 'row-start' })
+  rowStart?: number;
 
-    updated(changedProperties: Map<string, any>) {
-        super.updated(changedProperties);
+  updated(changedProperties: Map<string, any>) {
+    super.updated(changedProperties);
 
-        // Apply grid placement styles to host element
-        if (changedProperties.has('colSpan')) {
-            this.style.gridColumn = this.colStart
-                ? `${this.colStart} / span ${this.colSpan}`
-                : `span ${this.colSpan}`;
-        }
-
-        if (changedProperties.has('rowSpan')) {
-            this.style.gridRow = this.rowStart
-                ? `${this.rowStart} / span ${this.rowSpan}`
-                : `span ${this.rowSpan}`;
-        }
-
-        if (changedProperties.has('colStart') && this.colStart) {
-            this.style.gridColumn = `${this.colStart} / span ${this.colSpan}`;
-        }
-
-        if (changedProperties.has('rowStart') && this.rowStart) {
-            this.style.gridRow = `${this.rowStart} / span ${this.rowSpan}`;
-        }
+    // Apply grid placement styles to host element
+    if (changedProperties.has('colSpan')) {
+      this.style.gridColumn = this.colStart
+        ? `${this.colStart} / span ${this.colSpan}`
+        : `span ${this.colSpan}`;
     }
 
-    connectedCallback() {
-        super.connectedCallback();
-        // Set initial grid placement
-        this.style.gridColumn = this.colStart
-            ? `${this.colStart} / span ${this.colSpan}`
-            : `span ${this.colSpan}`;
-        this.style.gridRow = this.rowStart
-            ? `${this.rowStart} / span ${this.rowSpan}`
-            : `span ${this.rowSpan}`;
+    if (changedProperties.has('rowSpan')) {
+      this.style.gridRow = this.rowStart
+        ? `${this.rowStart} / span ${this.rowSpan}`
+        : `span ${this.rowSpan}`;
     }
 
-    render() {
-        return html`
+    if (changedProperties.has('colStart') && this.colStart) {
+      this.style.gridColumn = `${this.colStart} / span ${this.colSpan}`;
+    }
+
+    if (changedProperties.has('rowStart') && this.rowStart) {
+      this.style.gridRow = `${this.rowStart} / span ${this.rowSpan}`;
+    }
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    // Set initial grid placement
+    this.style.gridColumn = this.colStart
+      ? `${this.colStart} / span ${this.colSpan}`
+      : `span ${this.colSpan}`;
+    this.style.gridRow = this.rowStart
+      ? `${this.rowStart} / span ${this.rowSpan}`
+      : `span ${this.rowSpan}`;
+  }
+
+  render() {
+    return html`
       <div class="item" part="item">
         <slot></slot>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-grid-item': AevaGridItem;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-grid-item': AevaGridItem;
+  }
 }

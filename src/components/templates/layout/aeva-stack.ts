@@ -149,7 +149,9 @@ export class AevaStack extends LitElement {
       `align-${this.align}`,
       `justify-${this.justify}`,
       this.wrap ? 'wrap' : '',
-    ].filter(Boolean).join(' ');
+    ]
+      .filter(Boolean)
+      .join(' ');
 
     return html`
       <div class="${classes}" part="stack">

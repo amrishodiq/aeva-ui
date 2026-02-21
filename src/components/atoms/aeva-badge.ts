@@ -219,8 +219,7 @@ export class AevaBadge extends LitElement {
    * Badge variant/color
    */
   @property({ type: String, reflect: true })
-  variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' =
-    'primary';
+  variant: 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'info' = 'primary';
 
   /**
    * Badge size
@@ -280,7 +279,7 @@ export class AevaBadge extends LitElement {
           <slot></slot>
         </div>
         ${this.deletable
-        ? html`
+          ? html`
               <button
                 part="delete-button"
                 class="delete-button"
@@ -291,7 +290,7 @@ export class AevaBadge extends LitElement {
                 <span class="delete-icon" aria-hidden="true"></span>
               </button>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }
