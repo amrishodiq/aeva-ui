@@ -18,7 +18,7 @@ export class AevaDocSection extends LitElement {
 
     .description {
       font-size: 1rem;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--aeva-text-muted-color);
       margin-bottom: 1.5rem;
     }
 

@@ -2,8 +2,7 @@
     description="A flexible container for vertical collections of related information items. Supports icons, descriptions, and interactive states.">
     <aeva-doc-section title="Basic Usage" description="Simple list with labels.">
         <aeva-doc-example>
-            <aeva-card padding="none"
-                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); width: 300px;">
+            <aeva-card padding="none" style="width: 300px;">
                 <aeva-list>
                     <aeva-list-item label="Profile Settings"></aeva-list-item>
                     <aeva-list-item label="Notifications"></aeva-list-item>
@@ -23,8 +22,7 @@
     <aeva-doc-section title="Icons & Descriptions"
         description="Enhance list items with leading/trailing icons and secondary text.">
         <aeva-doc-example>
-            <aeva-card padding="none"
-                style="background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); width: 100%; max-width: 400px;">
+            <aeva-card padding="none" style="width: 100%; max-width: 400px;">
                 <aeva-list active="0">
                     <aeva-list-item label="Inbox">
                         <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -92,5 +90,99 @@
                 </aeva-list-item>
             </div>
         </aeva-doc-example>
+    </aeva-doc-section>
+    <aeva-doc-section title="Properties">
+        <div style="margin-bottom: 2rem;">
+            <h4>aeva-list</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Options</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="property-name">active</td>
+                            <td><code>number</code></td>
+                            <td>-</td>
+                            <td>Index of the selected item.</td>
+                            <td><code>-1</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <h4>aeva-list-item</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Options</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="property-name">label</td>
+                            <td><code>string</code></td>
+                            <td>-</td>
+                            <td>Primary text for the item.</td>
+                            <td><code>''</code></td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">active</td>
+                            <td><code>boolean</code></td>
+                            <td><code>true</code>, <code>false</code></td>
+                            <td>Whether the item is currently selected.</td>
+                            <td><code>false</code></td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">icon-only</td>
+                            <td><code>boolean</code></td>
+                            <td><code>true</code>, <code>false</code></td>
+                            <td>Circular variant for icon-only display.</td>
+                            <td><code>false</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slots">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Slot</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">icon-left</td>
+                        <td>Icon or element displayed at the start of the item.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">icon-right</td>
+                        <td>Element displayed at the end (e.g. badge or arrow).</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">description</td>
+                        <td>Secondary text displayed below the label.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </aeva-doc-section>
 </aeva-doc-page>

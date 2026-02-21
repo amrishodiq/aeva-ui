@@ -91,41 +91,73 @@
         </aeva-doc-example>
     </aeva-doc-section>
 
-    <aeva-doc-section title="Properties" description="Configuration options for the sidebar.">
-        <div style="overflow-x: auto; width: 100%;">
-            <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
                 <thead>
-                    <tr style="border-bottom: 2px solid var(--aeva-border-color); text-align: left;">
-                        <th style="padding: 0.75rem;">Property</th>
-                        <th style="padding: 0.75rem;">Type</th>
-                        <th style="padding: 0.75rem;">Default</th>
-                        <th style="padding: 0.75rem;">Description</th>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
-                        <td style="padding: 0.75rem;"><code>position</code></td>
-                        <td style="padding: 0.75rem;">'left' | 'right'</td>
-                        <td style="padding: 0.75rem;">'left'</td>
-                        <td style="padding: 0.75rem;">Placement of the sidebar.</td>
+                    <tr>
+                        <td class="property-name">position</td>
+                        <td><code>string</code></td>
+                        <td><code>left</code>, <code>right</code></td>
+                        <td>Docking side of the sidebar.</td>
+                        <td><code>left</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
-                        <td style="padding: 0.75rem;"><code>width</code></td>
-                        <td style="padding: 0.75rem;">'sm' | 'md' | 'lg'</td>
-                        <td style="padding: 0.75rem;">'md'</td>
-                        <td style="padding: 0.75rem;">Width variant for desktop.</td>
+                    <tr>
+                        <td class="property-name">width</td>
+                        <td><code>string</code></td>
+                        <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
+                        <td>Desktop width variant.</td>
+                        <td><code>md</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
-                        <td style="padding: 0.75rem;"><code>open</code></td>
-                        <td style="padding: 0.75rem;">boolean</td>
-                        <td style="padding: 0.75rem;">false</td>
-                        <td style="padding: 0.75rem;">Whether the mobile drawer is open.</td>
+                    <tr>
+                        <td class="property-name">open</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Visibility of the mobile drawer.</td>
+                        <td><code>false</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid var(--aeva-border-color);">
-                        <td style="padding: 0.75rem;"><code>glassmorphism</code></td>
-                        <td style="padding: 0.75rem;">boolean</td>
-                        <td style="padding: 0.75rem;">false</td>
-                        <td style="padding: 0.75rem;">Enables glass effect.</td>
+                    <tr>
+                        <td class="property-name">glassmorphism</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Enables crystal-clear background blur.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slots">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Slot</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">(default)</td>
+                        <td>Main navigation body (usually `aeva-list`).</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">header</td>
+                        <td>App logo, brand name, or user profile.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">footer</td>
+                        <td>Account settings, logout, or version info.</td>
                     </tr>
                 </tbody>
             </table>

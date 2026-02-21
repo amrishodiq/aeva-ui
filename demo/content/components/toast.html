@@ -103,4 +103,58 @@
             </div>
         </aeva-doc-example>
     </aeva-doc-section>
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">variant</td>
+                        <td><code>string</code></td>
+                        <td><code>default</code>, <code>success</code>, <code>error</code>, <code>warning</code>,
+                            <code>info</code></td>
+                        <td>Visual theme of the notification.</td>
+                        <td><code>default</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">position</td>
+                        <td><code>string</code></td>
+                        <td><code>top-right</code>, <code>top-center</code>, <code>top-left</code>,
+                            <code>bottom-right</code>, <code>bottom-center</code>, <code>bottom-left</code></td>
+                        <td>Screen corner for toast appearance.</td>
+                        <td><code>bottom-right</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">duration</td>
+                        <td><code>number</code></td>
+                        <td>-</td>
+                        <td>Display time in ms (<code>0</code> for manual close).</td>
+                        <td><code>5000</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">closable</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Shows a close button for manual dismissal.</td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">open</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Controls visibility (auto-handled on creation).</td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
 </aeva-doc-page>

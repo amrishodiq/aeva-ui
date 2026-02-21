@@ -9,7 +9,7 @@ import { customElement, property, state } from 'lit/decorators.js';
  *
  * @cssprop --aeva-tooltip-bg - Background color (default: rgba(0, 0, 0, 0.9))
  * @cssprop --aeva-tooltip-color - Text color (default: #ffffff)
- * @cssprop --aeva-tooltip-border-radius - Border radius (default: 8px)
+ * @cssprop --aeva-tooltip-border-radius - Border radius (default: 22px)
  * @cssprop --aeva-tooltip-padding - Padding (default: 0.5rem 0.75rem)
  * @cssprop --aeva-tooltip-font-size - Font size (default: 0.875rem)
  */

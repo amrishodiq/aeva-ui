@@ -108,6 +108,7 @@ export class AevaProgress extends LitElement {
       transform: rotate(-90deg);
       width: 100%;
       height: 100%;
+      overflow: visible;
     }
 
     .circle-bg {
@@ -186,15 +187,15 @@ export class AevaProgress extends LitElement {
 
     /* Horizontal Sizes */
     .horizontal-track.size-sm {
-      height: 4px;
+      height: 0.25rem;
     }
 
     .horizontal-track.size-md {
-      height: 8px;
+      height: 0.5rem;
     }
 
     .horizontal-track.size-lg {
-      height: 12px;
+      height: 0.75rem;
     }
   `;
 
@@ -262,7 +263,9 @@ export class AevaProgress extends LitElement {
    * Calculate stroke-dasharray and stroke-dashoffset for circular progress
    */
   private getCircularProgress() {
-    const radius = 50 - parseFloat(getComputedStyle(this).getPropertyValue('--aeva-progress-thickness') || '8') / 2;
+    // Use a fixed radius relative to the 100x100 viewBox to avoid clipping.
+    // The stroke-width is controlled by CSS and can bleed out due to overflow: visible.
+    const radius = 40;
     const circumference = 2 * Math.PI * radius;
     const offset = circumference - (this.percentage / 100) * circumference;
 

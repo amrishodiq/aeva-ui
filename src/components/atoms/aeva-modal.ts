@@ -15,7 +15,7 @@ import { customElement, property } from 'lit/decorators.js';
  * @csspart backdrop - The backdrop overlay
  *
  * @cssprop --aeva-modal-bg - Background color of the modal (default: rgba(255, 255, 255, 0.7))
- * @cssprop --aeva-modal-border-radius - Border radius of the modal (default: 24px)
+ * @cssprop --aeva-modal-border-radius - Border radius of the modal (default: 22px)
  * @cssprop --aeva-modal-padding - Padding inside the modal (default: 2rem)
  * @cssprop --aeva-modal-max-width - Maximum width of the modal (default: 600px)
  * @cssprop --aeva-modal-backdrop-bg - Backdrop background color (default: rgba(0, 0, 0, 0.4))

@@ -17,7 +17,7 @@ import { customElement, property } from 'lit/decorators.js';
  * @cssprop --aeva-card-bg - Background color (default: #ffffff)
  * @cssprop --aeva-card-border-color - Border color (default: #e5e7eb)
  * @cssprop --aeva-card-border-hover-color - Border color on hover (default: #667eea)
- * @cssprop --aeva-card-border-radius - Border radius (default: 12px)
+ * @cssprop --aeva-card-border-radius - Border radius (default: 22px)
  * @cssprop --aeva-card-transition - Transition timing (default: all 0.2s ease)
  * @cssprop --aeva-card-padding-sm - Small padding (default: 1rem)
  * @cssprop --aeva-card-padding-md - Medium padding (default: 1.5rem)
@@ -37,7 +37,7 @@ export class AevaCard extends LitElement {
       flex-direction: column;
       background: var(--aeva-card-bg, #ffffff);
       border: 1px solid var(--aeva-card-border-color, #e5e7eb);
-      border-radius: var(--aeva-card-border-radius, 12px);
+      border-radius: var(--aeva-card-border-radius, 22px);
       transition: var(--aeva-card-transition, all 0.2s ease);
       height: var(--aeva-card-height, 100%);
       box-sizing: border-box;

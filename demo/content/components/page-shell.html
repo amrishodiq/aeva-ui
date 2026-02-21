@@ -36,40 +36,44 @@
 
     <aeva-doc-section title="Properties">
         <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; color: white;">
+            <table>
                 <thead>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left;">
-                        <th style="padding: 0.5rem;">Property</th>
-                        <th style="padding: 0.5rem;">Attribute</th>
-                        <th style="padding: 0.5rem;">Description</th>
-                        <th style="padding: 0.5rem;">Default</th>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">open</td>
-                        <td style="padding: 0.5rem;">open</td>
-                        <td style="padding: 0.5rem;">Whether the page is currently visible.</td>
-                        <td style="padding: 0.5rem;">false</td>
+                    <tr>
+                        <td class="property-name">open</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Whether the page overlay is currently visible.</td>
+                        <td><code>false</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">background</td>
-                        <td style="padding: 0.5rem;">background</td>
-                        <td style="padding: 0.5rem;">Custom CSS background (color or gradient).</td>
-                        <td style="padding: 0.5rem;">'white'</td>
+                    <tr>
+                        <td class="property-name">background</td>
+                        <td><code>string</code></td>
+                        <td>CSS Color/Gradient</td>
+                        <td>Full-screen background style.</td>
+                        <td><code>'white'</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">closeOnBackdrop</td>
-                        <td style="padding: 0.5rem;">close-on-backdrop</td>
-                        <td style="padding: 0.5rem;">Whether clicking the backdrop automatically closes the page.</td>
-                        <td style="padding: 0.5rem;">true</td>
+                    <tr>
+                        <td class="property-name">close-on-backdrop</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Automatically close when clicking empty space.</td>
+                        <td><code>true</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">disableHistory</td>
-                        <td style="padding: 0.5rem;">disable-history</td>
-                        <td style="padding: 0.5rem;">If true, prevents the page from interacting with the browser
-                            history.</td>
-                        <td style="padding: 0.5rem;">false</td>
+                    <tr>
+                        <td class="property-name">disable-history</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Prevent creating browser history entry for this page.</td>
+                        <td><code>false</code></td>
                     </tr>
                 </tbody>
             </table>

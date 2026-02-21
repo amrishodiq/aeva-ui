@@ -1,0 +1,115 @@
+<aeva-doc-page title="Radio Button"
+    description="A custom radio button component with a smooth circular design and morphing background animations. Built for single-choice selections within groups.">
+
+    <aeva-doc-section title="Basic Usage" description="The standard radio button states.">
+        <aeva-doc-example code='<aeva-radio label="Option 1"></aeva-radio>
+<aeva-radio checked label="Checked by default"></aeva-radio>
+<aeva-radio disabled label="Disabled state"></aeva-radio>'>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <aeva-radio id="r1"></aeva-radio>
+                    <label for="r1" style="color: var(--aeva-text-color); cursor: pointer;">Option 1</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem;">
+                    <aeva-radio id="r2" checked></aeva-radio>
+                    <label for="r2" style="color: var(--aeva-text-color); cursor: pointer;">Checked by default</label>
+                </div>
+                <div style="display: flex; align-items: center; gap: 0.5rem; opacity: 0.5;">
+                    <aeva-radio id="r3" disabled></aeva-radio>
+                    <label for="r3" style="color: var(--aeva-text-color); cursor: not-allowed;">Disabled state</label>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Radio Grouping" description="Radios with the same name will act as a group.">
+        <aeva-doc-example code='<aeva-radio name="choice" value="a"></aeva-radio>
+<aeva-radio name="choice" value="b"></aeva-radio>
+<aeva-radio name="choice" value="c"></aeva-radio>'>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <aeva-text variant="body">Choose one:</aeva-text>
+                <div style="display: flex; gap: 2rem;">
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <aeva-radio id="choice-a" name="choice" value="a" checked></aeva-radio>
+                        <label for="choice-a" style="color: var(--aeva-text-color); cursor: pointer;">Choice A</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <aeva-radio id="choice-b" name="choice" value="b"></aeva-radio>
+                        <label for="choice-b" style="color: var(--aeva-text-color); cursor: pointer;">Choice B</label>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 0.5rem;">
+                        <aeva-radio id="choice-c" name="choice" value="c"></aeva-radio>
+                        <label for="choice-c" style="color: var(--aeva-text-color); cursor: pointer;">Choice C</label>
+                    </div>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Custom Styling" description="Easily customizable via CSS variables.">
+        <aeva-doc-example
+            code='<aeva-radio style="--aeva-radio-checked-bg: #10b981; --aeva-radio-checked-stroke: #10b981;" checked></aeva-radio>'>
+            <div style="display: flex; gap: 1rem;">
+                <aeva-radio style="--aeva-radio-checked-bg: #10b981; --aeva-radio-checked-stroke: #10b981;" checked
+                    name="custom-1"></aeva-radio>
+                <aeva-radio style="--aeva-radio-checked-bg: #f59e0b; --aeva-radio-checked-stroke: #f59e0b;" checked
+                    name="custom-2"></aeva-radio>
+                <aeva-radio style="--aeva-radio-checked-bg: #ef4444; --aeva-radio-checked-stroke: #ef4444;" checked
+                    name="custom-3"></aeva-radio>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">checked</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Whether the radio is currently selected.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">disabled</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Prevents user interaction.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">name</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Name used to group radio buttons together.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">value</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Value associated with this radio button.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">label</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Label text displayed next to the radio.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

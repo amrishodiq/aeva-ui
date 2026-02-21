@@ -16,7 +16,7 @@ import { classMap } from 'lit/directives/class-map.js';
  * @csspart container - The container wrapper
  *
  * @cssprop --aeva-input-font-family - Font family for input text
- * @cssprop --aeva-input-border-radius - Border radius for inputs
+ * @cssprop --aeva-input-border-radius - Border radius for inputs (default: 22px)
  * @cssprop --aeva-input-transition - Transition timing for state changes
  *
  * @cssprop --aeva-input-bg - Background color

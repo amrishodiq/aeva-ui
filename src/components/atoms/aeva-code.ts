@@ -9,10 +9,11 @@ import { customElement, property, state } from 'lit/decorators.js';
  * @cssprop --aeva-code-header-bg - Background color of the window header
  * @cssprop --aeva-code-font-family - Font family for the code
  * @cssprop --aeva-code-font-size - Font size for the code
+ * @cssprop --aeva-code-border-radius - Border radius of the code window (default: 22px)
  */
 @customElement('aeva-code')
 export class AevaCode extends LitElement {
-    static styles = css`
+  static styles = css`
     :host {
       display: block;
       margin: 1.5rem 0;
@@ -21,7 +22,7 @@ export class AevaCode extends LitElement {
 
     .code-window {
       background: var(--aeva-code-bg, #1e1e1e);
-      border-radius: 12px;
+      border-radius: var(--aeva-code-border-radius, 22px);
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
       border: 1px solid rgba(255, 255, 255, 0.1);
@@ -122,41 +123,41 @@ export class AevaCode extends LitElement {
     }
   `;
 
-    /**
-     * The code to display
-     */
-    @property({ type: String })
-    code = '';
+  /**
+   * The code to display
+   */
+  @property({ type: String })
+  code = '';
 
-    /**
-     * The language for syntax highlighting
-     */
-    @property({ type: String })
-    language = 'html';
+  /**
+   * The language for syntax highlighting
+   */
+  @property({ type: String })
+  language = 'html';
 
-    /**
-     * Optional title for the window
-     */
-    @property({ type: String })
-    title = '';
+  /**
+   * Optional title for the window
+   */
+  @property({ type: String })
+  title = '';
 
-    @state()
-    private copied = false;
+  @state()
+  private copied = false;
 
-    private handleCopy() {
-        // Get text from slot if code property is empty
-        const textToCopy = this.code || this.textContent?.trim() || '';
+  private handleCopy() {
+    // Get text from slot if code property is empty
+    const textToCopy = this.code || this.textContent?.trim() || '';
 
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            this.copied = true;
-            setTimeout(() => {
-                this.copied = false;
-            }, 2000);
-        });
-    }
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      this.copied = true;
+      setTimeout(() => {
+        this.copied = false;
+      }, 2000);
+    });
+  }
 
-    render() {
-        return html`
+  render() {
+    return html`
       <div class="code-window">
         <div class="window-header">
           <div class="dot dot-red"></div>
@@ -176,11 +177,11 @@ export class AevaCode extends LitElement {
         </div>
       </div>
     `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-code': AevaCode;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-code': AevaCode;
+  }
 }

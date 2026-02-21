@@ -69,7 +69,8 @@ export class AevaDocPage extends LitElement {
       margin: 0 0 1rem 0;
       font-size: 2.5rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #fff 0%, rgba(255,255,255,0.7) 100%);
+      color: var(--aeva-text-color);
+      background: linear-gradient(135deg, var(--aeva-text-color) 0%, var(--aeva-text-muted-color) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -77,7 +78,7 @@ export class AevaDocPage extends LitElement {
     .description {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.7);
+      color: var(--aeva-text-muted-color);
       max-width: 800px;
       word-wrap: break-word;
       overflow-wrap: break-word;

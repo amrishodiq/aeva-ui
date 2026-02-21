@@ -10,9 +10,10 @@ export class AevaDocExample extends LitElement {
       gap: 1rem;
       align-items: stretch;
       padding: 1rem;
-      background: rgba(255, 255, 255, 0.03);
-      border-radius: 8px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--aeva-card-bg);
+      border-radius: var(--aeva-border-radius-md);
+      border: var(--aeva-border-thin) solid var(--aeva-card-border-color);
+      box-shadow: var(--aeva-shadow-sm);
     }
 
     .demo-area {
@@ -52,7 +53,16 @@ export class AevaDocExample extends LitElement {
     if (!this._codeSlot) return;
     const assignedElements = this._codeSlot.assignedElements();
     if (assignedElements.length > 0) {
-      const content = assignedElements[0].textContent || '';
+      // Use innerHTML to capture tags, but we need to handle potential escaping
+      let content = assignedElements[0].innerHTML || '';
+
+      // Convert common entities if they were escaped in the source
+      content = content.replace(/&lt;/g, '<')
+        .replace(/&gt;/g, '>')
+        .replace(/&amp;/g, '&')
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'");
+
       // Simple de-indentation: find the minimum indentation of non-empty lines
       const lines = content.split('\n');
       const nonEmptyLines = lines.filter(line => line.trim().length > 0);

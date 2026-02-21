@@ -11,7 +11,7 @@ import { customElement, property, state } from 'lit/decorators.js';
  * @fires close - Dispatched when the menu closes
  *
  * @cssprop --aeva-popup-bg - Background color (default: rgba(255, 255, 255, 0.7))
- * @cssprop --aeva-popup-border-radius - Border radius (default: 16px)
+ * @cssprop --aeva-popup-border-radius - Border radius (default: 22px)
  * @cssprop --aeva-popup-min-width - Minimum width (default: 200px)
  * @cssprop --aeva-popup-max-width - Maximum width, inherits from modal (default: 600px)
  */

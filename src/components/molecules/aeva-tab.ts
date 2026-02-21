@@ -154,12 +154,28 @@ export class AevaTab extends LitElement {
         this.addEventListener('keydown', this.handleKeyDown);
     }
 
-    firstUpdated() {
+    async firstUpdated() {
         this.updateTabItems();
+
+        // Wait for all items to complete their initial update
+        await Promise.all(this.tabItems.map((item: any) => item.updateComplete));
+
+        // Initial position
         this.updateBackgroundPosition(false);
 
         // Add scroll listener to update background position after scrolling stops
         this.container?.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
+
+        // Secondary settlement after fonts and paint to ensure accuracy
+        document.fonts.ready.then(() => {
+            this.updateBackgroundPosition(false);
+        });
+
+        // Final safety check after a short delay
+        setTimeout(() => {
+            this.updateBackgroundPosition(false);
+        }, 100);
     }
 
     disconnectedCallback() {
@@ -167,6 +183,7 @@ export class AevaTab extends LitElement {
         this.removeEventListener('tab-item-click', this.handleTabItemClick as EventListener);
         this.removeEventListener('keydown', this.handleKeyDown);
         this.container?.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
         if (this.scrollTimeout) {
             cancelAnimationFrame(this.scrollTimeout);
         }
@@ -183,6 +200,10 @@ export class AevaTab extends LitElement {
             this.updateBackgroundPosition(false);
             this.scrollTimeout = null;
         });
+    };
+
+    private handleResize = () => {
+        this.updateBackgroundPosition(false);
     };
 
     updated(changedProperties: Map<string, any>) {
@@ -308,7 +329,7 @@ export class AevaTab extends LitElement {
                 this.isMorphing = true;
                 setTimeout(() => {
                     this.isMorphing = false;
-                }, parseFloat(getComputedStyle(this).getPropertyValue('--aeva-tab-transition-duration')) || 300);
+                }, parseFloat(getComputedStyle(this).getPropertyValue('--aeva-duration-normal')) || 200);
             }
 
             // Scroll active tab into view if not fully visible

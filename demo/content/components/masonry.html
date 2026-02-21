@@ -26,13 +26,13 @@
         <aeva-doc-example>
             <div slot="example">
                 <aeva-masonry columns="2" gap="sm">
-                    <aeva-card padding="md" style="height: 100px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                    <aeva-card padding="md" style="height: 100px;"><aeva-text>Item
                             1</aeva-text></aeva-card>
-                    <aeva-card padding="md" style="height: 150px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                    <aeva-card padding="md" style="height: 150px;"><aeva-text>Item
                             2</aeva-text></aeva-card>
-                    <aeva-card padding="md" style="height: 120px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                    <aeva-card padding="md" style="height: 120px;"><aeva-text>Item
                             3</aeva-text></aeva-card>
-                    <aeva-card padding="md" style="height: 180px; background: rgba(0,0,0,0.1);"><aeva-text>Item
+                    <aeva-card padding="md" style="height: 180px;"><aeva-text>Item
                             4</aeva-text></aeva-card>
                 </aeva-masonry>
             </div>
@@ -46,27 +46,31 @@
 
     <aeva-doc-section title="Properties">
         <div style="overflow-x: auto;">
-            <table style="width: 100%; border-collapse: collapse; color: white;">
+            <table>
                 <thead>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); text-align: left;">
-                        <th style="padding: 0.5rem;">Property</th>
-                        <th style="padding: 0.5rem;">Attribute</th>
-                        <th style="padding: 0.5rem;">Description</th>
-                        <th style="padding: 0.5rem;">Default</th>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">columns</td>
-                        <td style="padding: 0.5rem;">columns</td>
-                        <td style="padding: 0.5rem;">Number of columns: 'auto', '1', '2', '3', '4', '5'</td>
-                        <td style="padding: 0.5rem;">'auto'</td>
+                    <tr>
+                        <td class="property-name">columns</td>
+                        <td><code>string</code></td>
+                        <td><code>auto</code>, <code>1</code>-<code>6</code></td>
+                        <td>Number of columns in the masonry layout.</td>
+                        <td><code>auto</code></td>
                     </tr>
-                    <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
-                        <td style="padding: 0.5rem; color: var(--aeva-primary-color);">gap</td>
-                        <td style="padding: 0.5rem;">gap</td>
-                        <td style="padding: 0.5rem;">Gap size (number in px or 'xs', 'sm', 'md', 'lg', 'xl')</td>
-                        <td style="padding: 0.5rem;">16</td>
+                    <tr>
+                        <td class="property-name">gap</td>
+                        <td><code>string</code></td>
+                        <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code> or px
+                        </td>
+                        <td>Spacing between masonry items.</td>
+                        <td><code>md</code> (16px)</td>
                     </tr>
                 </tbody>
             </table>

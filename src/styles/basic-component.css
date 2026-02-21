@@ -1,0 +1,40 @@
+/* API Documentation Table Styles */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--aeva-table-text-color);
+    margin-top: 1rem;
+}
+
+thead tr {
+    border-bottom: var(--aeva-table-header-border);
+    text-align: left;
+}
+
+th {
+    padding: 1rem 0.75rem;
+    color: var(--aeva-table-header-color);
+    background-color: var(--aeva-table-header-bg);
+}
+
+tbody tr {
+    border-bottom: var(--aeva-table-row-border);
+}
+
+td {
+    padding: 1rem 0.75rem;
+    background-color: var(--aeva-table-row-bg);
+}
+
+code {
+    background: var(--aeva-text-code-bg);
+    padding: 2px 4px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.property-name {
+    color: var(--aeva-table-accent-color);
+    font-family: monospace;
+}
