@@ -38,3 +38,33 @@ code {
     color: var(--aeva-table-accent-color);
     font-family: monospace;
 }
+
+/* 
+ * FOUC (Flash of Unstyled Content) Prevention
+ * Hides Aeva components until they are fully defined/registered by the browser.
+ */
+aeva-theme:not(:defined),
+aeva-page:not(:defined),
+aeva-sidebar:not(:defined),
+aeva-section:not(:defined),
+aeva-action-bar:not(:defined),
+aeva-card:not(:defined),
+aeva-button:not(:defined),
+aeva-text:not(:defined),
+aeva-list:not(:defined),
+aeva-list-item:not(:defined),
+aeva-modal:not(:defined),
+aeva-toast:not(:defined),
+aeva-carousel:not(:defined),
+aeva-badge:not(:defined) {
+    opacity: 0;
+}
+
+/* Optional: Smooth fade-in once defined */
+aeva-theme,
+aeva-page,
+aeva-sidebar,
+aeva-section,
+aeva-action-bar {
+    transition: opacity 0.2s ease-in;
+}

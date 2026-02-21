@@ -110,6 +110,12 @@ export class AevaPage extends LitElement {
         opacity: 0;
       }
     }
+
+    /* Disable opening animations for the first page in the stack */
+    :host(:first-of-type) .backdrop,
+    :host(:first-of-type) .page-container {
+      animation: none !important;
+    }
   `;
 
   /**
