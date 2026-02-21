@@ -1,101 +1,68 @@
 <aeva-doc-page title="Getting Started"
     description="Learn how to integrate Aeva UI into your project and start building beautiful, high-performance interfaces.">
 
-    <aeva-doc-section title="Quick Start" description="Get up and running in less than a minute.">
-        <aeva-text variant="body">The fastest way to use Aeva UI is by importing the library from a CDN or using it in
-            your modern build system.</aeva-text>
-        <aeva-doc-example>
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                <aeva-text variant="body">Simply import the library and start using components:</aeva-text>
-                <div
-                    style="padding: 1rem; background: var(--aeva-code-bg); border-radius: var(--aeva-code-border-radius);">
-                    <aeva-text variant="code">import '@aeva/ui';</aeva-text>
-                </div>
-                <aeva-button variant="primary">Hello Aeva!</aeva-button>
-            </div>
-            <div slot="code">
-                <!-- HTML -->
-                <script type="module" src="https://cdn.jsdelivr.net/npm/@aeva/ui/dist/aeva-ui.js"></script>
+    <aeva-doc-section title="Features" description="Key highlights of Aeva UI.">
+        <aeva-text variant="body">
+            A lightweight, customizable design system library built with Lit for rapid web development. Perfect for
+            students and developers alike.
+        </aeva-text>
+        <ul style="margin-top: 1rem; color: var(--aeva-text-color); line-height: 1.6;">
+            <li>🎨 <strong>Atomic Design Pattern</strong> - Organized components (Atoms → Molecules → Organisms →
+                Templates)</li>
+            <li>⚡ <strong>Lit Web Components</strong> - Lightweight (~5KB), fast, and framework-agnostic</li>
+            <li>🎯 <strong>TypeScript First</strong> - Full type safety and autocomplete support</li>
+            <li>🎨 <strong>Easy Theming</strong> - Customize via CSS Custom Properties</li>
+            <li>🔥 <strong>Hot Reload</strong> - Fast development experience with Vite</li>
+            <li>📦 <strong>Tree-shakeable</strong> - Only bundle what you use</li>
+        </ul>
+    </aeva-doc-section>
 
-                <aeva-button variant="primary">Hello Aeva!</aeva-button>
+    <aeva-doc-section title="Installation" description="Install via NPM or use from a CDN.">
+        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+                <aeva-text variant="h3">Via NPM</aeva-text>
+                <aeva-code language="bash" code="npm install aeva-ui lit"></aeva-code>
+            </div>
+
+            <div>
+                <aeva-text variant="h3">Via CDN (jsDelivr)</aeva-text>
+                <aeva-code language="html"
+                    code='<script type="module" src="https://cdn.jsdelivr.net/npm/aeva-ui/dist/aeva-ui.js"></script>'></aeva-code>
+            </div>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Quick Start" description="The fastest way to get started with Aeva UI.">
+        <aeva-doc-example>
+            <aeva-button variant="primary">Hello Aeva!</aeva-button>
+            <div slot="code">
+                &lt;!DOCTYPE html&gt;
+                &lt;html lang="en"&gt;
+                &lt;head&gt;
+                &lt;meta charset="UTF-8"&gt;
+                &lt;title&gt;Aeva UI Example&lt;/title&gt;
+                &lt;!-- Import official styles --&gt;
+                &lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aeva-ui/dist/style.css"&gt;
+                &lt;!-- Import components from CDN --&gt;
+                &lt;script type="module" src="https://cdn.jsdelivr.net/npm/aeva-ui/dist/aeva-ui.js"&gt;&lt;/script&gt;
+                &lt;/head&gt;
+                &lt;body&gt;
+                &lt;aeva-button variant="primary"&gt;Hello Aeva!&lt;/aeva-button&gt;
+                &lt;/body&gt;
+                &lt;/html&gt;
             </div>
         </aeva-doc-example>
     </aeva-doc-section>
 
-    <aeva-doc-section title="The 'Fit' Test" description="Is Aeva UI the right choice for your project?">
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div>
-                <aeva-text variant="h3">Framework Compatibility</aeva-text>
-                <aeva-text variant="body">Built with Lit and standard Web Components, Aeva UI works seamlessly with any
-                    framework (React, Vue, Angular, Svelte) or no framework at all.</aeva-text>
-            </div>
-            <div>
-                <aeva-text variant="h3">Prerequisites</aeva-text>
-                <aeva-text variant="body">Aeva UI requires a modern browser environment. If using a build tool, Node.js
-                    18+ is recommended.</aeva-text>
-            </div>
-            <div>
-                <aeva-text variant="h3">Bundle Size</aeva-text>
-                <aeva-text variant="body">Extremely lightweight. Each component is self-contained and tree-shakable,
-                    ensuring minimal impact on your application's load time.</aeva-text>
-            </div>
-        </div>
+    <aeva-doc-section title="Theming" description="Customize Aeva UI using CSS variables.">
+        <aeva-text variant="body">Aeva UI uses CSS variables for theming. You can override them in your global
+            CSS:</aeva-text>
+        <aeva-doc-example language="css" code=":root {
+  --aeva-color-primary: #6366f1;
+  --aeva-radius-md: 12px;
+}">
+            <aeva-button style="--aeva-color-primary: #6366f1; --aeva-radius-md: 12px;">Themed Button</aeva-button>
+        </aeva-doc-example>
     </aeva-doc-section>
 
-    <aeva-doc-section title="Setup" description="A detailed guide to installing and configuring Aeva UI.">
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div>
-                <aeva-text variant="h3">Installation</aeva-text>
-                <aeva-text variant="body">Install the package via npm, yarn, or pnpm:</aeva-text>
-                <div
-                    style="padding: 1rem; background: var(--aeva-code-bg); border-radius: var(--aeva-code-border-radius); margin-top: 0.5rem;">
-                    <aeva-text variant="code">npm install @aeva/ui</aeva-text>
-                </div>
-            </div>
-            <div>
-                <aeva-text variant="h3">Setup Complexity</aeva-text>
-                <aeva-text variant="body">Zero-config by default. Just import the components you need and they will
-                    automatically register themselves.</aeva-text>
-            </div>
-            <div>
-                <aeva-text variant="h3">Code Snippet</aeva-text>
-                <aeva-text variant="body">Standard usage in a TypeScript/JavaScript project:</aeva-text>
-                <div
-                    style="padding: 1rem; background: var(--aeva-code-bg); border-radius: var(--aeva-code-border-radius); margin-top: 0.5rem;">
-                    <pre style="margin: 0; color: var(--aeva-text-color); font-family: monospace;">
-import '@aeva/ui/dist/components/atoms/aeva-button.js';
-import '@aeva/ui/dist/components/atoms/aeva-text.js';
-
-// That's it! Use them in your HTML:
-// <aeva-text variant="h1">Welcome</aeva-text>
-// <aeva-button>Click Me</aeva-button></pre>
-                </div>
-            </div>
-        </div>
-    </aeva-doc-section>
-
-    <aeva-doc-section title="Customization" description="Tailor Aeva UI to match your brand identity.">
-        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-            <div>
-                <aeva-text variant="h3">Theming System</aeva-text>
-                <aeva-text variant="body">Aeva UI uses a powerful CSS Variable-based theming system. You can switch
-                    between light and dark modes or create entirely new themes by overriding these variables at the root
-                    level.</aeva-text>
-            </div>
-            <div>
-                <aeva-text variant="h3">How to Override Style</aeva-text>
-                <aeva-text variant="body">To customize specific colors or spacings, simply define the corresponding CSS
-                    variables in your stylesheet:</aeva-text>
-                <div
-                    style="padding: 1rem; background: var(--aeva-code-bg); border-radius: var(--aeva-code-border-radius); margin-top: 0.5rem;">
-                    <pre style="margin: 0; color: var(--aeva-text-color); font-family: monospace;">
-:root {
-  --aeva-primary-color: #ff4757;
-  --aeva-border-radius-md: 8px;
-  --aeva-font-family: 'Inter', sans-serif;
-}</pre>
-                </div>
-            </div>
-        </div>
-    </aeva-doc-section>
 </aeva-doc-page>
