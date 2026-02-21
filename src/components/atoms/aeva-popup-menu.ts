@@ -64,8 +64,8 @@ export class AevaPopupMenu extends LitElement {
       box-sizing: border-box;
       
       box-shadow: 
-        0 10px 15px -3px var(--aeva-popup-shadow-color),
-        0 4px 6px -2px var(--aeva-popup-shadow-color);
+        0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+        0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
 
       transform-origin: top left;
       animation: popupIn 0.2s cubic-bezier(0, 0, 0.2, 1);
@@ -97,12 +97,30 @@ export class AevaPopupMenu extends LitElement {
       }
     }
 
-    /* Elevation styles same as modal but slightly adjusted for popup scale */
-    :host([elevation="1"]) .popup { box-shadow: 0 1px 3px var(--aeva-popup-shadow-color); }
-    :host([elevation="2"]) .popup { box-shadow: 0 4px 6px var(--aeva-popup-shadow-color); }
-    :host([elevation="3"]) .popup { box-shadow: 0 10px 15px var(--aeva-popup-shadow-color); }
-    :host([elevation="4"]) .popup { box-shadow: 0 20px 25px var(--aeva-popup-shadow-color); }
-    :host([elevation="5"]) .popup { box-shadow: 0 25px 50px var(--aeva-popup-shadow-color); }
+    /* Elevation styles same as modal */
+    :host([elevation="1"]) .popup {
+      box-shadow: 
+        0 1px 3px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+        0 1px 2px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+    }
+    :host([elevation="2"]) .popup {
+      box-shadow: 
+        0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+        0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+    }
+    :host([elevation="3"]) .popup {
+      box-shadow: 
+        0 10px 15px -3px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+        0 4px 6px -2px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+    }
+    :host([elevation="4"]) .popup {
+      box-shadow: 
+        0 20px 25px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+        0 10px 10px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+    }
+    :host([elevation="5"]) .popup {
+      box-shadow: 0 25px 50px -12px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+    }
 
     /* Fix visual gap: ensure slotted list fills the popup completely */
     ::slotted(aeva-list) {

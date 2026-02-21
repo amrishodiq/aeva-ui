@@ -225,7 +225,7 @@ export const darkTheme: ThemeVariables = {
     '--aeva-popup-blur': 'var(--aeva-blur-md)',
     '--aeva-popup-border-color': 'rgba(255, 255, 255, 0.1)',
     '--aeva-popup-border-width': 'var(--aeva-border-thin)',
-    '--aeva-popup-shadow-color': 'var(--aeva-shadow-sm)',
+    '--aeva-popup-shadow-color': 'rgba(0, 0, 0, 0.4)',
 
     // Ripple
     '--aeva-ripple-color': 'currentColor',

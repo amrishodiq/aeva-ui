@@ -24,7 +24,7 @@ export class AevaListItem extends LitElement {
       --list-item-border-radius-default: 8px;
       --list-item-active-bg-default: var(--aeva-primary-light, rgba(102, 126, 234, 0.08));
       --list-item-hover-bg-default: rgba(0, 0, 0, 0.04);
-      --list-item-color-default: var(--aeva-text-main, #1f2937);
+      --list-item-color-default: var(--aeva-text-color, #1f2937);
 
       display: block;
       width: 100%;
@@ -229,7 +229,7 @@ export class AevaListItem extends LitElement {
         <div class="content">
           <div class="title-container">
             <slot name="title">
-              <slot>${this.label ? html`<aeva-text variant="body" size="md">${this.label}</aeva-text>` : ''}</slot>
+              ${this.label ? html`<aeva-text variant="body" size="md">${this.label}</aeva-text>` : html`<slot></slot>`}
             </slot>
           </div>
           <div class="description-container">

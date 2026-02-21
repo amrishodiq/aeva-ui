@@ -1,0 +1,99 @@
+<aeva-doc-page title="Text"
+    description="A robust typography system managing headings, body copy, and labels. Supports semantic HTML, hybrid scaling, and multiple visual states.">
+
+    <aeva-doc-section title="Headings & Display" description="Large typographic elements for structure and impact.">
+        <aeva-doc-example>
+            <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <aeva-text variant="display">Display Text</aeva-text>
+                <aeva-text variant="h1">Heading 1</aeva-text>
+                <aeva-text variant="h2">Heading 2</aeva-text>
+                <aeva-text variant="h3">Heading 3</aeva-text>
+                <aeva-text variant="h4">Heading 4</aeva-text>
+            </div>
+            <div slot="code">
+                <aeva-text variant="display">Large Title</aeva-text>
+                <aeva-text variant="h1">Heading 1</aeva-text>
+                <aeva-text variant="h2">Heading 2</aeva-text>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="States & Colors" description="Communicate meaning through semantic coloring.">
+        <aeva-doc-example>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <aeva-text variant="body">Normal body text for regular paragraphs.</aeva-text>
+                <aeva-text variant="body" state="muted">Muted text for secondary information.</aeva-text>
+                <aeva-text variant="body" state="error">Error text for validation or alerts.</aeva-text>
+                <div style="background: var(--aeva-color-indigo-600); padding: 1rem; border-radius: 8px;">
+                    <aeva-text variant="body" state="inverse">Inverse text for dark backgrounds.</aeva-text>
+                </div>
+            </div>
+            <div slot="code">
+                <aeva-text state="muted">Secondary text</aeva-text>
+                <aeva-text state="error">Validation error</aeva-text>
+                <aeva-text state="inverse">White on dark</aeva-text>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">variant</td>
+                        <td><code>string</code></td>
+                        <td><code>display</code>, <code>h1-h6</code>, <code>body</code>, <code>label</code></td>
+                        <td>The typographic style and semantic role.</td>
+                        <td><code>body</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">size</td>
+                        <td><code>string</code></td>
+                        <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>,
+                            <code>2xl</code>, <code>3xl</code></td>
+                        <td>Override the default variant size.</td>
+                        <td><code>md</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">align</td>
+                        <td><code>string</code></td>
+                        <td><code>left</code>, <code>center</code>, <code>right</code>, <code>justify</code></td>
+                        <td>Horizontal text alignment.</td>
+                        <td><code>left</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">state</td>
+                        <td><code>string</code></td>
+                        <td><code>normal</code>, <code>muted</code>, <code>inverse</code>, <code>error</code></td>
+                        <td>Visual state/color preset.</td>
+                        <td><code>normal</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">truncate</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Truncate single line with ellipsis.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">line-clamp</td>
+                        <td><code>number</code></td>
+                        <td><code>1</code> - <code>6</code></td>
+                        <td>Restrict text to N lines with ellipsis.</td>
+                        <td><code>0</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

@@ -1,0 +1,54 @@
+<aeva-doc-page title="Code"
+    description="A professional code display component with MacOS-style window decorations. Ideal for technical documentation and developer guides.">
+
+    <aeva-doc-section title="Basic Usage" description="Display a block of code with window controls.">
+        <aeva-doc-example>
+            <aeva-code title="app.js"
+                code="console.log('Hello Aeva UI!');\n\nconst greet = () => {\n  return 'Welcome to the future of UI';\n};"
+                language="javascript"></aeva-code>
+            <div slot="code">
+                <aeva-code title="hello.js" language="javascript" code="console.log('Hello!');">
+                </aeva-code>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">code</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>The exact code content to be displayed.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">language</td>
+                        <td><code>string</code></td>
+                        <td><code>html</code>, <code>javascript</code>, <code>css</code>, etc.</td>
+                        <td>Specifies the syntax highlighting engine.</td>
+                        <td><code>html</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">title</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Optional filename or label for the window header.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

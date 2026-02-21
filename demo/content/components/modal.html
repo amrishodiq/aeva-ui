@@ -1,0 +1,197 @@
+<aeva-doc-page title="Modal"
+    description="A focused overlay container for critical interactions, information, or workflows. Features glassmorphism effects, smooth entry/exit animations, and full accessibility support.">
+
+    <aeva-doc-section title="Basic Usage" description="A simple modal with a header and content.">
+        <aeva-doc-example>
+            <aeva-button onclick="document.getElementById('basic-modal').open = true">Open Modal</aeva-button>
+            <aeva-modal id="basic-modal">
+                <div>
+                    <div>
+                        <aeva-text variant="h3">Basic Modal</aeva-text>
+                    </div>
+                    <div>
+                        <aeva-text variant="body">This is a standard modal component. It centers itself in the viewport
+                            and provides a backdrop to focus the user's attention.</aeva-text>
+                    </div>
+                    <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1.5rem;">
+                        <aeva-button variant="ghost"
+                            onclick="document.getElementById('basic-modal').close()">Cancel</aeva-button>
+                        <aeva-button onclick="document.getElementById('basic-modal').close()">Understand</aeva-button>
+                    </div>
+                </div>
+            </aeva-modal>
+            <div slot="code">
+                <aeva-button onclick="document.getElementById('modal').open = true">Open Modal</aeva-button>
+
+                <aeva-modal id="modal">
+                    <div style="padding: var(--aeva-space-lg);">
+                        <div><aeva-text variant="h3">Title</aeva-text></div>
+                        <aeva-text variant="body">Content goes here...</aeva-text>
+                        <div style="display: flex; justify-content: flex-end; gap: 0.75rem;">
+                            <aeva-button variant="ghost"
+                                onclick="document.getElementById('modal').close()">Cancel</aeva-button>
+                            <aeva-button onclick="document.getElementById('modal').close()">Confirm</aeva-button>
+                        </div>
+                    </div>
+                </aeva-modal>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Backdrop & Behavior"
+        description="Configure how the modal interacts with its surroundings.">
+        <aeva-doc-example>
+            <div style="display: flex; gap: 1rem;">
+                <aeva-button variant="secondary"
+                    onclick="document.getElementById('persistent-modal').open = true">Persistent
+                    Modal</aeva-button>
+            </div>
+            <aeva-modal id="persistent-modal" close-on-backdrop="false" close-on-esc="false">
+                <div style="padding: var(--aeva-space-lg);">
+                    <div>
+                        <aeva-text variant="h3">Persistent State</aeva-text>
+                    </div>
+                    <aeva-text variant="body">This modal cannot be closed by clicking the backdrop or pressing the ESC
+                        key. The user must interact with the buttons inside.</aeva-text>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                        <aeva-button onclick="document.getElementById('persistent-modal').close()">Close
+                            Now</aeva-button>
+                    </div>
+                </div>
+            </aeva-modal>
+            <div slot="code">
+                <!-- Disable backdrop and ESC key closing -->
+                <aeva-modal close-on-backdrop="false" close-on-esc="false">
+                    ...
+                </aeva-modal>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Elevation & Glassmorphism" description="Adjust the visual layers and backdrop effects.">
+        <aeva-doc-example>
+            <div style="display: flex; gap: 1rem;">
+                <aeva-button variant="outline" onclick="document.getElementById('glass-modal').open = true">Heavy Blur
+                    Modal</aeva-button>
+            </div>
+            <aeva-modal id="glass-modal" elevation="5" blur-amount="25">
+                <div style="padding: var(--aeva-space-lg);">
+                    <div>
+                        <aeva-text variant="h3">Premium Glass</aeva-text>
+                    </div>
+                    <aeva-text variant="body">Using elevation level 5 and a custom blur amount of 25px for a more
+                        dramatic depth effect.</aeva-text>
+                    <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem;">
+                        <aeva-button onclick="document.getElementById('glass-modal').close()">Looks
+                            Good</aeva-button>
+                    </div>
+                </div>
+            </aeva-modal>
+            <div slot="code">
+                <aeva-modal elevation="5" blur-amount="25">
+                    ...
+                </aeva-modal>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">open</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Whether the modal is currently visible.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">backdrop</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Whether to show the overlay backdrop.</td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">close-on-backdrop</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Close when user clicks the backdrop.</td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">close-on-esc</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Close when user presses the Escape key.</td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">elevation</td>
+                        <td><code>number</code></td>
+                        <td><code>1</code> - <code>5</code></td>
+                        <td>Shadow depth level.</td>
+                        <td><code>3</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">blur-amount</td>
+                        <td><code>number</code></td>
+                        <td>-</td>
+                        <td>Amount of backdrop blur in pixels.</td>
+                        <td><code>10</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slots">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Slot</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">default</td>
+                        <td>Main content of the modal. This can be structured HTML with title, body, and actions.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Methods">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Method</th>
+                        <th>Parameters</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">close()</td>
+                        <td>-</td>
+                        <td>Closes the modal with a smooth fade-out animation.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

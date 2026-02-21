@@ -1,0 +1,97 @@
+<aeva-doc-page title="Icon"
+    description="A semantic wrapper for icons, avatars, and symbols. Ensures consistent sizing, shapes, and border treatments across the application.">
+
+    <aeva-doc-section title="Basic Sizing" description="Predefined size variants for consistent layout.">
+        <aeva-doc-example>
+            <div style="display: flex; align-items: flex-end; gap: 2rem;">
+                <aeva-icon size="sm">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 13l4 4L19 7" />
+                    </svg>
+                </aeva-icon>
+                <aeva-icon size="md">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 13l4 4L19 7" />
+                    </svg>
+                </aeva-icon>
+                <aeva-icon size="lg">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M5 13l4 4L19 7" />
+                    </svg>
+                </aeva-icon>
+            </div>
+            <div slot="code">
+                <aeva-icon size="sm"><svg ...></svg></aeva-icon>
+                <aeva-icon size="md"><svg ...></svg></aeva-icon>
+                <aeva-icon size="lg"><svg ...></svg></aeva-icon>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Shapes & Borders" description="Circular, rectangular, and stylized border treatments.">
+        <aeva-doc-example>
+            <div style="display: flex; gap: 2rem;">
+                <aeva-icon shape="circle" border="solid">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </aeva-icon>
+                <aeva-icon shape="round-rect" border="solid">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </aeva-icon>
+                <aeva-icon shape="circle" border="fading"
+                    style="--aeva-icon-bg: var(--aeva-primary-color); --aeva-icon-color: white;">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                </aeva-icon>
+            </div>
+            <div slot="code">
+                <aeva-icon shape="circle" border="solid">...</aeva-icon>
+                <aeva-icon shape="round-rect" border="solid">...</aeva-icon>
+                <aeva-icon border="fading">...</aeva-icon>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">size</td>
+                        <td><code>string</code></td>
+                        <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
+                        <td>Scale of the icon container.</td>
+                        <td><code>md</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">shape</td>
+                        <td><code>string</code></td>
+                        <td><code>circle</code>, <code>rect</code>, <code>round-rect</code></td>
+                        <td>The outer silhouette of the component.</td>
+                        <td><code>circle</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">border</td>
+                        <td><code>string</code></td>
+                        <td><code>none</code>, <code>solid</code>, <code>fading</code></td>
+                        <td>Type of border decoration.</td>
+                        <td><code>none</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>
