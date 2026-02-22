@@ -155,7 +155,7 @@ export class AevaActionBar extends LitElement {
     :host([sticky]) .action-bar {
       position: sticky;
       bottom: 0;
-      z-index: 100;
+      z-index: var(--aeva-z-sticky);
     }
 
     /* Glassmorphism effect */

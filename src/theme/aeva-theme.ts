@@ -37,7 +37,6 @@ export class AevaTheme extends LitElement {
   customStyles: ThemeVariables | null = null;
 
   updated(changedProperties: Map<string, any>) {
-    console.log('AMRIXXX', changedProperties);
     if (changedProperties.has('theme') || changedProperties.has('customStyles')) {
       this.applyThemeToHost();
     }
@@ -58,7 +57,6 @@ export class AevaTheme extends LitElement {
 
     if (styles) {
       Object.entries(styles).forEach(([key, value]) => {
-        console.log(key, value);
         this.style.setProperty(key, value);
       });
     } else {

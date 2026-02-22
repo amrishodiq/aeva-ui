@@ -34,10 +34,13 @@ export const sharedTokens = {
   '--aeva-blur-lg': '20px',
 
   // Z-Index
-  '--aeva-z-sidebar': '1000',
-  '--aeva-z-sticky': '1100',
+  '--aeva-z-sticky': '100',
+  '--aeva-z-dropdown': '1000',
+  '--aeva-z-sidebar': '1200',
   '--aeva-z-modal': '2000',
-  '--aeva-z-toast': '3000',
+  '--aeva-z-popover': '3000',
+  '--aeva-z-tooltip': '4000',
+  '--aeva-z-toast': '5000',
 
   // Elevation & Shadows
   '--aeva-shadow-sm': '0 2px 8px rgba(0, 0, 0, 0.05)',

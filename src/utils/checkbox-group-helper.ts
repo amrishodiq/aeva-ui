@@ -1,3 +1,5 @@
+import { AevaCheckbox } from '../components/atoms/aeva-checkbox';
+
 /**
  * Helper utility class for managing checkbox groups.
  * Provides convenient methods to get and set checked values in checkbox groups.
@@ -31,9 +33,10 @@ export class CheckboxGroupHelper {
     const checkboxes = document.querySelectorAll(`aeva-checkbox[name="${groupName}"]`);
     const values: string[] = [];
 
-    checkboxes.forEach((checkbox: any) => {
-      if (checkbox.checked && checkbox.value) {
-        values.push(checkbox.value);
+    checkboxes.forEach((checkbox) => {
+      const cb = checkbox as AevaCheckbox;
+      if (cb.checked && cb.value) {
+        values.push(cb.value);
       }
     });
 
@@ -52,9 +55,9 @@ export class CheckboxGroupHelper {
    * checkboxes.forEach(cb => console.log(cb.value));
    * ```
    */
-  static getChecked(groupName: string): HTMLElement[] {
+  static getChecked(groupName: string): AevaCheckbox[] {
     const checkboxes = document.querySelectorAll(`aeva-checkbox[name="${groupName}"]`);
-    return Array.from(checkboxes).filter((cb: any) => cb.checked) as HTMLElement[];
+    return Array.from(checkboxes).filter((cb) => (cb as AevaCheckbox).checked) as AevaCheckbox[];
   }
 
   /**
@@ -71,8 +74,9 @@ export class CheckboxGroupHelper {
   static setValues(groupName: string, values: string[]): void {
     const checkboxes = document.querySelectorAll(`aeva-checkbox[name="${groupName}"]`);
 
-    checkboxes.forEach((checkbox: any) => {
-      checkbox.checked = values.includes(checkbox.value);
+    checkboxes.forEach((checkbox) => {
+      const cb = checkbox as AevaCheckbox;
+      cb.checked = values.includes(cb.value);
     });
   }
 
@@ -93,7 +97,7 @@ export class CheckboxGroupHelper {
   static isChecked(groupName: string, value: string): boolean {
     const checkbox = document.querySelector(
       `aeva-checkbox[name="${groupName}"][value="${value}"]`
-    ) as any;
+    ) as AevaCheckbox | null;
     return checkbox ? checkbox.checked : false;
   }
 
@@ -126,8 +130,8 @@ export class CheckboxGroupHelper {
    */
   static clearAll(groupName: string): void {
     const checkboxes = document.querySelectorAll(`aeva-checkbox[name="${groupName}"]`);
-    checkboxes.forEach((checkbox: any) => {
-      checkbox.checked = false;
+    checkboxes.forEach((checkbox) => {
+      (checkbox as AevaCheckbox).checked = false;
     });
   }
 
@@ -143,8 +147,8 @@ export class CheckboxGroupHelper {
    */
   static selectAll(groupName: string): void {
     const checkboxes = document.querySelectorAll(`aeva-checkbox[name="${groupName}"]`);
-    checkboxes.forEach((checkbox: any) => {
-      checkbox.checked = true;
+    checkboxes.forEach((checkbox) => {
+      (checkbox as AevaCheckbox).checked = true;
     });
   }
 
@@ -162,7 +166,7 @@ export class CheckboxGroupHelper {
   static toggle(groupName: string, value: string): void {
     const checkbox = document.querySelector(
       `aeva-checkbox[name="${groupName}"][value="${value}"]`
-    ) as any;
+    ) as AevaCheckbox | null;
     if (checkbox) {
       checkbox.checked = !checkbox.checked;
     }
@@ -180,9 +184,9 @@ export class CheckboxGroupHelper {
    * console.log('Total options:', all.length);
    * ```
    */
-  static getAll(groupName: string): HTMLElement[] {
+  static getAll(groupName: string): AevaCheckbox[] {
     const checkboxes = document.querySelectorAll(`aeva-checkbox[name="${groupName}"]`);
-    return Array.from(checkboxes) as HTMLElement[];
+    return Array.from(checkboxes) as AevaCheckbox[];
   }
 
   /**

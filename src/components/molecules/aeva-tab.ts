@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 import '../atoms/aeva-tab-item';
 
 /**
@@ -8,8 +9,8 @@ import '../atoms/aeva-tab-item';
  *
  * @slot - Default slot for aeva-tab-item elements
  *
- * @fires on-tab-changed - Fired when active tab changes
- * @event {CustomEvent<{previousIndex: number, currentIndex: number, label: string}>} on-tab-changed
+ * @fires tab-changed - Fired when active tab changes
+ * @event {CustomEvent<{previousIndex: number, currentIndex: number, label: string}>} tab-changed
  *
  * @csspart container - The tab container element
  * @csspart background - The animated background element
@@ -24,7 +25,9 @@ import '../atoms/aeva-tab-item';
  */
 @customElement('aeva-tab')
 export class AevaTab extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: flex;
       justify-content: center;
@@ -118,7 +121,7 @@ export class AevaTab extends LitElement {
     ::slotted(aeva-tab-item:not(:first-child):not(:last-child)) {
       scroll-snap-align: center;
     }
-  `;
+  `];
 
   /**
    * Index of the currently active tab
@@ -140,7 +143,6 @@ export class AevaTab extends LitElement {
   @state()
   private isMorphing = false;
 
-  @state()
   private scrollTimeout: number | null = null;
 
   @query('.container')
@@ -246,7 +248,7 @@ export class AevaTab extends LitElement {
 
     // Dispatch change event
     this.dispatchEvent(
-      new CustomEvent('on-tab-changed', {
+      new CustomEvent('tab-changed', {
         detail: {
           previousIndex,
           currentIndex: index,

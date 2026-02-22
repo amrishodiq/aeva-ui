@@ -56,7 +56,25 @@ aeva-list-item:not(:defined),
 aeva-modal:not(:defined),
 aeva-toast:not(:defined),
 aeva-carousel:not(:defined),
-aeva-badge:not(:defined) {
+aeva-badge:not(:defined),
+aeva-checkbox:not(:defined),
+aeva-code:not(:defined),
+aeva-icon:not(:defined),
+aeva-input:not(:defined),
+aeva-progress:not(:defined),
+aeva-radio:not(:defined),
+aeva-rating:not(:defined),
+aeva-ripple:not(:defined),
+aeva-tab-item:not(:defined),
+aeva-tab:not(:defined),
+aeva-tooltip:not(:defined),
+aeva-popup-menu:not(:defined),
+aeva-bento-grid:not(:defined),
+aeva-container:not(:defined),
+aeva-grid-item:not(:defined),
+aeva-grid:not(:defined),
+aeva-masonry:not(:defined),
+aeva-stack:not(:defined) {
     opacity: 0;
 }
 
@@ -65,6 +83,9 @@ aeva-theme,
 aeva-page,
 aeva-sidebar,
 aeva-section,
-aeva-action-bar {
+aeva-action-bar,
+aeva-container,
+aeva-grid,
+aeva-stack {
     transition: opacity 0.2s ease-in;
 }

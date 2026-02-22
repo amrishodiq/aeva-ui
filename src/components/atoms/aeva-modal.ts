@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
+import { WithCloseAnimation } from '../../utils/behaviors';
 
 /**
  * A modal overlay component with backdrop blur effect.
@@ -23,8 +25,10 @@ import { customElement, property } from 'lit/decorators.js';
  * @cssprop --aeva-modal-shadow-color - Shadow color (default: rgba(0, 0, 0, 0.1))
  */
 @customElement('aeva-modal')
-export class AevaModal extends LitElement {
-  static styles = css`
+export class AevaModal extends WithCloseAnimation(LitElement) {
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: none;
       position: fixed;
@@ -32,7 +36,7 @@ export class AevaModal extends LitElement {
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: 1000;
+      z-index: var(--aeva-z-modal);
     }
 
     :host([open]) {
@@ -212,7 +216,7 @@ export class AevaModal extends LitElement {
         max-width: 819px;
       }
     }
-  `;
+  `];
 
   /**
    * Whether the modal is open
@@ -249,9 +253,6 @@ export class AevaModal extends LitElement {
    */
   @property({ type: Number, attribute: 'blur-amount' })
   blurAmount = 10;
-
-  @property({ type: Boolean, reflect: true })
-  closing = false;
 
   private previousFocus: HTMLElement | null = null;
 
@@ -321,42 +322,34 @@ export class AevaModal extends LitElement {
     const target = e.target as HTMLElement;
     if (target.classList.contains('backdrop')) {
       this.dispatchEvent(new CustomEvent('backdrop-click', { bubbles: true, composed: true }));
-      this.close();
+      this.close(false);
     }
   };
 
   private handleKeydown = (e: KeyboardEvent) => {
     if (e.key === 'Escape' && this.closeOnEsc && this.open) {
       e.preventDefault();
-      this.close();
+      this.close(false);
     }
   };
 
   private handlePopState = () => {
-    if (this.open) {
-      this.close();
+    if (this.open && window.history.state?.aevaModal !== true) {
+      this.close(true);
     }
   };
 
   /**
    * Close the modal with animation
+   * @param fromPopState Whether the close was triggered by a popstate event
    */
-  public close() {
-    // Use requestAnimationFrame to ensure the closing attribute is applied
-    // before the animation starts
-    requestAnimationFrame(() => {
-      this.closing = true;
+  public async close(fromPopState = false) {
+    // Remove from history if we added it, unless we're already coming from a popstate
+    if (!fromPopState && window.history.state?.aevaModal === true) {
+      window.history.back();
+    }
 
-      // Remove from history if we added it
-      if (window.history.state?.aevaModal === true) {
-        window.history.back();
-      }
-
-      setTimeout(() => {
-        this.open = false;
-        this.closing = false;
-      }, 300);
-    });
+    await this.closeWithAnimation(300);
   }
 
   render() {

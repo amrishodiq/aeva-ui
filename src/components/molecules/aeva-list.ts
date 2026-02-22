@@ -8,8 +8,8 @@ import '../atoms/aeva-list-item';
  *
  * @slot - Default slot for aeva-list-item elements
  *
- * @fires on-selection-change - Fired when the active item changes
- * @event {CustomEvent<{index: number, label: string}>} on-selection-change
+ * @fires selection-change - Fired when the active item changes
+ * @event {CustomEvent<{index: number, label: string}>} selection-change
  *
  * @cssprop --aeva-list-padding - Padding for the list container (default: 8px)
  * @cssprop --aeva-list-gap - Gap between items (default: 4px)
@@ -86,7 +86,7 @@ export class AevaList extends LitElement {
     });
 
     this.dispatchEvent(
-      new CustomEvent('on-selection-change', {
+      new CustomEvent('selection-change', {
         detail: { index, label },
         bubbles: true,
         composed: true,
@@ -99,10 +99,7 @@ export class AevaList extends LitElement {
 
     let targetIndex = -1;
     const currentIndex = this.items.findIndex(
-      (item: any) =>
-        item.shadowRoot?.querySelector('.item') === document.activeElement ||
-        item === document.activeElement ||
-        item.shadowRoot?.activeElement
+      (item: any) => item.hasFocus || item === this.shadowRoot?.activeElement
     );
 
     // If no item is focused, use the active index or 0
@@ -139,7 +136,7 @@ export class AevaList extends LitElement {
 
     if (targetIndex !== -1) {
       const targetItem = this.items[targetIndex] as any;
-      targetItem.shadowRoot?.querySelector('.item')?.focus();
+      targetItem.focus();
     }
   }
 

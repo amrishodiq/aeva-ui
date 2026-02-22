@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A custom radio button component with circular design.
@@ -23,7 +24,9 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-radio')
 export class AevaRadio extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: inline-block;
       cursor: pointer;
@@ -76,7 +79,7 @@ export class AevaRadio extends LitElement {
         transition: none;
       }
     }
-  `;
+  `];
 
   /**
    * Whether the radio button is checked

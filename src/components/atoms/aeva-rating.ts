@@ -10,9 +10,9 @@ import { customElement, property, state } from 'lit/decorators.js';
  * @csspart container - The main rating container
  * @csspart star - Individual star element
  *
- * @cssprop --aeva-rating-color - Color of filled stars (default: #fbbf24)
- * @cssprop --aeva-rating-empty-color - Color of empty stars (default: #e5e7eb)
- * @cssprop --aeva-rating-hover-color - Color on hover in interactive mode (default: #f59e0b)
+ * @cssprop --aeva-rating-color - Color of filled stars (default: var(--aeva-accent-gold))
+ * @cssprop --aeva-rating-empty-color - Color of empty stars (default: var(--aeva-border-color))
+ * @cssprop --aeva-rating-hover-color - Color on hover in interactive mode (default: var(--aeva-accent-gold))
  * @cssprop --aeva-rating-size-sm - Size for small variant (default: 16px)
  * @cssprop --aeva-rating-size-md - Size for medium variant (default: 24px)
  * @cssprop --aeva-rating-size-lg - Size for large variant (default: 32px)
@@ -69,11 +69,11 @@ export class AevaRating extends LitElement {
 
     /* Star fill colors */
     .star-empty {
-      color: var(--aeva-rating-empty-color);
+      color: var(--aeva-rating-empty-color, var(--aeva-border-color, #e5e7eb));
     }
 
     .star-filled {
-      color: var(--aeva-rating-color);
+      color: var(--aeva-rating-color, var(--aeva-accent-gold, #fbbf24));
     }
 
     .star-half {
@@ -81,14 +81,14 @@ export class AevaRating extends LitElement {
     }
 
     .star-half .star-bg {
-      color: var(--aeva-rating-empty-color);
+      color: var(--aeva-rating-empty-color, var(--aeva-border-color, #e5e7eb));
     }
 
     .star-half .star-fg {
       position: absolute;
       top: 0;
       left: 0;
-      color: var(--aeva-rating-color);
+      color: var(--aeva-rating-color, var(--aeva-accent-gold, #fbbf24));
       overflow: hidden;
       width: 50%;
     }
@@ -96,16 +96,15 @@ export class AevaRating extends LitElement {
     /* Hover effect for interactive mode */
     .interactive .star:hover,
     .interactive .star.hover {
-      color: var(--aeva-rating-hover-color);
+      color: var(--aeva-rating-hover-color, var(--aeva-accent-gold, #f59e0b));
     }
 
     /* Label styling */
     .rating-label {
       margin-left: 8px;
       font-size: 14px;
-      color: #6b7280;
-      font-family:
-        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      color: var(--aeva-rating-label-color, var(--aeva-text-muted, #6b7280));
+      font-family: var(--aeva-font-family);
     }
   `;
 
@@ -185,8 +184,8 @@ export class AevaRating extends LitElement {
       <div
         class="star ${starType === 'filled' ? 'star-filled' : 'star-empty'} ${this.hoverValue >=
         starValue
-          ? 'hover'
-          : ''}"
+        ? 'hover'
+        : ''}"
         @click=${() => this.handleStarClick(starValue)}
         @mouseenter=${() => this.handleStarHover(starValue)}
         @mouseleave=${() => this.handleStarLeave()}

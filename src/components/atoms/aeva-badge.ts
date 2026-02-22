@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A versatile badge component for tags and labels.
@@ -56,7 +57,9 @@ import { classMap } from 'lit/directives/class-map.js';
  */
 @customElement('aeva-badge')
 export class AevaBadge extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: inline-flex;
       align-items: center;
@@ -213,7 +216,7 @@ export class AevaBadge extends LitElement {
       border-radius: 50%;
       object-fit: cover;
     }
-  `;
+  `];
 
   /**
    * Badge variant/color
@@ -279,7 +282,7 @@ export class AevaBadge extends LitElement {
           <slot></slot>
         </div>
         ${this.deletable
-          ? html`
+        ? html`
               <button
                 part="delete-button"
                 class="delete-button"
@@ -290,7 +293,7 @@ export class AevaBadge extends LitElement {
                 <span class="delete-icon" aria-hidden="true"></span>
               </button>
             `
-          : ''}
+        : ''}
       </div>
     `;
   }

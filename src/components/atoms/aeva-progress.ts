@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 import { classMap } from 'lit/directives/class-map.js';
 
 /**
@@ -29,7 +30,9 @@ import { classMap } from 'lit/directives/class-map.js';
  */
 @customElement('aeva-progress')
 export class AevaProgress extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: inline-block;
     }
@@ -194,7 +197,7 @@ export class AevaProgress extends LitElement {
     .horizontal-track.size-lg {
       height: 0.75rem;
     }
-  `;
+  `];
 
   /**
    * Shape of the progress indicator
@@ -329,8 +332,8 @@ export class AevaProgress extends LitElement {
           ></circle>
         </svg>
         ${this.mode === 'finite' && this.showPercentage
-          ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
-          : ''}
+        ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
+        : ''}
       </div>
     `;
   }

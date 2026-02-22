@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A tab item component used within aeva-tab container.
@@ -22,7 +23,9 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-tab-item')
 export class AevaTabItem extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: inline-block;
     }
@@ -66,10 +69,10 @@ export class AevaTabItem extends LitElement {
     }
 
     .tab-item:focus-visible {
-      outline: 2px solid rgba(102, 126, 234, 0.5);
+      outline: var(--aeva-tab-item-focus-ring, 2px solid var(--aeva-button-focus-ring-color, rgba(102, 126, 234, 0.5)));
       outline-offset: 2px;
     }
-  `;
+  `];
 
   /**
    * Label text for the tab

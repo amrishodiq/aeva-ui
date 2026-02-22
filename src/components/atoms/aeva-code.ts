@@ -30,21 +30,21 @@ export class AevaCode extends LitElement {
     }
 
     .code-window {
-      background: var(--aeva-code-bg, #1e1e1e);
+      background: var(--aeva-code-bg, var(--aeva-surface-tertiary, #1e1e1e));
       border-radius: var(--aeva-code-border-radius, 22px);
       overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--aeva-code-copy-btn-border, rgba(255, 255, 255, 0.1));
       position: relative;
     }
 
     .window-header {
-      background: var(--aeva-code-header-bg, #323232);
+      background: var(--aeva-code-header-bg, var(--aeva-card-border-color, #323232));
       padding: 12px 16px;
       display: flex;
       align-items: center;
       gap: 8px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid var(--aeva-code-copy-btn-border, rgba(255, 255, 255, 0.05));
     }
 
     .dot {
@@ -54,19 +54,19 @@ export class AevaCode extends LitElement {
     }
 
     .dot-red {
-      background: #ff5f56;
+      background: var(--aeva-code-dot-red, #ff5f56);
     }
     .dot-yellow {
-      background: #ffbd2e;
+      background: var(--aeva-code-dot-yellow, #ffbd2e);
     }
     .dot-green {
-      background: #27c93f;
+      background: var(--aeva-code-dot-green, #27c93f);
     }
 
     .window-title {
       flex: 1;
       text-align: center;
-      color: rgba(255, 255, 255, 0.4);
+      color: var(--aeva-code-title-color, rgba(255, 255, 255, 0.4));
       font-size: 0.8rem;
       margin-right: 40px; /* Offset for dots to center title */
     }
@@ -88,7 +88,7 @@ export class AevaCode extends LitElement {
       font-family: inherit;
       font-size: var(--aeva-code-font-size, 0.95rem);
       line-height: 1.6;
-      color: #d4d4d4;
+      color: var(--aeva-code-text-color, #d4d4d4);
     }
 
     .copy-button {
@@ -96,10 +96,10 @@ export class AevaCode extends LitElement {
       top: 12px;
       right: 12px;
       padding: 6px 10px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--aeva-code-copy-btn-bg, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--aeva-code-copy-btn-border, rgba(255, 255, 255, 0.1));
       border-radius: 6px;
-      color: rgba(255, 255, 255, 0.6);
+      color: var(--aeva-code-copy-btn-color, rgba(255, 255, 255, 0.6));
       font-size: 0.75rem;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -108,15 +108,15 @@ export class AevaCode extends LitElement {
     }
 
     .copy-button:hover {
-      background: rgba(255, 255, 255, 0.1);
-      color: white;
-      border-color: rgba(255, 255, 255, 0.2);
+      background: var(--aeva-code-copy-btn-hover-bg, rgba(255, 255, 255, 0.1));
+      color: var(--aeva-code-copy-btn-hover-color, white);
+      border-color: var(--aeva-code-copy-btn-hover-border, rgba(255, 255, 255, 0.2));
     }
 
     .copy-button.copied {
-      background: rgba(39, 201, 63, 0.2);
-      color: #27c93f;
-      border-color: rgba(39, 201, 63, 0.3);
+      background: var(--aeva-code-copy-btn-active-bg, rgba(39, 201, 63, 0.2));
+      color: var(--aeva-code-copy-btn-active-color, #27c93f);
+      border-color: var(--aeva-code-copy-btn-active-border, rgba(39, 201, 63, 0.3));
     }
 
     /* Scrollbar styling */
@@ -187,7 +187,7 @@ export class AevaCode extends LitElement {
             ${this.copied ? 'Copied!' : 'Copy'}
           </button>
           <pre class="language-${this.language}"><code class="language-${this.language}">${this
-            .code}<slot></slot></code></pre>
+        .code}<slot></slot></code></pre>
         </div>
       </div>
     `;

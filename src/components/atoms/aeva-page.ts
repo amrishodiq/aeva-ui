@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { WithCloseAnimation } from '../../utils/behaviors';
 
 /**
  * A full-screen page component with modal behavior and slide animations.
@@ -20,7 +21,7 @@ import { customElement, property } from 'lit/decorators.js';
  * @cssprop --aeva-page-z-index - Z-index layer (default: 2000)
  */
 @customElement('aeva-page')
-export class AevaPage extends LitElement {
+export class AevaPage extends WithCloseAnimation(LitElement) {
   static styles = css`
     :host {
       display: none;
@@ -136,8 +137,8 @@ export class AevaPage extends LitElement {
   @property({ type: Boolean, attribute: 'close-on-backdrop' })
   closeOnBackdrop = true;
 
-  @property({ type: Boolean, reflect: true })
-  closing = false;
+  @property({ type: Number, attribute: 'blur-amount' })
+  blurAmount = 10;
 
   /**
    * Whether to disable history integration (prevents closing on back button)
@@ -211,13 +212,13 @@ export class AevaPage extends LitElement {
     const target = e.target as HTMLElement;
     if (target.classList.contains('backdrop')) {
       this.dispatchEvent(new CustomEvent('backdrop-click', { bubbles: true, composed: true }));
-      this.close();
+      this.close(false);
     }
   };
 
   private handlePopState = () => {
-    if (this.open && !this.disableHistory) {
-      this.close();
+    if (this.open && !this.disableHistory && window.history.state?.aevaPage !== true) {
+      this.close(true);
     }
   };
 
@@ -230,23 +231,15 @@ export class AevaPage extends LitElement {
 
   /**
    * Close the page with animation
+   * @param fromPopState Whether the close was triggered by a popstate event
    */
-  public close() {
-    // Use requestAnimationFrame to ensure the closing attribute is applied
-    // before the animation starts
-    requestAnimationFrame(() => {
-      this.closing = true;
+  public async close(fromPopState = false) {
+    // Remove from history if we added it, unless we're already coming from a popstate
+    if (!fromPopState && !this.disableHistory && window.history.state?.aevaPage === true) {
+      window.history.back();
+    }
 
-      // Remove from history if we added it
-      if (!this.disableHistory && window.history.state?.aevaPage === true) {
-        window.history.back();
-      }
-
-      setTimeout(() => {
-        this.open = false;
-        this.closing = false;
-      }, 350); // Match animation duration
-    });
+    await this.closeWithAnimation(350); // Match animation duration
   }
 
   render() {

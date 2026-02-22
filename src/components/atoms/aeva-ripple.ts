@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A reusable ripple effect component that can be added to any position:relative element.
@@ -11,7 +12,9 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-ripple')
 export class AevaRipple extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: block;
       position: absolute;
@@ -30,7 +33,7 @@ export class AevaRipple extends LitElement {
       border-radius: 50%;
       background-color: var(--aeva-ripple-color, currentColor);
       opacity: var(--aeva-ripple-opacity, 0.15);
-      transform: scale(default);
+      transform: scale(0);
       animation: ripple-animation var(--aeva-ripple-duration, 600ms) cubic-bezier(0.4, 0, 0.2, 1);
       pointer-events: none;
     }
@@ -45,7 +48,7 @@ export class AevaRipple extends LitElement {
         opacity: 0;
       }
     }
-  `;
+  `];
 
   /**
    * The duration of the ripple animation in milliseconds

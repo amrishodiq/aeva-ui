@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A responsive sidebar component for navigation.
@@ -27,7 +28,9 @@ import { customElement, property, state } from 'lit/decorators.js';
  */
 @customElement('aeva-sidebar')
 export class AevaSidebar extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: block;
       box-sizing: border-box;
@@ -124,7 +127,7 @@ export class AevaSidebar extends LitElement {
       :host(:not([static])) {
         position: relative;
         height: 100%;
-        z-index: 1000 !important;
+        z-index: var(--aeva-z-sidebar) !important;
       }
 
       :host([width='sm']:not([static])) {
@@ -269,7 +272,7 @@ export class AevaSidebar extends LitElement {
     .content::-webkit-scrollbar-thumb:hover {
       background: var(--aeva-scrollbar-thumb-hover);
     }
-  `;
+  `];
 
   /**
    * Position of the sidebar
@@ -306,7 +309,7 @@ export class AevaSidebar extends LitElement {
    * Useful for documentation and embedding.
    */
   @property({ type: Boolean, reflect: true })
-  static = false;
+  staticMode = false;
 
   /**
    * Current viewport mode
@@ -328,7 +331,7 @@ export class AevaSidebar extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    if (!this.static) {
+    if (!this.staticMode) {
       this.updateViewport();
     }
     this.checkSlots();
@@ -343,7 +346,7 @@ export class AevaSidebar extends LitElement {
   }
 
   private handleResize = () => {
-    if (!this.static) {
+    if (!this.staticMode) {
       this.updateViewport();
     }
   };
@@ -372,7 +375,7 @@ export class AevaSidebar extends LitElement {
   }
 
   private updateListItems() {
-    if (this.static) return;
+    if (this.staticMode) return;
 
     // Apply icon-only to all list items ONLY in tablet mode
     // Mobile drawer should show full items (icon + text)

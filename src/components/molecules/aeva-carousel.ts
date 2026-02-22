@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A carousel component for displaying multiple items in a sliding view.
@@ -25,7 +26,9 @@ import { customElement, property, state, query } from 'lit/decorators.js';
  */
 @customElement('aeva-carousel')
 export class AevaCarousel extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: block;
       position: relative;
@@ -151,7 +154,7 @@ export class AevaCarousel extends LitElement {
     :host([hide-indicators]) .indicators {
       display: none;
     }
-  `;
+  `];
 
   /**
    * Current active slide index
@@ -205,6 +208,23 @@ export class AevaCarousel extends LitElement {
   private slotElement!: HTMLSlotElement;
 
   private autoPlayTimer?: number;
+
+  @state()
+  private _isPausedInternally = false;
+
+  private handleInteractionStart = () => {
+    if (this.autoPlay) {
+      this._isPausedInternally = true;
+      this.stopAutoPlay();
+    }
+  };
+
+  private handleInteractionEnd = () => {
+    if (this.autoPlay && this._isPausedInternally) {
+      this._isPausedInternally = false;
+      this.startAutoPlay();
+    }
+  };
 
   connectedCallback() {
     super.connectedCallback();
@@ -370,6 +390,10 @@ export class AevaCarousel extends LitElement {
         part="container"
         class="carousel-container"
         @keydown=${this.handleKeydown}
+        @mouseenter=${this.handleInteractionStart}
+        @mouseleave=${this.handleInteractionEnd}
+        @focusin=${this.handleInteractionStart}
+        @focusout=${this.handleInteractionEnd}
         tabindex="0"
         role="region"
         aria-label="Carousel"
@@ -379,7 +403,7 @@ export class AevaCarousel extends LitElement {
         </div>
 
         ${!this.hideNav
-          ? html`
+        ? html`
               <button
                 part="nav-button"
                 class="nav-button prev"
@@ -413,13 +437,13 @@ export class AevaCarousel extends LitElement {
                 </svg>
               </button>
             `
-          : ''}
+        : ''}
         ${!this.hideIndicators && this.slideCount > 1
-          ? html`
+        ? html`
               <div part="indicators" class="indicators">
                 ${Array.from(
-                  { length: this.slideCount },
-                  (_, i) => html`
+          { length: this.slideCount },
+          (_, i) => html`
                     <button
                       part="indicator"
                       class="indicator ${i === this.activeIndex ? 'active' : ''}"
@@ -427,10 +451,10 @@ export class AevaCarousel extends LitElement {
                       aria-label="Go to slide ${i + 1}"
                     ></button>
                   `
-                )}
+        )}
               </div>
             `
-          : ''}
+        : ''}
       </div>
     `;
   }

@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A custom checkbox component with rectangular design.
@@ -24,7 +25,9 @@ import { customElement, property } from 'lit/decorators.js';
  */
 @customElement('aeva-checkbox')
 export class AevaCheckbox extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: inline-block;
       cursor: pointer;
@@ -77,7 +80,7 @@ export class AevaCheckbox extends LitElement {
         transition: none;
       }
     }
-  `;
+  `];
 
   /**
    * Whether the checkbox is checked

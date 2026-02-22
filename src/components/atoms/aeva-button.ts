@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A versatile button component with multiple variants, sizes, and states.
@@ -65,7 +66,9 @@ import { classMap } from 'lit/directives/class-map.js';
  */
 @customElement('aeva-button')
 export class AevaButton extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: inline-block;
       max-width: 80%;
@@ -311,7 +314,7 @@ export class AevaButton extends LitElement {
       height: 1em;
       flex-shrink: 0;
     }
-  `;
+  `];
 
   /**
    * Button variant style
@@ -384,7 +387,7 @@ export class AevaButton extends LitElement {
       if (filledSlots.includes('icon-only') && filledSlots.length > 1) {
         console.warn(
           '[aeva-button] Using slot="icon-only" with other slots may cause unexpected layout. ' +
-            'Use icon-only alone, or use icon-left/icon-right with default slot.',
+          'Use icon-only alone, or use icon-left/icon-right with default slot.',
           { filledSlots }
         );
       }

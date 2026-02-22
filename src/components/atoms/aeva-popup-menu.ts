@@ -1,5 +1,7 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
+import { WithCloseAnimation } from '../../utils/behaviors';
 
 /**
  * A popup menu component that anchors to a trigger element.
@@ -16,120 +18,123 @@ import { customElement, property, state } from 'lit/decorators.js';
  * @cssprop --aeva-popup-max-width - Maximum width, inherits from modal (default: 600px)
  */
 @customElement('aeva-popup-menu')
-export class AevaPopupMenu extends LitElement {
-  static styles = css`
-    :host {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 2000;
-    }
-
-    :host([open]) {
-      display: block;
-    }
-
-    .backdrop {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: transparent;
-    }
-
-    .popup-container {
-      position: absolute;
-      pointer-events: none;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .popup {
-      position: relative;
-      background: var(--aeva-popup-bg);
-      backdrop-filter: blur(var(--aeva-popup-blur));
-      -webkit-backdrop-filter: blur(var(--aeva-popup-blur));
-      border-radius: var(--aeva-popup-border-radius);
-      border: 1px solid var(--aeva-popup-border-color);
-      min-width: var(--aeva-popup-min-width);
-      max-width: var(--aeva-popup-max-width);
-      width: fit-content;
-      pointer-events: auto;
-      overflow: hidden;
-      padding: 0;
-      box-sizing: border-box;
-
-      box-shadow:
-        0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
-        0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
-
-      transform-origin: top left;
-      animation: popupIn 0.2s cubic-bezier(0, 0, 0.2, 1);
-    }
-
-    :host([closing]) .popup {
-      animation: popupOut 0.15s cubic-bezier(0.4, 0, 1, 1) forwards;
-    }
-
-    @keyframes popupIn {
-      from {
-        opacity: 0;
-        transform: scale(0.95) translateY(-10px);
+export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
+  static styles = [
+    accessibilityStyles,
+    css`
+      :host {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: var(--aeva-z-popover);
       }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
 
-    @keyframes popupOut {
-      from {
-        opacity: 1;
-        transform: scale(1) translateY(0);
+      :host([open]) {
+        display: block;
       }
-      to {
-        opacity: 0;
-        transform: scale(0.95) translateY(-10px);
+
+      .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
       }
-    }
 
-    /* Elevation styles same as modal */
-    :host([elevation='1']) .popup {
-      box-shadow:
-        0 1px 3px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
-        0 1px 2px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
-    }
-    :host([elevation='2']) .popup {
-      box-shadow:
-        0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
-        0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
-    }
-    :host([elevation='3']) .popup {
-      box-shadow:
-        0 10px 15px -3px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
-        0 4px 6px -2px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
-    }
-    :host([elevation='4']) .popup {
-      box-shadow:
-        0 20px 25px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
-        0 10px 10px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
-    }
-    :host([elevation='5']) .popup {
-      box-shadow: 0 25px 50px -12px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
-    }
+      .popup-container {
+        position: absolute;
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+      }
 
-    /* Fix visual gap: ensure slotted list fills the popup completely */
-    ::slotted(aeva-list) {
-      --aeva-list-border-radius: 0;
-      --aeva-list-padding: 0;
-      display: block;
-      margin: 0;
-    }
-  `;
+      .popup {
+        position: relative;
+        background: var(--aeva-popup-bg);
+        backdrop-filter: blur(var(--aeva-popup-blur));
+        -webkit-backdrop-filter: blur(var(--aeva-popup-blur));
+        border-radius: var(--aeva-popup-border-radius);
+        border: 1px solid var(--aeva-popup-border-color);
+        min-width: var(--aeva-popup-min-width);
+        max-width: var(--aeva-popup-max-width);
+        width: fit-content;
+        pointer-events: auto;
+        overflow: hidden;
+        padding: 0;
+        box-sizing: border-box;
+
+        box-shadow:
+          0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+          0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+
+        transform-origin: top left;
+        animation: popupIn 0.2s cubic-bezier(0, 0, 0.2, 1);
+      }
+
+      :host([closing]) .popup {
+        animation: popupOut 0.15s cubic-bezier(0.4, 0, 1, 1) forwards;
+      }
+
+      @keyframes popupIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95) translateY(-10px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      @keyframes popupOut {
+        from {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        to {
+          opacity: 0;
+          transform: scale(0.95) translateY(-10px);
+        }
+      }
+
+      /* Elevation styles same as modal */
+      :host([elevation='1']) .popup {
+        box-shadow:
+          0 1px 3px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+          0 1px 2px 0 var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+      }
+      :host([elevation='2']) .popup {
+        box-shadow:
+          0 4px 6px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+          0 2px 4px -1px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+      }
+      :host([elevation='3']) .popup {
+        box-shadow:
+          0 10px 15px -3px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+          0 4px 6px -2px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+      }
+      :host([elevation='4']) .popup {
+        box-shadow:
+          0 20px 25px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2)),
+          0 10px 10px -5px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+      }
+      :host([elevation='5']) .popup {
+        box-shadow: 0 25px 50px -12px var(--aeva-popup-shadow-color, rgba(0, 0, 0, 0.2));
+      }
+
+      /* Fix visual gap: ensure slotted list fills the popup completely */
+      ::slotted(aeva-list) {
+        --aeva-list-border-radius: 0;
+        --aeva-list-padding: 0;
+        display: block;
+        margin: 0;
+      }
+    `,
+  ];
 
   @property({ type: Boolean, reflect: true })
   open = false;
@@ -139,9 +144,6 @@ export class AevaPopupMenu extends LitElement {
 
   @property({ type: Number, reflect: true })
   elevation = 3;
-
-  @state()
-  private closing = false;
 
   @state()
   private x = 0;
@@ -198,8 +200,7 @@ export class AevaPopupMenu extends LitElement {
     // If it's too close to the bottom edge, show above the anchor
     if (top + 200 > viewportHeight) {
       top = rect.top - 8 - 200; // Approximate height
-      if (top < 0)
-        top = rect.bottom + 8; // fallback
+      if (top < 0) top = rect.bottom + 8; // fallback
       else transformOrigin = 'bottom left';
     }
 
@@ -214,15 +215,10 @@ export class AevaPopupMenu extends LitElement {
   /**
    * Closes the menu with animation
    */
-  public close = () => {
+  public close = async () => {
     if (!this.open || this.closing) return;
-
-    this.closing = true;
-    setTimeout(() => {
-      this.open = false;
-      this.closing = false;
-      this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
-    }, 150);
+    await this.closeWithAnimation(150);
+    this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
   };
 
   private handleBackdropClick(e: MouseEvent) {

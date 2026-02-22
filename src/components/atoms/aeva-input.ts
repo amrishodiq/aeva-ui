@@ -485,6 +485,7 @@ export class AevaInput extends LitElement {
             ?required="${this.required}"
             maxlength="${this.maxlength || ''}"
             rows="${this.rows || ''}"
+            aria-invalid="${this._hasError}"
           ></textarea>
         </div>
       `;
@@ -511,10 +512,11 @@ export class AevaInput extends LitElement {
           ?required="${this.required}"
           maxlength="${this.maxlength || ''}"
           inputmode="${this.variant === 'integer'
-            ? 'numeric'
-            : this.variant === 'decimal'
-              ? 'decimal'
-              : 'text'}"
+        ? 'numeric'
+        : this.variant === 'decimal'
+          ? 'decimal'
+          : 'text'}"
+          aria-invalid="${this._hasError}"
         />
       </div>
     `;

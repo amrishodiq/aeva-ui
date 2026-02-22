@@ -36,6 +36,7 @@ export { AevaCarousel } from './components/molecules/aeva-carousel.js';
 export { AevaSidebar } from './components/organisms/aeva-sidebar.js';
 
 // Templates
+export { AevaContainer } from './components/templates/layout/aeva-container.js';
 export { AevaStack } from './components/templates/layout/aeva-stack.js';
 export { AevaGrid } from './components/templates/layout/aeva-grid.js';
 export { AevaGridItem } from './components/templates/layout/aeva-grid-item.js';
@@ -45,5 +46,3 @@ export { AevaSection } from './components/templates/layout/aeva-section.js';
 
 // Theme
 export { AevaTheme } from './theme/aeva-theme.js';
-
-console.log('@aeva/ui library loaded');

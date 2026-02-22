@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state } from 'lit/decorators.js';
+import { accessibilityStyles } from '../../styles/accessibility';
 
 /**
  * A tooltip component that displays contextual information on hover/focus.
@@ -15,7 +16,9 @@ import { customElement, property, state } from 'lit/decorators.js';
  */
 @customElement('aeva-tooltip')
 export class AevaTooltip extends LitElement {
-  static styles = css`
+  static styles = [
+    accessibilityStyles,
+    css`
     :host {
       display: inline-block;
       position: relative;
@@ -28,7 +31,7 @@ export class AevaTooltip extends LitElement {
 
     .tooltip-container {
       position: fixed;
-      z-index: 10000;
+      z-index: var(--aeva-z-tooltip);
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.2s ease-in-out;
@@ -100,7 +103,7 @@ export class AevaTooltip extends LitElement {
       top: 50%;
       margin-top: -4px;
     }
-  `;
+  `];
 
   @property({ type: String })
   content = '';
@@ -269,7 +272,7 @@ export class AevaTooltip extends LitElement {
 
   render() {
     return html`
-      <div class="trigger" role="button" tabindex="0">
+      <div class="trigger">
         <slot></slot>
       </div>
 

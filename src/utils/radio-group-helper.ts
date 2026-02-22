@@ -1,3 +1,5 @@
+import { AevaRadio } from '../components/atoms/aeva-radio';
+
 /**
  * Helper utility class for managing radio button groups.
  * Provides convenient methods to get and set selected values in radio groups.
@@ -32,8 +34,8 @@ export class RadioGroupHelper {
    */
   static getValue(groupName: string): string | null {
     const radios = document.querySelectorAll(`aeva-radio[name="${groupName}"]`);
-    const checked = Array.from(radios).find((r: any) => r.checked);
-    return checked ? (checked as any).value : null;
+    const checked = Array.from(radios).find((r) => (r as AevaRadio).checked) as AevaRadio | undefined;
+    return checked ? checked.value : null;
   }
 
   /**
@@ -50,9 +52,9 @@ export class RadioGroupHelper {
    * }
    * ```
    */
-  static getRadio(groupName: string): HTMLElement | null {
+  static getRadio(groupName: string): AevaRadio | null {
     const radios = document.querySelectorAll(`aeva-radio[name="${groupName}"]`);
-    return (Array.from(radios).find((r: any) => r.checked) as HTMLElement) || null;
+    return (Array.from(radios).find((r) => (r as AevaRadio).checked) as AevaRadio) || null;
   }
 
   /**
@@ -71,12 +73,13 @@ export class RadioGroupHelper {
     const radios = document.querySelectorAll(`aeva-radio[name="${groupName}"]`);
     let found = false;
 
-    radios.forEach((radio: any) => {
-      if (radio.value === value) {
-        radio.checked = true;
+    radios.forEach((radio) => {
+      const r = radio as AevaRadio;
+      if (r.value === value) {
+        r.checked = true;
         found = true;
       } else {
-        radio.checked = false;
+        r.checked = false;
       }
     });
 
@@ -113,8 +116,8 @@ export class RadioGroupHelper {
    */
   static clearSelection(groupName: string): void {
     const radios = document.querySelectorAll(`aeva-radio[name="${groupName}"]`);
-    radios.forEach((radio: any) => {
-      radio.checked = false;
+    radios.forEach((radio) => {
+      (radio as AevaRadio).checked = false;
     });
   }
 
@@ -130,8 +133,8 @@ export class RadioGroupHelper {
    * console.log('Total options:', radios.length);
    * ```
    */
-  static getAll(groupName: string): HTMLElement[] {
+  static getAll(groupName: string): AevaRadio[] {
     const radios = document.querySelectorAll(`aeva-radio[name="${groupName}"]`);
-    return Array.from(radios) as HTMLElement[];
+    return Array.from(radios) as AevaRadio[];
   }
 }

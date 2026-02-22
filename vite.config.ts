@@ -23,6 +23,8 @@ export default defineConfig({
                 // Global variables untuk UMD build
                 globals: {
                     lit: 'Lit',
+                    'lit/decorators.js': 'LitDecorators',
+                    'lit/directives/class-map.js': 'LitClassMap',
                     '@lit-labs/context': 'LitContext'
                 }
             }
