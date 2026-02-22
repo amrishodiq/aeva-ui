@@ -44,7 +44,7 @@ export class AevaActionBar extends LitElement {
       box-shadow: var(--aeva-action-bar-drop-shadow);
       box-sizing: border-box;
       gap: var(--aeva-action-bar-gap);
-      border-radius: 12px;
+      border-radius: var(--aeva-action-bar-border-radius, 12px);
     }
 
     /* Layout variants */

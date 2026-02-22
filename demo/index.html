@@ -158,7 +158,7 @@
                 <aeva-section full-height gap="none" padding="none" style="flex: 1;">
                     <!-- Header with Action Bar -->
                     <div slot="header">
-                        <aeva-action-bar padding="md" style="backdrop-filter: blur(10px);">
+                        <aeva-action-bar padding="md">
                             <!-- Left: Menu icon + Title -->
                             <div slot="secondary" style="display: flex; align-items: center; gap: 1rem;">
                                 <aeva-button id="menu-toggle" icon-only variant="ghost" aria-label="Menu"
@@ -171,50 +171,49 @@
                                 <aeva-text variant="h4" style="--aeva-text-color: white;">Aeva UI</aeva-text>
                             </div>
 
-                            <!-- Right: Dark mode toggle -->
+                            <!-- Right: Theme selection -->
                             <div slot="primary">
-                                <aeva-button id="halloween-toggle" icon-only variant="ghost"
-                                    aria-label="Toggle Halloween mode" style="--aeva-button-ghost-color: white;">
-                                    <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                    </svg>
-                                </aeva-button>
                                 <script>
-                                    const themeEl = document.querySelector('aeva-theme');
-                                    const halloweenToggle = document.querySelector('#halloween-toggle');
+                                    document.addEventListener('DOMContentLoaded', () => {
+                                        const themeEl = document.querySelector('aeva-theme');
 
-                                    let isHalloween = false;
-                                    const halloweenStyles = {
-                                        '--aeva-page-bg': '#1a1a1a',
-                                        '--aeva-page-background': 'radial-gradient(circle, #2c1810 0%, #000000 100%)',
-                                        '--aeva-primary-color': '#ff7518',
-                                        '--aeva-text-color': '#ff7518',
-                                        '--aeva-card-bg': '#2a2a2a',
-                                        '--aeva-card-border-color': '#ff7518',
-                                        '--aeva-card-border-hover-color': '#ffffff'
-                                    };
+                                        // Define custom themes with inheritance
+                                        themeEl.customStyles = {
+                                            'halloween': {
+                                                variables: {
+                                                    '--aeva-page-bg': '#1a1a1a',
+                                                    '--aeva-page-background': 'radial-gradient(circle, #2c1810 0%, #000000 100%)',
+                                                    '--aeva-primary-color': '#ff7518',
+                                                    '--aeva-text-color': '#ff7518',
+                                                    '--aeva-card-bg': '#2a2a2a',
+                                                    '--aeva-card-border-color': '#ff7518',
+                                                    '--aeva-card-border-hover-color': '#ffffff'
+                                                }
+                                            },
+                                            'emerald-city': {
+                                                extends: 'light',
+                                                variables: {
+                                                    '--aeva-primary-color': '#10b981',
+                                                    '--aeva-button-primary-bg': '#10b981',
+                                                    '--aeva-button-primary-hover-bg': '#059669',
+                                                    '--aeva-button-primary-active-bg': '#047857',
+                                                    '--aeva-action-bar-bg': 'rgba(255, 255, 255, 0.3)',
+                                                    '--aeva-action-bar-backdrop-filter': 'blur(15px)',
+                                                    '--aeva-action-bar-border-radius': '50vh',
+                                                    '--aeva-action-bar-drop-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+                                                    '--aeva-action-bar-glassmorphism-border': '1px solid rgba(255, 255, 255, 0.4)',
+                                                    '--aeva-page-background': 'linear-gradient(135deg, #ecfdf5 0%, #10b981 100%)',
+                                                    '--aeva-card-bg': 'rgba(255, 255, 255, 0.8)',
+                                                    '--aeva-card-border-color': '#10b981',
+                                                    '--aeva-text-color': '#064e3b'
+                                                }
+                                            }
+                                        };
 
-                                    halloweenToggle.addEventListener('click', () => {
-                                        isHalloween = !isHalloween;
-                                        if (isHalloween) {
-                                            themeEl.theme = 'halloween';
-                                            themeEl.customStyles = halloweenStyles;
-                                        } else {
-                                            themeEl.theme = 'dark';
-                                            themeEl.customStyles = null;
-                                        }
+                                        // Define cycle order (still used by toggleTheme() if called elsewhere)
+                                        themeEl.themes = ['light', 'dark', 'emerald-city', 'halloween'];
                                     });
                                 </script>
-                                <aeva-button icon-only variant="ghost" aria-label="Toggle dark mode"
-                                    style="--aeva-button-ghost-color: white;">
-                                    <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                                        </path>
-                                    </svg>
-                                </aeva-button>
-
                                 <aeva-button id="theme-menu-trigger" icon-only variant="ghost" aria-label="Theme Menu"
                                     style="--aeva-button-ghost-color: white;">
                                     <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -256,6 +255,21 @@
                         </path>
                     </svg>
                     <span slot="title">Dark</span>
+                </aeva-list-item>
+                <aeva-list-item id="theme-emerald">
+                    <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z">
+                        </path>
+                    </svg>
+                    <span slot="title">Emerald City</span>
+                </aeva-list-item>
+                <aeva-list-item id="theme-halloween">
+                    <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                    </svg>
+                    <span slot="title">Halloween</span>
                 </aeva-list-item>
             </aeva-list>
         </aeva-popup-menu>
@@ -349,15 +363,21 @@
 
             const lightThemeItem = document.getElementById('theme-light');
             const darkThemeItem = document.getElementById('theme-dark');
+            const emeraldThemeItem = document.getElementById('theme-emerald');
+            const halloweenThemeItem = document.getElementById('theme-halloween');
 
-            if (lightThemeItem && darkThemeItem && themeEl) {
-                lightThemeItem.addEventListener('click', () => {
+            if (themeEl) {
+                lightThemeItem?.addEventListener('click', () => {
                     themeEl.theme = 'light';
-                    themeEl.customStyles = null;
                 });
-                darkThemeItem.addEventListener('click', () => {
+                darkThemeItem?.addEventListener('click', () => {
                     themeEl.theme = 'dark';
-                    themeEl.customStyles = null;
+                });
+                emeraldThemeItem?.addEventListener('click', () => {
+                    themeEl.theme = 'emerald-city';
+                });
+                halloweenThemeItem?.addEventListener('click', () => {
+                    themeEl.theme = 'halloween';
                 });
             }
 

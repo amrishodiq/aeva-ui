@@ -31,10 +31,16 @@ export class AevaTheme extends LitElement {
   theme: Theme = 'light';
 
   /**
-   * Optional custom styles to be applied when using a custom theme name.
+   * List of themes to cycle through when calling toggleTheme().
+   */
+  @property({ type: Array })
+  themes: Theme[] = ['light', 'dark'];
+
+  /**
+   * Map of custom themes.
    */
   @property({ type: Object })
-  customStyles: ThemeVariables | null = null;
+  customStyles: ThemeStyles | null = null;
 
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has('theme') || changedProperties.has('customStyles')) {
@@ -43,25 +49,45 @@ export class AevaTheme extends LitElement {
   }
 
   toggleTheme() {
-    this.theme = this.theme === 'light' ? 'dark' : 'light';
-    // applyThemeToHost is called in updated()
+    const currentIndex = this.themes.indexOf(this.theme);
+    const nextIndex = (currentIndex + 1) % this.themes.length;
+    this.theme = this.themes[nextIndex];
   }
 
   applyThemeToHost() {
     let styles = themeStyles[this.theme];
 
-    // If theme is not found in predefined styles, check customStyles
-    if (!styles && this.customStyles) {
-      styles = this.customStyles;
+    // Check if it's a custom theme
+    if (!styles && this.customStyles && this.customStyles[this.theme]) {
+      const customTheme = this.customStyles[this.theme];
+
+      // Handle inheritance
+      if ('extends' in customTheme && customTheme.extends) {
+        const baseStyles = themeStyles[customTheme.extends];
+        if (baseStyles) {
+          this.applyVariables(baseStyles);
+        }
+      }
+
+      // Apply variables (either from CustomTheme or direct ThemeVariables)
+      const variables = 'variables' in customTheme ? customTheme.variables : customTheme;
+      this.applyVariables(variables as ThemeVariables);
+      return;
     }
 
     if (styles) {
-      Object.entries(styles).forEach(([key, value]) => {
-        this.style.setProperty(key, value);
-      });
+      this.applyVariables(styles);
     } else {
-      console.warn(`[aeva-theme] Theme "${this.theme}" not found and no customStyles provided.`);
+      console.warn(`[aeva-theme] Theme "${this.theme}" not found.`);
     }
+  }
+
+  private applyVariables(variables: ThemeVariables) {
+    Object.entries(variables).forEach(([key, value]) => {
+      if (value) {
+        this.style.setProperty(key, value);
+      }
+    });
   }
 
   connectedCallback() {
