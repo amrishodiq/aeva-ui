@@ -487,4 +487,16 @@ export const lightTheme: ThemeVariables = {
   '--aeva-slider-thumb-border': '2px solid var(--aeva-primary-color)',
   '--aeva-slider-thumb-shadow': '0 2px 6px rgba(0, 0, 0, 0.15)',
 
+  // Switch
+  '--aeva-switch-width': '44px',
+  '--aeva-switch-height': '24px',
+  '--aeva-switch-track-bg': 'var(--aeva-color-gray-200)',
+  '--aeva-switch-track-checked-bg': 'var(--aeva-primary-color)',
+  '--aeva-switch-thumb-bg': 'var(--aeva-color-white)',
+  '--aeva-switch-thumb-size': '18px',
+  '--aeva-switch-thumb-shadow': '0 2px 4px rgba(0, 0, 0, 0.2)',
+  '--aeva-switch-transition': '300ms cubic-bezier(0.4, 0, 0.2, 1)',
+  '--aeva-switch-elastic-transition': '400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+
 };
+

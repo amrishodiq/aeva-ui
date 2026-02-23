@@ -1,0 +1,120 @@
+<aeva-doc-page title="Switch"
+    description="The switch (or toggle) component is a digital switch that allows users to toggle between two states.">
+
+    <aeva-doc-section title="Basic Switch" description="Standard toggle switch for binary choices.">
+        <aeva-doc-example code='<aeva-switch label="Notifications"></aeva-switch>
+<aeva-switch label="Dark Mode" checked></aeva-switch>'>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <aeva-switch label="Notifications"></aeva-switch>
+                <aeva-switch label="Dark Mode" checked></aeva-switch>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Sizes" description="Switch comes in three sizes to fit different contexts.">
+        <aeva-doc-example code='<aeva-switch size="sm" label="Small"></aeva-switch>
+<aeva-switch size="md" label="Medium"></aeva-switch>
+<aeva-switch size="lg" label="Large"></aeva-switch>'>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <aeva-switch size="sm" label="Small"></aeva-switch>
+                <aeva-switch size="md" label="Medium"></aeva-switch>
+                <aeva-switch size="lg" label="Large"></aeva-switch>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Disabled State" description="Prevent user interaction while maintaining visual context.">
+        <aeva-doc-example code='<aeva-switch disabled label="Disabled Off"></aeva-switch>
+<aeva-switch disabled checked label="Disabled On"></aeva-switch>'>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <aeva-switch disabled label="Disabled Off"></aeva-switch>
+                <aeva-switch disabled checked label="Disabled On"></aeva-switch>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Glassmorphism Variant"
+        description="A beautiful semi-transparent variant for complex backgrounds.">
+        <aeva-doc-example code='<div style="background: var(--aeva-page-gradient); padding: 24px; border-radius: 16px;">
+    <aeva-switch variant="glass" label="Glass Option" checked></aeva-switch>
+</div>'>
+            <div
+                style="background: var(--aeva-page-gradient); padding: 32px; border-radius: 22px; display: inline-block;">
+                <aeva-switch variant="glass" label="Glass Option" checked></aeva-switch>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">checked</td>
+                        <td><code>boolean</code></td>
+                        <td>-</td>
+                        <td>Whether the switch is active.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">disabled</td>
+                        <td><code>boolean</code></td>
+                        <td>-</td>
+                        <td>Whether the switch is non-interactive.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">label</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Text label to display next to the switch.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">size</td>
+                        <td><code>string</code></td>
+                        <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
+                        <td>The visual scale of the component.</td>
+                        <td><code>md</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">variant</td>
+                        <td><code>string</code></td>
+                        <td><code>default</code>, <code>glass</code></td>
+                        <td>The visual style applied.</td>
+                        <td><code>default</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <table>
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Detail</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="property-name">change</td>
+                    <td><code>{ checked: boolean }</code></td>
+                    <td>Fires when the toggle state changes.</td>
+                </tr>
+            </tbody>
+        </table>
+    </aeva-doc-section>
+
+</aeva-doc-page>

@@ -23,6 +23,7 @@ export { AevaRating } from './components/atoms/aeva-rating.js';
 export { AevaCode } from './components/atoms/aeva-code.js';
 export { AevaStep } from './components/atoms/aeva-step.js';
 export { AevaSlider } from './components/atoms/aeva-slider.js';
+export { AevaSwitch } from './components/atoms/aeva-switch.js';
 
 // Utils
 export { RadioGroupHelper } from './utils/radio-group-helper.js';
