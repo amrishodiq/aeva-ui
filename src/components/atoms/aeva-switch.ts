@@ -4,7 +4,7 @@ import { customElement, property } from 'lit/decorators.js';
 /**
  * Aeva Switch component (Atom).
  * A premium toggle switch for boolean inputs.
- * 
+ *
  * @slot - Optional slot for label content.
  * @fires change - Dispatched when the switch state changes.
  */
@@ -28,14 +28,14 @@ export class AevaSwitch extends LitElement {
     }
 
     /* Recalculate variables for different sizes */
-    :host([size="sm"]) {
+    :host([size='sm']) {
       --switch-width: 32px;
       --switch-height: 18px;
       --thumb-size: 14px;
       --padding: calc((var(--switch-height) - var(--thumb-size)) / 2);
     }
 
-    :host([size="lg"]) {
+    :host([size='lg']) {
       --switch-width: 56px;
       --switch-height: 30px;
       --thumb-size: 24px;
@@ -119,13 +119,13 @@ export class AevaSwitch extends LitElement {
     }
 
     /* Glassmorphism Variant */
-    :host([variant="glass"]) .switch {
+    :host([variant='glass']) .switch {
       background-color: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(8px);
       border: 1px solid rgba(255, 255, 255, 0.2);
     }
 
-    :host([variant="glass"]) input:checked + .switch {
+    :host([variant='glass']) input:checked + .switch {
       background-color: color-mix(in srgb, var(--aeva-primary-color) 40%, transparent);
     }
   `;
@@ -163,11 +163,13 @@ export class AevaSwitch extends LitElement {
   private _handleChange(e: Event) {
     const input = e.target as HTMLInputElement;
     this.checked = input.checked;
-    this.dispatchEvent(new CustomEvent('change', {
-      detail: { checked: this.checked },
-      bubbles: true,
-      composed: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: { checked: this.checked },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   private _handleHostClick() {
@@ -181,22 +183,24 @@ export class AevaSwitch extends LitElement {
   render() {
     return html`
       <div @click="${this._handleHostClick}" style="display: contents;">
-        <input 
-          type="checkbox" 
-          .checked="${this.checked}" 
+        <input
+          type="checkbox"
+          .checked="${this.checked}"
           ?disabled="${this.disabled}"
           @change="${this._handleChange}"
           tabindex="-1"
-        >
+        />
         <div class="switch">
           <div class="thumb"></div>
         </div>
-        ${this.label || html`<slot></slot>` ? html`
-          <span class="label">
-            ${this.label}
-            <slot></slot>
-          </span>
-        ` : ''}
+        ${this.label || html`<slot></slot>`
+          ? html`
+              <span class="label">
+                ${this.label}
+                <slot></slot>
+              </span>
+            `
+          : ''}
       </div>
     `;
   }

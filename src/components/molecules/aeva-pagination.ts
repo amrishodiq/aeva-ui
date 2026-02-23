@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 /**
  * Aeva Pagination component.
- * 
+ *
  * @fires change - Dispatched when the page changes.
  */
 @customElement('aeva-pagination')
@@ -65,7 +65,7 @@ export class AevaPagination extends LitElement {
       border-radius: 50%;
       background-color: var(--aeva-pagination-btn-color);
       opacity: 0.3;
-      transition: 
+      transition:
         width 400ms cubic-bezier(0.34, 1.56, 0.64, 1),
         background-color 300ms ease,
         opacity 300ms ease,
@@ -146,11 +146,13 @@ export class AevaPagination extends LitElement {
     if (page < 1 || page > this.totalPages || page === this.current) return;
 
     this.current = page;
-    this.dispatchEvent(new CustomEvent('change', {
-      detail: { page: this.current },
-      bubbles: true,
-      composed: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: { page: this.current },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   private range(start: number, end: number) {
@@ -162,13 +164,15 @@ export class AevaPagination extends LitElement {
     if (this.variant === 'dots') {
       return html`
         <div class="pagination-dots">
-          ${this.range(1, this.totalPages).map((i) => html`
-            <div 
-              class="dot ${classMap({ active: this.current === i })}"
-              @click="${() => this.setPage(i)}"
-              title="Page ${i}"
-            ></div>
-          `)}
+          ${this.range(1, this.totalPages).map(
+            (i) => html`
+              <div
+                class="dot ${classMap({ active: this.current === i })}"
+                @click="${() => this.setPage(i)}"
+                title="Page ${i}"
+              ></div>
+            `
+          )}
         </div>
       `;
     }
@@ -178,7 +182,10 @@ export class AevaPagination extends LitElement {
     const siblingCount = this.siblingCount;
 
     const startPages = this.range(1, Math.min(boundaryCount, totalPages));
-    const endPages = this.range(Math.max(totalPages - boundaryCount + 1, boundaryCount + 1), totalPages);
+    const endPages = this.range(
+      Math.max(totalPages - boundaryCount + 1, boundaryCount + 1),
+      totalPages
+    );
 
     const siblingsStart = Math.max(
       Math.min(this.current - siblingCount, totalPages - boundaryCount - siblingCount * 2 - 1),
@@ -191,16 +198,24 @@ export class AevaPagination extends LitElement {
 
     const itemList = [
       ...startPages,
-      ...(siblingsStart > boundaryCount + 2 ? ['ellipsis-start'] : boundaryCount < totalPages - boundaryCount ? [boundaryCount + 1] : []),
+      ...(siblingsStart > boundaryCount + 2
+        ? ['ellipsis-start']
+        : boundaryCount < totalPages - boundaryCount
+          ? [boundaryCount + 1]
+          : []),
       ...this.range(siblingsStart, siblingsEnd),
-      ...(siblingsEnd < (endPages.length > 0 ? endPages[0] - 2 : totalPages - 1) ? ['ellipsis-end'] : (endPages.length > 0 && siblingsEnd < endPages[0] - 1) ? [endPages[0] - 1] : []),
-      ...endPages
+      ...(siblingsEnd < (endPages.length > 0 ? endPages[0] - 2 : totalPages - 1)
+        ? ['ellipsis-end']
+        : endPages.length > 0 && siblingsEnd < endPages[0] - 1
+          ? [endPages[0] - 1]
+          : []),
+      ...endPages,
     ];
 
     return itemList.map((item) => {
       if (typeof item === 'number') {
         return html`
-          <button 
+          <button
             class="page-btn ${classMap({ active: this.current === item })}"
             @click="${() => this.setPage(item)}"
           >
@@ -214,27 +229,37 @@ export class AevaPagination extends LitElement {
 
   render() {
     return html`
-      <button 
-        class="page-btn" 
+      <button
+        class="page-btn"
         ?disabled="${this.current === 1}"
         @click="${() => this.setPage(this.current - 1)}"
         aria-label="Previous page"
       >
         <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"
+          ></path>
         </svg>
       </button>
-      
+
       ${this.renderPages()}
-      
-      <button 
-        class="page-btn" 
+
+      <button
+        class="page-btn"
         ?disabled="${this.current === this.totalPages}"
         @click="${() => this.setPage(this.current + 1)}"
         aria-label="Next page"
       >
         <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"
+          ></path>
         </svg>
       </button>
     `;

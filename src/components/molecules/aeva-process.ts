@@ -5,7 +5,7 @@ import { AevaStep } from '../atoms/aeva-step.js';
 /**
  * Aeva Process component (Molecule).
  * Manages a sequence of steps.
- * 
+ *
  * @slot - Default slot for aeva-step elements.
  */
 @customElement('aeva-process')
@@ -17,16 +17,15 @@ export class AevaProcess extends LitElement {
       position: relative;
     }
 
-    :host([direction="horizontal"]) {
+    :host([direction='horizontal']) {
       flex-direction: row;
       align-items: flex-start;
       gap: var(--aeva-process-gap);
     }
 
-    :host([direction="vertical"]) {
+    :host([direction='vertical']) {
       flex-direction: column;
     }
-
   `;
 
   /**
@@ -65,7 +64,6 @@ export class AevaProcess extends LitElement {
       }
     });
   }
-
 
   render() {
     return html`<slot @slotchange="${this.updateSteps}"></slot>`;

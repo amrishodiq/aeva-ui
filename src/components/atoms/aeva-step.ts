@@ -3,7 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 
 /**
  * Aeva Step component (Atom for Process).
- * 
+ *
  * @slot - Default slot for step content/description.
  * @slot icon - Slot for custom step icon.
  */
@@ -35,20 +35,20 @@ export class AevaStep extends LitElement {
       position: relative;
     }
 
-    :host([status="active"]) .step-node {
+    :host([status='active']) .step-node {
       border-color: var(--aeva-step-color-active);
       color: var(--aeva-step-color-active);
       transform: scale(1.1);
       box-shadow: 0 4px 12px color-mix(in srgb, var(--aeva-step-color-active) 30%, transparent);
     }
 
-    :host([status="completed"]) .step-node {
+    :host([status='completed']) .step-node {
       background-color: var(--aeva-step-color-completed);
       border-color: var(--aeva-step-color-completed);
       color: var(--aeva-color-white);
     }
 
-    :host([status="error"]) .step-node {
+    :host([status='error']) .step-node {
       border-color: var(--aeva-step-color-error);
       color: var(--aeva-step-color-error);
     }
@@ -67,7 +67,7 @@ export class AevaStep extends LitElement {
       transition: color var(--aeva-transition-normal);
     }
 
-    :host([status="pending"]) .step-label {
+    :host([status='pending']) .step-label {
       color: var(--aeva-text-muted);
     }
 
@@ -92,14 +92,14 @@ export class AevaStep extends LitElement {
       transition: background-color var(--aeva-transition-normal);
     }
 
-    :host([direction="horizontal"]:not([last]))::after {
+    :host([direction='horizontal']:not([last]))::after {
       top: calc(var(--aeva-step-circle-size) / 2 - var(--aeva-step-line-thickness) / 2);
       left: 50%;
       right: calc(-50% - var(--aeva-process-gap));
       height: var(--aeva-step-line-thickness);
     }
 
-    :host([direction="vertical"]:not([last]))::after {
+    :host([direction='vertical']:not([last]))::after {
       top: calc(var(--aeva-step-circle-size) / 2);
       left: calc(var(--aeva-step-circle-size) / 2 - var(--aeva-step-line-thickness) / 2);
       bottom: calc(-1 * var(--aeva-space-lg) - var(--aeva-step-circle-size) / 2);
@@ -107,20 +107,20 @@ export class AevaStep extends LitElement {
     }
 
     /* Active/Completed Line Colors */
-    :host([status="completed"])::after,
-    :host([status="active"])::after {
+    :host([status='completed'])::after,
+    :host([status='active'])::after {
       background-color: var(--aeva-step-color-completed);
     }
 
     /* Vertical connector handled by parent, but step needs to align */
-    :host([direction="vertical"]) {
+    :host([direction='vertical']) {
       flex-direction: row;
       align-items: flex-start;
       gap: var(--aeva-space-md);
       margin-bottom: var(--aeva-space-lg);
     }
 
-    :host([direction="vertical"]) .step-content {
+    :host([direction='vertical']) .step-content {
       margin-top: 0;
       text-align: left;
       display: flex;
@@ -170,11 +170,24 @@ export class AevaStep extends LitElement {
       <div class="step-node">
         <slot name="icon">
           ${this.status === 'completed'
-        ? html`<svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>`
-        : this.status === 'error'
-          ? html`<svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M6 18L18 6M6 6l12 12"></path></svg>`
-          : html`<span>${this.index !== undefined ? this.index + 1 : ''}</span>`
-      }
+            ? html`<svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M5 13l4 4L19 7"
+                ></path>
+              </svg>`
+            : this.status === 'error'
+              ? html`<svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="3"
+                    d="M6 18L18 6M6 6l12 12"
+                  ></path>
+                </svg>`
+              : html`<span>${this.index !== undefined ? this.index + 1 : ''}</span>`}
         </slot>
       </div>
       <div class="step-content">

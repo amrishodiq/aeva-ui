@@ -69,252 +69,253 @@ export class AevaButton extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: inline-block;
-      max-width: 80%;
-    }
-
-    :host([full-width]) {
-      display: block;
-      width: 100%;
-      max-width: 100%;
-    }
-
-    button {
-      font-family: var(--aeva-button-font-family);
-      border: none;
-      cursor: pointer;
-      font-weight: 500;
-      transition: var(--aeva-button-transition);
-      border-radius: var(--aeva-button-border-radius);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--aeva-button-gap);
-      white-space: nowrap;
-      position: relative;
-      /* Minimum 44x44px hit area for accessibility */
-      min-width: 44px;
-      min-height: 44px;
-      /* Remove tap highlight on mobile */
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    :host([full-width]) button {
-      max-width: none;
-      width: 100%;
-    }
-
-    /* Focus ring for accessibility */
-    button:focus-visible {
-      outline: var(--aeva-button-focus-ring-width) solid var(--aeva-button-focus-ring-color);
-      outline-offset: var(--aeva-button-focus-ring-offset);
-    }
-
-    /* Size variants */
-    .size-sm {
-      padding: var(--aeva-button-padding-sm);
-      font-size: var(--aeva-button-font-size-sm);
-    }
-
-    .size-md {
-      padding: var(--aeva-button-padding-md);
-      font-size: var(--aeva-button-font-size-md);
-    }
-
-    .size-lg {
-      padding: var(--aeva-button-padding-lg);
-      font-size: var(--aeva-button-font-size-lg);
-    }
-
-    /* Icon-only buttons - square shape */
-    .icon-only {
-      padding: var(--aeva-button-icon-padding-md);
-      gap: 0;
-      aspect-ratio: 1;
-    }
-
-    .icon-only.size-sm {
-      padding: var(--aeva-button-icon-padding-sm);
-      width: var(--aeva-button-icon-width-sm);
-    }
-
-    .icon-only.size-md {
-      padding: var(--aeva-button-icon-padding-md);
-      width: var(--aeva-button-icon-width-md);
-    }
-
-    .icon-only.size-lg {
-      padding: var(--aeva-button-icon-padding-lg);
-      width: var(--aeva-button-icon-width-lg);
-    }
-
-    /* Primary variant */
-    .variant-primary {
-      background-color: var(--aeva-button-primary-bg);
-      color: var(--aeva-button-primary-color);
-    }
-
-    .variant-primary:hover:not(:disabled) {
-      background-color: var(--aeva-button-primary-hover-bg);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); /* Fallback */
-      box-shadow: 0 4px 12px color-mix(in srgb, var(--aeva-button-primary-bg) 40%, transparent);
-    }
-
-    .variant-primary:active:not(:disabled) {
-      background-color: var(--aeva-button-primary-active-bg);
-      transform: scale(0.95);
-      box-shadow: none;
-    }
-
-    /* Secondary variant */
-    .variant-secondary {
-      background-color: var(--aeva-button-secondary-bg);
-      color: var(--aeva-button-secondary-color);
-    }
-
-    .variant-secondary:hover:not(:disabled) {
-      background-color: var(--aeva-button-secondary-hover-bg);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4); /* Fallback */
-      box-shadow: 0 4px 12px color-mix(in srgb, var(--aeva-button-secondary-bg) 40%, transparent);
-    }
-
-    .variant-secondary:active:not(:disabled) {
-      background-color: var(--aeva-button-secondary-active-bg);
-      transform: scale(0.95);
-      box-shadow: none;
-    }
-
-    /* Outline variant */
-    .variant-outline {
-      background-color: transparent;
-      color: var(--aeva-button-outline-color);
-      border: 2px solid var(--aeva-button-outline-border-color);
-    }
-
-    .variant-outline:hover:not(:disabled) {
-      background-color: var(--aeva-button-outline-hover-bg);
-      transform: translateY(-1px);
-    }
-
-    .variant-outline:active:not(:disabled) {
-      background-color: rgba(102, 126, 234, 0.2); /* Fallback */
-      background-color: var(--aeva-button-outline-active-bg);
-      background-color: color-mix(in srgb, var(--aeva-button-outline-color) 20%, transparent);
-      transform: scale(0.95);
-    }
-
-    /* Ghost variant */
-    .variant-ghost {
-      background-color: transparent;
-      color: var(--aeva-button-ghost-color);
-    }
-
-    .variant-ghost:hover:not(:disabled) {
-      background-color: var(--aeva-button-ghost-hover-bg);
-    }
-
-    .variant-ghost:active:not(:disabled) {
-      background-color: rgba(102, 126, 234, 0.2); /* Fallback */
-      background-color: var(--aeva-button-ghost-active-bg);
-      background-color: color-mix(in srgb, var(--aeva-button-ghost-color) 20%, transparent);
-      transform: scale(0.95);
-    }
-
-    /* Danger variant */
-    .variant-danger {
-      background-color: var(--aeva-button-danger-bg);
-      color: var(--aeva-button-danger-color);
-    }
-
-    .variant-danger:hover:not(:disabled) {
-      background-color: var(--aeva-button-danger-hover-bg);
-      transform: translateY(-1px);
-      box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4); /* Fallback */
-      box-shadow: 0 4px 12px color-mix(in srgb, var(--aeva-button-danger-bg) 40%, transparent);
-    }
-
-    .variant-danger:active:not(:disabled) {
-      background-color: var(--aeva-button-danger-active-bg);
-      transform: scale(0.95);
-      box-shadow: none;
-    }
-
-    /* Disabled state */
-    button:disabled {
-      opacity: var(--aeva-button-disabled-opacity);
-      cursor: var(--aeva-button-disabled-cursor);
-      transform: none !important;
-      box-shadow: none !important;
-    }
-
-    /* Loading state */
-    .loading {
-      position: relative;
-      pointer-events: none;
-      color: transparent;
-    }
-
-    .loading::after {
-      content: '';
-      position: absolute;
-      width: 16px;
-      height: 16px;
-      top: 50%;
-      left: 50%;
-      margin-left: -8px;
-      margin-top: -8px;
-      border: 2px solid;
-      border-radius: 50%;
-      border-top-color: transparent;
-      animation: spin 0.6s linear infinite;
-    }
-
-    .variant-primary.loading::after {
-      border-color: var(--aeva-button-primary-color);
-      border-top-color: transparent;
-    }
-
-    .variant-secondary.loading::after {
-      border-color: var(--aeva-button-secondary-color);
-      border-top-color: transparent;
-    }
-
-    .variant-outline.loading::after,
-    .variant-ghost.loading::after {
-      border-color: var(--aeva-button-outline-color);
-      border-top-color: transparent;
-    }
-
-    .variant-danger.loading::after {
-      border-color: var(--aeva-button-danger-color);
-      border-top-color: transparent;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
+      :host {
+        display: inline-block;
+        max-width: 80%;
       }
-    }
 
-    /* Slot styling */
-    slot {
-      display: contents;
-    }
+      :host([full-width]) {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+      }
 
-    ::slotted(*) {
-      display: inline-flex;
-      align-items: center;
-    }
+      button {
+        font-family: var(--aeva-button-font-family);
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        transition: var(--aeva-button-transition);
+        border-radius: var(--aeva-button-border-radius);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--aeva-button-gap);
+        white-space: nowrap;
+        position: relative;
+        /* Minimum 44x44px hit area for accessibility */
+        min-width: 44px;
+        min-height: 44px;
+        /* Remove tap highlight on mobile */
+        -webkit-tap-highlight-color: transparent;
+      }
 
-    ::slotted(svg) {
-      width: 1em;
-      height: 1em;
-      flex-shrink: 0;
-    }
-  `];
+      :host([full-width]) button {
+        max-width: none;
+        width: 100%;
+      }
+
+      /* Focus ring for accessibility */
+      button:focus-visible {
+        outline: var(--aeva-button-focus-ring-width) solid var(--aeva-button-focus-ring-color);
+        outline-offset: var(--aeva-button-focus-ring-offset);
+      }
+
+      /* Size variants */
+      .size-sm {
+        padding: var(--aeva-button-padding-sm);
+        font-size: var(--aeva-button-font-size-sm);
+      }
+
+      .size-md {
+        padding: var(--aeva-button-padding-md);
+        font-size: var(--aeva-button-font-size-md);
+      }
+
+      .size-lg {
+        padding: var(--aeva-button-padding-lg);
+        font-size: var(--aeva-button-font-size-lg);
+      }
+
+      /* Icon-only buttons - square shape */
+      .icon-only {
+        padding: var(--aeva-button-icon-padding-md);
+        gap: 0;
+        aspect-ratio: 1;
+      }
+
+      .icon-only.size-sm {
+        padding: var(--aeva-button-icon-padding-sm);
+        width: var(--aeva-button-icon-width-sm);
+      }
+
+      .icon-only.size-md {
+        padding: var(--aeva-button-icon-padding-md);
+        width: var(--aeva-button-icon-width-md);
+      }
+
+      .icon-only.size-lg {
+        padding: var(--aeva-button-icon-padding-lg);
+        width: var(--aeva-button-icon-width-lg);
+      }
+
+      /* Primary variant */
+      .variant-primary {
+        background-color: var(--aeva-button-primary-bg);
+        color: var(--aeva-button-primary-color);
+      }
+
+      .variant-primary:hover:not(:disabled) {
+        background-color: var(--aeva-button-primary-hover-bg);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4); /* Fallback */
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--aeva-button-primary-bg) 40%, transparent);
+      }
+
+      .variant-primary:active:not(:disabled) {
+        background-color: var(--aeva-button-primary-active-bg);
+        transform: scale(0.95);
+        box-shadow: none;
+      }
+
+      /* Secondary variant */
+      .variant-secondary {
+        background-color: var(--aeva-button-secondary-bg);
+        color: var(--aeva-button-secondary-color);
+      }
+
+      .variant-secondary:hover:not(:disabled) {
+        background-color: var(--aeva-button-secondary-hover-bg);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(108, 117, 125, 0.4); /* Fallback */
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--aeva-button-secondary-bg) 40%, transparent);
+      }
+
+      .variant-secondary:active:not(:disabled) {
+        background-color: var(--aeva-button-secondary-active-bg);
+        transform: scale(0.95);
+        box-shadow: none;
+      }
+
+      /* Outline variant */
+      .variant-outline {
+        background-color: transparent;
+        color: var(--aeva-button-outline-color);
+        border: 2px solid var(--aeva-button-outline-border-color);
+      }
+
+      .variant-outline:hover:not(:disabled) {
+        background-color: var(--aeva-button-outline-hover-bg);
+        transform: translateY(-1px);
+      }
+
+      .variant-outline:active:not(:disabled) {
+        background-color: rgba(102, 126, 234, 0.2); /* Fallback */
+        background-color: var(--aeva-button-outline-active-bg);
+        background-color: color-mix(in srgb, var(--aeva-button-outline-color) 20%, transparent);
+        transform: scale(0.95);
+      }
+
+      /* Ghost variant */
+      .variant-ghost {
+        background-color: transparent;
+        color: var(--aeva-button-ghost-color);
+      }
+
+      .variant-ghost:hover:not(:disabled) {
+        background-color: var(--aeva-button-ghost-hover-bg);
+      }
+
+      .variant-ghost:active:not(:disabled) {
+        background-color: rgba(102, 126, 234, 0.2); /* Fallback */
+        background-color: var(--aeva-button-ghost-active-bg);
+        background-color: color-mix(in srgb, var(--aeva-button-ghost-color) 20%, transparent);
+        transform: scale(0.95);
+      }
+
+      /* Danger variant */
+      .variant-danger {
+        background-color: var(--aeva-button-danger-bg);
+        color: var(--aeva-button-danger-color);
+      }
+
+      .variant-danger:hover:not(:disabled) {
+        background-color: var(--aeva-button-danger-hover-bg);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(220, 53, 69, 0.4); /* Fallback */
+        box-shadow: 0 4px 12px color-mix(in srgb, var(--aeva-button-danger-bg) 40%, transparent);
+      }
+
+      .variant-danger:active:not(:disabled) {
+        background-color: var(--aeva-button-danger-active-bg);
+        transform: scale(0.95);
+        box-shadow: none;
+      }
+
+      /* Disabled state */
+      button:disabled {
+        opacity: var(--aeva-button-disabled-opacity);
+        cursor: var(--aeva-button-disabled-cursor);
+        transform: none !important;
+        box-shadow: none !important;
+      }
+
+      /* Loading state */
+      .loading {
+        position: relative;
+        pointer-events: none;
+        color: transparent;
+      }
+
+      .loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        left: 50%;
+        margin-left: -8px;
+        margin-top: -8px;
+        border: 2px solid;
+        border-radius: 50%;
+        border-top-color: transparent;
+        animation: spin 0.6s linear infinite;
+      }
+
+      .variant-primary.loading::after {
+        border-color: var(--aeva-button-primary-color);
+        border-top-color: transparent;
+      }
+
+      .variant-secondary.loading::after {
+        border-color: var(--aeva-button-secondary-color);
+        border-top-color: transparent;
+      }
+
+      .variant-outline.loading::after,
+      .variant-ghost.loading::after {
+        border-color: var(--aeva-button-outline-color);
+        border-top-color: transparent;
+      }
+
+      .variant-danger.loading::after {
+        border-color: var(--aeva-button-danger-color);
+        border-top-color: transparent;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Slot styling */
+      slot {
+        display: contents;
+      }
+
+      ::slotted(*) {
+        display: inline-flex;
+        align-items: center;
+      }
+
+      ::slotted(svg) {
+        width: 1em;
+        height: 1em;
+        flex-shrink: 0;
+      }
+    `,
+  ];
 
   /**
    * Button variant style
@@ -387,7 +388,7 @@ export class AevaButton extends LitElement {
       if (filledSlots.includes('icon-only') && filledSlots.length > 1) {
         console.warn(
           '[aeva-button] Using slot="icon-only" with other slots may cause unexpected layout. ' +
-          'Use icon-only alone, or use icon-left/icon-right with default slot.',
+            'Use icon-only alone, or use icon-left/icon-right with default slot.',
           { filledSlots }
         );
       }

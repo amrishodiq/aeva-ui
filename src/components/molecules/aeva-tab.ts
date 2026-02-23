@@ -28,100 +28,101 @@ export class AevaTab extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-    }
-
-    .container {
-      background: var(--aeva-tab-bg);
-      border-radius: var(--aeva-tab-border-radius);
-      padding: var(--aeva-tab-padding);
-      display: inline-flex;
-      gap: var(--aeva-tab-gap);
-      position: relative;
-      isolation: isolate;
-      max-width: 100%;
-
-      /* Mobile scrolling support */
-      overflow-x: auto;
-      overflow-y: hidden;
-      -webkit-overflow-scrolling: touch;
-
-      /* Hide scrollbar but keep functionality */
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE/Edge */
-
-      /* Scroll snap for better UX - but don't snap too aggressively */
-      scroll-snap-type: x proximity;
-      scroll-padding-inline: var(--aeva-tab-gap);
-    }
-
-    /* Hide scrollbar for Chrome/Safari */
-    .container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .background {
-      position: absolute;
-      background: var(--aeva-tab-active-bg);
-      border-radius: calc(var(--aeva-tab-border-radius) - var(--aeva-tab-padding));
-      transition:
-        left var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing),
-        width var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing),
-        transform var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing);
-      pointer-events: none;
-      z-index: 0;
-      will-change: left, width, transform;
-    }
-
-    /* Morphing animation states */
-    .background.morphing {
-      /* Scale effect during transition for "stretching" appearance */
-      animation: morph var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing);
-    }
-
-    @keyframes morph {
-      0% {
-        transform: scaleX(1);
+      :host {
+        display: flex;
+        justify-content: center;
+        width: 100%;
       }
-      50% {
-        transform: scaleX(1.1);
+
+      .container {
+        background: var(--aeva-tab-bg);
+        border-radius: var(--aeva-tab-border-radius);
+        padding: var(--aeva-tab-padding);
+        display: inline-flex;
+        gap: var(--aeva-tab-gap);
+        position: relative;
+        isolation: isolate;
+        max-width: 100%;
+
+        /* Mobile scrolling support */
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+
+        /* Hide scrollbar but keep functionality */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE/Edge */
+
+        /* Scroll snap for better UX - but don't snap too aggressively */
+        scroll-snap-type: x proximity;
+        scroll-padding-inline: var(--aeva-tab-gap);
       }
-      100% {
-        transform: scaleX(1);
+
+      /* Hide scrollbar for Chrome/Safari */
+      .container::-webkit-scrollbar {
+        display: none;
       }
-    }
 
-    ::slotted(aeva-tab-item) {
-      position: relative;
-      z-index: 1;
-      flex-shrink: 0; /* Prevent tabs from shrinking on mobile */
+      .background {
+        position: absolute;
+        background: var(--aeva-tab-active-bg);
+        border-radius: calc(var(--aeva-tab-border-radius) - var(--aeva-tab-padding));
+        transition:
+          left var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing),
+          width var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing),
+          transform var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing);
+        pointer-events: none;
+        z-index: 0;
+        will-change: left, width, transform;
+      }
 
-      /* Remove tap highlight on mobile */
-      -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      user-select: none;
-    }
+      /* Morphing animation states */
+      .background.morphing {
+        /* Scale effect during transition for "stretching" appearance */
+        animation: morph var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing);
+      }
 
-    /* Add spacing for first and last items to prevent edge touching */
-    ::slotted(aeva-tab-item:first-child) {
-      margin-left: var(--aeva-tab-gap);
-      scroll-snap-align: end;
-    }
+      @keyframes morph {
+        0% {
+          transform: scaleX(1);
+        }
+        50% {
+          transform: scaleX(1.1);
+        }
+        100% {
+          transform: scaleX(1);
+        }
+      }
 
-    ::slotted(aeva-tab-item:last-child) {
-      margin-right: var(--aeva-tab-gap);
-      scroll-snap-align: start;
-    }
+      ::slotted(aeva-tab-item) {
+        position: relative;
+        z-index: 1;
+        flex-shrink: 0; /* Prevent tabs from shrinking on mobile */
 
-    /* Middle items use center snap */
-    ::slotted(aeva-tab-item:not(:first-child):not(:last-child)) {
-      scroll-snap-align: center;
-    }
-  `];
+        /* Remove tap highlight on mobile */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      /* Add spacing for first and last items to prevent edge touching */
+      ::slotted(aeva-tab-item:first-child) {
+        margin-left: var(--aeva-tab-gap);
+        scroll-snap-align: end;
+      }
+
+      ::slotted(aeva-tab-item:last-child) {
+        margin-right: var(--aeva-tab-gap);
+        scroll-snap-align: start;
+      }
+
+      /* Middle items use center snap */
+      ::slotted(aeva-tab-item:not(:first-child):not(:last-child)) {
+        scroll-snap-align: center;
+      }
+    `,
+  ];
 
   /**
    * Index of the currently active tab

@@ -26,53 +26,57 @@ export class AevaTabItem extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: inline-block;
-    }
+      :host {
+        display: inline-block;
+      }
 
-    .tab-item {
-      font-family: var(--aeva-tab-item-font-family);
-      font-size: var(--aeva-tab-item-font-size);
-      padding: var(--aeva-tab-item-padding);
-      border-radius: var(--aeva-tab-item-border-radius);
-      border: none;
-      background: transparent;
-      cursor: var(--aeva-tab-item-cursor);
-      transition: var(--aeva-tab-item-transition);
-      color: var(--aeva-tab-item-color-inactive);
-      font-weight: 500;
-      white-space: nowrap;
-      position: relative;
-      z-index: 1;
-      /* Minimum 44x44px hit area for accessibility */
-      min-width: 44px;
-      min-height: 44px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+      .tab-item {
+        font-family: var(--aeva-tab-item-font-family);
+        font-size: var(--aeva-tab-item-font-size);
+        padding: var(--aeva-tab-item-padding);
+        border-radius: var(--aeva-tab-item-border-radius);
+        border: none;
+        background: transparent;
+        cursor: var(--aeva-tab-item-cursor);
+        transition: var(--aeva-tab-item-transition);
+        color: var(--aeva-tab-item-color-inactive);
+        font-weight: 500;
+        white-space: nowrap;
+        position: relative;
+        z-index: 1;
+        /* Minimum 44x44px hit area for accessibility */
+        min-width: 44px;
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
 
-      /* Remove tap highlight on mobile */
-      -webkit-tap-highlight-color: transparent;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      user-select: none;
-    }
+        /* Remove tap highlight on mobile */
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
 
-    :host([active]) .tab-item {
-      color: var(--aeva-tab-item-color-active);
-    }
+      :host([active]) .tab-item {
+        color: var(--aeva-tab-item-color-active);
+      }
 
-    :host([disabled]) .tab-item {
-      color: var(--aeva-tab-item-color-disabled);
-      cursor: not-allowed;
-      opacity: var(--aeva-tab-item-disabled-opacity);
-    }
+      :host([disabled]) .tab-item {
+        color: var(--aeva-tab-item-color-disabled);
+        cursor: not-allowed;
+        opacity: var(--aeva-tab-item-disabled-opacity);
+      }
 
-    .tab-item:focus-visible {
-      outline: var(--aeva-tab-item-focus-ring, 2px solid var(--aeva-button-focus-ring-color, rgba(102, 126, 234, 0.5)));
-      outline-offset: 2px;
-    }
-  `];
+      .tab-item:focus-visible {
+        outline: var(
+          --aeva-tab-item-focus-ring,
+          2px solid var(--aeva-button-focus-ring-color, rgba(102, 126, 234, 0.5))
+        );
+        outline-offset: 2px;
+      }
+    `,
+  ];
 
   /**
    * Label text for the tab

@@ -4,7 +4,7 @@ import { styleMap } from 'lit/directives/style-map.js';
 
 /**
  * Aeva Slider component.
- * 
+ *
  * @fires change - Dispatched when the slider value changes.
  * @fires input - Dispatched as the slider value is being changed.
  */
@@ -52,7 +52,7 @@ export class AevaSlider extends LitElement {
       align-items: center;
     }
 
-    input[type="range"] {
+    input[type='range'] {
       -webkit-appearance: none;
       width: 100%;
       height: 32px;
@@ -65,12 +65,12 @@ export class AevaSlider extends LitElement {
     }
 
     /* Hide native track background */
-    input[type="range"]::-webkit-slider-runnable-track {
+    input[type='range']::-webkit-slider-runnable-track {
       background: transparent;
       border: none;
     }
 
-    input[type="range"]::-moz-range-track {
+    input[type='range']::-moz-range-track {
       background: transparent;
       border: none;
     }
@@ -103,7 +103,7 @@ export class AevaSlider extends LitElement {
     }
 
     /* Thumb Styling */
-    input[type="range"]::-webkit-slider-thumb {
+    input[type='range']::-webkit-slider-thumb {
       -webkit-appearance: none;
       width: var(--aeva-slider-thumb-size);
       height: var(--aeva-slider-thumb-size);
@@ -112,12 +112,14 @@ export class AevaSlider extends LitElement {
       border-radius: 50%;
       box-shadow: var(--aeva-slider-thumb-shadow);
       cursor: pointer;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      transition:
+        transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.2s ease;
       position: relative;
       z-index: 3;
     }
 
-    input[type="range"]::-moz-range-thumb {
+    input[type='range']::-moz-range-thumb {
       width: var(--aeva-slider-thumb-size);
       height: var(--aeva-slider-thumb-size);
       background: var(--aeva-slider-thumb-bg);
@@ -125,19 +127,21 @@ export class AevaSlider extends LitElement {
       border-radius: 50%;
       box-shadow: var(--aeva-slider-thumb-shadow);
       cursor: pointer;
-      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+      transition:
+        transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.2s ease;
       z-index: 3;
     }
 
-    input[type="range"]:active::-webkit-slider-thumb {
+    input[type='range']:active::-webkit-slider-thumb {
       transform: scale(1.2);
     }
 
-    input[type="range"]:active::-moz-range-thumb {
+    input[type='range']:active::-moz-range-thumb {
       transform: scale(1.2);
     }
 
-    input[type="range"]:focus::-webkit-slider-thumb {
+    input[type='range']:focus::-webkit-slider-thumb {
       box-shadow: 0 0 0 4px color-mix(in srgb, var(--aeva-primary-color) 20%, transparent);
     }
 
@@ -146,7 +150,7 @@ export class AevaSlider extends LitElement {
       pointer-events: none;
     }
 
-    :host([disabled]) input[type="range"] {
+    :host([disabled]) input[type='range'] {
       cursor: not-allowed;
     }
   `;
@@ -177,7 +181,11 @@ export class AevaSlider extends LitElement {
   }
 
   protected updated(changedProperties: Map<string | number | symbol, unknown>) {
-    if (changedProperties.has('value') || changedProperties.has('min') || changedProperties.has('max')) {
+    if (
+      changedProperties.has('value') ||
+      changedProperties.has('min') ||
+      changedProperties.has('max')
+    ) {
       this._updateProgress();
     }
   }
@@ -191,34 +199,40 @@ export class AevaSlider extends LitElement {
     this.value = Number(input.value);
     this._updateProgress();
 
-    this.dispatchEvent(new CustomEvent('input', {
-      detail: { value: this.value },
-      bubbles: true,
-      composed: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('input', {
+        detail: { value: this.value },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   private _handleChange() {
-    this.dispatchEvent(new CustomEvent('change', {
-      detail: { value: this.value },
-      bubbles: true,
-      composed: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('change', {
+        detail: { value: this.value },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   render() {
     return html`
       <div class="slider-container">
-        ${this.label ? html`
-          <div class="label-header">
-            <span class="label">${this.label}</span>
-            <span class="value-display">${this.value}</span>
-          </div>
-        ` : ''}
+        ${this.label
+          ? html`
+              <div class="label-header">
+                <span class="label">${this.label}</span>
+                <span class="value-display">${this.value}</span>
+              </div>
+            `
+          : ''}
         <div class="input-wrapper">
           <div class="track-base"></div>
           <div class="track-fill" style="${styleMap({ width: `${this._progressPercent}%` })}"></div>
-          <input 
+          <input
             type="range"
             .value="${String(this.value)}"
             min="${this.min}"
@@ -227,7 +241,7 @@ export class AevaSlider extends LitElement {
             ?disabled="${this.disabled}"
             @input="${this._handleInput}"
             @change="${this._handleChange}"
-          >
+          />
         </div>
       </div>
     `;

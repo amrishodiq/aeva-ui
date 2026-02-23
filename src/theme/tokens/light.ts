@@ -477,7 +477,6 @@ export const lightTheme: ThemeVariables = {
   '--aeva-step-line-color': 'var(--aeva-color-gray-200)',
   '--aeva-step-circle-bg': 'var(--aeva-color-white)',
 
-
   // Slider
   '--aeva-slider-track-height': '6px',
   '--aeva-slider-track-bg': 'var(--aeva-color-gray-200)',
@@ -497,6 +496,4 @@ export const lightTheme: ThemeVariables = {
   '--aeva-switch-thumb-shadow': '0 2px 4px rgba(0, 0, 0, 0.2)',
   '--aeva-switch-transition': '300ms cubic-bezier(0.4, 0, 0.2, 1)',
   '--aeva-switch-elastic-transition': '400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
-
 };
-

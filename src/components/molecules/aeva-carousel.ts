@@ -29,132 +29,133 @@ export class AevaCarousel extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: block;
-      position: relative;
-      width: 100%;
-      height: var(--aeva-carousel-height);
-      overflow: hidden;
-      border-radius: 12px;
-    }
+      :host {
+        display: block;
+        position: relative;
+        width: 100%;
+        height: var(--aeva-carousel-height);
+        overflow: hidden;
+        border-radius: 12px;
+      }
 
-    .carousel-container {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-    }
+      .carousel-container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
 
-    .slides-wrapper {
-      display: flex;
-      height: 100%;
-      transition: transform var(--aeva-carousel-transition-duration) ease-in-out;
-      will-change: transform;
-    }
+      .slides-wrapper {
+        display: flex;
+        height: 100%;
+        transition: transform var(--aeva-carousel-transition-duration) ease-in-out;
+        will-change: transform;
+      }
 
-    ::slotted(*) {
-      flex-shrink: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+      ::slotted(*) {
+        flex-shrink: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-    /* Navigation Buttons */
-    .nav-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      background: var(--aeva-carousel-nav-bg);
-      color: var(--aeva-carousel-nav-color);
-      border: none;
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.2s ease;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-    }
+      /* Navigation Buttons */
+      .nav-button {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 48px;
+        height: 48px;
+        background: var(--aeva-carousel-nav-bg);
+        color: var(--aeva-carousel-nav-color);
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        z-index: 10;
+        backdrop-filter: blur(10px);
+      }
 
-    .nav-button:hover {
-      background: var(--aeva-carousel-nav-hover-bg);
-      transform: translateY(-50%) scale(1.1);
-    }
+      .nav-button:hover {
+        background: var(--aeva-carousel-nav-hover-bg);
+        transform: translateY(-50%) scale(1.1);
+      }
 
-    .nav-button:active {
-      transform: translateY(-50%) scale(0.95);
-    }
+      .nav-button:active {
+        transform: translateY(-50%) scale(0.95);
+      }
 
-    .nav-button:disabled {
-      opacity: 0.3;
-      cursor: not-allowed;
-    }
+      .nav-button:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+      }
 
-    .nav-button:disabled:hover {
-      transform: translateY(-50%) scale(1);
-    }
+      .nav-button:disabled:hover {
+        transform: translateY(-50%) scale(1);
+      }
 
-    .nav-button.prev {
-      left: 16px;
-    }
+      .nav-button.prev {
+        left: 16px;
+      }
 
-    .nav-button.next {
-      right: 16px;
-    }
+      .nav-button.next {
+        right: 16px;
+      }
 
-    .nav-button svg {
-      width: 24px;
-      height: 24px;
-    }
+      .nav-button svg {
+        width: 24px;
+        height: 24px;
+      }
 
-    /* Hide navigation when disabled */
-    :host([hide-nav]) .nav-button {
-      display: none;
-    }
+      /* Hide navigation when disabled */
+      :host([hide-nav]) .nav-button {
+        display: none;
+      }
 
-    /* Indicators */
-    .indicators {
-      position: absolute;
-      bottom: 16px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 8px;
-      z-index: 10;
-    }
+      /* Indicators */
+      .indicators {
+        position: absolute;
+        bottom: 16px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+      }
 
-    .indicator {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--aeva-carousel-indicator-color);
-      cursor: pointer;
-      transition: all 0.2s ease;
-      border: none;
-      padding: 0;
-    }
+      .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--aeva-carousel-indicator-color);
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border: none;
+        padding: 0;
+      }
 
-    .indicator:hover {
-      background: var(--aeva-carousel-indicator-hover-bg);
-      transform: scale(1.2);
-    }
+      .indicator:hover {
+        background: var(--aeva-carousel-indicator-hover-bg);
+        transform: scale(1.2);
+      }
 
-    .indicator.active {
-      background: var(--aeva-carousel-indicator-active-color);
-      width: 24px;
-      border-radius: 4px;
-    }
+      .indicator.active {
+        background: var(--aeva-carousel-indicator-active-color);
+        width: 24px;
+        border-radius: 4px;
+      }
 
-    /* Hide indicators when disabled */
-    :host([hide-indicators]) .indicators {
-      display: none;
-    }
-  `];
+      /* Hide indicators when disabled */
+      :host([hide-indicators]) .indicators {
+        display: none;
+      }
+    `,
+  ];
 
   /**
    * Current active slide index
@@ -403,7 +404,7 @@ export class AevaCarousel extends LitElement {
         </div>
 
         ${!this.hideNav
-        ? html`
+          ? html`
               <button
                 part="nav-button"
                 class="nav-button prev"
@@ -437,13 +438,13 @@ export class AevaCarousel extends LitElement {
                 </svg>
               </button>
             `
-        : ''}
+          : ''}
         ${!this.hideIndicators && this.slideCount > 1
-        ? html`
+          ? html`
               <div part="indicators" class="indicators">
                 ${Array.from(
-          { length: this.slideCount },
-          (_, i) => html`
+                  { length: this.slideCount },
+                  (_, i) => html`
                     <button
                       part="indicator"
                       class="indicator ${i === this.activeIndex ? 'active' : ''}"
@@ -451,10 +452,10 @@ export class AevaCarousel extends LitElement {
                       aria-label="Go to slide ${i + 1}"
                     ></button>
                   `
-        )}
+                )}
               </div>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }

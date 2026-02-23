@@ -29,194 +29,195 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: var(--aeva-z-modal);
-    }
-
-    :host([open]) {
-      display: block;
-    }
-
-    .backdrop {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: var(--aeva-modal-backdrop-bg);
-      animation: fadeIn 0.3s ease-out;
-    }
-
-    .modal-container {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      pointer-events: none;
-    }
-
-    .modal {
-      position: relative;
-      background: var(--aeva-modal-bg);
-      backdrop-filter: blur(var(--aeva-modal-blur, 10px));
-      -webkit-backdrop-filter: blur(var(--aeva-modal-blur, 10px));
-      border-radius: var(--aeva-modal-border-radius);
-      padding: var(--aeva-modal-padding);
-      max-width: var(--aeva-modal-max-width);
-      width: 100%;
-      pointer-events: auto;
-      animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-
-      /* Edge shimmer effect */
-      border: 1px solid var(--aeva-modal-border-color);
-
-      /* Elevation shadow */
-      box-shadow:
-        0 4px 6px -1px var(--aeva-modal-shadow-color),
-        0 2px 4px -1px var(--aeva-modal-shadow-color);
-    }
-
-    /* Elevation levels */
-    :host([elevation='1']) .modal {
-      box-shadow:
-        0 1px 3px 0 var(--aeva-modal-shadow-color),
-        0 1px 2px 0 var(--aeva-modal-shadow-color);
-    }
-
-    :host([elevation='2']) .modal {
-      box-shadow:
-        0 4px 6px -1px var(--aeva-modal-shadow-color),
-        0 2px 4px -1px var(--aeva-modal-shadow-color);
-    }
-
-    :host([elevation='3']) .modal {
-      box-shadow:
-        0 10px 15px -3px var(--aeva-modal-shadow-color),
-        0 4px 6px -2px var(--aeva-modal-shadow-color);
-    }
-
-    :host([elevation='4']) .modal {
-      box-shadow:
-        0 20px 25px -5px var(--aeva-modal-shadow-color),
-        0 10px 10px -5px var(--aeva-modal-shadow-color);
-    }
-
-    :host([elevation='5']) .modal {
-      box-shadow: 0 25px 50px -12px var(--aeva-modal-shadow-color);
-    }
-
-    /* Shimmer effect using pseudo-element */
-    .modal::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border-radius: var(--aeva-modal-border-radius);
-      padding: 1px;
-      background: var(--aeva-modal-shimmer-gradient);
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      animation: shimmer 3s ease-in-out infinite;
-    }
-
-    /* Closing animation */
-    :host([closing]) .backdrop {
-      animation: fadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    :host([closing]) .modal {
-      animation: modalOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
+      :host {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: var(--aeva-z-modal);
       }
-      to {
-        opacity: 1;
-      }
-    }
 
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
+      :host([open]) {
+        display: block;
       }
-      to {
-        opacity: 0;
-      }
-    }
 
-    @keyframes modalIn {
-      from {
-        opacity: 0;
-        transform: scale(0.9) translateY(20px);
+      .backdrop {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--aeva-modal-backdrop-bg);
+        animation: fadeIn 0.3s ease-out;
       }
-      to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }
-    }
 
-    @keyframes modalOut {
-      0% {
-        opacity: 1;
-        transform: scale(1) translateY(0);
+      .modal-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
       }
-      100% {
-        opacity: 0;
-        transform: scale(0.92) translateY(20px);
-      }
-    }
 
-    @keyframes shimmer {
-      0%,
-      100% {
-        opacity: 0.5;
-      }
-      50% {
-        opacity: 1;
-      }
-    }
-
-    /* Responsive - Mobile First */
-    /* Mobile: 100vw - 24px (12px padding on each side) */
-    @media (max-width: 767px) {
       .modal {
-        max-width: calc(100vw - 24px);
-        margin: 0;
-      }
-    }
+        position: relative;
+        background: var(--aeva-modal-bg);
+        backdrop-filter: blur(var(--aeva-modal-blur, 10px));
+        -webkit-backdrop-filter: blur(var(--aeva-modal-blur, 10px));
+        border-radius: var(--aeva-modal-border-radius);
+        padding: var(--aeva-modal-padding);
+        max-width: var(--aeva-modal-max-width);
+        width: 100%;
+        pointer-events: auto;
+        animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    /* Tablet: 80% of 640px = 512px */
-    @media (min-width: 640px) and (max-width: 1023px) {
-      .modal {
-        max-width: 512px;
-      }
-    }
+        /* Edge shimmer effect */
+        border: 1px solid var(--aeva-modal-border-color);
 
-    /* Desktop/Laptop: 80% of 1024px = 819px */
-    @media (min-width: 1024px) {
-      .modal {
-        max-width: 819px;
+        /* Elevation shadow */
+        box-shadow:
+          0 4px 6px -1px var(--aeva-modal-shadow-color),
+          0 2px 4px -1px var(--aeva-modal-shadow-color);
       }
-    }
-  `];
+
+      /* Elevation levels */
+      :host([elevation='1']) .modal {
+        box-shadow:
+          0 1px 3px 0 var(--aeva-modal-shadow-color),
+          0 1px 2px 0 var(--aeva-modal-shadow-color);
+      }
+
+      :host([elevation='2']) .modal {
+        box-shadow:
+          0 4px 6px -1px var(--aeva-modal-shadow-color),
+          0 2px 4px -1px var(--aeva-modal-shadow-color);
+      }
+
+      :host([elevation='3']) .modal {
+        box-shadow:
+          0 10px 15px -3px var(--aeva-modal-shadow-color),
+          0 4px 6px -2px var(--aeva-modal-shadow-color);
+      }
+
+      :host([elevation='4']) .modal {
+        box-shadow:
+          0 20px 25px -5px var(--aeva-modal-shadow-color),
+          0 10px 10px -5px var(--aeva-modal-shadow-color);
+      }
+
+      :host([elevation='5']) .modal {
+        box-shadow: 0 25px 50px -12px var(--aeva-modal-shadow-color);
+      }
+
+      /* Shimmer effect using pseudo-element */
+      .modal::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: var(--aeva-modal-border-radius);
+        padding: 1px;
+        background: var(--aeva-modal-shimmer-gradient);
+        -webkit-mask:
+          linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+        animation: shimmer 3s ease-in-out infinite;
+      }
+
+      /* Closing animation */
+      :host([closing]) .backdrop {
+        animation: fadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      :host([closing]) .modal {
+        animation: modalOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
+        }
+        to {
+          opacity: 0;
+        }
+      }
+
+      @keyframes modalIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9) translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      @keyframes modalOut {
+        0% {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(0.92) translateY(20px);
+        }
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* Responsive - Mobile First */
+      /* Mobile: 100vw - 24px (12px padding on each side) */
+      @media (max-width: 767px) {
+        .modal {
+          max-width: calc(100vw - 24px);
+          margin: 0;
+        }
+      }
+
+      /* Tablet: 80% of 640px = 512px */
+      @media (min-width: 640px) and (max-width: 1023px) {
+        .modal {
+          max-width: 512px;
+        }
+      }
+
+      /* Desktop/Laptop: 80% of 1024px = 819px */
+      @media (min-width: 1024px) {
+        .modal {
+          max-width: 819px;
+        }
+      }
+    `,
+  ];
 
   /**
    * Whether the modal is open

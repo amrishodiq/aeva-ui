@@ -200,7 +200,8 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
     // If it's too close to the bottom edge, show above the anchor
     if (top + 200 > viewportHeight) {
       top = rect.top - 8 - 200; // Approximate height
-      if (top < 0) top = rect.bottom + 8; // fallback
+      if (top < 0)
+        top = rect.bottom + 8; // fallback
       else transformOrigin = 'bottom left';
     }
 

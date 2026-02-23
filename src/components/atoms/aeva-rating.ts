@@ -184,8 +184,8 @@ export class AevaRating extends LitElement {
       <div
         class="star ${starType === 'filled' ? 'star-filled' : 'star-empty'} ${this.hoverValue >=
         starValue
-        ? 'hover'
-        : ''}"
+          ? 'hover'
+          : ''}"
         @click=${() => this.handleStarClick(starValue)}
         @mouseenter=${() => this.handleStarHover(starValue)}
         @mouseleave=${() => this.handleStarLeave()}

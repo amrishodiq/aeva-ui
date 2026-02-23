@@ -303,7 +303,8 @@ export class AevaToast extends WithCloseAnimation(LitElement) {
     this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
 
     // Use shared animation logic
-    const duration = parseFloat(getComputedStyle(this).getPropertyValue('--aeva-duration-normal')) || 200;
+    const duration =
+      parseFloat(getComputedStyle(this).getPropertyValue('--aeva-duration-normal')) || 200;
     await this.closeWithAnimation(duration);
   }
 
@@ -370,7 +371,7 @@ export class AevaToast extends WithCloseAnimation(LitElement) {
           <slot></slot>
         </div>
         ${this.closable
-        ? html`
+          ? html`
               <button class="close-button" @click=${this.handleClose} aria-label="Close">
                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -382,7 +383,7 @@ export class AevaToast extends WithCloseAnimation(LitElement) {
                 </svg>
               </button>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }

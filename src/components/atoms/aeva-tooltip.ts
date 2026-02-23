@@ -19,91 +19,92 @@ export class AevaTooltip extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: inline-block;
-      position: relative;
-    }
+      :host {
+        display: inline-block;
+        position: relative;
+      }
 
-    .trigger {
-      display: inline-block;
-      cursor: help;
-    }
+      .trigger {
+        display: inline-block;
+        cursor: help;
+      }
 
-    .tooltip-container {
-      position: fixed;
-      z-index: var(--aeva-z-tooltip);
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    .tooltip-container.visible {
-      opacity: 1;
-    }
-
-    .tooltip {
-      position: relative;
-      background: var(--aeva-tooltip-bg);
-      backdrop-filter: blur(var(--aeva-tooltip-blur));
-      -webkit-backdrop-filter: blur(var(--aeva-tooltip-blur));
-      color: var(--aeva-tooltip-color);
-      padding: var(--aeva-tooltip-padding);
-      border-radius: var(--aeva-tooltip-border-radius);
-      font-size: var(--aeva-tooltip-font-size);
-      line-height: 1.4;
-      max-width: 250px;
-      word-wrap: break-word;
-      white-space: normal;
-      box-shadow: var(--aeva-tooltip-shadow);
-
-      animation: tooltipIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    @keyframes tooltipIn {
-      from {
+      .tooltip-container {
+        position: fixed;
+        z-index: var(--aeva-z-tooltip);
+        pointer-events: none;
         opacity: 0;
-        transform: scale(0.95);
+        transition: opacity 0.2s ease-in-out;
       }
-      to {
+
+      .tooltip-container.visible {
         opacity: 1;
-        transform: scale(1);
       }
-    }
 
-    /* Arrow */
-    .arrow {
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      background: var(--aeva-tooltip-bg);
-      transform: rotate(45deg);
-    }
+      .tooltip {
+        position: relative;
+        background: var(--aeva-tooltip-bg);
+        backdrop-filter: blur(var(--aeva-tooltip-blur));
+        -webkit-backdrop-filter: blur(var(--aeva-tooltip-blur));
+        color: var(--aeva-tooltip-color);
+        padding: var(--aeva-tooltip-padding);
+        border-radius: var(--aeva-tooltip-border-radius);
+        font-size: var(--aeva-tooltip-font-size);
+        line-height: 1.4;
+        max-width: 250px;
+        word-wrap: break-word;
+        white-space: normal;
+        box-shadow: var(--aeva-tooltip-shadow);
 
-    /* Arrow positions */
-    .tooltip-container[data-position='top'] .arrow {
-      bottom: -4px;
-      left: 50%;
-      margin-left: -4px;
-    }
+        animation: tooltipIn 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
 
-    .tooltip-container[data-position='bottom'] .arrow {
-      top: -4px;
-      left: 50%;
-      margin-left: -4px;
-    }
+      @keyframes tooltipIn {
+        from {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
 
-    .tooltip-container[data-position='left'] .arrow {
-      right: -4px;
-      top: 50%;
-      margin-top: -4px;
-    }
+      /* Arrow */
+      .arrow {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--aeva-tooltip-bg);
+        transform: rotate(45deg);
+      }
 
-    .tooltip-container[data-position='right'] .arrow {
-      left: -4px;
-      top: 50%;
-      margin-top: -4px;
-    }
-  `];
+      /* Arrow positions */
+      .tooltip-container[data-position='top'] .arrow {
+        bottom: -4px;
+        left: 50%;
+        margin-left: -4px;
+      }
+
+      .tooltip-container[data-position='bottom'] .arrow {
+        top: -4px;
+        left: 50%;
+        margin-left: -4px;
+      }
+
+      .tooltip-container[data-position='left'] .arrow {
+        right: -4px;
+        top: 50%;
+        margin-top: -4px;
+      }
+
+      .tooltip-container[data-position='right'] .arrow {
+        left: -4px;
+        top: 50%;
+        margin-top: -4px;
+      }
+    `,
+  ];
 
   @property({ type: String })
   content = '';

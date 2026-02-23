@@ -2,7 +2,7 @@ import { css } from 'lit';
 
 /**
  * Shared accessibility styles for all Aeva UI components.
- * 
+ *
  * Features:
  * 1. Respects prefers-reduced-motion: reduce by disabling animations and transitions globally
  * 2. Forces instant scroll behavior

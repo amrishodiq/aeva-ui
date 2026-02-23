@@ -15,40 +15,41 @@ export class AevaRipple extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      overflow: hidden;
-      pointer-events: none;
-      border-radius: inherit;
-      z-index: 0;
-    }
+      :host {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        pointer-events: none;
+        border-radius: inherit;
+        z-index: 0;
+      }
 
-    .ripple {
-      position: absolute;
-      border-radius: 50%;
-      background-color: var(--aeva-ripple-color, currentColor);
-      opacity: var(--aeva-ripple-opacity, 0.15);
-      transform: scale(0);
-      animation: ripple-animation var(--aeva-ripple-duration, 600ms) cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: none;
-    }
-
-    @keyframes ripple-animation {
-      from {
-        transform: scale(0);
+      .ripple {
+        position: absolute;
+        border-radius: 50%;
+        background-color: var(--aeva-ripple-color, currentColor);
         opacity: var(--aeva-ripple-opacity, 0.15);
+        transform: scale(0);
+        animation: ripple-animation var(--aeva-ripple-duration, 600ms) cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
       }
-      to {
-        transform: scale(2.5);
-        opacity: 0;
+
+      @keyframes ripple-animation {
+        from {
+          transform: scale(0);
+          opacity: var(--aeva-ripple-opacity, 0.15);
+        }
+        to {
+          transform: scale(2.5);
+          opacity: 0;
+        }
       }
-    }
-  `];
+    `,
+  ];
 
   /**
    * The duration of the ripple animation in milliseconds

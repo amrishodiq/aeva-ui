@@ -28,59 +28,60 @@ export class AevaCheckbox extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: inline-block;
-      cursor: pointer;
-    }
-
-    :host([disabled]) {
-      cursor: not-allowed;
-      opacity: var(--aeva-checkbox-disabled-opacity);
-    }
-
-    .container {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: var(--aeva-checkbox-size);
-      height: var(--aeva-checkbox-size);
-      /* Dynamic padding to ensure minimum 44x44px touch target */
-      padding: max(0px, calc((44px - var(--aeva-checkbox-size)) / 2));
-      box-sizing: content-box;
-    }
-
-    svg {
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-      transition: var(--aeva-checkbox-transition);
-    }
-
-    .box {
-      transition: var(--aeva-checkbox-transition);
-    }
-
-    .checkmark {
-      transition: var(--aeva-checkbox-transition);
-      transform-origin: center;
-      opacity: 0;
-      transform: scale(0.5);
-    }
-
-    :host([checked]) .checkmark {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    /* Reduced motion support */
-    @media (prefers-reduced-motion: reduce) {
-      svg,
-      .box,
-      .checkmark {
-        transition: none;
+      :host {
+        display: inline-block;
+        cursor: pointer;
       }
-    }
-  `];
+
+      :host([disabled]) {
+        cursor: not-allowed;
+        opacity: var(--aeva-checkbox-disabled-opacity);
+      }
+
+      .container {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--aeva-checkbox-size);
+        height: var(--aeva-checkbox-size);
+        /* Dynamic padding to ensure minimum 44x44px touch target */
+        padding: max(0px, calc((44px - var(--aeva-checkbox-size)) / 2));
+        box-sizing: content-box;
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        transition: var(--aeva-checkbox-transition);
+      }
+
+      .box {
+        transition: var(--aeva-checkbox-transition);
+      }
+
+      .checkmark {
+        transition: var(--aeva-checkbox-transition);
+        transform-origin: center;
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      :host([checked]) .checkmark {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        svg,
+        .box,
+        .checkmark {
+          transition: none;
+        }
+      }
+    `,
+  ];
 
   /**
    * Whether the checkbox is checked

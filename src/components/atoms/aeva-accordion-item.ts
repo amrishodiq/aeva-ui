@@ -4,7 +4,7 @@ import { classMap } from 'lit/directives/class-map.js';
 
 /**
  * Aeva Accordion Item component.
- * 
+ *
  * @slot - Default slot for the content of the accordion item.
  * @slot header - Optional slot to customize the header content.
  */
@@ -13,7 +13,8 @@ export class AevaAccordionItem extends LitElement {
   static styles = css`
     :host {
       display: block;
-      border-bottom: var(--aeva-accordion-item-border-width, 0px) solid var(--aeva-accordion-item-border-color);
+      border-bottom: var(--aeva-accordion-item-border-width, 0px) solid
+        var(--aeva-accordion-item-border-color);
     }
 
     :host([no-border]) {
@@ -79,7 +80,7 @@ export class AevaAccordionItem extends LitElement {
       visibility: hidden;
       opacity: 0;
       transform: translateY(-10px);
-      transition: 
+      transition:
         opacity 300ms ease,
         transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
         visibility 300ms;
@@ -120,17 +121,19 @@ export class AevaAccordionItem extends LitElement {
 
     this.open = !this.open;
 
-    this.dispatchEvent(new CustomEvent('toggle', {
-      detail: { open: this.open },
-      bubbles: true,
-      composed: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent('toggle', {
+        detail: { open: this.open },
+        bubbles: true,
+        composed: true,
+      })
+    );
   }
 
   render() {
     return html`
-      <button 
-        class="accordion-header" 
+      <button
+        class="accordion-header"
         @click="${this.toggle}"
         ?disabled="${this.disabled}"
         aria-expanded="${this.open}"
@@ -138,8 +141,18 @@ export class AevaAccordionItem extends LitElement {
         <slot name="header">
           <span>${this.label}</span>
         </slot>
-        <svg class="icon ${classMap({ open: this.open })}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        <svg
+          class="icon ${classMap({ open: this.open })}"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
         </svg>
       </button>
       <div class="accordion-content ${classMap({ open: this.open })}" role="region">

@@ -34,7 +34,9 @@ export class RadioGroupHelper {
    */
   static getValue(groupName: string): string | null {
     const radios = document.querySelectorAll(`aeva-radio[name="${groupName}"]`);
-    const checked = Array.from(radios).find((r) => (r as AevaRadio).checked) as AevaRadio | undefined;
+    const checked = Array.from(radios).find((r) => (r as AevaRadio).checked) as
+      | AevaRadio
+      | undefined;
     return checked ? checked.value : null;
   }
 

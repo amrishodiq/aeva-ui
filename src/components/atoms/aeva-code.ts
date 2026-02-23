@@ -187,7 +187,7 @@ export class AevaCode extends LitElement {
             ${this.copied ? 'Copied!' : 'Copy'}
           </button>
           <pre class="language-${this.language}"><code class="language-${this.language}">${this
-        .code}<slot></slot></code></pre>
+            .code}<slot></slot></code></pre>
         </div>
       </div>
     `;

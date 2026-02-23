@@ -33,171 +33,172 @@ export class AevaProgress extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: inline-block;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-    }
-
-    /* Horizontal Progress */
-    .horizontal-container {
-      width: 100%;
-    }
-
-    .horizontal-track {
-      width: 100%;
-      height: var(--aeva-progress-thickness);
-      background-color: var(--aeva-progress-bg);
-      border-radius: var(--aeva-progress-border-radius);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .horizontal-bar {
-      height: 100%;
-      background-color: var(--aeva-progress-color);
-      border-radius: var(--aeva-progress-border-radius);
-      transition: width 0.3s ease-in-out;
-    }
-
-    /* Horizontal Infinite Animation */
-    .horizontal-bar.infinite {
-      width: 30%;
-      animation: horizontal-infinite var(--aeva-progress-animation-duration) ease-in-out infinite;
-    }
-
-    @keyframes horizontal-infinite {
-      0% {
-        transform: translateX(-100%);
+      :host {
+        display: inline-block;
       }
-      50% {
-        transform: translateX(350%);
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
       }
-      100% {
-        transform: translateX(-100%);
+
+      /* Horizontal Progress */
+      .horizontal-container {
+        width: 100%;
       }
-    }
 
-    /* Circular Progress */
-    .circular-container {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .circular-container.size-sm {
-      width: var(--aeva-progress-size-sm);
-      height: var(--aeva-progress-size-sm);
-    }
-
-    .circular-container.size-md {
-      width: var(--aeva-progress-size-md);
-      height: var(--aeva-progress-size-md);
-    }
-
-    .circular-container.size-lg {
-      width: var(--aeva-progress-size-lg);
-      height: var(--aeva-progress-size-lg);
-    }
-
-    .circular-svg {
-      transform: rotate(-90deg);
-      width: 100%;
-      height: 100%;
-      overflow: visible;
-    }
-
-    .circle-bg {
-      fill: none;
-      stroke: var(--aeva-progress-bg);
-      stroke-width: var(--aeva-progress-thickness);
-    }
-
-    .circle-progress {
-      fill: none;
-      stroke: var(--aeva-progress-color);
-      stroke-width: var(--aeva-progress-thickness);
-      stroke-linecap: round;
-      transition: stroke-dashoffset 0.3s ease-in-out;
-    }
-
-    /* Circular Infinite Animation */
-    .circle-progress.infinite {
-      animation: circular-infinite var(--aeva-progress-animation-duration) linear infinite;
-      transform-origin: center;
-    }
-
-    @keyframes circular-infinite {
-      0% {
-        stroke-dasharray: 1, 300;
-        stroke-dashoffset: 0;
+      .horizontal-track {
+        width: 100%;
+        height: var(--aeva-progress-thickness);
+        background-color: var(--aeva-progress-bg);
+        border-radius: var(--aeva-progress-border-radius);
+        position: relative;
+        overflow: hidden;
       }
-      50% {
-        stroke-dasharray: 150, 300;
-        stroke-dashoffset: -50;
+
+      .horizontal-bar {
+        height: 100%;
+        background-color: var(--aeva-progress-color);
+        border-radius: var(--aeva-progress-border-radius);
+        transition: width 0.3s ease-in-out;
       }
-      100% {
-        stroke-dasharray: 1, 300;
-        stroke-dashoffset: -300;
+
+      /* Horizontal Infinite Animation */
+      .horizontal-bar.infinite {
+        width: 30%;
+        animation: horizontal-infinite var(--aeva-progress-animation-duration) ease-in-out infinite;
       }
-    }
 
-    .circular-svg.infinite {
-      animation: circular-rotate var(--aeva-progress-animation-duration) linear infinite;
-    }
-
-    @keyframes circular-rotate {
-      100% {
-        transform: rotate(270deg);
+      @keyframes horizontal-infinite {
+        0% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(350%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
       }
-    }
 
-    /* Label */
-    .label {
-      color: var(--aeva-progress-label-color);
-      font-size: var(--aeva-progress-label-font-size);
-      font-weight: 500;
-      text-align: center;
-    }
+      /* Circular Progress */
+      .circular-container {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
 
-    /* Percentage Display for Circular */
-    .percentage {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: calc(var(--aeva-progress-size-md) * 0.2);
-      font-weight: 600;
-      color: var(--aeva-progress-label-color);
-    }
+      .circular-container.size-sm {
+        width: var(--aeva-progress-size-sm);
+        height: var(--aeva-progress-size-sm);
+      }
 
-    .size-sm .percentage {
-      font-size: calc(var(--aeva-progress-size-sm) * 0.2);
-    }
+      .circular-container.size-md {
+        width: var(--aeva-progress-size-md);
+        height: var(--aeva-progress-size-md);
+      }
 
-    .size-lg .percentage {
-      font-size: calc(var(--aeva-progress-size-lg) * 0.2);
-    }
+      .circular-container.size-lg {
+        width: var(--aeva-progress-size-lg);
+        height: var(--aeva-progress-size-lg);
+      }
 
-    /* Horizontal Sizes */
-    .horizontal-track.size-sm {
-      height: 0.25rem;
-    }
+      .circular-svg {
+        transform: rotate(-90deg);
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+      }
 
-    .horizontal-track.size-md {
-      height: 0.5rem;
-    }
+      .circle-bg {
+        fill: none;
+        stroke: var(--aeva-progress-bg);
+        stroke-width: var(--aeva-progress-thickness);
+      }
 
-    .horizontal-track.size-lg {
-      height: 0.75rem;
-    }
-  `];
+      .circle-progress {
+        fill: none;
+        stroke: var(--aeva-progress-color);
+        stroke-width: var(--aeva-progress-thickness);
+        stroke-linecap: round;
+        transition: stroke-dashoffset 0.3s ease-in-out;
+      }
+
+      /* Circular Infinite Animation */
+      .circle-progress.infinite {
+        animation: circular-infinite var(--aeva-progress-animation-duration) linear infinite;
+        transform-origin: center;
+      }
+
+      @keyframes circular-infinite {
+        0% {
+          stroke-dasharray: 1, 300;
+          stroke-dashoffset: 0;
+        }
+        50% {
+          stroke-dasharray: 150, 300;
+          stroke-dashoffset: -50;
+        }
+        100% {
+          stroke-dasharray: 1, 300;
+          stroke-dashoffset: -300;
+        }
+      }
+
+      .circular-svg.infinite {
+        animation: circular-rotate var(--aeva-progress-animation-duration) linear infinite;
+      }
+
+      @keyframes circular-rotate {
+        100% {
+          transform: rotate(270deg);
+        }
+      }
+
+      /* Label */
+      .label {
+        color: var(--aeva-progress-label-color);
+        font-size: var(--aeva-progress-label-font-size);
+        font-weight: 500;
+        text-align: center;
+      }
+
+      /* Percentage Display for Circular */
+      .percentage {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: calc(var(--aeva-progress-size-md) * 0.2);
+        font-weight: 600;
+        color: var(--aeva-progress-label-color);
+      }
+
+      .size-sm .percentage {
+        font-size: calc(var(--aeva-progress-size-sm) * 0.2);
+      }
+
+      .size-lg .percentage {
+        font-size: calc(var(--aeva-progress-size-lg) * 0.2);
+      }
+
+      /* Horizontal Sizes */
+      .horizontal-track.size-sm {
+        height: 0.25rem;
+      }
+
+      .horizontal-track.size-md {
+        height: 0.5rem;
+      }
+
+      .horizontal-track.size-lg {
+        height: 0.75rem;
+      }
+    `,
+  ];
 
   /**
    * Shape of the progress indicator
@@ -332,8 +333,8 @@ export class AevaProgress extends LitElement {
           ></circle>
         </svg>
         ${this.mode === 'finite' && this.showPercentage
-        ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
-        : ''}
+          ? html`<div class="percentage">${Math.round(this.percentage)}%</div>`
+          : ''}
       </div>
     `;
   }

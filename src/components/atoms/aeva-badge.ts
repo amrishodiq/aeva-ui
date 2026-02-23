@@ -60,163 +60,164 @@ export class AevaBadge extends LitElement {
   static styles = [
     accessibilityStyles,
     css`
-    :host {
-      display: inline-flex;
-      align-items: center;
-    }
+      :host {
+        display: inline-flex;
+        align-items: center;
+      }
 
-    .badge {
-      font-family: var(--aeva-badge-font-family);
-      border-radius: var(--aeva-badge-border-radius);
-      transition: var(--aeva-badge-transition);
-      display: inline-flex;
-      align-items: center;
-      gap: var(--aeva-badge-gap);
-      border: 1px solid;
-      font-weight: 500;
-      white-space: nowrap;
-      max-width: 100%;
-    }
+      .badge {
+        font-family: var(--aeva-badge-font-family);
+        border-radius: var(--aeva-badge-border-radius);
+        transition: var(--aeva-badge-transition);
+        display: inline-flex;
+        align-items: center;
+        gap: var(--aeva-badge-gap);
+        border: 1px solid;
+        font-weight: 500;
+        white-space: nowrap;
+        max-width: 100%;
+      }
 
-    /* Size variants */
-    .size-sm {
-      padding: var(--aeva-badge-padding-sm);
-      font-size: var(--aeva-badge-font-size-sm);
-    }
+      /* Size variants */
+      .size-sm {
+        padding: var(--aeva-badge-padding-sm);
+        font-size: var(--aeva-badge-font-size-sm);
+      }
 
-    .size-md {
-      padding: var(--aeva-badge-padding-md);
-      font-size: var(--aeva-badge-font-size-md);
-    }
+      .size-md {
+        padding: var(--aeva-badge-padding-md);
+        font-size: var(--aeva-badge-font-size-md);
+      }
 
-    .size-lg {
-      padding: var(--aeva-badge-padding-lg);
-      font-size: var(--aeva-badge-font-size-lg);
-    }
+      .size-lg {
+        padding: var(--aeva-badge-padding-lg);
+        font-size: var(--aeva-badge-font-size-lg);
+      }
 
-    /* Color variants */
-    .variant-primary {
-      background-color: var(--aeva-badge-primary-bg);
-      color: var(--aeva-badge-primary-color);
-      border-color: var(--aeva-badge-primary-border);
-    }
+      /* Color variants */
+      .variant-primary {
+        background-color: var(--aeva-badge-primary-bg);
+        color: var(--aeva-badge-primary-color);
+        border-color: var(--aeva-badge-primary-border);
+      }
 
-    .variant-secondary {
-      background-color: var(--aeva-badge-secondary-bg);
-      color: var(--aeva-badge-secondary-color);
-      border-color: var(--aeva-badge-secondary-border);
-    }
+      .variant-secondary {
+        background-color: var(--aeva-badge-secondary-bg);
+        color: var(--aeva-badge-secondary-color);
+        border-color: var(--aeva-badge-secondary-border);
+      }
 
-    .variant-success {
-      background-color: var(--aeva-badge-success-bg);
-      color: var(--aeva-badge-success-color);
-      border-color: var(--aeva-badge-success-border);
-    }
+      .variant-success {
+        background-color: var(--aeva-badge-success-bg);
+        color: var(--aeva-badge-success-color);
+        border-color: var(--aeva-badge-success-border);
+      }
 
-    .variant-warning {
-      background-color: var(--aeva-badge-warning-bg);
-      color: var(--aeva-badge-warning-color);
-      border-color: var(--aeva-badge-warning-border);
-    }
+      .variant-warning {
+        background-color: var(--aeva-badge-warning-bg);
+        color: var(--aeva-badge-warning-color);
+        border-color: var(--aeva-badge-warning-border);
+      }
 
-    .variant-danger {
-      background-color: var(--aeva-badge-danger-bg);
-      color: var(--aeva-badge-danger-color);
-      border-color: var(--aeva-badge-danger-border);
-    }
+      .variant-danger {
+        background-color: var(--aeva-badge-danger-bg);
+        color: var(--aeva-badge-danger-color);
+        border-color: var(--aeva-badge-danger-border);
+      }
 
-    .variant-info {
-      background-color: var(--aeva-badge-info-bg);
-      color: var(--aeva-badge-info-color);
-      border-color: var(--aeva-badge-info-border);
-    }
+      .variant-info {
+        background-color: var(--aeva-badge-info-bg);
+        color: var(--aeva-badge-info-color);
+        border-color: var(--aeva-badge-info-border);
+      }
 
-    /* Content wrapper */
-    .content {
-      display: inline-flex;
-      align-items: center;
-      gap: var(--aeva-badge-gap);
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+      /* Content wrapper */
+      .content {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--aeva-badge-gap);
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
 
-    /* Delete button */
-    .delete-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: var(--aeva-badge-delete-size);
-      height: var(--aeva-badge-delete-size);
-      border-radius: 50%;
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      padding: 0;
-      margin-left: 2px;
-      transition: var(--aeva-badge-transition);
-      flex-shrink: 0;
-      color: currentColor;
-      -webkit-tap-highlight-color: transparent;
-    }
+      /* Delete button */
+      .delete-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: var(--aeva-badge-delete-size);
+        height: var(--aeva-badge-delete-size);
+        border-radius: 50%;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        padding: 0;
+        margin-left: 2px;
+        transition: var(--aeva-badge-transition);
+        flex-shrink: 0;
+        color: currentColor;
+        -webkit-tap-highlight-color: transparent;
+      }
 
-    .delete-button:hover {
-      background-color: var(--aeva-badge-delete-hover-bg);
-    }
+      .delete-button:hover {
+        background-color: var(--aeva-badge-delete-hover-bg);
+      }
 
-    .delete-button:active {
-      transform: scale(0.9);
-    }
+      .delete-button:active {
+        transform: scale(0.9);
+      }
 
-    .delete-button:focus-visible {
-      outline: 2px solid currentColor;
-      outline-offset: 1px;
-    }
+      .delete-button:focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 1px;
+      }
 
-    /* Delete icon (X) */
-    .delete-icon {
-      width: 10px;
-      height: 10px;
-      position: relative;
-    }
+      /* Delete icon (X) */
+      .delete-icon {
+        width: 10px;
+        height: 10px;
+        position: relative;
+      }
 
-    .delete-icon::before,
-    .delete-icon::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 1.5px;
-      background-color: currentColor;
-      top: 50%;
-      left: 50%;
-      border-radius: 1px;
-    }
+      .delete-icon::before,
+      .delete-icon::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 1.5px;
+        background-color: currentColor;
+        top: 50%;
+        left: 50%;
+        border-radius: 1px;
+      }
 
-    .delete-icon::before {
-      transform: translate(-50%, -50%) rotate(45deg);
-    }
+      .delete-icon::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
 
-    .delete-icon::after {
-      transform: translate(-50%, -50%) rotate(-45deg);
-    }
+      .delete-icon::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+      }
 
-    /* Slot styling */
-    ::slotted(*) {
-      display: inline-flex;
-      align-items: center;
-    }
+      /* Slot styling */
+      ::slotted(*) {
+        display: inline-flex;
+        align-items: center;
+      }
 
-    ::slotted(svg),
-    ::slotted(img) {
-      width: 1em;
-      height: 1em;
-      flex-shrink: 0;
-    }
+      ::slotted(svg),
+      ::slotted(img) {
+        width: 1em;
+        height: 1em;
+        flex-shrink: 0;
+      }
 
-    ::slotted(img) {
-      border-radius: 50%;
-      object-fit: cover;
-    }
-  `];
+      ::slotted(img) {
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    `,
+  ];
 
   /**
    * Badge variant/color
@@ -282,7 +283,7 @@ export class AevaBadge extends LitElement {
           <slot></slot>
         </div>
         ${this.deletable
-        ? html`
+          ? html`
               <button
                 part="delete-button"
                 class="delete-button"
@@ -293,7 +294,7 @@ export class AevaBadge extends LitElement {
                 <span class="delete-icon" aria-hidden="true"></span>
               </button>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }
