@@ -1,0 +1,111 @@
+<aeva-doc-page title="Process"
+    description="The process component (stepper) visualizes a sequence of steps in a workflow.">
+
+    <aeva-doc-section title="Horizontal Process"
+        description="Ideal for linear workflows like checkout or registration.">
+        <aeva-doc-example code='<aeva-process current="1">
+    <aeva-step label="Shipping" description="Enter your address"></aeva-step>
+    <aeva-step label="Payment" description="Choose payment method"></aeva-step>
+    <aeva-step label="Review" description="Confirm your order"></aeva-step>
+</aeva-process>'>
+            <aeva-process current="1" style="width: 100%;">
+                <aeva-step label="Shipping" description="Enter your address"></aeva-step>
+                <aeva-step label="Payment" description="Choose payment method"></aeva-step>
+                <aeva-step label="Review" description="Confirm your order"></aeva-step>
+            </aeva-process>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Vertical Process" description="Great for long status updates or mobile-friendly layouts.">
+        <aeva-doc-example code='<aeva-process direction="vertical" current="5">
+    <aeva-step label="Order Placed" description="24 Feb 2026, 10:00"></aeva-step>
+    <aeva-step label="Processing" description="24 Feb 2026, 11:30"></aeva-step>
+    <aeva-step label="Pending Courier Pickup" description="25 Feb 2026, 07:15"></aeva-step>
+    <aeva-step label="In Transit" description="25 Feb 2026, 08:00"></aeva-step>
+    <aeva-step label="Reached Local Facility" description="25 Feb 2026, 14:20"></aeva-step>
+    <aeva-step label="Out for Delivery" description="Coming today"></aeva-step>
+    <aeva-step label="Delivered" description="Scheduled"></aeva-step>
+</aeva-process>'>
+            <aeva-process direction="vertical" current="5">
+                <aeva-step label="Order Placed" description="24 Feb 2026, 10:00"></aeva-step>
+                <aeva-step label="Processing" description="24 Feb 2026, 11:30"></aeva-step>
+                <aeva-step label="Pending Courier Pickup" description="25 Feb 2026, 07:15"></aeva-step>
+                <aeva-step label="In Transit" description="25 Feb 2026, 08:00"></aeva-step>
+                <aeva-step label="Reached Local Facility" description="25 Feb 2026, 14:20"></aeva-step>
+                <aeva-step label="Out for Delivery" description="Coming today"></aeva-step>
+                <aeva-step label="Delivered" description="Scheduled"></aeva-step>
+            </aeva-process>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Process Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">current</td>
+                        <td><code>number</code></td>
+                        <td>-</td>
+                        <td>The active step index (0-based).</td>
+                        <td><code>0</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">direction</td>
+                        <td><code>string</code></td>
+                        <td><code>horizontal</code>, <code>vertical</code></td>
+                        <td>Layout orientation.</td>
+                        <td><code>horizontal</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Step Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">label</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Step title.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">description</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Detailed description.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">status</td>
+                        <td><code>string</code></td>
+                        <td><code>pending</code>, <code>active</code>, <code>completed</code>, <code>error</code></td>
+                        <td>Step status (usually managed by parent).</td>
+                        <td><code>pending</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

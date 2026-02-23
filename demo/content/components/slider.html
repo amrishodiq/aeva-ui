@@ -1,0 +1,99 @@
+<aeva-doc-page title="Slider"
+    description="The slider component allows users to select a value from a range by moving a thumb along a track.">
+
+    <aeva-doc-section title="Basic Slider" description="A simple slider with default settings (0-100).">
+        <aeva-doc-example code='<aeva-slider label="Volume" value="50"></aeva-slider>'>
+            <aeva-slider label="Volume" value="50" style="max-width: 400px;"></aeva-slider>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Custom Range and Steps"
+        description="Configure the slider with custom min, max, and step values.">
+        <aeva-doc-example code='<aeva-slider label="Quantity" min="0" max="20" step="5" value="10"></aeva-slider>'>
+            <aeva-slider label="Quantity" min="0" max="20" step="5" value="10" style="max-width: 400px;"></aeva-slider>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Disabled State"
+        description="Use the <span class='property-tag'>disabled</span> property to prevent user interaction.">
+        <aeva-doc-example code='<aeva-slider label="Brightness" value="30" disabled></aeva-slider>'>
+            <aeva-slider label="Brightness" value="30" disabled style="max-width: 400px;"></aeva-slider>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slider Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">label</td>
+                        <td><code>string</code></td>
+                        <td>The text displayed above the slider.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">value</td>
+                        <td><code>number</code></td>
+                        <td>The current value of the slider.</td>
+                        <td><code>0</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">min</td>
+                        <td><code>number</code></td>
+                        <td>The minimum value of the slider.</td>
+                        <td><code>0</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">max</td>
+                        <td><code>number</code></td>
+                        <td>The maximum value of the slider.</td>
+                        <td><code>100</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">step</td>
+                        <td><code>number</code></td>
+                        <td>The granularity of the slider value.</td>
+                        <td><code>1</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">disabled</td>
+                        <td><code>boolean</code></td>
+                        <td>Whether the slider is interactive.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">input</td>
+                        <td>Dispatched as the slider value is being changed.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">change</td>
+                        <td>Dispatched when the slider value change is committed.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

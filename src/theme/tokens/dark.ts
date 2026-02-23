@@ -465,4 +465,26 @@ export const darkTheme: ThemeVariables = {
   '--aeva-pagination-btn-active-bg': 'var(--aeva-primary-color)',
   '--aeva-pagination-btn-active-color': 'var(--aeva-color-gray-950)',
   '--aeva-pagination-btn-border-radius': '12px',
+
+  // Process
+  '--aeva-process-gap': 'var(--aeva-space-md)',
+  '--aeva-step-circle-size': '32px',
+  '--aeva-step-line-thickness': '2px',
+  '--aeva-step-color-pending': 'var(--aeva-color-gray-600)',
+  '--aeva-step-color-active': 'var(--aeva-primary-color)',
+  '--aeva-step-color-completed': 'var(--aeva-primary-color)',
+  '--aeva-step-color-error': 'var(--aeva-color-red-600)',
+  '--aeva-step-line-color': 'var(--aeva-color-gray-800)',
+  '--aeva-step-circle-bg': 'var(--aeva-color-gray-900)',
+
+
+  // Slider
+  '--aeva-slider-track-height': '6px',
+  '--aeva-slider-track-bg': 'var(--aeva-color-gray-700)',
+  '--aeva-slider-fill-bg': 'var(--aeva-primary-color)',
+  '--aeva-slider-thumb-size': '18px',
+  '--aeva-slider-thumb-bg': 'var(--aeva-primary-color)',
+  '--aeva-slider-thumb-border': '2px solid var(--aeva-primary-color)',
+  '--aeva-slider-thumb-shadow': '0 2px 6px rgba(0, 0, 0, 0.3)',
+
 };
