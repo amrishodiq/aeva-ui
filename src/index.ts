@@ -16,6 +16,7 @@ export { AevaProgress } from './components/atoms/aeva-progress.js';
 export { AevaBadge } from './components/atoms/aeva-badge.js';
 export { AevaRipple } from './components/atoms/aeva-ripple.js';
 export { AevaListItem } from './components/atoms/aeva-list-item.js';
+export { AevaAccordionItem } from './components/atoms/aeva-accordion-item.js';
 export { AevaPopupMenu } from './components/atoms/aeva-popup-menu.js';
 export { AevaTooltip } from './components/atoms/aeva-tooltip.js';
 export { AevaRating } from './components/atoms/aeva-rating.js';
@@ -31,6 +32,8 @@ export { AevaList } from './components/molecules/aeva-list.js';
 export { AevaToast } from './components/molecules/aeva-toast.js';
 export { AevaActionBar } from './components/molecules/aeva-action-bar.js';
 export { AevaCarousel } from './components/molecules/aeva-carousel.js';
+export { AevaAccordion } from './components/molecules/aeva-accordion.js';
+export { AevaPagination } from './components/molecules/aeva-pagination.js';
 
 // Organisms
 export { AevaSidebar } from './components/organisms/aeva-sidebar.js';

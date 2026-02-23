@@ -446,4 +446,23 @@ export const lightTheme: ThemeVariables = {
   '--aeva-table-accent-color': 'var(--aeva-primary-color)',
   '--aeva-table-header-bg': 'var(--aeva-color-gray-50)',
   '--aeva-table-row-bg': 'transparent',
+
+  // Accordion
+  '--aeva-accordion-bg': 'transparent',
+  '--aeva-accordion-border-radius': 'var(--aeva-border-radius-md)',
+  '--aeva-accordion-item-border-color': 'var(--aeva-color-gray-200)',
+  '--aeva-accordion-header-padding': 'var(--aeva-space-md)',
+  '--aeva-accordion-content-padding': 'var(--aeva-space-md)',
+  '--aeva-accordion-header-hover-bg': 'rgba(0, 0, 0, 0.04)',
+  '--aeva-accordion-transition': 'var(--aeva-transition-normal)',
+
+  // Pagination
+  '--aeva-pagination-gap': 'var(--aeva-space-xs)',
+  '--aeva-pagination-btn-size': '40px',
+  '--aeva-pagination-btn-bg': 'var(--aeva-color-white)',
+  '--aeva-pagination-btn-color': 'var(--aeva-color-gray-700)',
+  '--aeva-pagination-btn-hover-bg': 'var(--aeva-color-gray-100)',
+  '--aeva-pagination-btn-active-bg': 'var(--aeva-primary-color)',
+  '--aeva-pagination-btn-active-color': 'var(--aeva-color-white)',
+  '--aeva-pagination-btn-border-radius': '12px',
 };

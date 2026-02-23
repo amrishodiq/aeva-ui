@@ -1,0 +1,100 @@
+<aeva-doc-page title="Pagination"
+    description="The pagination component is used to divide long lists of content into multiple pages.">
+
+    <aeva-doc-section title="Basic Pagination"
+        description="Provide <span class='property-tag'>total</span> and <span class='property-tag'>page-size</span> to calculate pages.">
+        <aeva-doc-example code='<aeva-pagination total="100" page-size="10"></aeva-pagination>'>
+            <aeva-pagination total="100" page-size="10" current="1"></aeva-pagination>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Dots Variant" description="A more compact pagination style using dot indicators.">
+        <aeva-doc-example code='<aeva-pagination variant="dots" total="50" page-size="10"></aeva-pagination>'>
+            <aeva-pagination variant="dots" total="50" page-size="10" current="1"></aeva-pagination>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Complex Pagination"
+        description="Control siblings and boundary counts for larger datasets.">
+        <aeva-doc-example
+            code='<aeva-pagination total="500" page-size="10" sibling-count="2" boundary-count="2"></aeva-pagination>'>
+            <aeva-pagination total="500" page-size="10" current="25" sibling-count="2"
+                boundary-count="2"></aeva-pagination>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">variant</td>
+                        <td><code>string</code></td>
+                        <td><code>number</code>, <code>dots</code></td>
+                        <td>The visual style of the pagination.</td>
+                        <td><code>number</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">total</td>
+                        <td><code>number</code></td>
+                        <td>Total number of items.</td>
+                        <td><code>0</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">current</td>
+                        <td><code>number</code></td>
+                        <td>The active page number (1-based).</td>
+                        <td><code>1</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">page-size</td>
+                        <td><code>number</code></td>
+                        <td>Number of items per page.</td>
+                        <td><code>10</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">sibling-count</td>
+                        <td><code>number</code></td>
+                        <td>Number of pages to show before and after current.</td>
+                        <td><code>1</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">boundary-count</td>
+                        <td><code>number</code></td>
+                        <td>Number of pages to show at the start and end.</td>
+                        <td><code>1</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>change</code></td>
+                        <td><code>{ page: number }</code></td>
+                        <td>Fires when user clicks a page number or arrow.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

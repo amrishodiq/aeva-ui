@@ -1,0 +1,131 @@
+<aeva-doc-page title="Accordion"
+    description="The accordion component allows users to expand and collapse sections of content. It is useful for organizing large amounts of information in a compact space.">
+
+    <aeva-doc-section title="Flush Accordion (Default)"
+        description="A group of collapsible panels without outer borders or separators.">
+        <aeva-doc-example code='<aeva-accordion>
+    <aeva-accordion-item label="Section 1">...</aeva-accordion-item>
+</aeva-accordion>'>
+            <aeva-accordion style="width: 100%; max-width: 600px;">
+                <aeva-accordion-item label="What is Aeva UI?">
+                    <aeva-text variant="body">Aeva UI is a modern design system library built with Lit web components
+                        for rapid web development.</aeva-text>
+                </aeva-accordion-item>
+                <aeva-accordion-item label="How to install?">
+                    <aeva-text variant="body">You can install it via npm: <code>npm install aeva-ui</code></aeva-text>
+                </aeva-accordion-item>
+            </aeva-accordion>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Bordered Accordion"
+        description="A group of collapsible panels with outer borders and item separators.">
+        <aeva-doc-example code='<aeva-accordion variant="bordered">
+    <aeva-accordion-item label="Section 1">...</aeva-accordion-item>
+</aeva-accordion>'>
+            <aeva-accordion variant="bordered" style="width: 100%; max-width: 600px;">
+                <aeva-accordion-item label="Bordered Variant">
+                    <aeva-text variant="body">This variant includes borders between items and an outer container
+                        border.</aeva-text>
+                </aeva-accordion-item>
+                <aeva-accordion-item label="Separator Lines">
+                    <aeva-text variant="body">Borders help distinguish sections more clearly in dense
+                        layouts.</aeva-text>
+                </aeva-accordion-item>
+            </aeva-accordion>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Multiple Expansion"
+        description="Use the <span class='property-tag'>multiple</span> property to allow more than one panel to be open simultaneously.">
+        <aeva-doc-example code='<aeva-accordion multiple>...</aeva-accordion>'>
+            <aeva-accordion multiple style="width: 100%; max-width: 600px;">
+                <aeva-accordion-item label="Expanding Multiple" open>
+                    <aeva-text variant="body">This accordion allows multiple items to be open at once.</aeva-text>
+                </aeva-accordion-item>
+                <aeva-accordion-item label="Another Section" open>
+                    <aeva-text variant="body">Both of these are open because of the multiple attribute.</aeva-text>
+                </aeva-accordion-item>
+            </aeva-accordion>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Disabled State"
+        description="Items can be individually disabled using the <span class='property-tag'>disabled</span> property.">
+        <aeva-doc-example code='<aeva-accordion-item label="Disabled Item" disabled>...</aeva-accordion-item>'>
+            <aeva-accordion style="width: 100%; max-width: 600px;">
+                <aeva-accordion-item label="Clickable Item">
+                    <aeva-text variant="body">This item is interactive.</aeva-text>
+                </aeva-accordion-item>
+                <aeva-accordion-item label="Disabled Item" disabled>
+                    <aeva-text variant="body">You cannot see this content.</aeva-text>
+                </aeva-accordion-item>
+            </aeva-accordion>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Accordion Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">variant</td>
+                        <td><code>string</code></td>
+                        <td><code>flush</code>, <code>bordered</code></td>
+                        <td>The visual style of the accordion.</td>
+                        <td><code>flush</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">multiple</td>
+                        <td><code>boolean</code></td>
+                        <td>Allow multiple items to be open at once.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Accordion Item Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">label</td>
+                        <td><code>string</code></td>
+                        <td>The text displayed in the header.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">open</td>
+                        <td><code>boolean</code></td>
+                        <td>Whether the item is expanded.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">disabled</td>
+                        <td><code>boolean</code></td>
+                        <td>Disables interaction with the item.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>
