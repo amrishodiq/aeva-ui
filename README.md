@@ -7,16 +7,16 @@
 
 A lightweight, customizable design system library built with [Lit](https://lit.dev/) for rapid web development. Perfect for students working on assignments and developers building web applications.
 
-## ✨ Features
+## Features
 
-- 🎨 **Atomic Design Pattern** - Organized components (Atoms → Molecules → Organisms → Templates)
-- ⚡ **Lit Web Components** - Lightweight (~5KB), fast, and framework-agnostic
-- 🎯 **TypeScript First** - Full type safety and autocomplete support
-- 🎨 **Easy Theming** - Customize via CSS Custom Properties
-- 🔥 **Hot Reload** - Fast development experience with Vite
-- 📦 **Tree-shakeable** - Only bundle what you use
+- **Atomic Design Pattern** - Organized components (Atoms → Molecules → Organisms → Templates)
+- **Lit Web Components** - Lightweight (~5KB), fast, and framework-agnostic
+- **TypeScript First** - Full type safety and autocomplete support
+- **Easy Theming** - Customize via CSS Custom Properties
+- **Hot Reload** - Fast development experience with Vite
+- **Tree-shakeable** - Only bundle what you use
 
-## 📦 Installation
+## Installation
 
 ### Via NPM
 ```bash
@@ -34,7 +34,7 @@ Or a specific version:
 <script type="module" src="https://cdn.jsdelivr.net/npm/aeva-ui@0.1.0/dist/aeva-ui.js"></script>
 ```
 
-## 🚀 Quick Start (jsDelivr)
+## Quick Start (jsDelivr)
 
 ```html
 <!DOCTYPE html>
@@ -53,7 +53,7 @@ Or a specific version:
 </html>
 ```
 
-## 🎨 Theming
+## Theming
 
 Aeva UI uses CSS variables for theming. You can override them in your global CSS:
 
@@ -64,14 +64,14 @@ Aeva UI uses CSS variables for theming. You can override them in your global CSS
 }
 ```
 
-## 📁 Project Structure
+## Project Structure
 ... (same as before) ...
 
-## 📝 License
+## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 

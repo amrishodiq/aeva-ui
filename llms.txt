@@ -1,0 +1,68 @@
+# Aeva UI
+
+> Modern Design System Library built with Lit Web Components
+
+A lightweight, customizable design system library built with Lit for rapid web development. Organized following the Atomic Design pattern.
+
+## Core Documentation
+
+- [README.md](README.md): Main overview, installation, and quick start guide.
+- [CONTRIBUTING.md](CONTRIBUTING.md): Guidelines for contributing to the project.
+- [CHANGELOG.md](CHANGELOG.md): History of changes and version releases.
+
+## Component Documentation
+
+### Atoms (22)
+Basic building blocks of the UI.
+- [aeva-accordion-item](docs/atoms/aeva-accordion-item.md)
+- [aeva-badge](docs/atoms/aeva-badge.md)
+- [aeva-button](docs/atoms/aeva-button.md)
+- [aeva-card](docs/atoms/aeva-card.md)
+- [aeva-checkbox](docs/atoms/aeva-checkbox.md)
+- [aeva-code](docs/atoms/aeva-code.md)
+- [aeva-icon](docs/atoms/aeva-icon.md)
+- [aeva-input](docs/atoms/aeva-input.md)
+- [aeva-list-item](docs/atoms/aeva-list-item.md)
+- [aeva-modal](docs/atoms/aeva-modal.md)
+- [aeva-page](docs/atoms/aeva-page.md)
+- [aeva-popup-menu](docs/atoms/aeva-popup-menu.md)
+- [aeva-progress](docs/atoms/aeva-progress.md)
+- [aeva-radio](docs/atoms/aeva-radio.md)
+- [aeva-rating](docs/atoms/aeva-rating.md)
+- [aeva-ripple](docs/atoms/aeva-ripple.md)
+- [aeva-slider](docs/atoms/aeva-slider.md)
+- [aeva-step](docs/atoms/aeva-step.md)
+- [aeva-switch](docs/atoms/aeva-switch.md)
+- [aeva-tab-item](docs/atoms/aeva-tab-item.md)
+- [aeva-text](docs/atoms/aeva-text.md)
+- [aeva-tooltip](docs/atoms/aeva-tooltip.md)
+
+### Molecules (8)
+Simple combinations of atoms.
+- [aeva-accordion](docs/molecules/aeva-accordion.md)
+- [aeva-action-bar](docs/molecules/aeva-action-bar.md)
+- [aeva-carousel](docs/molecules/aeva-carousel.md)
+- [aeva-list](docs/molecules/aeva-list.md)
+- [aeva-pagination](docs/molecules/aeva-pagination.md)
+- [aeva-process](docs/molecules/aeva-process.md)
+- [aeva-tab](docs/molecules/aeva-tab.md)
+- [aeva-toast](docs/molecules/aeva-toast.md)
+
+### Organisms (1)
+Complex combinations of atoms and molecules.
+- [aeva-sidebar](docs/organisms/aeva-sidebar.md)
+
+### Templates (7)
+High-level page layouts and structures.
+- [aeva-bento-grid](docs/templates/aeva-bento-grid.md)
+- [aeva-container](docs/templates/aeva-container.md)
+- [aeva-grid-item](docs/templates/aeva-grid-item.md)
+- [aeva-grid](docs/templates/aeva-grid.md)
+- [aeva-masonry](docs/templates/aeva-masonry.md)
+- [aeva-section](docs/templates/aeva-section.md)
+- [aeva-stack](docs/templates/aeva-stack.md)
+
+## Development Guides
+
+- [how-to-publish.md](dev-docs/how-to-publish.md): Guide for publishing the library to NPM.
+- [playground-proposal.md](plan/playground-proposal.md): Future plans for an interactive component playground.

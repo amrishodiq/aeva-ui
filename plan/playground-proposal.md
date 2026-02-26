@@ -1,46 +1,46 @@
-# 🧪 Aeva UI Interactive Playground: Proposal & Vision
+# Aeva UI Interactive Playground: Proposal & Vision
 
-Sebagai pakar UX dan kritikus UI library, saya melihat **Aeva UI** memiliki "jiwa" yang kuat pada aspek **Glassmorphism**, **Theming**, dan **Modern Aesthetics**. Untuk membuat playground yang tidak sekadar "editor kode biasa" seperti CodePen, kita perlu fitur yang mengeksploitasi keunggulan tersebut.
+As a UX expert and UI library critic, I see that **Aeva UI** has a strong "soul" in the aspects of **Glassmorphism**, **Theming**, and **Modern Aesthetics**. To create a playground that is more than just a "standard code editor" like CodePen, we need features that exploit these advantages.
 
-Berikut adalah ide-ide menarik untuk Interactive Playground Aeva UI:
-
----
-
-## 1. 🪟 The Glass Workbench (Pusat Pengujian Glassmorphism)
-Playground ini harus memiliki fokus utama pada bagaimana efek *blur* dan *transparency* berinteraksi dengan latar belakang yang berbeda.
-- **Dynamic Background Gallery**: Pengguna bisa mengganti background playground dengan satu klik (Gradients, High-res Photos, Abstract Shapes, atau bahkan Video Background) untuk melihat seberapa "tembus pandang" dan elegan komponen Aeva UI di berbagai kondisi.
-- **Blur Intensity Scrubber**: Slider real-time untuk mengubah tingkat `--aeva-backdrop-filter` secara global di seluruh playground.
-
-## 2. 🎨 Live CSS variable "Lab"
-Aeva UI sangat bergantung pada CSS Variables. Daripada membiarkan pengguna menulis CSS manual, sediakan panel GUI.
-- **Theme Architect**: Sidebar berisi color pickers dan slider untuk variabel kunci (`--aeva-primary`, `--aeva-border-radius`, `--aeva-glass-opacity`).
-- **Instant "Ghost" Preview**: Fitur untuk melihat perbandingan side-by-side antara tema yang sedang diedit dengan tema standar (Light/Dark).
-- **Style Export**: Tombol "Copy Theme Config" yang menghasilkan blok CSS `:root` siap pakai.
-
-## 3. 🍱 Layout Recipes & Blueprints
-Banyak playground hanya fokus pada satu komponen. Aeva UI harus fokus pada **Komposisi**.
-- **One-Click Layouts**: Sediakan preset layout seperti "Bento Grid Dashboard", "Sleek Login Page", atau "Glassy Blog Lean". Pengguna bisa memilih preset, lalu playground akan otomatis mengisi kodenya.
-- **Slot Visualizer**: Saat kursor mengarah ke kode, playground menyoroti (highlight) area `<slot>` pada komponen di preview, memudahkan pemula memahami arsitektur Web Components.
-
-## 4. 🚀 Stress Test: Motion & Interaction
-Karena Aeva UI menonjolkan animasi yang halus, playground harus punya cara untuk "pamer".
-- **Interaction Recorder**: Fitur untuk merekam interaksi (misal: buka modal -> klik tombol -> muncul toast) dan menyimpannya sebagai cuplikan animasi pendek atau GIF untuk dibagikan.
-- **Animation Speed Control**: Slider untuk memperlambat semua animasi library menjadi 0.5x atau 0.25x agar pengguna bisa mengagumi detail transisi CSS-nya.
-
-## 5. 🛠 DX (Developer Experience) Perks
-Terinspirasi dari tool modern seperti Raycast atau Framer.
-- **Smart Snippets**: Saat pengguna menambahkan atribut ke komponen di editor (misal: `variant="ghost"`), playground menampilkan dokumentasi singkat dan opsi atribut lain yang tersedia secara *context-aware*.
-- **Sync to Sandbox**: Tombol untuk langsung memindahkan seluruh eksperimen ke CodePen atau StackBlitz jika mereka ingin membangun project yang lebih besar.
+Below are interesting ideas for the Aeva UI Interactive Playground:
 
 ---
 
-### 🧐 Catatan Kritikus
-> "Playground yang sukses bukan yang fiturnya paling banyak, tapi yang paling cepat memberikan momen **'Aha!'** kepada pengguna. Untuk Aeva UI, momen itu adalah saat pengguna melihat betapa cantiknya komponen ini di atas background yang bertekstur. Fokuslah pada visualitas dan kemudahan kustomisasi tanpa harus menyentuh keyboard terlalu sering."
+## 1. The Glass Workbench (Glassmorphism Testing Center)
+This playground should have a primary focus on how *blur* and *transparency* effects interact with different backgrounds.
+- **Dynamic Background Gallery**: Users can change the playground background with one click (Gradients, High-res Photos, Abstract Shapes, or even Video Backgrounds) to see how "translucent" and elegant Aeva UI components look under various conditions.
+- **Blur Intensity Scrubber**: A real-time slider to change the `--aeva-backdrop-filter` level globally across the entire playground.
+
+## 2. Live CSS Variable "Lab"
+Aeva UI relies heavily on CSS Variables. Instead of letting users write manual CSS, provide a GUI panel.
+- **Theme Architect**: A sidebar containing color pickers and sliders for key variables (`--aeva-primary`, `--aeva-border-radius`, `--aeva-glass-opacity`).
+- **Instant "Ghost" Preview**: A feature to see a side-by-side comparison between the theme currently being edited and standard themes (Light/Dark).
+- **Style Export**: A "Copy Theme Config" button that generates a ready-to-use `:root` CSS block.
+
+## 3. Layout Recipes & Blueprints
+Many playgrounds only focus on a single component. Aeva UI should focus on **Composition**.
+- **One-Click Layouts**: Provide preset layouts like "Bento Grid Dashboard", "Sleek Login Page", or "Glassy Blog Lean". Users can choose a preset, and the playground will automatically populate the code.
+- **Slot Visualizer**: When the cursor points to the code, the playground highlights the `<slot>` area on the component in the preview, helping beginners understand the arsitektur of Web Components.
+
+## 4. Stress Test: Motion & Interaction
+Since Aeva UI highlights smooth animations, the playground must have a way to "show off".
+- **Interaction Recorder**: A feature to record interactions (e.g., opening a modal -> clicking a button -> a toast appearing) and save them as short animation clips or GIFs for sharing.
+- **Animation Speed Control**: A slider to slow down all library animations to 0.5x or 0.25x so users can admire the details of their CSS transitions.
+
+## 5. DX (Developer Experience) Perks
+Inspired by modern tools like Raycast or Framer.
+- **Smart Snippets**: When a user adds an attribute to a component in the editor (e.g., `variant="ghost"`), the playground displays a short documentation and other available attribute options in a context-aware manner.
+- **Sync to Sandbox**: A button to immediately move the entire experiment to CodePen or StackBlitz if they want to build a larger project.
 
 ---
 
-## Referensi Terinspirasi Dari:
-- **Tailwind Play**: Untuk kecepatan dan *real-time feedback*.
-- **daisyUI Documentation**: Untuk cara mereka memamerkan banyak tema sekaligus.
-- **Framer**: Untuk kontrol visual yang sangat presisi terhadap desain.
-- **ShaderToy**: Untuk aspek "visual playground" yang sangat memanjakan mata.
+### Critics' Notes
+> "A successful playground isn't the one with the most features, but the one that most quickly provides an **'Aha!'** moment to the user. For Aeva UI, that moment is when the user sees how beautiful these components are on top of a textured background. Focus on visuality and ease of customization without having to touch the keyboard too often."
+
+---
+
+## References Inspired By:
+- **Tailwind Play**: For speed and real-time feedback.
+- **daisyUI Documentation**: For the way they showcase many themes at once.
+- **Framer**: For very precise visual control over design.
+- **ShaderToy**: For the "visual playground" aspect that is very pleasing to the eye.

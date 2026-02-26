@@ -58,7 +58,7 @@ npm publish --access public
 
 ---
 
-## 💡 Versioning Tip
+## Versioning Tip
 Follow [Semantic Versioning (SemVer)](https://semver.org/):
 - **Patch (0.0.x)**: For bug fixes.
 - **Minor (0.x.0)**: For new features that don't break existing ones.
