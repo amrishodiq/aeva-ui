@@ -5,14 +5,14 @@ import { resolve } from 'path';
 export default defineConfig({
     build: {
         lib: {
-            // Entry point untuk library
+            // Library entry point
             entry: resolve(__dirname, 'src/index.ts'),
             name: 'AevaUI',
             formats: ['es', 'umd'],
             fileName: (format) => `aeva-ui.${format === 'es' ? 'js' : 'umd.cjs'}`
         },
         rollupOptions: {
-            // Externalize Lit - jangan bundle Lit ke dalam library
+            // Externalize Lit - don't bundle Lit into the library
             external: [
                 'lit',
                 'lit/decorators.js',
@@ -20,7 +20,7 @@ export default defineConfig({
                 '@lit-labs/context'
             ],
             output: {
-                // Global variables untuk UMD build
+                // Global variables for UMD build
                 globals: {
                     lit: 'Lit',
                     'lit/decorators.js': 'LitDecorators',
@@ -29,14 +29,14 @@ export default defineConfig({
                 }
             }
         },
-        // Generate sourcemaps untuk debugging
+        // Generate sourcemaps for debugging
         sourcemap: true,
         // Output directory
         outDir: 'dist',
-        // Clear output directory sebelum build
+        // Clear output directory before build
         emptyOutDir: true
     },
-    // Server configuration untuk demo page
+    // Server configuration for demo page
     server: {
         open: '/demo/index.html',
         port: 3000

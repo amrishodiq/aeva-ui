@@ -1,6 +1,8 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
+import { SpringController } from '../../controllers/spring-controller';
 
 /**
  * Aeva Accordion Item component.
@@ -55,9 +57,11 @@ export class AevaAccordionItem extends LitElement {
     .icon {
       width: 1.25em;
       height: 1.25em;
+      /* transition removed - handled by spring if we want, or keep simple */
       transition: transform var(--aeva-accordion-transition);
       flex-shrink: 0;
       margin-left: var(--aeva-space-sm);
+      will-change: transform;
     }
 
     .icon.open {
@@ -67,31 +71,20 @@ export class AevaAccordionItem extends LitElement {
     .accordion-content {
       display: grid;
       grid-template-rows: 0fr;
-      transition: grid-template-rows 400ms cubic-bezier(0.4, 0, 0.2, 1);
+      /* transition removed - handled by spring */
       overflow: hidden;
+      will-change: grid-template-rows;
     }
 
-    .accordion-content.open {
-      grid-template-rows: 1fr;
-    }
+    /* .open state for expansion no longer needed as we use the spring value directly */
 
     .accordion-inner {
       min-height: 0;
-      visibility: hidden;
-      opacity: 0;
-      transform: translateY(-10px);
-      transition:
-        opacity 300ms ease,
-        transform 300ms cubic-bezier(0.4, 0, 0.2, 1),
-        visibility 300ms;
+      /* animations handled by spring controller */
+      will-change: transform, opacity;
     }
 
-    .accordion-content.open .accordion-inner {
-      visibility: visible;
-      opacity: 1;
-      transform: translateY(0);
-      transition-delay: 100ms;
-    }
+    /* .open states no longer needed as we use the spring value directly */
 
     .content-padding {
       padding: var(--aeva-accordion-content-padding);
@@ -115,6 +108,18 @@ export class AevaAccordionItem extends LitElement {
    */
   @property({ type: Boolean, reflect: true })
   disabled = false;
+
+  private _expandSpring = new SpringController(this, {
+    stiffness: 0.12,
+    damping: 0.5,
+    mass: 1.1
+  }, 0);
+
+  protected updated(changedProperties: PropertyValues) {
+    if (changedProperties.has('open')) {
+      this._expandSpring.setTarget(this.open ? 1 : 0);
+    }
+  }
 
   private toggle() {
     if (this.disabled) return;
@@ -155,8 +160,21 @@ export class AevaAccordionItem extends LitElement {
           ></path>
         </svg>
       </button>
-      <div class="accordion-content ${classMap({ open: this.open })}" role="region">
-        <div class="accordion-inner">
+      <div 
+        class="accordion-content" 
+        role="region"
+        style="${styleMap({
+      'grid-template-rows': `${this._expandSpring.value}fr`
+    })}"
+      >
+        <div 
+          class="accordion-inner"
+          style="${styleMap({
+      opacity: `${Math.min(1, this._expandSpring.value * 2)}`, // Fade in faster
+      transform: `translateY(${(1 - this._expandSpring.value) * -12}px) scale(${0.97 + this._expandSpring.value * 0.03})`,
+      visibility: this._expandSpring.value > 0.01 ? 'visible' : 'hidden'
+    })}"
+        >
           <div class="content-padding">
             <slot></slot>
           </div>

@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { WithCloseAnimation } from '../../utils/behaviors';
+import { SpringController } from '../../controllers/spring-controller';
 
 /**
  * A full-screen page component with modal behavior and slide animations.
@@ -44,7 +46,8 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
       width: 100%;
       height: 100%;
       background: var(--aeva-page-backdrop-bg);
-      animation: fadeIn var(--aeva-page-animation-duration) ease-out;
+      /* animation removed - handled by spring */
+      will-change: opacity;
     }
 
     .page-container {
@@ -56,19 +59,12 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
       background: var(--aeva-page-background);
       overflow-y: auto;
       overflow-x: hidden;
-      animation: slideInFromRight var(--aeva-page-animation-duration)
-        cubic-bezier(0.34, 1.2, 0.64, 1);
+      /* animation removed - handled by spring */
+      will-change: transform, opacity;
+      outline: none;
     }
 
-    /* Closing animations */
-    :host([closing]) .backdrop {
-      animation: fadeOut var(--aeva-page-animation-duration) cubic-bezier(0.4, 0, 0.2, 1) forwards;
-    }
-
-    :host([closing]) .page-container {
-      animation: slideOutToRight var(--aeva-page-animation-duration) cubic-bezier(0.4, 0, 0.2, 1)
-        forwards;
-    }
+    /* Closing states no longer need CSS animations */
 
     /* Backdrop fade animations */
     @keyframes fadeIn {
@@ -146,6 +142,12 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
   @property({ type: Boolean, attribute: 'disable-history' })
   disableHistory = false;
 
+  private _spring = new SpringController(this, {
+    stiffness: 0.12,
+    damping: 0.65,
+    mass: 1.0
+  }, 0);
+
   private previousFocus: HTMLElement | null = null;
 
   connectedCallback() {
@@ -174,6 +176,7 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
 
   private handleOpen() {
     this.closing = false;
+    this._spring.setTarget(1);
     this.previousFocus = document.activeElement as HTMLElement;
 
     // Lock body scroll
@@ -194,6 +197,7 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
   }
 
   private handleClose() {
+    this._spring.setTarget(0);
     // Restore body scroll
     document.body.style.overflow = '';
 
@@ -239,13 +243,37 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
       window.history.back();
     }
 
-    await this.closeWithAnimation(350); // Match animation duration
+    this.open = false; // Trigger handleClose which sets spring target back to 0
+    await new Promise(resolve => setTimeout(resolve, 500)); // Wait for spring to settle
+    await this.closeWithAnimation(0); // Effectively just hides the host now
   }
 
   render() {
+    const isFirstPage = this.matches(':first-of-type');
+    const springVal = isFirstPage && this.open ? 1 : this._spring.value;
+
     return html`
-      <div part="backdrop" class="backdrop" @click=${this.handleBackdropClick}></div>
-      <div part="page" class="page-container" tabindex="-1" role="dialog" aria-modal="true">
+      <div 
+        part="backdrop" 
+        class="backdrop" 
+        @click=${this.handleBackdropClick}
+        style="${styleMap({
+      opacity: `${springVal}`,
+      visibility: springVal > 0.01 ? 'visible' : 'hidden'
+    })}"
+      ></div>
+      <div 
+        part="page" 
+        class="page-container" 
+        tabindex="-1" 
+        role="dialog" 
+        aria-modal="true"
+        style="${styleMap({
+      transform: `translateX(${(1 - springVal) * 100}%) scale(${0.8 + springVal * 0.2})`,
+      opacity: `${Math.min(1, springVal * 2)}`,
+      visibility: springVal > 0.01 ? 'visible' : 'hidden'
+    })}"
+      >
         <slot></slot>
       </div>
     `;

@@ -1,6 +1,6 @@
 {
     "name": "aeva-ui",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A modern design system library built with Lit web components for rapid web development",
     "type": "module",
     "sideEffects": false,

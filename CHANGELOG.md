@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.2] - 2026-02-26
+
+### Added
+- **Physics-Driven Animations**: Integrated `SpringController` for organic, snappy motion across multiple components.
+- **Component Enhancements**:
+  - `AevaPage`: High-end slide-and-scale navigation transitions with synchronized backdrops.
+  - `AevaPopupMenu`: Snappy, elastic pop-id animations.
+  - `AevaTab`: Fluid indicator morphing and tactile interaction feedback.
+  - `AevaSlider`: Smooth gliding progress bar and reactive thumb effects.
+  - `AevaAccordionItem`: Organic, physics-based expansion logic.
+  - `AevaModal`: Premium elastic entrance and settling animations.
+
+### Improved
+- **Codebase Localization**: Standardized all internal code comments and configuration files (`vite.config.ts`) to English.
+- **Visual Feel**: Replaced legacy CSS transitions with a consistent, substantiative physics system (mass/stiffness/damping).
+
+### Fixed
+- **Slider Precision**: Resolved a track fill overflow glitch when value reached 100%.
+- **Modal Stability**: Fixed an initial state glitch where the opening animation might not trigger correctly.
+- **Tabs Demo**: Corrected a path typo in the demo that was causing content load failures.
+
 ## [0.1.1] - 2026-02-23
 
 ### Added

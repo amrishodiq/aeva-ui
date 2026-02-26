@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { accessibilityStyles } from '../../styles/accessibility';
+import { SpringController } from '../../controllers/spring-controller';
 
 /**
  * A tab item component used within aeva-tab container.
@@ -44,6 +46,8 @@ export class AevaTabItem extends LitElement {
         white-space: nowrap;
         position: relative;
         z-index: 1;
+        will-change: transform;
+        transform: scale(var(--tab-item-scale, 1));
         /* Minimum 44x44px hit area for accessibility */
         min-width: 44px;
         min-height: 44px;
@@ -103,6 +107,21 @@ export class AevaTabItem extends LitElement {
   @property({ type: Number, attribute: false })
   index = 0;
 
+  private _scaleSpring = new SpringController(this, {
+    stiffness: 0.2,
+    damping: 0.5,
+    mass: 0.8
+  });
+
+  private handlePointerDown() {
+    if (this.disabled) return;
+    this._scaleSpring.setTarget(0.95);
+  }
+
+  private handlePointerUp() {
+    this._scaleSpring.setTarget(1.0);
+  }
+
   private handleClick() {
     if (this.disabled) return;
 
@@ -126,6 +145,12 @@ export class AevaTabItem extends LitElement {
         aria-disabled="${this.disabled}"
         tabindex="${this.disabled ? '-1' : '0'}"
         @click="${this.handleClick}"
+        @pointerdown="${this.handlePointerDown}"
+        @pointerup="${this.handlePointerUp}"
+        @pointerleave="${this.handlePointerUp}"
+        style="${styleMap({
+      '--tab-item-scale': this._scaleSpring.value
+    })}"
       >
         <slot>${this.label}</slot>
       </button>

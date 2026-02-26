@@ -1,7 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { accessibilityStyles } from '../../styles/accessibility';
 import { WithCloseAnimation } from '../../utils/behaviors';
+import { SpringController } from '../../controllers/spring-controller';
 
 /**
  * A modal overlay component with backdrop blur effect.
@@ -50,7 +52,7 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
         width: 100%;
         height: 100%;
         background: var(--aeva-modal-backdrop-bg);
-        animation: fadeIn 0.3s ease-out;
+        will-change: opacity;
       }
 
       .modal-container {
@@ -75,7 +77,7 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
         max-width: var(--aeva-modal-max-width);
         width: 100%;
         pointer-events: auto;
-        animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        will-change: transform, opacity;
 
         /* Edge shimmer effect */
         border: 1px solid var(--aeva-modal-border-color);
@@ -115,74 +117,9 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
         box-shadow: 0 25px 50px -12px var(--aeva-modal-shadow-color);
       }
 
-      /* Shimmer effect using pseudo-element */
-      .modal::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        border-radius: var(--aeva-modal-border-radius);
-        padding: 1px;
-        background: var(--aeva-modal-shimmer-gradient);
-        -webkit-mask:
-          linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        pointer-events: none;
-        animation: shimmer 3s ease-in-out infinite;
-      }
+      /* Closing state CSS no longer uses animations, handled by spring */
 
-      /* Closing animation */
-      :host([closing]) .backdrop {
-        animation: fadeOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      }
-
-      :host([closing]) .modal {
-        animation: modalOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadeOut {
-        from {
-          opacity: 1;
-        }
-        to {
-          opacity: 0;
-        }
-      }
-
-      @keyframes modalIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9) translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-      }
-
-      @keyframes modalOut {
-        0% {
-          opacity: 1;
-          transform: scale(1) translateY(0);
-        }
-        100% {
-          opacity: 0;
-          transform: scale(0.92) translateY(20px);
-        }
-      }
+      /* Keyframes for internal elements if needed */
 
       @keyframes shimmer {
         0%,
@@ -255,6 +192,16 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
   @property({ type: Number, attribute: 'blur-amount' })
   blurAmount = 10;
 
+  private spring = new SpringController(
+    this,
+    {
+      stiffness: 0.1,
+      damping: 0.6,
+      mass: 1.2, // Heavier feel for a premium modal
+    },
+    0
+  );
+
   private previousFocus: HTMLElement | null = null;
 
   connectedCallback() {
@@ -297,6 +244,7 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
 
     // Focus the modal
     this.updateComplete.then(() => {
+      this.spring.setTarget(1);
       const modal = this.shadowRoot?.querySelector('.modal') as HTMLElement;
       modal?.focus();
     });
@@ -350,16 +298,34 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
       window.history.back();
     }
 
-    await this.closeWithAnimation(300);
+    this.spring.setTarget(0);
+    // Wait for the spring to settle before hiding the modal from DOM
+    await this.closeWithAnimation(400);
   }
 
   render() {
     return html`
       ${this.backdrop
-        ? html`<div part="backdrop" class="backdrop" @click=${this.handleBackdropClick}></div>`
+        ? html`
+            <div
+              part="backdrop"
+              class="backdrop"
+              style="${styleMap({ opacity: `${this.spring.value}` })}"
+              @click=${this.handleBackdropClick}
+            ></div>`
         : ''}
       <div class="modal-container">
-        <div part="modal" class="modal" tabindex="-1" role="dialog" aria-modal="true">
+        <div
+          part="modal"
+          class="modal"
+          tabindex="-1"
+          role="dialog"
+          aria-modal="true"
+          style="${styleMap({
+          opacity: `${Math.min(1, this.spring.value * 1.5)}`, // Fade in slightly faster
+          transform: `scale(${0.9 + this.spring.value * 0.1}) translateY(${(1 - this.spring.value) * 20}px)`,
+        })}"
+        >
           <slot></slot>
         </div>
       </div>

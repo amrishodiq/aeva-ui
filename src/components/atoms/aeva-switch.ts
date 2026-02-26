@@ -1,5 +1,7 @@
-import { LitElement, html, css } from 'lit';
+import { LitElement, html, css, PropertyValues } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
+import { styleMap } from 'lit/directives/style-map.js';
+import { SpringController } from '../../controllers/spring-controller';
 
 /**
  * Aeva Switch component (Atom).
@@ -54,7 +56,7 @@ export class AevaSwitch extends LitElement {
       height: var(--switch-height);
       background-color: var(--aeva-switch-track-bg);
       border-radius: calc(var(--switch-height) / 2);
-      transition: var(--aeva-switch-transition);
+      transition: background-color var(--aeva-switch-transition);
       box-sizing: border-box;
       overflow: hidden; /* Ensure thumb stays within bounds if scaled heavily */
     }
@@ -68,10 +70,10 @@ export class AevaSwitch extends LitElement {
       background-color: var(--aeva-switch-thumb-bg);
       border-radius: 50%;
       box-shadow: var(--aeva-switch-thumb-shadow);
-      transition: var(--aeva-switch-elastic-transition);
+      /* transition removed - handled by SpringController */
       /* Base transform: center vertically and reset horizontal */
-      transform: translateY(-50%) translateX(0) scaleX(1);
-      transform-origin: left center;
+      transform: translateY(-50%) translateX(0);
+      transform-origin: center center;
       will-change: transform;
     }
 
@@ -89,23 +91,11 @@ export class AevaSwitch extends LitElement {
     }
 
     input:checked + .switch .thumb {
-      /* Travel distance = total width - thumb width - (padding * 2) */
-      --travel: calc(var(--switch-width) - var(--thumb-size) - (var(--padding) * 2));
-      transform: translateY(-50%) translateX(var(--travel)) scaleX(1);
-      transform-origin: right center;
+      /* Translation handled via inline style and SpringController */
     }
 
-    /* Active/Pressed effect (Elastic) */
-    /* When not checked, it stretches from the left to the right */
-    .switch:active .thumb {
-      transform: translateY(-50%) scaleX(1.3);
-    }
-
-    /* When checked, it stretches from the right to the left */
-    input:checked + .switch:active .thumb {
-      --travel: calc(var(--switch-width) - var(--thumb-size) - (var(--padding) * 2));
-      transform: translateY(-50%) translateX(var(--travel)) scaleX(1.3);
-    }
+    /* Scale/Elastic effect handled via spring logic if needed, 
+       but for now we focus on the bouncy translation */
 
     /* Focus State */
     :host(:focus-visible) .switch {
@@ -160,6 +150,27 @@ export class AevaSwitch extends LitElement {
   @property({ type: String, reflect: true })
   variant: 'default' | 'glass' = 'default';
 
+  private spring = new SpringController(this, {
+    stiffness: 0.15,
+    damping: 0.6,
+    mass: 0.5 // Switch thumb should be very light
+  });
+
+  protected updated(changedProperties: PropertyValues) {
+    if (changedProperties.has('checked')) {
+      this._updateSpringTarget();
+    }
+  }
+
+  private _updateSpringTarget() {
+    // We'll calculate the travel distance in pixels
+    // Since we're in Shadow DOM and using CSS variables, 
+    // we might need to get the computed style if variables change, 
+    // but for a standard switch we can use a logical 0 to 1 mapping
+    // and handle the pixel calculation in the styleMap.
+    this.spring.setTarget(this.checked ? 1 : 0);
+  }
+
   private _handleChange(e: Event) {
     const input = e.target as HTMLInputElement;
     this.checked = input.checked;
@@ -191,16 +202,21 @@ export class AevaSwitch extends LitElement {
           tabindex="-1"
         />
         <div class="switch">
-          <div class="thumb"></div>
+          <div 
+            class="thumb"
+            style="${styleMap({
+      transform: `translateY(-50%) translateX(calc(${this.spring.value} * (var(--switch-width) - var(--thumb-size) - (var(--padding) * 2))))`
+    })}"
+          ></div>
         </div>
         ${this.label || html`<slot></slot>`
-          ? html`
+        ? html`
               <span class="label">
                 ${this.label}
                 <slot></slot>
               </span>
             `
-          : ''}
+        : ''}
       </div>
     `;
   }

@@ -1,6 +1,7 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
+import { SpringController } from '../../controllers/spring-controller';
 
 /**
  * Aeva Slider component.
@@ -100,6 +101,7 @@ export class AevaSlider extends LitElement {
       border-radius: calc(var(--aeva-slider-track-height) / 2);
       pointer-events: none;
       z-index: 2;
+      will-change: width;
     }
 
     /* Thumb Styling */
@@ -112,11 +114,10 @@ export class AevaSlider extends LitElement {
       border-radius: 50%;
       box-shadow: var(--aeva-slider-thumb-shadow);
       cursor: pointer;
-      transition:
-        transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
-        box-shadow 0.2s ease;
+      /* transition removed - handled by progress spring and event state */
       position: relative;
       z-index: 3;
+      will-change: transform;
     }
 
     input[type='range']::-moz-range-thumb {
@@ -134,11 +135,11 @@ export class AevaSlider extends LitElement {
     }
 
     input[type='range']:active::-webkit-slider-thumb {
-      transform: scale(1.2);
+      /* Handled by thumbScaleSpring */
     }
 
     input[type='range']:active::-moz-range-thumb {
-      transform: scale(1.2);
+      /* Handled by thumbScaleSpring */
     }
 
     input[type='range']:focus::-webkit-slider-thumb {
@@ -173,8 +174,26 @@ export class AevaSlider extends LitElement {
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
-  @state()
-  private _progressPercent = 0;
+  // Spring to animate the bar glide
+  private _progressSpring = new SpringController(this, {
+    stiffness: 0.06,
+    damping: 0.8,
+    mass: 1.0
+  });
+
+  // Spring to animate thumb scale on press
+  private _thumbScaleSpring = new SpringController(this, {
+    stiffness: 0.2,
+    damping: 0.5,
+    mass: 0.8
+  });
+
+  constructor() {
+    super();
+    // Initialize springs correctly
+    this._progressSpring.value = 0;
+    this._progressSpring.target = 0;
+  }
 
   protected firstUpdated() {
     this._updateProgress();
@@ -191,7 +210,16 @@ export class AevaSlider extends LitElement {
   }
 
   private _updateProgress() {
-    this._progressPercent = ((this.value - this.min) / (this.max - this.min)) * 100;
+    const percent = ((this.value - this.min) / (this.max - this.min)) * 100;
+    this._progressSpring.setTarget(percent);
+  }
+
+  private _handlePointerDown() {
+    this._thumbScaleSpring.setTarget(1.2);
+  }
+
+  private _handlePointerUp() {
+    this._thumbScaleSpring.setTarget(1.0);
   }
 
   private _handleInput(e: Event) {
@@ -222,16 +250,16 @@ export class AevaSlider extends LitElement {
     return html`
       <div class="slider-container">
         ${this.label
-          ? html`
+        ? html`
               <div class="label-header">
                 <span class="label">${this.label}</span>
                 <span class="value-display">${this.value}</span>
               </div>
             `
-          : ''}
+        : ''}
         <div class="input-wrapper">
           <div class="track-base"></div>
-          <div class="track-fill" style="${styleMap({ width: `${this._progressPercent}%` })}"></div>
+          <div class="track-fill" style="${styleMap({ width: `${Math.max(0, Math.min(100, this._progressSpring.value))}%` })}"></div>
           <input
             type="range"
             .value="${String(this.value)}"
@@ -241,7 +269,22 @@ export class AevaSlider extends LitElement {
             ?disabled="${this.disabled}"
             @input="${this._handleInput}"
             @change="${this._handleChange}"
+            @pointerdown="${this._handlePointerDown}"
+            @pointerup="${this._handlePointerUp}"
+            @pointerleave="${this._handlePointerUp}"
+            style="${styleMap({
+          '--thumb-scale': this._thumbScaleSpring.value,
+          // We inject a CSS variable because we can't directly style the Shadow DOM pseudo-element via inline styles
+        })}"
           />
+          <style>
+            input[type='range']::-webkit-slider-thumb {
+               transform: scale(var(--thumb-scale, 1));
+            }
+            input[type='range']::-moz-range-thumb {
+               transform: scale(var(--thumb-scale, 1));
+            }
+          </style>
         </div>
       </div>
     `;

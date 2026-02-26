@@ -1,6 +1,8 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property, state, query } from 'lit/decorators.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { accessibilityStyles } from '../../styles/accessibility';
+import { SpringController } from '../../controllers/spring-controller';
 import '../atoms/aeva-tab-item';
 
 /**
@@ -67,32 +69,13 @@ export class AevaTab extends LitElement {
         position: absolute;
         background: var(--aeva-tab-active-bg);
         border-radius: calc(var(--aeva-tab-border-radius) - var(--aeva-tab-padding));
-        transition:
-          left var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing),
-          width var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing),
-          transform var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing);
+        /* transitions removed - handled by springs */
         pointer-events: none;
         z-index: 0;
-        will-change: left, width, transform;
+        will-change: left, width;
       }
 
-      /* Morphing animation states */
-      .background.morphing {
-        /* Scale effect during transition for "stretching" appearance */
-        animation: morph var(--aeva-tab-transition-duration) var(--aeva-tab-transition-timing);
-      }
-
-      @keyframes morph {
-        0% {
-          transform: scaleX(1);
-        }
-        50% {
-          transform: scaleX(1.1);
-        }
-        100% {
-          transform: scaleX(1);
-        }
-      }
+      /* Morphing handled by separate springs for position and scale */
 
       ::slotted(aeva-tab-item) {
         position: relative;
@@ -135,14 +118,21 @@ export class AevaTab extends LitElement {
 
   @state()
   private backgroundStyle = {
-    left: '0px',
     top: '0px',
-    width: '0px',
     height: '0px',
   };
 
-  @state()
-  private isMorphing = false;
+  private _xSpring = new SpringController(this, {
+    stiffness: 0.1,
+    damping: 0.7,
+    mass: 1.0
+  }, 0);
+
+  private _widthSpring = new SpringController(this, {
+    stiffness: 0.1,
+    damping: 0.7,
+    mass: 1.0
+  }, 0);
 
   private scrollTimeout: number | null = null;
 
@@ -318,23 +308,13 @@ export class AevaTab extends LitElement {
       const width = itemRect.width;
       const height = itemRect.height;
 
+      this._xSpring.setTarget(left);
+      this._widthSpring.setTarget(width);
+
       this.backgroundStyle = {
-        left: `${left}px`,
         top: `${top}px`,
-        width: `${width}px`,
         height: `${height}px`,
       };
-
-      // Trigger morphing animation
-      if (animate) {
-        this.isMorphing = true;
-        setTimeout(
-          () => {
-            this.isMorphing = false;
-          },
-          parseFloat(getComputedStyle(this).getPropertyValue('--aeva-duration-normal')) || 200
-        );
-      }
 
       // Scroll active tab into view if not fully visible
       if (animate) {
@@ -377,19 +357,17 @@ export class AevaTab extends LitElement {
   }
 
   render() {
-    const backgroundClasses = this.isMorphing ? 'background morphing' : 'background';
-
     return html`
       <div class="container" part="container" role="tablist">
         <div
-          class="${backgroundClasses}"
+          class="background"
           part="background"
-          style="
-            left: ${this.backgroundStyle.left};
-            top: ${this.backgroundStyle.top};
-            width: ${this.backgroundStyle.width};
-            height: ${this.backgroundStyle.height};
-          "
+          style="${styleMap({
+      left: `${this._xSpring.value}px`,
+      top: this.backgroundStyle.top,
+      width: `${this._widthSpring.value}px`,
+      height: this.backgroundStyle.height,
+    })}"
         ></div>
         <slot @slotchange="${this.handleSlotChange}"></slot>
       </div>

@@ -1,7 +1,9 @@
 import { LitElement, html, css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
+import { styleMap } from 'lit/directives/style-map.js';
 import { accessibilityStyles } from '../../styles/accessibility';
+import { SpringController } from '../../controllers/spring-controller';
 
 /**
  * A versatile button component with multiple variants, sizes, and states.
@@ -98,6 +100,8 @@ export class AevaButton extends LitElement {
         min-height: 44px;
         /* Remove tap highlight on mobile */
         -webkit-tap-highlight-color: transparent;
+        /* Performance optimization for spring animation */
+        will-change: transform;
       }
 
       :host([full-width]) button {
@@ -164,7 +168,6 @@ export class AevaButton extends LitElement {
 
       .variant-primary:active:not(:disabled) {
         background-color: var(--aeva-button-primary-active-bg);
-        transform: scale(0.95);
         box-shadow: none;
       }
 
@@ -183,7 +186,6 @@ export class AevaButton extends LitElement {
 
       .variant-secondary:active:not(:disabled) {
         background-color: var(--aeva-button-secondary-active-bg);
-        transform: scale(0.95);
         box-shadow: none;
       }
 
@@ -203,7 +205,6 @@ export class AevaButton extends LitElement {
         background-color: rgba(102, 126, 234, 0.2); /* Fallback */
         background-color: var(--aeva-button-outline-active-bg);
         background-color: color-mix(in srgb, var(--aeva-button-outline-color) 20%, transparent);
-        transform: scale(0.95);
       }
 
       /* Ghost variant */
@@ -220,7 +221,6 @@ export class AevaButton extends LitElement {
         background-color: rgba(102, 126, 234, 0.2); /* Fallback */
         background-color: var(--aeva-button-ghost-active-bg);
         background-color: color-mix(in srgb, var(--aeva-button-ghost-color) 20%, transparent);
-        transform: scale(0.95);
       }
 
       /* Danger variant */
@@ -238,7 +238,6 @@ export class AevaButton extends LitElement {
 
       .variant-danger:active:not(:disabled) {
         background-color: var(--aeva-button-danger-active-bg);
-        transform: scale(0.95);
         box-shadow: none;
       }
 
@@ -365,6 +364,20 @@ export class AevaButton extends LitElement {
   @property({ type: String, attribute: 'aria-label' })
   ariaLabel: string | null = null;
 
+  private spring = new SpringController(this, {
+    stiffness: 0.2,
+    damping: 0.5,
+    mass: 0.8 // Membuat tombol terasa lebih ringan dan responsif
+  });
+
+  private _handlePointerDown() {
+    this.spring.setTarget(0.92); // Squash
+  }
+
+  private _handlePointerUp() {
+    this.spring.setTarget(1); // Balik kenyal
+  }
+
   connectedCallback() {
     super.connectedCallback();
 
@@ -388,7 +401,7 @@ export class AevaButton extends LitElement {
       if (filledSlots.includes('icon-only') && filledSlots.length > 1) {
         console.warn(
           '[aeva-button] Using slot="icon-only" with other slots may cause unexpected layout. ' +
-            'Use icon-only alone, or use icon-left/icon-right with default slot.',
+          'Use icon-only alone, or use icon-left/icon-right with default slot.',
           { filledSlots }
         );
       }
@@ -408,9 +421,14 @@ export class AevaButton extends LitElement {
         part="button"
         type="${this.type}"
         class="${classMap(classes)}"
+        style="${styleMap({ transform: `scale(${this.spring.value})` })}"
         ?disabled="${this.disabled || this.loading}"
         aria-label="${this.ariaLabel || ''}"
         aria-busy="${this.loading}"
+        @pointerdown=${this._handlePointerDown}
+        @pointerup=${this._handlePointerUp}
+        @pointerleave=${this._handlePointerUp}
+        @contextmenu=${(e: Event) => e.preventDefault()}
       >
         <slot name="icon-only"></slot>
         <slot name="icon-left"></slot>
