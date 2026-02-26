@@ -178,14 +178,14 @@ export class AevaSlider extends LitElement {
   private _progressSpring = new SpringController(this, {
     stiffness: 0.06,
     damping: 0.8,
-    mass: 1.0
+    mass: 1.0,
   });
 
   // Spring to animate thumb scale on press
   private _thumbScaleSpring = new SpringController(this, {
     stiffness: 0.2,
     damping: 0.5,
-    mass: 0.8
+    mass: 0.8,
   });
 
   constructor() {
@@ -250,16 +250,21 @@ export class AevaSlider extends LitElement {
     return html`
       <div class="slider-container">
         ${this.label
-        ? html`
+          ? html`
               <div class="label-header">
                 <span class="label">${this.label}</span>
                 <span class="value-display">${this.value}</span>
               </div>
             `
-        : ''}
+          : ''}
         <div class="input-wrapper">
           <div class="track-base"></div>
-          <div class="track-fill" style="${styleMap({ width: `${Math.max(0, Math.min(100, this._progressSpring.value))}%` })}"></div>
+          <div
+            class="track-fill"
+            style="${styleMap({
+              width: `${Math.max(0, Math.min(100, this._progressSpring.value))}%`,
+            })}"
+          ></div>
           <input
             type="range"
             .value="${String(this.value)}"
@@ -273,16 +278,16 @@ export class AevaSlider extends LitElement {
             @pointerup="${this._handlePointerUp}"
             @pointerleave="${this._handlePointerUp}"
             style="${styleMap({
-          '--thumb-scale': this._thumbScaleSpring.value,
-          // We inject a CSS variable because we can't directly style the Shadow DOM pseudo-element via inline styles
-        })}"
+              '--thumb-scale': this._thumbScaleSpring.value,
+              // We inject a CSS variable because we can't directly style the Shadow DOM pseudo-element via inline styles
+            })}"
           />
           <style>
             input[type='range']::-webkit-slider-thumb {
-               transform: scale(var(--thumb-scale, 1));
+              transform: scale(var(--thumb-scale, 1));
             }
             input[type='range']::-moz-range-thumb {
-               transform: scale(var(--thumb-scale, 1));
+              transform: scale(var(--thumb-scale, 1));
             }
           </style>
         </div>

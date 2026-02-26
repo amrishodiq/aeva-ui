@@ -153,7 +153,7 @@ export class AevaSwitch extends LitElement {
   private spring = new SpringController(this, {
     stiffness: 0.15,
     damping: 0.6,
-    mass: 0.5 // Switch thumb should be very light
+    mass: 0.5, // Switch thumb should be very light
   });
 
   protected updated(changedProperties: PropertyValues) {
@@ -164,8 +164,8 @@ export class AevaSwitch extends LitElement {
 
   private _updateSpringTarget() {
     // We'll calculate the travel distance in pixels
-    // Since we're in Shadow DOM and using CSS variables, 
-    // we might need to get the computed style if variables change, 
+    // Since we're in Shadow DOM and using CSS variables,
+    // we might need to get the computed style if variables change,
     // but for a standard switch we can use a logical 0 to 1 mapping
     // and handle the pixel calculation in the styleMap.
     this.spring.setTarget(this.checked ? 1 : 0);
@@ -202,21 +202,21 @@ export class AevaSwitch extends LitElement {
           tabindex="-1"
         />
         <div class="switch">
-          <div 
+          <div
             class="thumb"
             style="${styleMap({
-      transform: `translateY(-50%) translateX(calc(${this.spring.value} * (var(--switch-width) - var(--thumb-size) - (var(--padding) * 2))))`
-    })}"
+              transform: `translateY(-50%) translateX(calc(${this.spring.value} * (var(--switch-width) - var(--thumb-size) - (var(--padding) * 2))))`,
+            })}"
           ></div>
         </div>
         ${this.label || html`<slot></slot>`
-        ? html`
+          ? html`
               <span class="label">
                 ${this.label}
                 <slot></slot>
               </span>
             `
-        : ''}
+          : ''}
       </div>
     `;
   }

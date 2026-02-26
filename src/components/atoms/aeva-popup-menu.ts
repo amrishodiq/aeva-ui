@@ -132,11 +132,15 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
   @state()
   private origin = 'top left';
 
-  private _spring = new SpringController(this, {
-    stiffness: 0.2,
-    damping: 0.6,
-    mass: 1.0
-  }, 0);
+  private _spring = new SpringController(
+    this,
+    {
+      stiffness: 0.2,
+      damping: 0.6,
+      mass: 1.0,
+    },
+    0
+  );
 
   connectedCallback() {
     super.connectedCallback();
@@ -205,7 +209,7 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
   public close = async () => {
     if (!this.open || this.closing) return;
     this._spring.setTarget(0);
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await new Promise((resolve) => setTimeout(resolve, 300));
     await this.closeWithAnimation(0);
     this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
   };
@@ -219,14 +223,14 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
     return html`
       <div class="backdrop" @click=${this.handleBackdropClick}></div>
       <div class="popup-container" style="top: ${this.y}px; left: ${this.x}px;">
-        <div 
-          part="popup" 
-          class="popup" 
+        <div
+          part="popup"
+          class="popup"
           style="${styleMap({
-      'transform-origin': this.origin,
-      opacity: `${this._spring.value}`,
-      transform: `scale(${0.95 + 0.05 * this._spring.value}) translateY(${(1 - this._spring.value) * -8}px)`
-    })}"
+            'transform-origin': this.origin,
+            opacity: `${this._spring.value}`,
+            transform: `scale(${0.95 + 0.05 * this._spring.value}) translateY(${(1 - this._spring.value) * -8}px)`,
+          })}"
         >
           <slot></slot>
         </div>

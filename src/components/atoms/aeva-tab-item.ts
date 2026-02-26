@@ -110,7 +110,7 @@ export class AevaTabItem extends LitElement {
   private _scaleSpring = new SpringController(this, {
     stiffness: 0.2,
     damping: 0.5,
-    mass: 0.8
+    mass: 0.8,
   });
 
   private handlePointerDown() {
@@ -149,8 +149,8 @@ export class AevaTabItem extends LitElement {
         @pointerup="${this.handlePointerUp}"
         @pointerleave="${this.handlePointerUp}"
         style="${styleMap({
-      '--tab-item-scale': this._scaleSpring.value
-    })}"
+          '--tab-item-scale': this._scaleSpring.value,
+        })}"
       >
         <slot>${this.label}</slot>
       </button>

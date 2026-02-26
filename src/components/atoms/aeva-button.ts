@@ -367,7 +367,7 @@ export class AevaButton extends LitElement {
   private spring = new SpringController(this, {
     stiffness: 0.2,
     damping: 0.5,
-    mass: 0.8 // Membuat tombol terasa lebih ringan dan responsif
+    mass: 0.8, // Membuat tombol terasa lebih ringan dan responsif
   });
 
   private _handlePointerDown() {
@@ -401,7 +401,7 @@ export class AevaButton extends LitElement {
       if (filledSlots.includes('icon-only') && filledSlots.length > 1) {
         console.warn(
           '[aeva-button] Using slot="icon-only" with other slots may cause unexpected layout. ' +
-          'Use icon-only alone, or use icon-left/icon-right with default slot.',
+            'Use icon-only alone, or use icon-left/icon-right with default slot.',
           { filledSlots }
         );
       }

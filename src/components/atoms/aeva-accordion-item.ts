@@ -109,11 +109,15 @@ export class AevaAccordionItem extends LitElement {
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
-  private _expandSpring = new SpringController(this, {
-    stiffness: 0.12,
-    damping: 0.5,
-    mass: 1.1
-  }, 0);
+  private _expandSpring = new SpringController(
+    this,
+    {
+      stiffness: 0.12,
+      damping: 0.5,
+      mass: 1.1,
+    },
+    0
+  );
 
   protected updated(changedProperties: PropertyValues) {
     if (changedProperties.has('open')) {
@@ -160,20 +164,20 @@ export class AevaAccordionItem extends LitElement {
           ></path>
         </svg>
       </button>
-      <div 
-        class="accordion-content" 
+      <div
+        class="accordion-content"
         role="region"
         style="${styleMap({
-      'grid-template-rows': `${this._expandSpring.value}fr`
-    })}"
+          'grid-template-rows': `${this._expandSpring.value}fr`,
+        })}"
       >
-        <div 
+        <div
           class="accordion-inner"
           style="${styleMap({
-      opacity: `${Math.min(1, this._expandSpring.value * 2)}`, // Fade in faster
-      transform: `translateY(${(1 - this._expandSpring.value) * -12}px) scale(${0.97 + this._expandSpring.value * 0.03})`,
-      visibility: this._expandSpring.value > 0.01 ? 'visible' : 'hidden'
-    })}"
+            opacity: `${Math.min(1, this._expandSpring.value * 2)}`, // Fade in faster
+            transform: `translateY(${(1 - this._expandSpring.value) * -12}px) scale(${0.97 + this._expandSpring.value * 0.03})`,
+            visibility: this._expandSpring.value > 0.01 ? 'visible' : 'hidden',
+          })}"
         >
           <div class="content-padding">
             <slot></slot>

@@ -142,11 +142,15 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
   @property({ type: Boolean, attribute: 'disable-history' })
   disableHistory = false;
 
-  private _spring = new SpringController(this, {
-    stiffness: 0.12,
-    damping: 0.65,
-    mass: 1.0
-  }, 0);
+  private _spring = new SpringController(
+    this,
+    {
+      stiffness: 0.12,
+      damping: 0.65,
+      mass: 1.0,
+    },
+    0
+  );
 
   private previousFocus: HTMLElement | null = null;
 
@@ -244,7 +248,7 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
     }
 
     this.open = false; // Trigger handleClose which sets spring target back to 0
-    await new Promise(resolve => setTimeout(resolve, 500)); // Wait for spring to settle
+    await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for spring to settle
     await this.closeWithAnimation(0); // Effectively just hides the host now
   }
 
@@ -253,26 +257,26 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
     const springVal = isFirstPage && this.open ? 1 : this._spring.value;
 
     return html`
-      <div 
-        part="backdrop" 
-        class="backdrop" 
+      <div
+        part="backdrop"
+        class="backdrop"
         @click=${this.handleBackdropClick}
         style="${styleMap({
-      opacity: `${springVal}`,
-      visibility: springVal > 0.01 ? 'visible' : 'hidden'
-    })}"
+          opacity: `${springVal}`,
+          visibility: springVal > 0.01 ? 'visible' : 'hidden',
+        })}"
       ></div>
-      <div 
-        part="page" 
-        class="page-container" 
-        tabindex="-1" 
-        role="dialog" 
+      <div
+        part="page"
+        class="page-container"
+        tabindex="-1"
+        role="dialog"
         aria-modal="true"
         style="${styleMap({
-      transform: `translateX(${(1 - springVal) * 100}%) scale(${0.8 + springVal * 0.2})`,
-      opacity: `${Math.min(1, springVal * 2)}`,
-      visibility: springVal > 0.01 ? 'visible' : 'hidden'
-    })}"
+          transform: `translateX(${(1 - springVal) * 100}%) scale(${0.8 + springVal * 0.2})`,
+          opacity: `${Math.min(1, springVal * 2)}`,
+          visibility: springVal > 0.01 ? 'visible' : 'hidden',
+        })}"
       >
         <slot></slot>
       </div>

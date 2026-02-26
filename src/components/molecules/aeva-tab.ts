@@ -122,17 +122,25 @@ export class AevaTab extends LitElement {
     height: '0px',
   };
 
-  private _xSpring = new SpringController(this, {
-    stiffness: 0.1,
-    damping: 0.7,
-    mass: 1.0
-  }, 0);
+  private _xSpring = new SpringController(
+    this,
+    {
+      stiffness: 0.1,
+      damping: 0.7,
+      mass: 1.0,
+    },
+    0
+  );
 
-  private _widthSpring = new SpringController(this, {
-    stiffness: 0.1,
-    damping: 0.7,
-    mass: 1.0
-  }, 0);
+  private _widthSpring = new SpringController(
+    this,
+    {
+      stiffness: 0.1,
+      damping: 0.7,
+      mass: 1.0,
+    },
+    0
+  );
 
   private scrollTimeout: number | null = null;
 
@@ -363,11 +371,11 @@ export class AevaTab extends LitElement {
           class="background"
           part="background"
           style="${styleMap({
-      left: `${this._xSpring.value}px`,
-      top: this.backgroundStyle.top,
-      width: `${this._widthSpring.value}px`,
-      height: this.backgroundStyle.height,
-    })}"
+            left: `${this._xSpring.value}px`,
+            top: this.backgroundStyle.top,
+            width: `${this._widthSpring.value}px`,
+            height: this.backgroundStyle.height,
+          })}"
         ></div>
         <slot @slotchange="${this.handleSlotChange}"></slot>
       </div>
