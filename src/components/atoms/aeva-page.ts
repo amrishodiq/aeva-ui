@@ -35,7 +35,7 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
       z-index: var(--aeva-page-z-index);
     }
 
-    :host([open]) {
+    :host([open]), :host([closing]) {
       display: block;
     }
 
@@ -180,7 +180,7 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
 
   private handleOpen() {
     this.closing = false;
-    this._spring.setTarget(1);
+    this._spring.setTarget(1, { stiffness: 0.12, damping: 0.65, mass: 1.0 });
     this.previousFocus = document.activeElement as HTMLElement;
 
     // Lock body scroll
@@ -242,19 +242,27 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
    * @param fromPopState Whether the close was triggered by a popstate event
    */
   public async close(fromPopState = false) {
+    this._spring.setTarget(0, { stiffness: 0.02, damping: 0.94, mass: 2.0 });
+    await this._spring.whenSettled();
+    await this.closeWithAnimation(0);
+
     // Remove from history if we added it, unless we're already coming from a popstate
     if (!fromPopState && !this.disableHistory && window.history.state?.aevaPage === true) {
       window.history.back();
     }
-
-    this.open = false; // Trigger handleClose which sets spring target back to 0
-    await new Promise((resolve) => setTimeout(resolve, 500)); // Wait for spring to settle
-    await this.closeWithAnimation(0); // Effectively just hides the host now
   }
 
   render() {
     const isFirstPage = this.matches(':first-of-type');
-    const springVal = isFirstPage && this.open ? 1 : this._spring.value;
+    // Only clamp to 1 if we are the first page, open, AND not in the middle of closing
+    const springVal = isFirstPage && this.open && !this.closing ? 1 : this._spring.value;
+
+    // Asymmetric animation: No scale during close, linear fade
+    const transform = this.closing
+      ? `translateX(${(1 - springVal) * 100}%)`
+      : `translateX(${(1 - springVal) * 100}%) scale(${0.8 + springVal * 0.2})`;
+
+    const opacity = this.closing ? springVal : Math.min(1, springVal * 2);
 
     return html`
       <div
@@ -262,9 +270,9 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
         class="backdrop"
         @click=${this.handleBackdropClick}
         style="${styleMap({
-          opacity: `${springVal}`,
-          visibility: springVal > 0.01 ? 'visible' : 'hidden',
-        })}"
+      opacity: `${springVal}`,
+      visibility: springVal > 0.01 ? 'visible' : 'hidden',
+    })}"
       ></div>
       <div
         part="page"
@@ -273,10 +281,10 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
         role="dialog"
         aria-modal="true"
         style="${styleMap({
-          transform: `translateX(${(1 - springVal) * 100}%) scale(${0.8 + springVal * 0.2})`,
-          opacity: `${Math.min(1, springVal * 2)}`,
-          visibility: springVal > 0.01 ? 'visible' : 'hidden',
-        })}"
+      transform,
+      opacity: `${opacity}`,
+      visibility: springVal > 0.01 ? 'visible' : 'hidden',
+    })}"
       >
         <slot></slot>
       </div>

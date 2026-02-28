@@ -15,6 +15,8 @@ export class SpringController implements ReactiveController {
   private velocity: number = 0;
   private config: SpringConfig;
   private isAnimating: boolean = false;
+  private settlePromise: Promise<void> | null = null;
+  private settleResolve: (() => void) | null = null;
 
   constructor(
     host: ReactiveControllerHost,
@@ -32,12 +34,34 @@ export class SpringController implements ReactiveController {
     this.isAnimating = false;
   }
 
-  setTarget(v: number) {
+  setTarget(v: number, config?: SpringConfig) {
+    if (config) {
+      this.config = { ...this.config, ...config };
+    }
+
+    // Prevent redundant animation frames if we are already settled at the target
+    if (this.target === v && this.value === v && !this.isAnimating) {
+      return;
+    }
+
     this.target = v;
     if (!this.isAnimating) {
       this.isAnimating = true;
       this._animate();
     }
+  }
+
+  /**
+   * Returns a promise that resolves when the spring has settled at its target.
+   */
+  public whenSettled(): Promise<void> {
+    if (!this.isAnimating) return Promise.resolve();
+    if (!this.settlePromise) {
+      this.settlePromise = new Promise((resolve) => {
+        this.settleResolve = resolve;
+      });
+    }
+    return this.settlePromise;
   }
 
   private _animate() {
@@ -63,6 +87,13 @@ export class SpringController implements ReactiveController {
     } else {
       this.value = this.target; // Snap to final target
       this.isAnimating = false;
+
+      if (this.settleResolve) {
+        this.settleResolve();
+        this.settleResolve = null;
+        this.settlePromise = null;
+      }
+
       this.host.requestUpdate();
     }
   }

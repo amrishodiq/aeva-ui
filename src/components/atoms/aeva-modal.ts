@@ -293,14 +293,15 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
    * @param fromPopState Whether the close was triggered by a popstate event
    */
   public async close(fromPopState = false) {
+    this.spring.setTarget(0);
+    // Wait for the spring to settle before hiding the modal from DOM
+    await this.spring.whenSettled();
+    await this.closeWithAnimation(0);
+
     // Remove from history if we added it, unless we're already coming from a popstate
     if (!fromPopState && window.history.state?.aevaModal === true) {
       window.history.back();
     }
-
-    this.spring.setTarget(0);
-    // Wait for the spring to settle before hiding the modal from DOM
-    await this.closeWithAnimation(400);
   }
 
   render() {
@@ -321,9 +322,9 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
           role="dialog"
           aria-modal="true"
           style="${styleMap({
-            opacity: `${Math.min(1, this.spring.value * 1.5)}`, // Fade in slightly faster
-            transform: `scale(${0.9 + this.spring.value * 0.1}) translateY(${(1 - this.spring.value) * 20}px)`,
-          })}"
+          opacity: `${Math.min(1, this.spring.value * 1.5)}`, // Fade in slightly faster
+          transform: `scale(${0.9 + this.spring.value * 0.1}) translateY(${(1 - this.spring.value) * 20}px)`,
+        })}"
         >
           <slot></slot>
         </div>
