@@ -29,14 +29,23 @@ export class AevaAvatar extends LitElement {
         align-items: center;
         justify-content: center;
         position: relative;
-        background-color: var(--aeva-avatar-bg, var(--aeva-avatar-bg-default));
-        color: var(--aeva-avatar-text-color, var(--aeva-avatar-text-color-default));
         font-family: var(--aeva-font-family, inherit);
         font-weight: var(--aeva-avatar-font-weight, 600);
         user-select: none;
-        overflow: hidden;
         border: var(--aeva-avatar-border, none);
         box-sizing: border-box;
+      }
+
+      .avatar-inner {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: inherit;
+        overflow: hidden;
+        background-color: var(--aeva-avatar-bg, var(--aeva-avatar-bg-default));
+        color: var(--aeva-avatar-text-color, var(--aeva-avatar-text-color-default));
       }
 
       /* Shapes */
@@ -176,7 +185,9 @@ export class AevaAvatar extends LitElement {
 
         return html`
             <div class="${classMap(classes)}" aria-label="${this.name || 'User Avatar'}" role="img">
-                ${content}
+                <div class="avatar-inner">
+                    ${content}
+                </div>
                 ${this.status !== 'none' ? html`
                     <div class="status-badge status-${this.status}" title="${this.status}"></div>
                 ` : ''}

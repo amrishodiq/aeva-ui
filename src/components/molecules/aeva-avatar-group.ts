@@ -41,12 +41,12 @@ export class AevaAvatarGroup extends LitElement {
         display: flex;
         align-items: center;
         justify-content: center;
-        background-color: var(--aeva-surface-3, #334155);
-        color: var(--aeva-text-color, #f8fafc);
+        background-color: var(--aeva-surface-3, #94a3b8);
+        color: var(--aeva-surface-on, #ffffff);
         font-family: var(--aeva-font-family, inherit);
         font-weight: 600;
         border-radius: 50%;
-        border: 2px solid var(--aeva-bg-color, #0f172a);
+        border: 2px solid var(--aeva-bg-color, #ffffff);
         position: relative;
         box-sizing: border-box;
       }
@@ -99,7 +99,7 @@ export class AevaAvatarGroup extends LitElement {
             avatar.setAttribute('size', this.size);
 
             // Apply border variable inline to guarantee inheritance
-            avatar.style.setProperty('--aeva-avatar-border', '2px solid var(--aeva-bg-color, #0f172a)');
+            avatar.style.setProperty('--aeva-avatar-border', '2px solid var(--aeva-bg-color, #ffffff)');
 
             // Reset transition and position
             avatar.style.position = 'relative';
