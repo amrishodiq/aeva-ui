@@ -32,17 +32,23 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
     accessibilityStyles,
     css`
       :host {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: var(--aeva-z-modal);
+        display: contents;
       }
 
-      :host([open]) {
-        display: block;
+      dialog {
+        padding: 0;
+        margin: 0;
+        border: none;
+        background: transparent;
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        max-height: none;
+        overflow: hidden;
+      }
+
+      dialog::backdrop {
+        background: transparent;
       }
 
       .backdrop {
@@ -52,6 +58,7 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
         width: 100%;
         height: 100%;
         background: var(--aeva-modal-backdrop-bg);
+        z-index: 1;
         will-change: opacity;
       }
 
@@ -65,6 +72,7 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
         align-items: center;
         justify-content: center;
         pointer-events: none;
+        z-index: 2;
       }
 
       .modal {
@@ -234,8 +242,24 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
     this.closing = false;
     this.previousFocus = document.activeElement as HTMLElement;
 
+    const dialogEl = this.shadowRoot?.getElementById('native-dialog') as HTMLDialogElement;
+    if (dialogEl && !dialogEl.open) {
+      dialogEl.showModal();
+    }
+
     // Lock body scroll
-    document.body.style.overflow = 'hidden';
+    const scrollContainer = document.querySelector('.content-area') || window;
+    const isWindow = scrollContainer === window;
+
+    // Calculate the current scroll to position the modal exactly there
+    // This is no longer necessary as .modal-container and .backdrop are now position: fixed
+    // but the overflow logic below is still needed to prevent background scrolling.
+
+    if (isWindow) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      (scrollContainer as HTMLElement).style.overflow = 'hidden';
+    }
 
     // Add to history for back button support
     if (window.history.state?.aevaModal !== true) {
@@ -246,19 +270,31 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
     this.updateComplete.then(() => {
       this.spring.setTarget(1);
       const modal = this.shadowRoot?.querySelector('.modal') as HTMLElement;
-      modal?.focus();
+      modal?.focus({ preventScroll: true });
     });
 
     this.dispatchEvent(new CustomEvent('open', { bubbles: true, composed: true }));
   }
 
   private handleClose() {
+    const dialogEl = this.shadowRoot?.getElementById('native-dialog') as HTMLDialogElement;
+    if (dialogEl && dialogEl.open) {
+      dialogEl.close();
+    }
+
     // Restore body scroll
-    document.body.style.overflow = '';
+    const scrollContainer = document.querySelector('.content-area') || window;
+    const isWindow = scrollContainer === window;
+
+    if (isWindow) {
+      document.body.style.overflow = '';
+    } else {
+      (scrollContainer as HTMLElement).style.overflow = '';
+    }
 
     // Restore focus
     if (this.previousFocus) {
-      this.previousFocus.focus();
+      this.previousFocus.focus({ preventScroll: true });
       this.previousFocus = null;
     }
 
@@ -288,6 +324,13 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
     }
   };
 
+  private handleNativeCancel = (e: Event) => {
+    e.preventDefault(); // Prevent native instant close
+    if (this.closeOnEsc && this.open) {
+      this.close(false); // Trigger animated close
+    }
+  };
+
   /**
    * Close the modal with animation
    * @param fromPopState Whether the close was triggered by a popstate event
@@ -306,29 +349,30 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
 
   render() {
     return html`
-      ${this.backdrop
+      <dialog id="native-dialog" @cancel=${this.handleNativeCancel}>
+        ${this.backdrop
         ? html` <div
-            part="backdrop"
-            class="backdrop"
-            style="${styleMap({ opacity: `${this.spring.value}` })}"
-            @click=${this.handleBackdropClick}
-          ></div>`
+              part="backdrop"
+              class="backdrop"
+              style="${styleMap({ opacity: `${this.spring.value}` })}"
+              @click=${this.handleBackdropClick}
+            ></div>`
         : ''}
-      <div class="modal-container">
-        <div
-          part="modal"
-          class="modal"
-          tabindex="-1"
-          role="dialog"
-          aria-modal="true"
-          style="${styleMap({
+        <div class="modal-container">
+          <div
+            part="modal"
+            class="modal"
+            tabindex="-1"
+            role="document"
+            style="${styleMap({
           opacity: `${Math.min(1, this.spring.value * 1.5)}`, // Fade in slightly faster
           transform: `scale(${0.9 + this.spring.value * 0.1}) translateY(${(1 - this.spring.value) * 20}px)`,
         })}"
-        >
-          <slot></slot>
+          >
+            <slot></slot>
+          </div>
         </div>
-      </div>
+      </dialog>
     `;
   }
 }

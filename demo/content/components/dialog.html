@@ -1,0 +1,185 @@
+<aeva-doc-page title="Dialog"
+    description="A highly structured premium dialog component built on top of aeva-modal. It provides a standardized layout with a header, icon, title, description, and footer actions, while inheriting all glassmorphism and animation capabilities.">
+
+    <aeva-doc-section title="Basic Usage" description="A simple dialog with title, description, and footer actions.">
+        <aeva-doc-example>
+            <aeva-button onclick="document.getElementById('basic-dialog').open = true">Open Dialog</aeva-button>
+            <aeva-dialog id="basic-dialog" title="Delete Account"
+                description="Are you sure you want to delete your account? This action cannot be undone.">
+                <aeva-icon slot="icon" name="alert-triangle" color="var(--aeva-error)"></aeva-icon>
+                <div style="margin-top: 1rem;">
+                    <aeva-text variant="body" style="display: block; margin-bottom: 0.5rem;">Please type your username
+                        to confirm.</aeva-text>
+                    <aeva-input placeholder="Username..."></aeva-input>
+                </div>
+                <div slot="footer">
+                    <aeva-button variant="ghost"
+                        onclick="document.getElementById('basic-dialog').close()">Cancel</aeva-button>
+                    <aeva-button variant="danger"
+                        onclick="document.getElementById('basic-dialog').close()">Delete</aeva-button>
+                </div>
+            </aeva-dialog>
+            <div slot="code">
+                <aeva-button onclick="document.getElementById('basic-dialog').open = true">Open Dialog</aeva-button>
+
+                <aeva-dialog id="basic-dialog" title="Delete Account"
+                    description="Are you sure you want to delete your account? This action cannot be undone.">
+                    <aeva-icon slot="icon" name="alert-triangle" color="var(--aeva-error)"></aeva-icon>
+
+                    <div style="margin-top: 1rem;">
+                        <aeva-text variant="body" style="margin-bottom: 0.5rem; display: block;">Please type your
+                            username to confirm.</aeva-text>
+                        <aeva-input placeholder="Username..."></aeva-input>
+                    </div>
+
+                    <div slot="footer">
+                        <aeva-button variant="ghost"
+                            onclick="document.getElementById('basic-dialog').close()">Cancel</aeva-button>
+                        <aeva-button variant="danger"
+                            onclick="document.getElementById('basic-dialog').close()">Delete</aeva-button>
+                    </div>
+                </aeva-dialog>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Custom Header" description="Use the header slot for a fully custom header layout.">
+        <aeva-doc-example>
+            <aeva-button variant="secondary"
+                onclick="document.getElementById('custom-header-dialog').open = true">Custom Header</aeva-button>
+            <aeva-dialog id="custom-header-dialog">
+                <div slot="header" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                    <div
+                        style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--aeva-primary), var(--aeva-secondary)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                        JD
+                    </div>
+                    <div>
+                        <aeva-text variant="h3" style="margin: 0; line-height: 1;">John Doe</aeva-text>
+                        <aeva-text variant="body" style="font-size: 0.875rem;">Administrator</aeva-text>
+                    </div>
+                </div>
+
+                <aeva-text variant="body">Manage permissions and settings for this user.</aeva-text>
+
+                <div slot="footer">
+                    <aeva-button variant="primary"
+                        onclick="document.getElementById('custom-header-dialog').close()">Save Changes</aeva-button>
+                </div>
+            </aeva-dialog>
+            <div slot="code">
+                <aeva-dialog id="custom-header-dialog">
+                    <div slot="header" style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                        <div
+                            style="width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--aeva-primary), var(--aeva-secondary)); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                            JD
+                        </div>
+                        <div>
+                            <aeva-text variant="h3" style="margin: 0; line-height: 1;">John Doe</aeva-text>
+                            <aeva-text variant="body"
+                                style="margin: 0; color: var(--aeva-text-secondary); font-size: 0.875rem;">Administrator</aeva-text>
+                        </div>
+                    </div>
+
+                    <aeva-text variant="body">Manage permissions and settings for this user.</aeva-text>
+
+                    <div slot="footer">
+                        <aeva-button variant="primary"
+                            onclick="document.getElementById('custom-header-dialog').close()">Save Changes</aeva-button>
+                    </div>
+                </aeva-dialog>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">open</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Whether the dialog is currently visible.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">title</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Dialog header title text.</td>
+                        <td><code>""</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">description</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Secondary dialog description text.</td>
+                        <td><code>""</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">hide-close</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Hides the default close icon button in the top right.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">backdrop</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Show dark overlay background.</td>
+                        <td><code>true</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">close-on-backdrop</td>
+                        <td><code>boolean</code></td>
+                        <td><code>true</code>, <code>false</code></td>
+                        <td>Close when user clicks the backdrop.</td>
+                        <td><code>true</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slots">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Slot</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">default</td>
+                        <td>Body content of the dialog.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">icon</td>
+                        <td>Icon element (e.g., <code>&lt;aeva-icon&gt;</code>) placed before the title structure.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">header</td>
+                        <td>Replaces title and description completely with a custom layout.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">footer</td>
+                        <td>Action buttons area at the bottom right.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+</aeva-doc-page>

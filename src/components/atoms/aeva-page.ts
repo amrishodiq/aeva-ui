@@ -194,7 +194,7 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
     // Focus the page
     this.updateComplete.then(() => {
       const page = this.shadowRoot?.querySelector('.page-container') as HTMLElement;
-      page?.focus();
+      page?.focus({ preventScroll: true });
     });
 
     this.dispatchEvent(new CustomEvent('open', { bubbles: true, composed: true }));
@@ -207,7 +207,7 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
 
     // Restore focus
     if (this.previousFocus) {
-      this.previousFocus.focus();
+      this.previousFocus.focus({ preventScroll: true });
       this.previousFocus = null;
     }
 

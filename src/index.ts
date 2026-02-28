@@ -6,6 +6,7 @@ export { AevaButton } from './components/atoms/aeva-button.js';
 export { AevaText } from './components/atoms/aeva-text.js';
 export { AevaInput } from './components/atoms/aeva-input.js';
 export { AevaModal } from './components/atoms/aeva-modal.js';
+export { AevaDialog } from './components/atoms/aeva-dialog.js';
 export { AevaPage } from './components/atoms/aeva-page.js';
 export { AevaIcon } from './components/atoms/aeva-icon.js';
 export { AevaRadio } from './components/atoms/aeva-radio.js';
