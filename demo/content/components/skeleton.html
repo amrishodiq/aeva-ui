@@ -1,0 +1,178 @@
+<aeva-doc-page title="Skeleton"
+    description="A placeholder component used to visually communicate that content is currently loading, enhancing perceived performance.">
+
+    <aeva-doc-section title="Overview"
+        description="Skeletons should mimic the layout of the actual content being loaded. Use different shapes to build a realistic loading state.">
+        <aeva-doc-example>
+            <div style="width: 100%; max-width: 300px;">
+                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                    <aeva-skeleton shape="circular" width="48px" height="48px"></aeva-skeleton>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <aeva-skeleton shape="text" width="60%"></aeva-skeleton>
+                        <aeva-skeleton shape="text" width="40%"></aeva-skeleton>
+                    </div>
+                </div>
+                <aeva-skeleton shape="rectangular" height="150px" width="100%"></aeva-skeleton>
+            </div>
+            <div slot="code">
+                <div style="display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem;">
+                    <aeva-skeleton shape="circular" width="48px" height="48px"></aeva-skeleton>
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 0.5rem;">
+                        <aeva-skeleton shape="text" width="60%"></aeva-skeleton>
+                        <aeva-skeleton shape="text" width="40%"></aeva-skeleton>
+                    </div>
+                </div>
+                <aeva-skeleton shape="rectangular" height="150px" width="100%"></aeva-skeleton>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Shapes"
+        description="Skeletons come in three primitive shapes: text, circular, and rectangular.">
+        <aeva-doc-example>
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
+                <div>
+                    <aeva-text variant="label" style="display:block; margin-bottom: 0.5rem;">Text</aeva-text>
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <aeva-skeleton shape="text" width="100%"></aeva-skeleton>
+                        <aeva-skeleton shape="text" width="80%"></aeva-skeleton>
+                        <aeva-skeleton shape="text" width="60%"></aeva-skeleton>
+                    </div>
+                </div>
+                <div>
+                    <aeva-text variant="label" style="display:block; margin-bottom: 0.5rem;">Circular</aeva-text>
+                    <div style="display: flex; gap: 1rem;">
+                        <aeva-skeleton shape="circular" width="40px" height="40px"></aeva-skeleton>
+                        <aeva-skeleton shape="circular" width="60px" height="60px"></aeva-skeleton>
+                        <aeva-skeleton shape="circular" width="80px" height="80px"></aeva-skeleton>
+                    </div>
+                </div>
+                <div>
+                    <aeva-text variant="label" style="display:block; margin-bottom: 0.5rem;">Rectangular</aeva-text>
+                    <div style="display: flex; gap: 1rem;">
+                        <aeva-skeleton shape="rectangular" width="100px" height="100px"></aeva-skeleton>
+                        <aeva-skeleton shape="rectangular" width="200px" height="100px"></aeva-skeleton>
+                    </div>
+                </div>
+            </div>
+            <div slot="code">
+                <!-- Text Shape (Defaults to 1em height) -->
+                <aeva-skeleton shape="text" width="100%"></aeva-skeleton>
+                <aeva-skeleton shape="text" width="80%"></aeva-skeleton>
+
+                <!-- Circular Shape -->
+                <aeva-skeleton shape="circular" width="60px" height="60px"></aeva-skeleton>
+
+                <!-- Rectangular Shape -->
+                <aeva-skeleton shape="rectangular" width="200px" height="100px"></aeva-skeleton>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Animations"
+        description="Choose between 'pulse' (fades in and out) and 'wave' (a shimmer effect passing across the skeleton). You can also disable animation with 'none'. Note: animations are automatically disabled for users with prefers-reduced-motion.">
+        <aeva-doc-example>
+            <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%; max-width: 400px;">
+                <div>
+                    <aeva-text variant="label" style="display:block; margin-bottom: 0.5rem;">Pulse (Default)</aeva-text>
+                    <aeva-skeleton shape="rectangular" height="80px" width="120px"></aeva-skeleton>
+                </div>
+                <div>
+                    <aeva-text variant="label" style="display:block; margin-bottom: 0.5rem;">Wave</aeva-text>
+                    <aeva-skeleton shape="rectangular" animation="wave" height="80px" width="120px"></aeva-skeleton>
+                </div>
+                <div>
+                    <aeva-text variant="label" style="display:block; margin-bottom: 0.5rem;">None</aeva-text>
+                    <aeva-skeleton shape="rectangular" animation="none" height="80px" width="120px"></aeva-skeleton>
+                </div>
+            </div>
+            <div slot="code">
+                <aeva-skeleton animation="pulse"></aeva-skeleton>
+                <aeva-skeleton animation="wave"></aeva-skeleton>
+                <aeva-skeleton animation="none"></aeva-skeleton>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">shape</td>
+                        <td><code>string</code></td>
+                        <td><code>text</code>, <code>circular</code>, <code>rectangular</code></td>
+                        <td>Defines the visual shape construct.</td>
+                        <td><code>text</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">animation</td>
+                        <td><code>string</code></td>
+                        <td><code>pulse</code>, <code>wave</code>, <code>none</code></td>
+                        <td>Type of loading animation to display.</td>
+                        <td><code>pulse</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">width</td>
+                        <td><code>string</code></td>
+                        <td>Valid CSS width</td>
+                        <td>Explicit width value (ex: '100px', '50%').</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">height</td>
+                        <td><code>string</code></td>
+                        <td>Valid CSS height</td>
+                        <td>Explicit height value (ex: '100px', '4rem').</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization" description="Aeva Skeleton can be customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-skeleton-bg</code></td>
+                        <td>Base background color of the skeleton shape.</td>
+                        <td><code>rgba(150, 150, 150, 0.2)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-skeleton-wave-color</code></td>
+                        <td>Gradient peak color used exclusively for the wave animation.</td>
+                        <td><code>rgba(255, 255, 255, 0.4)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-skeleton-border-radius</code></td>
+                        <td>Rounding applied to text and rectangular shapes.</td>
+                        <td><code>4px</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-skeleton-animation-duration</code></td>
+                        <td>Speed of the pulsing or wave animation.</td>
+                        <td><code>1.5s</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

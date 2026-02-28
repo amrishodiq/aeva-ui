@@ -1,0 +1,166 @@
+<aeva-doc-page title="Empty State"
+    description="A component to display when a container is empty, guiding users when there is no data to show.">
+
+    <aeva-doc-section title="Overview"
+        description="Empty states should inform the user why the view is empty and, if possible, provide an action to get started.">
+        <aeva-doc-example>
+            <div style="width: 100%; border: 1px dashed var(--aeva-border-color); border-radius: 8px;">
+                <aeva-empty-state title="No Projects Found" description="Get started by creating a new project.">
+                    <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M3.75 9.776c.112-.017.227-.026.344-.026h15.812c.117 0 .232.009.344.026m-16.5 0a2.25 2.25 0 00-1.883 2.542l.857 6a2.25 2.25 0 002.227 1.932H19.05a2.25 2.25 0 002.227-1.932l.857-6a2.25 2.25 0 00-1.883-2.542m-16.5 0V6A2.25 2.25 0 016 3.75h3.879a1.5 1.5 0 011.06.44l2.122 2.12a1.5 1.5 0 001.06.44H18A2.25 2.25 0 0120.25 9v.776" />
+                    </svg>
+                    <aeva-button variant="primary">Create Project</aeva-button>
+                </aeva-empty-state>
+            </div>
+            <div slot="code">
+                <aeva-empty-state title="No Projects Found" description="Get started by creating a new project.">
+                    <svg slot="icon">...</svg>
+                    <aeva-button variant="primary">Create Project</aeva-button>
+                </aeva-empty-state>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Layouts"
+        description="The empty state supports vertical (centered) and horizontal arrangements.">
+        <aeva-doc-example>
+            <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
+                <div style="border: 1px dashed var(--aeva-border-color); border-radius: 8px;">
+                    <aeva-empty-state layout="vertical" title="Vertical Layout"
+                        description="Default centered alignment.">
+                        <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <aeva-button variant="secondary">Retry</aeva-button>
+                    </aeva-empty-state>
+                </div>
+                <div style="border: 1px dashed var(--aeva-border-color); border-radius: 8px;">
+                    <aeva-empty-state layout="horizontal" title="Horizontal Layout"
+                        description="Aligns content side-by-side for wider containers.">
+                        <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <aeva-button variant="secondary">Clear Filters</aeva-button>
+                    </aeva-empty-state>
+                </div>
+            </div>
+            <div slot="code">
+                <aeva-empty-state layout="vertical" title="...">...</aeva-empty-state>
+                <aeva-empty-state layout="horizontal" title="...">...</aeva-empty-state>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Sizes"
+        description="Scale the empty state using the size property (sm, md, lg) to match the container's visual weight.">
+        <aeva-doc-example>
+            <div style="display: flex; flex-direction: column; gap: 2rem; width: 100%;">
+                <!-- Small -->
+                <div style="border: 1px solid var(--aeva-border-color); border-radius: 8px;">
+                    <aeva-empty-state size="sm" title="Small View"
+                        description="Ideal for tight spaces like sidebars or popovers.">
+                        <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                        </svg>
+                    </aeva-empty-state>
+                </div>
+                <!-- Large -->
+                <div style="border: 1px solid var(--aeva-border-color); border-radius: 8px;">
+                    <aeva-empty-state size="lg" title="Large View"
+                        description="Ideal for immersive, full-page empty states.">
+                        <svg slot="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                        <aeva-button variant="primary" size="lg">Upload Image</aeva-button>
+                    </aeva-empty-state>
+                </div>
+            </div>
+            <div slot="code">
+                <aeva-empty-state size="sm">...</aeva-empty-state>
+                <aeva-empty-state size="md">...</aeva-empty-state>
+                <aeva-empty-state size="lg">...</aeva-empty-state>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">layout</td>
+                        <td><code>string</code></td>
+                        <td><code>vertical</code>, <code>horizontal</code></td>
+                        <td>Arrangement of content.</td>
+                        <td><code>vertical</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">size</td>
+                        <td><code>string</code></td>
+                        <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
+                        <td>Scale of the component (typography, padding, icon slot).</td>
+                        <td><code>md</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">title</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Primary descriptive text.</td>
+                        <td><code>""</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">description</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Secondary descriptive text.</td>
+                        <td><code>""</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slots">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Slot</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name"><code>icon</code></td>
+                        <td>Slot for SVG or Image illustrations.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name"><code>title</code></td>
+                        <td>Slot for custom DOM rendering over the title property.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name"><code>description</code></td>
+                        <td>Slot for custom DOM rendering over the description property.</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name"><code>(default)</code></td>
+                        <td>Used for assigning actionable elements like Buttons or Links.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

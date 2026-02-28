@@ -70,6 +70,19 @@
         <aeva-text variant="body">MacOS-style window for professional code snippet presentation.</aeva-text>
     </aeva-card>
 
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/skeleton', true)">
+        <div slot="header"><aeva-text variant="h4">Skeleton</aeva-text></div>
+        <aeva-text variant="body">Placeholder element representing content as it loads, enhancing perceived
+            performance.</aeva-text>
+        <div slot="footer" class="card-footer-flex"
+            style="align-items: center; justify-content: space-between; width: 100%;">
+            <aeva-skeleton shape="circular" width="24px" height="24px"></aeva-skeleton>
+            <div style="flex:1; margin-left:8px;">
+                <aeva-skeleton shape="text" width="100%"></aeva-skeleton>
+            </div>
+        </div>
+    </aeva-card>
+
     <aeva-card padding="md" interactive onclick="showComponentDetail('components/checkbox', true)">
         <div slot="header"><aeva-text variant="h4">Checkbox</aeva-text></div>
         <aeva-text variant="body">Allow users to select one or more items from a set.</aeva-text>
@@ -175,6 +188,12 @@
         <div slot="footer" class="card-footer">
             <aeva-button variant="primary" size="sm">View Details</aeva-button>
         </div>
+    </aeva-card>
+
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/empty-state', true)">
+        <div slot="header"><aeva-text variant="h4">Empty State</aeva-text></div>
+        <aeva-text variant="body">Placeholder for empty content states, providing feedback and actionable
+            guidance.</aeva-text>
     </aeva-card>
 
     <aeva-card padding="md" interactive onclick="showComponentDetail('components/carousel', true)">
