@@ -1,0 +1,89 @@
+<aeva-doc-page title="Date Picker"
+    description="An interactive calendar component that adapts its UI depending on screen size. It uses a desktop popover on larger screens and a touch-friendly bottom sheet on mobile devices.">
+
+    <aeva-doc-section title="Basic Usage"
+        description="Works closely like a standard form input. When clicked, it renders an accessible calendar interface.">
+        <aeva-doc-example code='<aeva-date-picker 
+    label="Birth Date" 
+    placeholder="Select date...">
+</aeva-date-picker>'>
+            <div style="width: 100%; max-width: 320px;">
+                <aeva-date-picker label="Birth Date" placeholder="Select date..."></aeva-date-picker>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Pre-selected Value"
+        description="Initialize the calendar at a specific date using ISO YYYY-MM-DD configuration.">
+        <aeva-doc-example code='<aeva-date-picker 
+    label="Event Start" 
+    value="2026-06-15">
+</aeva-date-picker>'>
+            <div style="width: 100%; max-width: 320px;">
+                <aeva-date-picker label="Event Start" value="2026-06-15"></aeva-date-picker>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Min & Max Constraints"
+        description="Limit selection interactively by establishing the earliest/latest threshold bounds. E.g. limit to Q1 2026 dates.">
+        <aeva-doc-example code='<aeva-date-picker 
+    label="Travel Date"
+    placeholder="Select Q1 2026..."
+    min="2026-01-01"
+    max="2026-03-31">
+</aeva-date-picker>'>
+            <div style="width: 100%; max-width: 320px;">
+                <aeva-date-picker label="Travel Date" placeholder="Select Q1 2026..." min="2026-01-01"
+                    max="2026-03-31"></aeva-date-picker>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">label</td>
+                        <td><code>string</code></td>
+                        <td>Input label description.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">placeholder</td>
+                        <td><code>string</code></td>
+                        <td>Text before selection.</td>
+                        <td><code>'Select date'</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">value</td>
+                        <td><code>string</code></td>
+                        <td>Date model explicitly constrained to YYYY-MM-DD local format.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">min</td>
+                        <td><code>string</code></td>
+                        <td>Minimum inclusive date (YYYY-MM-DD).</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">max</td>
+                        <td><code>string</code></td>
+                        <td>Maximum inclusive date (YYYY-MM-DD).</td>
+                        <td><code>''</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>

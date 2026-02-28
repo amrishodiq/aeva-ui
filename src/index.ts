@@ -39,6 +39,7 @@ export { AevaList } from './components/molecules/aeva-list.js';
 export { AevaToast } from './components/molecules/aeva-toast.js';
 export { AevaActionBar } from './components/molecules/aeva-action-bar.js';
 export { AevaCarousel } from './components/molecules/aeva-carousel.js';
+export { AevaDatePicker } from './components/molecules/aeva-date-picker.js';
 export { AevaAccordion } from './components/molecules/aeva-accordion.js';
 export { AevaPagination } from './components/molecules/aeva-pagination.js';
 export { AevaProcess } from './components/molecules/aeva-process.js';
