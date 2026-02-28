@@ -57,9 +57,9 @@ export class AevaSimpleTable extends LitElement {
     .table-container {
       width: 100%;
       overflow-x: auto;
-      border: 1px solid var(--aeva-border-color, rgba(255, 255, 255, 0.1));
+      border: 1px solid var(--aeva-border-color, rgba(128, 128, 128, 0.2));
       border-radius: var(--aeva-border-radius-md, 8px);
-      background: var(--aeva-surface-color, rgba(255, 255, 255, 0.05));
+      background: var(--aeva-surface-color, rgba(128, 128, 128, 0.05));
     }
 
     table {
@@ -73,9 +73,9 @@ export class AevaSimpleTable extends LitElement {
 
     th {
       font-weight: 500;
-      color: var(--aeva-text-muted-color, #94a3b8);
-      background: var(--aeva-surface-color-light, rgba(255, 255, 255, 0.02));
-      border-bottom: 2px solid var(--aeva-border-color, rgba(255, 255, 255, 0.1));
+      color: var(--aeva-text-muted-color, #64748b);
+      background: var(--aeva-surface-color-light, rgba(128, 128, 128, 0.02));
+      border-bottom: 2px solid var(--aeva-border-color, rgba(128, 128, 128, 0.2));
       padding: 0.75rem 1rem;
       text-transform: uppercase;
       font-size: 0.75rem;
@@ -86,8 +86,8 @@ export class AevaSimpleTable extends LitElement {
     }
 
     th:hover {
-      background: var(--aeva-hover-color, rgba(255, 255, 255, 0.03));
-      color: var(--aeva-text-color, #e2e8f0);
+      background: var(--aeva-hover-color, rgba(128, 128, 128, 0.05));
+      color: var(--aeva-text-color, inherit);
     }
     
     .header-content {
@@ -121,7 +121,7 @@ export class AevaSimpleTable extends LitElement {
 
     td {
       padding: 0.75rem 1rem;
-      border-bottom: 1px solid var(--aeva-border-color, rgba(255, 255, 255, 0.1));
+      border-bottom: 1px solid var(--aeva-border-color, rgba(128, 128, 128, 0.2));
     }
 
     tr:last-child td {
@@ -129,7 +129,7 @@ export class AevaSimpleTable extends LitElement {
     }
 
     tr:hover td {
-      background: var(--aeva-hover-color, rgba(255, 255, 255, 0.03));
+      background: var(--aeva-hover-color, rgba(128, 128, 128, 0.05));
     }
   `;
 

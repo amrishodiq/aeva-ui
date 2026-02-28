@@ -15,13 +15,13 @@ import { accessibilityStyles } from '../../styles/accessibility.js';
  */
 @customElement('aeva-divider')
 export class AevaDivider extends LitElement {
-    static styles = [
-        accessibilityStyles,
-        css`
+  static styles = [
+    accessibilityStyles,
+    css`
       :host {
         display: block;
-        --aeva-divider-color-default: var(--aeva-border-color, rgba(255, 255, 255, 0.1));
-        --aeva-divider-text-color-default: var(--aeva-text-muted-color, #94a3b8);
+        --aeva-divider-color-default: var(--aeva-border-color, rgba(128, 128, 128, 0.2));
+        --aeva-divider-text-color-default: var(--aeva-text-muted-color, #64748b);
         --aeva-divider-thickness-default: 1px;
         --aeva-divider-spacing-default: 1.5rem;
       }
@@ -98,42 +98,42 @@ export class AevaDivider extends LitElement {
           padding: 1rem 0;
       }
     `,
-    ];
+  ];
 
-    /**
-     * Variant styling for the divider line.
-     */
-    @property({ type: String })
-    variant: 'solid' | 'dashed' | 'dotted' = 'solid';
+  /**
+   * Variant styling for the divider line.
+   */
+  @property({ type: String })
+  variant: 'solid' | 'dashed' | 'dotted' = 'solid';
 
-    /**
-     * Orientation of the divider.
-     */
-    @property({ type: String, reflect: true })
-    orientation: 'horizontal' | 'vertical' = 'horizontal';
+  /**
+   * Orientation of the divider.
+   */
+  @property({ type: String, reflect: true })
+  orientation: 'horizontal' | 'vertical' = 'horizontal';
 
-    private get hasText() {
-        return this.textContent && this.textContent.trim().length > 0;
-    }
+  private get hasText() {
+    return this.textContent && this.textContent.trim().length > 0;
+  }
 
-    render() {
-        const classes = {
-            divider: true,
-            [this.variant]: true,
-            vertical: this.orientation === 'vertical',
-            'has-content': this.hasText
-        };
+  render() {
+    const classes = {
+      divider: true,
+      [this.variant]: true,
+      vertical: this.orientation === 'vertical',
+      'has-content': this.hasText
+    };
 
-        return html`
+    return html`
             <div class="${classMap(classes)}" role="separator" aria-orientation="${this.orientation}">
                 <div class="content"><slot></slot></div>
             </div>
         `;
-    }
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-divider': AevaDivider;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-divider': AevaDivider;
+  }
 }

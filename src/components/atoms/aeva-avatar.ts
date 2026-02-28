@@ -20,8 +20,8 @@ export class AevaAvatar extends LitElement {
         css`
       :host {
         display: inline-block;
-        --aeva-avatar-bg-default: var(--aeva-surface-3, #334155);
-        --aeva-avatar-text-color-default: var(--aeva-text-color, #f8fafc);
+        --aeva-avatar-bg-default: var(--aeva-surface-3, #94a3b8);
+        --aeva-avatar-text-color-default: var(--aeva-surface-on, #ffffff);
       }
 
       .avatar {
@@ -64,7 +64,7 @@ export class AevaAvatar extends LitElement {
         bottom: 0;
         right: 0;
         border-radius: 50%;
-        border: 2px solid var(--aeva-bg-color, #0f172a); /* cut out effect */
+        border: 2px solid var(--aeva-bg-color, #ffffff); /* cut out effect */
         box-sizing: content-box;
         z-index: 1;
       }

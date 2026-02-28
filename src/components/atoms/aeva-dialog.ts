@@ -73,8 +73,8 @@ export class AevaDialog extends LitElement {
     }
 
     .close-button:hover {
-      background-color: var(--aeva-bg-hover, rgba(0, 0, 0, 0.05));
-      color: var(--aeva-text-color, #111827);
+      background-color: var(--aeva-bg-hover, rgba(128, 128, 128, 0.15));
+      color: var(--aeva-text-color, inherit);
     }
 
     .dialog-content {
@@ -93,7 +93,7 @@ export class AevaDialog extends LitElement {
     /* Target dark mode via global variables */
     @media (prefers-color-scheme: dark) {
       .close-button:hover {
-        background-color: var(--aeva-bg-hover, rgba(255, 255, 255, 0.1));
+        background-color: var(--aeva-bg-hover, rgba(255, 255, 255, 0.15));
       }
     }
   `;
