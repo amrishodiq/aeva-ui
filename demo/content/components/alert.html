@@ -1,0 +1,148 @@
+<aeva-doc-page title="Alert / Banner"
+    description="A component used to convey important messages or contextual feedback. Supports customizable variants, appearances, titles, icons, and slottable actions.">
+
+    <aeva-doc-section title="Basic Variants" description="Different color schemes based on the message intent.">
+        <aeva-doc-example code='<aeva-alert variant="info">An update is available for your application.</aeva-alert>
+<aeva-alert variant="success">Your changes have been saved successfully.</aeva-alert>
+<aeva-alert variant="warning">Please review your billing details before the next cycle.</aeva-alert>
+<aeva-alert variant="danger">Failed to connect to the server. Please try again.</aeva-alert>'>
+            <div style="width: 100%;">
+                <aeva-alert variant="info">An update is available for your application.</aeva-alert>
+                <aeva-alert variant="success">Your changes have been saved successfully.</aeva-alert>
+                <aeva-alert variant="warning">Please review your billing details before the next cycle.</aeva-alert>
+                <aeva-alert variant="danger">Failed to connect to the server. Please try again.</aeva-alert>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Appearances" description="Tailor the visual weight of the alert to its context.">
+        <aeva-doc-example code='<!-- Subtle (Default) -->
+<aeva-alert appearance="subtle" variant="info">This is a subtle info alert.</aeva-alert>
+
+<!-- Solid -->
+<aeva-alert appearance="solid" variant="info">This is a solid info alert.</aeva-alert>
+
+<!-- Outlined -->
+<aeva-alert appearance="outlined" variant="info">This is an outlined info alert.</aeva-alert>'>
+            <div style="width: 100%;">
+                <div style="margin-bottom: 2rem;">
+                    <aeva-alert appearance="subtle" variant="info">This is a subtle info alert.</aeva-alert>
+                    <aeva-alert appearance="solid" variant="info">This is a solid info alert.</aeva-alert>
+                    <aeva-alert appearance="outlined" variant="info">This is an outlined info alert.</aeva-alert>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="With Title" description="Provide an emphasized title above the main message text.">
+        <aeva-doc-example code='<aeva-alert variant="warning" title="Action Required">
+    Your password will expire in 3 days. Please change it to avoid account lockout.
+</aeva-alert>'>
+            <div style="width: 100%;">
+                <aeva-alert variant="warning" title="Action Required">
+                    Your password will expire in 3 days. Please change it to avoid account lockout.
+                </aeva-alert>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Dismissible & Custom Actions"
+        description="Allow users to dismiss the alert, and attach custom action buttons on the right edge.">
+        <aeva-doc-example code='<aeva-alert id="demo-dismiss" variant="danger" title="Payment Failed" dismissible>
+    We could not process your last invoice.
+    <aeva-button variant="danger" size="sm" slot="action">Retry</aeva-button>
+</aeva-alert>
+
+<aeva-button id="demo-reset" variant="secondary" size="sm" style="display: none; margin-top: 1rem;">Restore Alert</aeva-button>
+
+<script>
+    const alertEl = document.getElementById("demo-dismiss");
+    const resetBtn = document.getElementById("demo-reset");
+
+    alertEl.addEventListener("close", () => {
+        resetBtn.style.display = "inline-block";
+    });
+
+    resetBtn.addEventListener("click", () => {
+        alertEl.isDismissed = false; // Internal state reset for demo purposes
+        alertEl.requestUpdate();
+        resetBtn.style.display = "none";
+    });
+</script>'>
+            <div style="width: 100%;">
+                <aeva-alert id="demo-dismiss" variant="danger" title="Payment Failed" dismissible>
+                    We could not process your last invoice.
+                    <aeva-button variant="danger" size="sm" slot="action"
+                        style="background: transparent; border: 1px solid currentColor;">Retry</aeva-button>
+                </aeva-alert>
+                <aeva-button id="demo-reset" variant="secondary" size="sm"
+                    style="display: none; margin-top: 1rem;">Restore Alert</aeva-button>
+            </div>
+            <script>
+                setTimeout(() => {
+                    const alertEl = document.getElementById("demo-dismiss");
+                    const resetBtn = document.getElementById("demo-reset");
+
+                    if (alertEl && resetBtn) {
+                        alertEl.addEventListener("close", () => {
+                            resetBtn.style.display = "inline-block";
+                        });
+
+                        resetBtn.addEventListener("click", () => {
+                            alertEl.isDismissed = false;
+                            alertEl.requestUpdate();
+                            resetBtn.style.display = "none";
+                        });
+                    }
+                }, 100);
+            </script>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">variant</td>
+                        <td><code>'info' | 'success' | 'warning' | 'danger'</code></td>
+                        <td>The semantic color scheme.</td>
+                        <td><code>'info'</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">appearance</td>
+                        <td><code>'subtle' | 'solid' | 'outlined'</code></td>
+                        <td>The style context footprint of the alert.</td>
+                        <td><code>'subtle'</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">title</td>
+                        <td><code>string</code></td>
+                        <td>Optional bold text header.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">icon</td>
+                        <td><code>string</code></td>
+                        <td>Overrides the default variant icon.</td>
+                        <td><code>undefined</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">dismissible</td>
+                        <td><code>boolean</code></td>
+                        <td>Shows a close button triggering a hide state.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>
