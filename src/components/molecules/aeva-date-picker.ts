@@ -1,10 +1,11 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state, query } from 'lit/decorators.js';
 import { classMap } from 'lit/directives/class-map.js';
 
 import '../atoms/aeva-input.js';
 import '../atoms/aeva-button.js';
 import '../atoms/aeva-icon.js';
+import '../atoms/aeva-popup-menu.js';
 
 /**
  * AevaDatePicker component for selecting dates via a responsive modal calendar grid.
@@ -18,39 +19,29 @@ export class AevaDatePicker extends LitElement {
       position: relative;
     }
 
-    #picker-modal {
-        display: none;
-        position: absolute;
-        top: calc(100% + 8px);
-        left: 0;
-        z-index: 1000;
-        width: 320px;
-        background: var(--aeva-surface-color, #1e1e1e);
-        border: 1px solid var(--aeva-border-color, rgba(255, 255, 255, 0.1));
-        border-radius: var(--aeva-border-radius-md, 12px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        padding: 1rem;
-        animation: slideDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    #picker-modal.visible {
-        display: block;
-    }
-
     /* Mobile Bottom Sheet style */
+    .mobile-bottom-sheet {
+        display: none;
+    }
+
     @media (max-width: 600px) {
-        #picker-modal {
+        .mobile-bottom-sheet.visible {
+            display: block;
             position: fixed;
             top: auto;
             bottom: 0;
             left: 0;
             width: 100%;
+            background: var(--aeva-surface-color, #1e1e1e);
+            border-top: 1px solid var(--aeva-border-color, rgba(255, 255, 255, 0.1));
             border-bottom-left-radius: 0;
             border-bottom-right-radius: 0;
             border-top-left-radius: 24px;
             border-top-right-radius: 24px;
             padding: 1.5rem;
+            z-index: 1000;
             animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
         }
         
         .modal-backdrop.visible {
@@ -62,11 +53,11 @@ export class AevaDatePicker extends LitElement {
             z-index: 999;
             animation: fadeIn 0.3s ease;
         }
-    }
 
-    @keyframes slideDown {
-        from { opacity: 0; transform: translateY(-10px); }
-        to { opacity: 1; transform: translateY(0); }
+        /* Hide desktop popup contents when mobile sheet is active */
+        aeva-popup-menu {
+            display: none !important;
+        }
     }
 
     @keyframes slideUp {
@@ -77,6 +68,19 @@ export class AevaDatePicker extends LitElement {
     @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
+    }
+
+    .calendar-container {
+        width: 320px;
+        padding: 1rem;
+        box-sizing: border-box;
+    }
+
+    @media (max-width: 600px) {
+        .calendar-container {
+            width: 100%;
+            padding: 0;
+        }
     }
 
     .calendar-header {
@@ -183,10 +187,9 @@ export class AevaDatePicker extends LitElement {
         }
     }
   `;
-
     @property({ type: String }) label = '';
     @property({ type: String }) placeholder = 'Select date';
-    @property({ type: String }) value = '';
+    @property({ type: String, reflect: true }) value = '';
 
     /** Minimum selectable date (YYYY-MM-DD) */
     @property({ type: String }) min = '';
@@ -194,9 +197,12 @@ export class AevaDatePicker extends LitElement {
     /** Maximum selectable date (YYYY-MM-DD) */
     @property({ type: String }) max = '';
 
-    @state() private isModalOpen = false;
+    @state() private isMobileSheetOpen = false;
     @state() private viewingDate: Date;
     @state() private selectedDate?: Date;
+
+    @query('aeva-popup-menu') private popup!: any; // AevaPopupMenu type not imported
+    @query('aeva-input') private triggerInput!: HTMLElement;
 
     constructor() {
         super();
@@ -215,14 +221,27 @@ export class AevaDatePicker extends LitElement {
     }
 
     private toggleModal() {
-        this.isModalOpen = !this.isModalOpen;
-        if (this.isModalOpen && this.selectedDate) {
+        if (this.selectedDate) {
             this.viewingDate = new Date(this.selectedDate.getFullYear(), this.selectedDate.getMonth(), 1);
+        }
+
+        if (window.innerWidth <= 600) {
+            this.isMobileSheetOpen = true;
+        } else {
+            // Desktop floating UI popover
+            if (this.popup.open) {
+                this.popup.close();
+            } else {
+                this.popup.show(this.triggerInput);
+            }
         }
     }
 
     private closePicker() {
-        this.isModalOpen = false;
+        this.isMobileSheetOpen = false;
+        if (this.popup && this.popup.open) {
+            this.popup.close();
+        }
     }
 
     private prevMonth() {
@@ -253,18 +272,20 @@ export class AevaDatePicker extends LitElement {
         if (this.isDateDisabled(selected)) return;
 
         this.selectedDate = selected;
-
         // Format YYYY-MM-DD local time manually to avoid timezone shift
         const year = selected.getFullYear();
         const month = String(selected.getMonth() + 1).padStart(2, '0');
         const dbDay = String(selected.getDate()).padStart(2, '0');
-        this.value = `${year}-${month}-${dbDay}`;
+        const newValue = `${year}-${month}-${dbDay}`;
 
-        this.dispatchEvent(new CustomEvent('change', {
-            detail: { value: this.value, date: this.selectedDate },
-            bubbles: true,
-            composed: true
-        }));
+        if (this.value !== newValue) {
+            this.value = newValue;
+            this.dispatchEvent(new CustomEvent('change', {
+                detail: { value: this.value, date: this.selectedDate },
+                bubbles: true,
+                composed: true
+            }));
+        }
 
         // On desktop, auto-close. On mobile, let user hit Confirm.
         if (window.innerWidth > 600) {
@@ -291,23 +312,24 @@ export class AevaDatePicker extends LitElement {
         const dayNames = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
         return html`
-            < div class="calendar-header" >
-                <button class="nav-btn" @click="${this.prevMonth}" aria - label="Previous Month" >
-                    <svg width="18" height = "18" viewBox = "0 0 24 24" fill = "none" stroke = "currentColor" stroke - width="2" stroke - linecap="round" stroke - linejoin="round" > <path d="M15 18l-6-6 6-6" /> </svg>
-                        </button>
-                        < div class="month-year-title" > ${monthName} </div>
-                            < button class="nav-btn" @click="${this.nextMonth}" aria - label="Next Month" >
-                                <svg width="18" height = "18" viewBox = "0 0 24 24" fill = "none" stroke = "currentColor" stroke - width="2" stroke - linecap="round" stroke - linejoin="round" > <path d="M9 18l6-6-6-6" /> </svg>
-                                    </button>
-                                    </div>
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="nav-btn" @click="${this.prevMonth}" aria-label="Previous Month">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
+                    </button>
+                    <div class="month-year-title">${monthName}</div>
+                    <button class="nav-btn" @click="${this.nextMonth}" aria-label="Next Month">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6" /></svg>
+                    </button>
+                </div>
 
-                                    < div class="days-grid" >
-                                        ${dayNames.map(d => html`<div class="day-name">${d}</div>`)}
-        </div>
+                <div class="days-grid">
+                    ${dayNames.map(d => html`<div class="day-name">${d}</div>`)}
+                </div>
 
-            < div class="dates-grid" >
-                ${blanks.map(() => html`<div class="date-btn empty"></div>`)}
-            ${days.map(day => {
+                <div class="dates-grid">
+                    ${blanks.map(() => html`<div class="date-btn empty"></div>`)}
+                    ${days.map(day => {
             const dateObj = new Date(year, month, day);
             const isToday = dateObj.getTime() === today.getTime();
 
@@ -328,31 +350,31 @@ export class AevaDatePicker extends LitElement {
             };
 
             return html`
-                    <button 
-                        class="${classMap(classes)}" 
-                        @click="${() => this.selectDate(day)}"
-                        ?disabled="${isDisabled}"
-                    >
-                        ${day}
-                    </button>
-                `;
-        })
-            }
-        </div>
-
-            < div class="mobile-actions" >
-                <aeva-button variant = "primary" full - width @click="${this.closePicker}" > Confirm </aeva-button>
-                    </div>
-                        `;
+                        <button 
+                            class="${classMap(classes)}" 
+                            @click="${() => this.selectDate(day)}"
+                            ?disabled="${isDisabled}"
+                        >
+                            ${day}
+                        </button>
+                    `;
+        })}
+                </div>
+                
+                <div class="mobile-actions">
+                    <aeva-button variant="primary" full-width @click="${this.closePicker}">Confirm</aeva-button>
+                </div>
+            </div>
+        `;
     }
 
     render() {
-        const calendarIcon = html`< svg slot = "prefix" width = "16" height = "16" viewBox = "0 0 24 24" fill = "none" stroke = "currentColor" stroke - width="2" stroke - linecap="round" stroke - linejoin="round" >
-            <rect x="3" y = "4" width = "18" height = "18" rx = "2" ry = "2" > </rect>
-                < line x1 = "16" y1 = "2" x2 = "16" y2 = "6" > </line>
-                    < line x1 = "8" y1 = "2" x2 = "8" y2 = "6" > </line>
-                        < line x1 = "3" y1 = "10" x2 = "21" y2 = "10" > </line>
-                            </svg>`;
+        const calendarIcon = html`<svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>`;
 
         return html`
       <aeva-input
@@ -366,9 +388,13 @@ export class AevaDatePicker extends LitElement {
         ${calendarIcon}
       </aeva-input>
 
-      <div class="modal-backdrop ${this.isModalOpen ? 'visible' : ''}" @click="${this.closePicker}"></div>
-      
-      <div id="picker-modal" class="${this.isModalOpen ? 'visible' : ''}">
+      <aeva-popup-menu>
+        ${this.renderCalendar()}
+      </aeva-popup-menu>
+
+      <!-- Mobile Bottom Sheet Version -->
+      <div class="modal-backdrop ${this.isMobileSheetOpen ? 'visible' : ''}" @click="${this.closePicker}"></div>
+      <div class="mobile-bottom-sheet ${this.isMobileSheetOpen ? 'visible' : ''}">
         ${this.renderCalendar()}
       </div>
     `;

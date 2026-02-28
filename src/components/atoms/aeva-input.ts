@@ -304,6 +304,12 @@ export class AevaInput extends LitElement {
     this._internalValue = this.value;
   }
 
+  protected willUpdate(changedProperties: Map<string | number | symbol, unknown>): void {
+    if (changedProperties.has('value')) {
+      this._internalValue = this.value;
+    }
+  }
+
   /**
    * Get the regex pattern for the current variant
    */
@@ -512,10 +518,10 @@ export class AevaInput extends LitElement {
           ?required="${this.required}"
           maxlength="${this.maxlength || ''}"
           inputmode="${this.variant === 'integer'
-            ? 'numeric'
-            : this.variant === 'decimal'
-              ? 'decimal'
-              : 'text'}"
+        ? 'numeric'
+        : this.variant === 'decimal'
+          ? 'decimal'
+          : 'text'}"
           aria-invalid="${this._hasError}"
         />
       </div>

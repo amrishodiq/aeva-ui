@@ -15,10 +15,16 @@ export class AevaDate extends LitElement {
         accessibilityStyles,
         css`
       :host {
-        display: inline-block;
+        display: inline-flex;
+        align-items: center;
         font-family: var(--aeva-font-family, inherit);
         color: var(--aeva-date-text-color, var(--aeva-text-color, inherit));
-        font-size: var(--aeva-date-font-size, inherit);
+        font-size: var(--aeva-date-font-size, 0.875rem);
+        background-color: var(--aeva-date-bg, var(--aeva-surface-1, rgba(255, 255, 255, 0.05)));
+        border: 1px solid var(--aeva-date-border, var(--aeva-border-color, rgba(255, 255, 255, 0.1)));
+        border-radius: var(--aeva-date-border-radius, 20px);
+        padding: var(--aeva-date-padding, 0.25em 0.75em);
+        line-height: 1.4;
       }
 
       .date-text {

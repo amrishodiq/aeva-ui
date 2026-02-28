@@ -13,15 +13,43 @@
         </aeva-doc-example>
     </aeva-doc-section>
 
-    <aeva-doc-section title="Pre-selected Value"
-        description="Initialize the calendar at a specific date using ISO YYYY-MM-DD configuration.">
+    <aeva-doc-section title="Pre-selected Value & Events"
+        description="Initialize the calendar at a specific date, and listen to the 'change' event to update your model or UI.">
         <aeva-doc-example code='<aeva-date-picker 
+    id="event-picker"
     label="Event Start" 
     value="2026-06-15">
-</aeva-date-picker>'>
+</aeva-date-picker>
+
+<p>Selected: <strong id="picked-val">2026-06-15</strong></p>
+
+<script>
+    const picker = document.getElementById("event-picker");
+    const display = document.getElementById("picked-val");
+    
+    picker.addEventListener("change", (e) => {
+        // e.detail.value returns YYYY-MM-DD
+        display.textContent = e.detail.value;
+    });
+</script>'>
             <div style="width: 100%; max-width: 320px;">
-                <aeva-date-picker label="Event Start" value="2026-06-15"></aeva-date-picker>
+                <aeva-date-picker id="demo-event-picker" label="Event Start" value="2026-06-15"></aeva-date-picker>
+                <div style="margin-top: 1rem; font-size: 0.9rem; color: var(--aeva-text-muted-color);">
+                    Selected: <strong id="demo-picked-val" style="color: var(--aeva-primary-color);">2026-06-15</strong>
+                </div>
             </div>
+            <script>
+                // Need a slight delay to ensure the element is stamped in the DOM by Lit
+                setTimeout(() => {
+                    const picker = document.getElementById('demo-event-picker');
+                    const display = document.getElementById('demo-picked-val');
+                    if (picker && display) {
+                        picker.addEventListener('change', (e) => {
+                            display.textContent = e.detail.value;
+                        });
+                    }
+                }, 100);
+            </script>
         </aeva-doc-example>
     </aeva-doc-section>
 
