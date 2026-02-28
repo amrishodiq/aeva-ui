@@ -165,14 +165,14 @@ export class AevaPagination extends LitElement {
       return html`
         <div class="pagination-dots">
           ${this.range(1, this.totalPages).map(
-        (i) => html`
+            (i) => html`
               <div
                 class="dot ${classMap({ active: this.current === i })}"
                 @click="${() => this.setPage(i)}"
                 title="Page ${i}"
               ></div>
             `
-      )}
+          )}
         </div>
       `;
     }
@@ -196,21 +196,23 @@ export class AevaPagination extends LitElement {
       endPages.length > 0 ? endPages[0] - 2 : totalPages - 1
     );
 
-    const itemList = Array.from(new Set([
-      ...startPages,
-      ...(siblingsStart > boundaryCount + 2
-        ? ['ellipsis-start']
-        : boundaryCount < totalPages - boundaryCount
-          ? [boundaryCount + 1]
-          : []),
-      ...this.range(siblingsStart, siblingsEnd),
-      ...(siblingsEnd < (endPages.length > 0 ? endPages[0] - 2 : totalPages - 1)
-        ? ['ellipsis-end']
-        : endPages.length > 0 && siblingsEnd < endPages[0] - 1
-          ? [endPages[0] - 1]
-          : []),
-      ...endPages,
-    ]));
+    const itemList = Array.from(
+      new Set([
+        ...startPages,
+        ...(siblingsStart > boundaryCount + 2
+          ? ['ellipsis-start']
+          : boundaryCount < totalPages - boundaryCount
+            ? [boundaryCount + 1]
+            : []),
+        ...this.range(siblingsStart, siblingsEnd),
+        ...(siblingsEnd < (endPages.length > 0 ? endPages[0] - 2 : totalPages - 1)
+          ? ['ellipsis-end']
+          : endPages.length > 0 && siblingsEnd < endPages[0] - 1
+            ? [endPages[0] - 1]
+            : []),
+        ...endPages,
+      ])
+    );
 
     return itemList.map((item) => {
       if (typeof item === 'number') {

@@ -96,10 +96,10 @@ export class AevaEmptyState extends LitElement {
         gap: 0.25rem;
         text-align: center; /* Center horizontally for vertical layouts */
       }
-      
+
       .layout-horizontal .content-wrapper {
-         flex: 1;
-         text-align: center; /* Keep center alignment for horizontal layout */
+        flex: 1;
+        text-align: center; /* Keep center alignment for horizontal layout */
       }
 
       .actions-wrapper {
@@ -154,13 +154,25 @@ export class AevaEmptyState extends LitElement {
         <div part="icon" class="icon-wrapper">
           <slot name="icon"></slot>
         </div>
-        
+
         <div part="content" class="content-wrapper">
           <slot name="title">
-            ${this.title ? html`<aeva-text variant="${titleVariant}" align="center" style="margin:0">${this.title}</aeva-text>` : ''}
+            ${this.title
+              ? html`<aeva-text variant="${titleVariant}" align="center" style="margin:0"
+                  >${this.title}</aeva-text
+                >`
+              : ''}
           </slot>
           <slot name="description">
-            ${this.description ? html`<aeva-text variant="${descVariant}" color="muted" align="center" style="margin:0">${this.description}</aeva-text>` : ''}
+            ${this.description
+              ? html`<aeva-text
+                  variant="${descVariant}"
+                  color="muted"
+                  align="center"
+                  style="margin:0"
+                  >${this.description}</aeva-text
+                >`
+              : ''}
           </slot>
           <div part="actions" class="actions-wrapper">
             <slot></slot>

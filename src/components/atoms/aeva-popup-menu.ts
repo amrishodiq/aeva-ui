@@ -230,7 +230,8 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
     // If it's too close to the bottom edge, show above the anchor
     if (top + 200 > viewportHeight) {
       top = rect.top - 8 - 200; // Approximate height
-      if (top < 0) top = rect.bottom + 8; // fallback
+      if (top < 0)
+        top = rect.bottom + 8; // fallback
       else transformOrigin = 'bottom left';
     }
 
@@ -283,20 +284,22 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
 
   render() {
     return html`
-      <div 
+      <div
         popover="manual"
-        class="popup-container" 
-        style="${this.strategy === 'fixed' ? `top: ${this.y}px; left: ${this.x}px;` : 'top: 100%; left: 0; width: 100%;'}"
+        class="popup-container"
+        style="${this.strategy === 'fixed'
+          ? `top: ${this.y}px; left: ${this.x}px;`
+          : 'top: 100%; left: 0; width: 100%;'}"
       >
         <div class="backdrop" @click=${this.handleBackdropClick}></div>
         <div
           part="popup"
           class="popup"
           style="${styleMap({
-      'transform-origin': this.origin,
-      opacity: `${this._spring.value}`,
-      transform: `scale(${0.95 + 0.05 * this._spring.value}) translateY(${(1 - this._spring.value) * -8}px)`,
-    })}"
+            'transform-origin': this.origin,
+            opacity: `${this._spring.value}`,
+            transform: `scale(${0.95 + 0.05 * this._spring.value}) translateY(${(1 - this._spring.value) * -8}px)`,
+          })}"
         >
           <slot></slot>
         </div>

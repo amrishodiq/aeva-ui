@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3] - 2026-02-28
+
+### Added
+- **New Component**: `aeva-bar-chart` (Minimalist SVG bar chart with grouped and stacked variants).
+- **New Component**: `aeva-line-chart` (Minimalist SVG line chart with area and smooth curve support).
+- **New Component**: `aeva-doughnut-chart` (Minimalist SVG doughnut chart).
+- **Chart Theming System**: Built-in 10-color categorical palette (`--aeva-chart-1` to `--aeva-chart-10`).
+- **Standardized Documentation**: Added comprehensive Events, Properties, and Customization tables to all component documentation pages.
+
+### Improved
+- **Theme Visibility**: Fixed light theme contrast and visibility issues for `AevaSimpleTable`, `AevaDialog`, `AevaDivider`, and `AevaAvatar`.
+- **Avatar Group**: Adjusted `AevaAvatarGroup` visual overlap to exactly 50% for a cleaner stacked appearance.
+- **Animations**: Reverted experimental depth/physics animation changes in `AevaPage` to restore its original natural feel while retaining history synchronization.
+- **Theme System**: Refined custom theme inheritance so custom themes (e.g., "Emerald City") correctly inherit from the light theme.
+
+### Fixed
+- **Modal Positioning**: Fixed a bug where `AevaModal` was incorrectly positioned, particularly in nested/scrolling contexts.
+- **Switch Component**: Addressed precision and alignment issues of the switch thumb, particularly in the 'glass' variant.
+- **Chart Documentation**: Fixed an issue where literal HTML tags in `<aeva-code>` were rendered as actual DOM elements rather than text.
+- **Documentation Styling**: Fixed the styling of API tables inside the chart documentation components that were previously isolated by Shadow DOM.
+
 ## [0.1.2] - 2026-02-26
 
 ### Added

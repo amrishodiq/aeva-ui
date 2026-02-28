@@ -35,7 +35,8 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
       z-index: var(--aeva-page-z-index);
     }
 
-    :host([open]), :host([closing]) {
+    :host([open]),
+    :host([closing]) {
       display: block;
     }
 
@@ -270,9 +271,9 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
         class="backdrop"
         @click=${this.handleBackdropClick}
         style="${styleMap({
-      opacity: `${springVal}`,
-      visibility: springVal > 0.01 ? 'visible' : 'hidden',
-    })}"
+          opacity: `${springVal}`,
+          visibility: springVal > 0.01 ? 'visible' : 'hidden',
+        })}"
       ></div>
       <div
         part="page"
@@ -281,10 +282,10 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
         role="dialog"
         aria-modal="true"
         style="${styleMap({
-      transform,
-      opacity: `${opacity}`,
-      visibility: springVal > 0.01 ? 'visible' : 'hidden',
-    })}"
+          transform,
+          opacity: `${opacity}`,
+          visibility: springVal > 0.01 ? 'visible' : 'hidden',
+        })}"
       >
         <slot></slot>
       </div>

@@ -8,9 +8,9 @@ import { AevaPopupMenu } from './aeva-popup-menu';
 
 /**
  * A premium select component that reuses input styling and popup-menu logic.
- * 
+ *
  * @slot - Default slot for aeva-list-item elements
- * 
+ *
  * @fires change - Dispatched when the selected value changes
  */
 @customElement('aeva-select')
@@ -31,7 +31,7 @@ export class AevaSelect extends LitElement {
       cursor: pointer;
       user-select: none;
       box-sizing: border-box;
-      
+
       font-family: var(--aeva-input-font-family, inherit);
       border: 2px solid var(--aeva-input-border-color, rgba(255, 255, 255, 0.2));
       border-radius: var(--aeva-input-border-radius, 22px);
@@ -80,7 +80,8 @@ export class AevaSelect extends LitElement {
 
     .select-trigger.focus {
       border-color: var(--aeva-input-focus-border-color, var(--aeva-primary-color, #667eea));
-      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width, 3px) var(--aeva-input-focus-ring-color, rgba(102, 126, 234, 0.2));
+      box-shadow: 0 0 0 var(--aeva-input-focus-ring-width, 3px)
+        var(--aeva-input-focus-ring-color, rgba(102, 126, 234, 0.2));
     }
 
     .label-display {
@@ -141,13 +142,14 @@ export class AevaSelect extends LitElement {
 
   private syncLabelWithValue() {
     const items = Array.from(this.querySelectorAll('aeva-list-item')) as any[];
-    const selectedItem = items.find(item => {
+    const selectedItem = items.find((item) => {
       const val = item.getAttribute('value') || item.value;
       return val === this.value;
     });
 
     if (selectedItem) {
-      this.label = selectedItem.getAttribute('label') || selectedItem.label || selectedItem.textContent.trim();
+      this.label =
+        selectedItem.getAttribute('label') || selectedItem.label || selectedItem.textContent.trim();
     } else if (this.value) {
       this.label = this.value; // Fallback
     } else {
@@ -189,17 +191,21 @@ export class AevaSelect extends LitElement {
 
     // 3. Dispatch events
     if (oldValue !== newValue) {
-      this.dispatchEvent(new CustomEvent('change', {
-        detail: { value: this.value, label: this.label },
-        bubbles: true,
-        composed: true
-      }));
+      this.dispatchEvent(
+        new CustomEvent('change', {
+          detail: { value: this.value, label: this.label },
+          bubbles: true,
+          composed: true,
+        })
+      );
 
-      this.dispatchEvent(new CustomEvent('selected', {
-        detail: { value: this.value, label: this.label, index },
-        bubbles: true,
-        composed: true
-      }));
+      this.dispatchEvent(
+        new CustomEvent('selected', {
+          detail: { value: this.value, label: this.label, index },
+          bubbles: true,
+          composed: true,
+        })
+      );
     }
   }
 
@@ -225,13 +231,13 @@ export class AevaSelect extends LitElement {
   render() {
     const triggerClasses = {
       'select-trigger': true,
-      'open': this.open,
-      'focus': this.hasFocus,
-      'disabled': this.disabled
+      open: this.open,
+      focus: this.hasFocus,
+      disabled: this.disabled,
     };
 
     return html`
-      <div 
+      <div
         class="${classMap(triggerClasses)}"
         tabindex="${this.disabled ? '-1' : '0'}"
         @click="${this.handleTriggerClick}"
@@ -243,13 +249,25 @@ export class AevaSelect extends LitElement {
           ${this.label || this.placeholder}
         </div>
         <div class="arrow">
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M5 7.5L10 12.5L15 7.5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
           </svg>
         </div>
       </div>
 
-      <aeva-popup-menu 
+      <aeva-popup-menu
         .disableBackdropClick="${this.mandatory}"
         @open="${this.handlePopupOpen}"
         @close="${this.handlePopupClose}"

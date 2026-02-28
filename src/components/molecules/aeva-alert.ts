@@ -9,7 +9,7 @@ import '../atoms/aeva-icon.js';
  *
  * @slot - Main alert content.
  * @slot action - Optional custom action area (before the dismiss button).
- * 
+ *
  * @fires close - Dispatched when the alert is dismissed.
  *
  * @cssprop --aeva-alert-border-radius - Border radius (default: 8px)
@@ -17,9 +17,9 @@ import '../atoms/aeva-icon.js';
  */
 @customElement('aeva-alert')
 export class AevaAlert extends LitElement {
-    static styles = [
-        accessibilityStyles,
-        css`
+  static styles = [
+    accessibilityStyles,
+    css`
       :host {
         display: block;
         margin-bottom: 1rem;
@@ -33,7 +33,9 @@ export class AevaAlert extends LitElement {
         border-radius: var(--aeva-alert-border-radius, var(--aeva-alert-border-radius-default));
         padding: var(--aeva-alert-padding, var(--aeva-alert-padding-default));
         align-items: flex-start;
-        transition: opacity 0.3s ease, transform 0.3s ease;
+        transition:
+          opacity 0.3s ease,
+          transform 0.3s ease;
         line-height: 1.5;
         font-size: 0.875rem;
         box-sizing: border-box;
@@ -83,7 +85,9 @@ export class AevaAlert extends LitElement {
         padding: 0.25rem;
         display: flex;
         border-radius: var(--aeva-border-radius-sm, 4px);
-        transition: opacity 0.2s, background-color 0.2s;
+        transition:
+          opacity 0.2s,
+          background-color 0.2s;
       }
 
       .close-btn:hover {
@@ -98,8 +102,10 @@ export class AevaAlert extends LitElement {
         background-color: color-mix(in srgb, var(--aeva-info-color, #3b82f6) 15%, transparent);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-info.appearance-subtle .icon { color: var(--aeva-info-color, #3b82f6); }
-      
+      .variant-info.appearance-subtle .icon {
+        color: var(--aeva-info-color, #3b82f6);
+      }
+
       .variant-info.appearance-solid {
         background-color: var(--aeva-info-color, #3b82f6);
         color: #ffffff;
@@ -110,15 +116,19 @@ export class AevaAlert extends LitElement {
         border: 1px solid var(--aeva-info-color, #3b82f6);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-info.appearance-outlined .icon { color: var(--aeva-info-color, #3b82f6); }
+      .variant-info.appearance-outlined .icon {
+        color: var(--aeva-info-color, #3b82f6);
+      }
 
       /* SUCCESS */
       .variant-success.appearance-subtle {
         background-color: color-mix(in srgb, var(--aeva-success-color, #22c55e) 15%, transparent);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-success.appearance-subtle .icon { color: var(--aeva-success-color, #22c55e); }
-      
+      .variant-success.appearance-subtle .icon {
+        color: var(--aeva-success-color, #22c55e);
+      }
+
       .variant-success.appearance-solid {
         background-color: var(--aeva-success-color, #22c55e);
         color: #ffffff;
@@ -129,15 +139,19 @@ export class AevaAlert extends LitElement {
         border: 1px solid var(--aeva-success-color, #22c55e);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-success.appearance-outlined .icon { color: var(--aeva-success-color, #22c55e); }
+      .variant-success.appearance-outlined .icon {
+        color: var(--aeva-success-color, #22c55e);
+      }
 
       /* WARNING */
       .variant-warning.appearance-subtle {
         background-color: color-mix(in srgb, var(--aeva-warning-color, #f59e0b) 15%, transparent);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-warning.appearance-subtle .icon { color: var(--aeva-warning-color, #f59e0b); }
-      
+      .variant-warning.appearance-subtle .icon {
+        color: var(--aeva-warning-color, #f59e0b);
+      }
+
       .variant-warning.appearance-solid {
         background-color: var(--aeva-warning-color, #f59e0b);
         color: #000000;
@@ -148,15 +162,19 @@ export class AevaAlert extends LitElement {
         border: 1px solid var(--aeva-warning-color, #f59e0b);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-warning.appearance-outlined .icon { color: var(--aeva-warning-color, #f59e0b); }
+      .variant-warning.appearance-outlined .icon {
+        color: var(--aeva-warning-color, #f59e0b);
+      }
 
       /* DANGER */
       .variant-danger.appearance-subtle {
         background-color: color-mix(in srgb, var(--aeva-danger-color, #ef4444) 15%, transparent);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-danger.appearance-subtle .icon { color: var(--aeva-danger-color, #ef4444); }
-      
+      .variant-danger.appearance-subtle .icon {
+        color: var(--aeva-danger-color, #ef4444);
+      }
+
       .variant-danger.appearance-solid {
         background-color: var(--aeva-danger-color, #ef4444);
         color: #ffffff;
@@ -167,102 +185,112 @@ export class AevaAlert extends LitElement {
         border: 1px solid var(--aeva-danger-color, #ef4444);
         color: var(--aeva-text-color, inherit);
       }
-      .variant-danger.appearance-outlined .icon { color: var(--aeva-danger-color, #ef4444); }
+      .variant-danger.appearance-outlined .icon {
+        color: var(--aeva-danger-color, #ef4444);
+      }
     `,
-    ];
+  ];
 
-    /**
-     * Determines color scheme.
-     */
-    @property({ type: String })
-    variant: 'info' | 'success' | 'warning' | 'danger' = 'info';
+  /**
+   * Determines color scheme.
+   */
+  @property({ type: String })
+  variant: 'info' | 'success' | 'warning' | 'danger' = 'info';
 
-    /**
-     * Determines the visual style.
-     */
-    @property({ type: String })
-    appearance: 'subtle' | 'solid' | 'outlined' = 'subtle';
+  /**
+   * Determines the visual style.
+   */
+  @property({ type: String })
+  appearance: 'subtle' | 'solid' | 'outlined' = 'subtle';
 
-    /**
-     * Optional heading for the alert.
-     */
-    @property({ type: String })
-    title = '';
+  /**
+   * Optional heading for the alert.
+   */
+  @property({ type: String })
+  title = '';
 
-    /**
-     * Optional custom icon name. Set to 'none' to hide. Defaults to variant-specific icon.
-     */
-    @property({ type: String })
-    icon?: string;
+  /**
+   * Optional custom icon name. Set to 'none' to hide. Defaults to variant-specific icon.
+   */
+  @property({ type: String })
+  icon?: string;
 
-    /**
-     * Whether the alert can be closed by the user.
-     */
-    @property({ type: Boolean })
-    dismissible = false;
+  /**
+   * Whether the alert can be closed by the user.
+   */
+  @property({ type: Boolean })
+  dismissible = false;
 
-    @state()
-    private isDismissed = false;
+  @state()
+  private isDismissed = false;
 
-    private handleClose() {
-        this.isDismissed = true;
-        this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
+  private handleClose() {
+    this.isDismissed = true;
+    this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
+  }
+
+  private getDefaultIcon() {
+    if (this.icon === 'none') return null;
+    if (this.icon) return this.icon;
+
+    switch (this.variant) {
+      case 'success':
+        return 'check-circle';
+      case 'warning':
+        return 'alert-triangle';
+      case 'danger':
+        return 'alert-circle';
+      case 'info':
+      default:
+        return 'info';
     }
+  }
 
-    private getDefaultIcon() {
-        if (this.icon === 'none') return null;
-        if (this.icon) return this.icon;
+  render() {
+    if (this.isDismissed) return html``;
 
-        switch (this.variant) {
-            case 'success': return 'check-circle';
-            case 'warning': return 'alert-triangle';
-            case 'danger': return 'alert-circle';
-            case 'info':
-            default: return 'info';
-        }
-    }
+    const classes = {
+      alert: true,
+      [`variant-${this.variant}`]: true,
+      [`appearance-${this.appearance}`]: true,
+    };
 
-    render() {
-        if (this.isDismissed) return html``;
+    const iconName = this.getDefaultIcon();
 
-        const classes = {
-            alert: true,
-            [`variant-${this.variant}`]: true,
-            [`appearance-${this.appearance}`]: true,
-        };
+    return html`
+      <div class="${classMap(classes)}" role="alert">
+        ${iconName
+          ? html`
+              <div class="icon">
+                <aeva-icon name="${iconName}" size="20"></aeva-icon>
+              </div>
+            `
+          : ''}
 
-        const iconName = this.getDefaultIcon();
+        <div class="content-area">
+          ${this.title ? html`<div class="title">${this.title}</div>` : ''}
+          <div class="message">
+            <slot></slot>
+          </div>
+        </div>
 
-        return html`
-            <div class="${classMap(classes)}" role="alert">
-                ${iconName ? html`
-                    <div class="icon">
-                        <aeva-icon name="${iconName}" size="20"></aeva-icon>
-                    </div>
-                ` : ''}
-
-                <div class="content-area">
-                    ${this.title ? html`<div class="title">${this.title}</div>` : ''}
-                    <div class="message">
-                        <slot></slot>
-                    </div>
-                </div>
-
-                <div class="actions-area">
-                    <slot name="action"></slot>
-                    ${this.dismissible ? html`
-                        <button class="close-btn" @click="${this.handleClose}" aria-label="Close alert">
-                            <aeva-icon name="x" size="18"></aeva-icon>
-                        </button>
-                    ` : ''}
-                </div>
-            </div>
-        `;
-    }
+        <div class="actions-area">
+          <slot name="action"></slot>
+          ${this.dismissible
+            ? html`
+                <button class="close-btn" @click="${this.handleClose}" aria-label="Close alert">
+                  <aeva-icon name="x" size="18"></aeva-icon>
+                </button>
+              `
+            : ''}
+        </div>
+      </div>
+    `;
+  }
 }
 
 declare global {
-    interface HTMLElementTagNameMap {
-        'aeva-alert': AevaAlert;
-    }
+  interface HTMLElementTagNameMap {
+    'aeva-alert': AevaAlert;
+  }
 }

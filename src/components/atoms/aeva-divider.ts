@@ -43,16 +43,22 @@ export class AevaDivider extends LitElement {
         background-color: transparent;
       }
 
-      .divider.solid::before, .divider.solid::after {
-        border-top: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) solid var(--aeva-divider-color, var(--aeva-divider-color-default));
+      .divider.solid::before,
+      .divider.solid::after {
+        border-top: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) solid
+          var(--aeva-divider-color, var(--aeva-divider-color-default));
       }
 
-      .divider.dashed::before, .divider.dashed::after {
-        border-top: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dashed var(--aeva-divider-color, var(--aeva-divider-color-default));
+      .divider.dashed::before,
+      .divider.dashed::after {
+        border-top: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dashed
+          var(--aeva-divider-color, var(--aeva-divider-color-default));
       }
 
-      .divider.dotted::before, .divider.dotted::after {
-        border-top: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dotted var(--aeva-divider-color, var(--aeva-divider-color-default));
+      .divider.dotted::before,
+      .divider.dotted::after {
+        border-top: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dotted
+          var(--aeva-divider-color, var(--aeva-divider-color-default));
       }
 
       .content {
@@ -65,37 +71,43 @@ export class AevaDivider extends LitElement {
       }
 
       /* Vertical */
-      :host([orientation="vertical"]) {
-          display: inline-block;
-          height: inherit;
-          min-height: 100%;
+      :host([orientation='vertical']) {
+        display: inline-block;
+        height: inherit;
+        min-height: 100%;
       }
 
       .divider.vertical {
-          flex-direction: column;
-          margin: 0 var(--aeva-divider-spacing, var(--aeva-divider-spacing-default));
-          height: 100%;
+        flex-direction: column;
+        margin: 0 var(--aeva-divider-spacing, var(--aeva-divider-spacing-default));
+        height: 100%;
       }
 
       .divider.vertical::before,
       .divider.vertical::after {
-          border-top: none;
+        border-top: none;
       }
 
-      .divider.vertical.solid::before, .divider.vertical.solid::after {
-          border-left: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) solid var(--aeva-divider-color, var(--aeva-divider-color-default));
+      .divider.vertical.solid::before,
+      .divider.vertical.solid::after {
+        border-left: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) solid
+          var(--aeva-divider-color, var(--aeva-divider-color-default));
       }
 
-      .divider.vertical.dashed::before, .divider.vertical.dashed::after {
-          border-left: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dashed var(--aeva-divider-color, var(--aeva-divider-color-default));
+      .divider.vertical.dashed::before,
+      .divider.vertical.dashed::after {
+        border-left: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dashed
+          var(--aeva-divider-color, var(--aeva-divider-color-default));
       }
 
-      .divider.vertical.dotted::before, .divider.vertical.dotted::after {
-          border-left: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dotted var(--aeva-divider-color, var(--aeva-divider-color-default));
+      .divider.vertical.dotted::before,
+      .divider.vertical.dotted::after {
+        border-left: var(--aeva-divider-thickness, var(--aeva-divider-thickness-default)) dotted
+          var(--aeva-divider-color, var(--aeva-divider-color-default));
       }
 
       .divider.vertical .content {
-          padding: 1rem 0;
+        padding: 1rem 0;
       }
     `,
   ];
@@ -121,14 +133,14 @@ export class AevaDivider extends LitElement {
       divider: true,
       [this.variant]: true,
       vertical: this.orientation === 'vertical',
-      'has-content': this.hasText
+      'has-content': this.hasText,
     };
 
     return html`
-            <div class="${classMap(classes)}" role="separator" aria-orientation="${this.orientation}">
-                <div class="content"><slot></slot></div>
-            </div>
-        `;
+      <div class="${classMap(classes)}" role="separator" aria-orientation="${this.orientation}">
+        <div class="content"><slot></slot></div>
+      </div>
+    `;
   }
 }
 

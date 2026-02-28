@@ -29,7 +29,7 @@ export class AevaDialog extends LitElement {
       margin-bottom: 24px;
     }
 
-    ::slotted([slot="icon"]) {
+    ::slotted([slot='icon']) {
       flex-shrink: 0;
       display: inline-flex;
     }
@@ -66,7 +66,9 @@ export class AevaDialog extends LitElement {
       background: transparent;
       color: var(--aeva-text-muted-color, #6b7280);
       cursor: pointer;
-      transition: background-color 0.2s, color 0.2s;
+      transition:
+        background-color 0.2s,
+        color 0.2s;
       padding: 0;
       margin-left: auto;
       margin-top: -4px; /* Visually align with title */
@@ -192,7 +194,7 @@ export class AevaDialog extends LitElement {
       >
         <div class="dialog-header">
           <slot name="icon"></slot>
-          
+
           <div class="dialog-title-wrapper">
             <slot name="header">
               ${this.title ? html`<h3 class="dialog-title">${this.title}</h3>` : ''}
@@ -201,21 +203,30 @@ export class AevaDialog extends LitElement {
           </div>
 
           ${!this.hideClose
-        ? html`
+            ? html`
                 <button class="close-button" @click=${this.close} aria-label="Close dialog">
-                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                  <svg
+                    viewBox="0 0 24 24"
+                    width="20"
+                    height="20"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
                     <line x1="18" y1="6" x2="6" y2="18"></line>
                     <line x1="6" y1="6" x2="18" y2="18"></line>
                   </svg>
                 </button>
               `
-        : ''}
+            : ''}
         </div>
-        
+
         <div class="dialog-content">
           <slot></slot>
         </div>
-        
+
         <div class="dialog-footer">
           <slot name="footer"></slot>
         </div>

@@ -48,10 +48,10 @@ export class AevaSimpleTable extends LitElement {
     }
 
     .table-footer {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        padding-top: 0.5rem;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding-top: 0.5rem;
     }
 
     .table-container {
@@ -82,14 +82,16 @@ export class AevaSimpleTable extends LitElement {
       letter-spacing: 0.05em;
       cursor: pointer;
       user-select: none;
-      transition: background 0.2s ease, color 0.2s ease;
+      transition:
+        background 0.2s ease,
+        color 0.2s ease;
     }
 
     th:hover {
       background: var(--aeva-hover-color, rgba(128, 128, 128, 0.05));
       color: var(--aeva-text-color, inherit);
     }
-    
+
     .header-content {
       display: flex;
       align-items: center;
@@ -101,13 +103,15 @@ export class AevaSimpleTable extends LitElement {
       display: inline-flex;
       align-items: center;
       opacity: 0.2;
-      transition: opacity 0.2s ease, transform 0.2s ease;
+      transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
       width: 1em;
       height: 1em;
     }
 
     th:hover .sort-icon {
-        opacity: 0.6;
+      opacity: 0.6;
     }
 
     th.sorted .sort-icon {
@@ -134,7 +138,7 @@ export class AevaSimpleTable extends LitElement {
   `;
 
   /**
-   * Header definition as a comma-separated string 
+   * Header definition as a comma-separated string
    * (e.g., "#,Name,Role")
    */
   @property({ type: String }) header = '';
@@ -229,15 +233,11 @@ export class AevaSimpleTable extends LitElement {
       const query = this.searchQuery.toLowerCase();
       const isObjectArray = typeof rows[0] === 'object' && !Array.isArray(rows[0]);
 
-      rows = rows.filter(row => {
+      rows = rows.filter((row) => {
         if (isObjectArray) {
-          return Object.values(row).some(val =>
-            String(val).toLowerCase().includes(query)
-          );
+          return Object.values(row).some((val) => String(val).toLowerCase().includes(query));
         } else {
-          return row.some((val: any) =>
-            String(val).toLowerCase().includes(query)
-          );
+          return row.some((val: any) => String(val).toLowerCase().includes(query));
         }
       });
     }
@@ -249,7 +249,7 @@ export class AevaSimpleTable extends LitElement {
 
       if (!isObjectArray) {
         const cols = this.computedColumns;
-        sortIndex = cols.findIndex(c => {
+        sortIndex = cols.findIndex((c) => {
           const k = typeof c === 'string' ? c.toLowerCase().replace(/\s+/g, '') : c.key;
           return k === this.sortKey;
         });
@@ -282,9 +282,17 @@ export class AevaSimpleTable extends LitElement {
     const key = typeof col === 'string' ? col.toLowerCase().replace(/\s+/g, '') : col.key;
 
     const isSorted = this.sortKey === key;
-    const sortIcon = html`<svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 5l0 14M19 12l-7-7-7 7"/>
-        </svg>`;
+    const sortIcon = html`<svg
+      class="sort-icon"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <path d="M12 5l0 14M19 12l-7-7-7 7" />
+    </svg>`;
 
     let classes = '';
     if (isSorted) {
@@ -293,27 +301,29 @@ export class AevaSimpleTable extends LitElement {
     }
 
     return html`<th class="${classes}" @click="${() => this.handleSort(key)}">
-            <div class="header-content">
-                <span>${label}</span>
-                ${sortIcon}
-            </div>
-        </th>`;
+      <div class="header-content">
+        <span>${label}</span>
+        ${sortIcon}
+      </div>
+    </th>`;
   }
 
   renderRow(row: any, cols: Array<string | TableColumn>) {
     // Handling array of arrays
     if (Array.isArray(row)) {
-      return html`<tr>${row.map(cell => html`<td>${cell}</td>`)}</tr>`;
+      return html`<tr>
+        ${row.map((cell) => html`<td>${cell}</td>`)}
+      </tr>`;
     }
 
     // Handling array of objects
     if (typeof row === 'object' && row !== null) {
       return html`
         <tr>
-          ${cols.map(col => {
-        const key = typeof col === 'string' ? col.toLowerCase().replace(/\s+/g, '') : col.key;
-        return html`<td>${row[key]}</td>`;
-      })}
+          ${cols.map((col) => {
+            const key = typeof col === 'string' ? col.toLowerCase().replace(/\s+/g, '') : col.key;
+            return html`<td>${row[key]}</td>`;
+          })}
         </tr>
       `;
     }
@@ -336,30 +346,42 @@ export class AevaSimpleTable extends LitElement {
       displayRows = rows.slice(startIndex, startIndex + this.itemsPerPage);
     }
 
-    const searchIcon = html`<svg slot="prefix" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="11" cy="11" r="8"></circle>
-            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-        </svg>`;
+    const searchIcon = html`<svg
+      slot="prefix"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <circle cx="11" cy="11" r="8"></circle>
+      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+    </svg>`;
 
     return html`
       <div class="table-wrapper">
-        ${this.searchable ? html`
-            <div class="table-header">
-                <aeva-input 
-                    class="search-input"
-                    placeholder="${this.searchPlaceholder}"
-                    .value="${this.searchQuery}"
-                    @input="${this.handleSearchInput}"
+        ${this.searchable
+          ? html`
+              <div class="table-header">
+                <aeva-input
+                  class="search-input"
+                  placeholder="${this.searchPlaceholder}"
+                  .value="${this.searchQuery}"
+                  @input="${this.handleSearchInput}"
                 >
-                    ${searchIcon}
+                  ${searchIcon}
                 </aeva-input>
-            </div>
-        ` : ''}
+              </div>
+            `
+          : ''}
         <div class="table-container">
           <table>
             <thead>
               <tr>
-                ${cols.map(col => this.renderHeaderCell(col))}
+                ${cols.map((col) => this.renderHeaderCell(col))}
               </tr>
             </thead>
             <tbody>
@@ -367,16 +389,18 @@ export class AevaSimpleTable extends LitElement {
             </tbody>
           </table>
         </div>
-        ${this.paginated && rows.length > this.itemsPerPage ? html`
-            <div class="table-footer">
+        ${this.paginated && rows.length > this.itemsPerPage
+          ? html`
+              <div class="table-footer">
                 <aeva-pagination
-                    .total="${rows.length}"
-                    .current="${this.currentPage}"
-                    page-size="${this.itemsPerPage}"
-                    @change="${this.handlePageChange}"
+                  .total="${rows.length}"
+                  .current="${this.currentPage}"
+                  page-size="${this.itemsPerPage}"
+                  @change="${this.handlePageChange}"
                 ></aeva-pagination>
-            </div>
-        ` : ''}
+              </div>
+            `
+          : ''}
       </div>
     `;
   }

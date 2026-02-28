@@ -351,13 +351,13 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
     return html`
       <dialog id="native-dialog" @cancel=${this.handleNativeCancel}>
         ${this.backdrop
-        ? html` <div
+          ? html` <div
               part="backdrop"
               class="backdrop"
               style="${styleMap({ opacity: `${this.spring.value}` })}"
               @click=${this.handleBackdropClick}
             ></div>`
-        : ''}
+          : ''}
         <div class="modal-container">
           <div
             part="modal"
@@ -365,9 +365,9 @@ export class AevaModal extends WithCloseAnimation(LitElement) {
             tabindex="-1"
             role="document"
             style="${styleMap({
-          opacity: `${Math.min(1, this.spring.value * 1.5)}`, // Fade in slightly faster
-          transform: `scale(${0.9 + this.spring.value * 0.1}) translateY(${(1 - this.spring.value) * 20}px)`,
-        })}"
+              opacity: `${Math.min(1, this.spring.value * 1.5)}`, // Fade in slightly faster
+              transform: `scale(${0.9 + this.spring.value * 0.1}) translateY(${(1 - this.spring.value) * 20}px)`,
+            })}"
           >
             <slot></slot>
           </div>

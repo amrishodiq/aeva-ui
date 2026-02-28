@@ -7,14 +7,27 @@
 
 A lightweight, customizable design system library built with [Lit](https://lit.dev/) for rapid web development. Perfect for students working on assignments and developers building web applications.
 
-## Features
+## Why Aeva UI?
 
-- **Atomic Design Pattern** - Organized components (Atoms → Molecules → Organisms → Templates)
-- **Lit Web Components** - Lightweight (~5KB), fast, and framework-agnostic
-- **TypeScript First** - Full type safety and autocomplete support
-- **Easy Theming** - Customize via CSS Custom Properties
-- **Hot Reload** - Fast development experience with Vite
-- **Tree-shakeable** - Only bundle what you use
+Aeva UI isn't just another UI library; it's a modern, future-proof design system built on web standards.
+
+- **Framework Agnostic & Future-Proof**  
+  Built with native Web Components via Lit. Whether you use React, Vue, Svelte, Angular, or just Vanilla HTML/JS, Aeva UI works seamlessly everywhere. No lock-in, no framework-specific wrappers needed.
+
+- **Ultra Lightweight & Fast**  
+  Zero bloat. By leveraging the browser's native capabilities and Lit's minimal overhead (~5KB), components render incredibly fast and consume minimal memory. It's fully tree-shakeable—only bundle what you actually use.
+
+- **True Style Encapsulation**  
+  Say goodbye to CSS class collisions. Aeva UI utilizes native Shadow DOM, ensuring that your app's styles won't break the components, and the components' styles won't leak into your application.
+
+- **Effortless, Native Theming**  
+  No complex CSS-in-JS configurations required. Theming is completely driven by native CSS Custom Properties (CSS Variables). Implement Dark Mode or custom brand themes (like Emerald) just by overriding a few variables in your `:root`.
+
+- **Atomic Design Architecture**  
+  Thoughtfully structured following the Atomic Design methodology (Atoms → Molecules → Organisms). It scales perfectly from simple prototypes to complex enterprise applications.
+
+- **TypeScript First**  
+  Written in TypeScript from the ground up to provide a world-class developer experience with strict type safety, robust auto-completion, and inline documentation right in your editor.
 
 ## Installation
 
