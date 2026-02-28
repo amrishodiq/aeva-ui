@@ -55,16 +55,22 @@ npm install @aeva/ui
 | `label` | `string` | `''` | Text label displayed with the indicator |
 | `show-percentage`| `boolean` | `true` | Show central percentage text (circular only) |
 
+## Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| - | - | This component does not dispatch custom events |
+
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-progress-color` | - | Primary color of progress bar/stroke |
-| `--aeva-progress-bg` | - | Background track color |
-| `--aeva-progress-thickness` | - | Width of the line/stroke |
-| `--aeva-progress-border-radius` | - | Rounding for horizontal bar |
-| `--aeva-progress-animation-duration`| - | Speed of infinite animation |
-| `--aeva-progress-label-color` | - | Color of the accompanying label |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-progress-color` | Primary color of progress bar/stroke | - |
+| `--aeva-progress-bg` | Background track color | - |
+| `--aeva-progress-thickness` | Width of the line/stroke | - |
+| `--aeva-progress-border-radius` | Rounding for horizontal bar | - |
+| `--aeva-progress-animation-duration`| Speed of infinite animation | - |
+| `--aeva-progress-label-color` | Color of the accompanying label | - |
 
 ## Accessibility
 

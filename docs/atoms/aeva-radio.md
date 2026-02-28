@@ -47,16 +47,16 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-radio-size` | `20px` | Size of the radio circle |
-| `--aeva-radio-unchecked-bg` | - | Background color when off |
-| `--aeva-radio-unchecked-stroke`| - | Border color when off |
-| `--aeva-radio-checked-bg` | - | Background color when on |
-| `--aeva-radio-checked-stroke` | - | Border color when on |
-| `--aeva-radio-checkmark-color` | - | Color of the center indicator |
-| `--aeva-radio-transition` | - | Animation timing |
-| `--aeva-radio-disabled-opacity`| - | Dimming when disabled |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-radio-size` | Size of the radio circle | `20px` |
+| `--aeva-radio-unchecked-bg` | Background color when off | - |
+| `--aeva-radio-unchecked-stroke`| Border color when off | - |
+| `--aeva-radio-checked-bg` | Background color when on | - |
+| `--aeva-radio-checked-stroke` | Border color when on | - |
+| `--aeva-radio-checkmark-color` | Color of the center indicator | - |
+| `--aeva-radio-transition` | Animation timing | - |
+| `--aeva-radio-disabled-opacity`| Dimming when disabled | - |
 
 ## Accessibility
 

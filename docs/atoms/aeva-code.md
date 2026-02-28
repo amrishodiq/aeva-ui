@@ -44,19 +44,25 @@ npm install @aeva/ui
 |------|-------------|
 | `(default)` | Fallback area for code content if the `code` property is not used |
 
+## Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| - | - | This component does not dispatch custom events |
+
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-code-bg` | `#1e1e1e` | Main code area background |
-| `--aeva-code-header-bg` | `#323232` | Window header background |
-| `--aeva-code-font-family` | Fira Code... | Monospace font stack |
-| `--aeva-code-font-size` | `0.95rem` | Font size |
-| `--aeva-code-border-radius`| `22px` | Total window corner radius |
-| `--aeva-code-text-color` | `#d4d4d4` | Default text color |
-| `--aeva-code-dot-red` | `#ff5f56` | Color for the close dot |
-| `--aeva-code-dot-yellow` | `#ffbd2e` | Color for the minimize dot |
-| `--aeva-code-dot-green` | `#27c93f` | Color for the expand dot |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-code-bg` | Main code area background | `#1e1e1e` |
+| `--aeva-code-header-bg` | Window header background | `#323232` |
+| `--aeva-code-font-family` | Monospace font stack | - |
+| `--aeva-code-font-size` | Font size | `0.95rem` |
+| `--aeva-code-border-radius`| Total window corner radius | `22px` |
+| `--aeva-code-text-color` | Default text color | `#d4d4d4` |
+| `--aeva-code-dot-red` | Color for the close dot | `#ff5f56` |
+| `--aeva-code-dot-yellow` | Color for the minimize dot | `#ffbd2e` |
+| `--aeva-code-dot-green` | Color for the expand dot | `#27c93f` |
 
 ## Accessibility
 

@@ -40,13 +40,13 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-tab-bg` | - | Container background |
-| `--aeva-tab-active-bg` | - | Background color of the active indicator |
-| `--aeva-tab-padding` | - | Padding around the indicator track |
-| `--aeva-tab-gap` | - | Spacing between tab buttons |
-| `--aeva-tab-border-radius` | - | Corner radius for container & indicator |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-tab-bg` | Container background | - |
+| `--aeva-tab-active-bg` | Background color of the active indicator | - |
+| `--aeva-tab-padding` | Padding around the indicator track | - |
+| `--aeva-tab-gap` | Spacing between tab buttons | - |
+| `--aeva-tab-border-radius` | Corner radius for container & indicator | - |
 
 ## Accessibility
 

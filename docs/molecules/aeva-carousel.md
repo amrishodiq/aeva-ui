@@ -59,14 +59,14 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-carousel-height` | `400px` | Height of the container |
-| `--aeva-carousel-nav-bg` | `rgba(0,0,0,0.5)`| Background of nav arrows |
-| `--aeva-carousel-nav-color` | `white` | Icon color of nav arrows |
-| `--aeva-carousel-indicator-color`| - | Inactive dot color |
-| `--aeva-carousel-indicator-active-color`| - | Active dot color |
-| `--aeva-carousel-transition-duration`| `300ms` | Swipe/Fade timing |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-carousel-height` | Height of the container | `400px` |
+| `--aeva-carousel-nav-bg` | Background of nav arrows | `rgba(0,0,0,0.5)`|
+| `--aeva-carousel-nav-color` | Icon color of nav arrows | `white` |
+| `--aeva-carousel-indicator-color`| Inactive dot color | - |
+| `--aeva-carousel-indicator-active-color`| Active dot color | - |
+| `--aeva-carousel-transition-duration`| Swipe/Fade timing | `300ms` |
 
 ## Accessibility
 

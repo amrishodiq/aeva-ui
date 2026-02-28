@@ -52,7 +52,8 @@
                         <td class="property-name">variant</td>
                         <td><code>string</code></td>
                         <td><code>text</code>, <code>password</code>, <code>email</code>, <code>multiline</code>,
-                            <code>integer</code>, <code>decimal</code></td>
+                            <code>integer</code>, <code>decimal</code>
+                        </td>
                         <td>The type of input and validation applied.</td>
                         <td><code>text</code></td>
                     </tr>
@@ -82,6 +83,83 @@
                         <td><code>number</code></td>
                         <td>-</td>
                         <td>Numeric limits for <code>integer</code> or <code>decimal</code>.</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>input</code></td>
+                        <td><code>{ value }</code></td>
+                        <td>Dispatched when the input value changes (valid values only).</td>
+                    </tr>
+                    <tr>
+                        <td><code>change</code></td>
+                        <td><code>{ value }</code></td>
+                        <td>Dispatched when the input loses focus after a value change.</td>
+                    </tr>
+                    <tr>
+                        <td><code>error</code></td>
+                        <td><code>{ message, code, value }</code></td>
+                        <td>Dispatched when validation fails.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization" description="Aeva Input can be customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-input-bg</code></td>
+                        <td>Background color of the input.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-input-border-color</code></td>
+                        <td>Border color of the input.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-input-border-radius</code></td>
+                        <td>Border radius of the input.</td>
+                        <td><code>22px</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-input-text-color</code></td>
+                        <td>Color of the entered text.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-input-placeholder-color</code></td>
+                        <td>Color of the placeholder text.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-input-focus-border-color</code></td>
+                        <td>Border color when the input is focused.</td>
                         <td>-</td>
                     </tr>
                 </tbody>

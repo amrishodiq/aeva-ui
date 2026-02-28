@@ -52,17 +52,19 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-rating-color` | `#fbbf24` | Color of filled stars |
-| `--aeva-rating-empty-color` | `#e5e7eb` | Color of empty stars |
-| `--aeva-rating-hover-color` | `#f59e0b` | Color when hovering stars |
-| `--aeva-rating-label-color` | - | Color of the numeric label |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-rating-color` | Color of filled stars | `#fbbf24` |
+| `--aeva-rating-empty-color` | Color of empty stars | `#e5e7eb` |
+| `--aeva-rating-hover-color` | Color when hovering stars | `#f59e0b` |
+| `--aeva-rating-label-color` | Color of the numeric label | - |
 
 ### Size Tokens
-- `--aeva-rating-size-sm`: `16px`
-- `--aeva-rating-size-md`: `24px`
-- `--aeva-rating-size-lg`: `32px`
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-rating-size-sm` | Small star size | `16px` |
+| `--aeva-rating-size-md` | Medium star size | `24px` |
+| `--aeva-rating-size-lg` | Large star size | `32px` |
 
 ## Accessibility
 

@@ -72,16 +72,16 @@ The sidebar automatically hides on mobile (< 768px). Use the `open` property to 
 
 | Event | Detail | Description |
 |-------|--------|-------------|
-| `sidebar-toggle`| `{ open: boolean }` | Fired when the sidebar opens/closes |
+| `sidebar-toggle` | `{ open: boolean }` | Fired when the sidebar opens or closes. |
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-sidebar-bg` | - | Primary background color |
-| `--aeva-sidebar-width-md` | `280px` | Base width for desktop |
-| `--aeva-sidebar-icon-width`| `72px` | Width in tablet (icon-only) mode |
-| `--aeva-sidebar-transition`| `0.3s` | Slide animation timing |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-sidebar-bg` | Primary background color | - |
+| `--aeva-sidebar-width-md` | Base width for desktop | `280px` |
+| `--aeva-sidebar-icon-width` | Width in tablet (icon-only) mode | `72px` |
+| `--aeva-sidebar-transition` | Slide animation timing | `0.3s` |
 
 ## Accessibility
 

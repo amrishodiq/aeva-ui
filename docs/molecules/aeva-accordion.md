@@ -50,19 +50,27 @@ By default, only one item can be open at a time. Opening a new item will close t
 | `variant` | `'flush' \| 'bordered'` | `'flush'` | Visual style variant |
 | `multiple` | `boolean` | `false` | If true, multiple items can be expanded simultaneously |
 
-## Slots
+## Events
 
-| Slot | Description |
-|------|-------------|
-| `(default)` | Container for `aeva-accordion-item` components |
+| Event | Component | Detail | Description |
+|-------|-----------|--------|-------------|
+| `toggle` | `aeva-accordion-item` | `{ open: boolean }` | Fired when an item is expanded or collapsed |
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-accordion-bg` | - | Background color for the entire container |
-| `--aeva-accordion-border-radius`| - | Corner radius for the container |
-| `--aeva-accordion-item-border-color`| - | Color for borders between items (bordered variant) |
+### aeva-accordion
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-accordion-bg` | Background color for the container | - |
+| `--aeva-accordion-border-radius`| Corner radius for the container | - |
+
+### aeva-accordion-item
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-accordion-header-padding` | Padding for the header | - |
+| `--aeva-accordion-header-hover-bg` | Header background on hover | - |
+| `--aeva-accordion-content-padding` | Padding for expanded content | - |
+| `--aeva-accordion-item-border-color`| Color for separators | - |
 
 ## Accessibility
 

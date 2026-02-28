@@ -60,16 +60,22 @@ npm install @aeva/ui
 | `secondary`| Supplemental action area (left/top) |
 | `(default)`| Fallback for primary actions |
 
+## Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| - | - | This component does not dispatch custom events |
+
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-action-bar-bg` | `transparent` | Base background color |
-| `--aeva-action-bar-sticky-bg` | `rgba(255, 255, 255, 0.95)` | Background in sticky/glass mode |
-| `--aeva-action-bar-sticky-blur` | `10px` | Blur amount for glass effect |
-| `--aeva-action-bar-border-top` | - | Top border style |
-| `--aeva-action-bar-border-bottom`| - | Bottom border style |
-| `--aeva-action-bar-drop-shadow` | - | Shadow for the bar |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-action-bar-bg` | Base background color | `transparent` |
+| `--aeva-action-bar-sticky-bg` | Background in sticky/glass mode | `rgba(255, 255, 255, 0.95)` |
+| `--aeva-action-bar-sticky-blur` | Blur amount for glass effect | `10px` |
+| `--aeva-action-bar-border-top` | Top border style | - |
+| `--aeva-action-bar-border-bottom`| Bottom border style | - |
+| `--aeva-action-bar-drop-shadow` | Shadow for the bar | - |
 
 ## Accessibility
 

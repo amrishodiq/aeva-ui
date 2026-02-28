@@ -60,7 +60,8 @@
                         <td class="property-name">size</td>
                         <td><code>string</code></td>
                         <td><code>xs</code>, <code>sm</code>, <code>md</code>, <code>lg</code>, <code>xl</code>,
-                            <code>2xl</code>, <code>3xl</code></td>
+                            <code>2xl</code>, <code>3xl</code>
+                        </td>
                         <td>Override the default variant size.</td>
                         <td><code>md</code></td>
                     </tr>
@@ -91,6 +92,75 @@
                         <td><code>1</code> - <code>6</code></td>
                         <td>Restrict text to N lines with ellipsis.</td>
                         <td><code>0</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Slots">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Slot</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">(default)</td>
+                        <td>Default slot for text content (supports inline HTML formatting).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <p>This component currently does not dispatch custom events.</p>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization" description="Aeva Text can be customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-text-font-family</code></td>
+                        <td>Default font family.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-text-color</code></td>
+                        <td>Default text color.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-text-muted-color</code></td>
+                        <td>Color for muted state.</td>
+                        <td><code>#6b7280</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-text-error-color</code></td>
+                        <td>Color for error state.</td>
+                        <td><code>#dc2626</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-text-link-color</code></td>
+                        <td>Color for links within typography.</td>
+                        <td><code>#667eea</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-text-max-width</code></td>
+                        <td>Maximum width for optimal readability.</td>
+                        <td><code>none</code></td>
                     </tr>
                 </tbody>
             </table>

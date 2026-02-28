@@ -60,15 +60,15 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-slider-track-height` | `4px` | Height of the track line |
-| `--aeva-slider-track-bg` | - | Background color of the full track |
-| `--aeva-slider-fill-bg` | - | Color of the progress fill |
-| `--aeva-slider-thumb-size` | `16px` | Dimension of the slider knob |
-| `--aeva-slider-thumb-bg` | - | Color of the knob |
-| `--aeva-slider-thumb-border` | - | Border for the knob |
-| `--aeva-slider-thumb-shadow` | - | Shadow for the knob |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-slider-track-height` | Height of the track line | `4px` |
+| `--aeva-slider-track-bg` | Background color of the full track | - |
+| `--aeva-slider-fill-bg` | Color of the progress fill | - |
+| `--aeva-slider-thumb-size` | Dimension of the slider knob | `16px` |
+| `--aeva-slider-thumb-bg` | Color of the knob | - |
+| `--aeva-slider-thumb-border` | Border for the knob | - |
+| `--aeva-slider-thumb-shadow` | Shadow for the knob | - |
 
 ## Accessibility
 

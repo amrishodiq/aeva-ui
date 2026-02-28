@@ -317,54 +317,32 @@ aeva-text[state="muted"] {
 }
 ```
 
-## Available CSS Variables
+## Events
 
-### Font Families
-- `--aeva-text-font-family` - Default font family
-- `--aeva-text-display-font-family` - Display/hero font
-- `--aeva-text-heading-font-family` - Headings font
-- `--aeva-text-body-font-family` - Body text font
-- `--aeva-text-label-font-family` - Label font
+| Event | Detail | Description |
+|-------|--------|-------------|
+| - | - | This component does not dispatch custom events |
 
-### Font Weights
-- `--aeva-text-display-weight` - Display/hero weight (default: 800)
-- `--aeva-text-heading-weight` - Headings weight (default: 700)
-- `--aeva-text-body-weight` - Body weight (default: 400)
-- `--aeva-text-label-weight` - Label weight (default: 500)
+## CSS Customization
 
-### Line Heights
-- `--aeva-text-display-line-height` - Display/hero (default: 1.1)
-- `--aeva-text-heading-line-height` - Headings (default: 1.2)
-- `--aeva-text-body-line-height` - Body (default: 1.6)
-- `--aeva-text-label-line-height` - Label (default: 1.4)
-
-### Colors
-- `--aeva-text-color` - Default text color
-- `--aeva-text-muted-color` - Muted state color
-- `--aeva-text-inverse-color` - Inverse state color
-- `--aeva-text-error-color` - Error state color
-- `--aeva-text-link-color` - Link color
-- `--aeva-text-link-hover-color` - Link hover color
-
-### Sizes
-- `--aeva-text-size-xs` - Extra small (0.75rem)
-- `--aeva-text-size-sm` - Small (0.875rem)
-- `--aeva-text-size-md` - Medium (1rem)
-- `--aeva-text-size-lg` - Large (1.125rem)
-- `--aeva-text-size-xl` - Extra large (1.25rem)
-- `--aeva-text-size-2xl` - 2X large (1.5rem)
-- `--aeva-text-size-3xl` - 3X large (1.875rem)
-
-### Spacing
-- `--aeva-text-margin-top` - Top margin (default: 0)
-- `--aeva-text-margin-bottom` - Bottom margin (default: 0)
-- `--aeva-text-max-width` - Maximum width (default: none)
-
-### Letter Spacing
-- `--aeva-text-letter-spacing-display` - Display (-0.02em)
-- `--aeva-text-letter-spacing-heading` - Headings (-0.01em)
-- `--aeva-text-letter-spacing-body` - Body (normal)
-- `--aeva-text-letter-spacing-label` - Label (0.01em)
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-text-font-family` | Default font family | - |
+| `--aeva-text-color` | Default text color | - |
+| `--aeva-text-muted-color` | Color for muted state | `#6b7280` |
+| `--aeva-text-inverse-color` | Color for inverse state | `#ffffff` |
+| `--aeva-text-error-color` | Color for error state | `#dc2626` |
+| `--aeva-text-link-color` | Color for links | `#667eea` |
+| `--aeva-text-size-xs` | Font size for xs | `0.75rem` |
+| `--aeva-text-size-sm` | Font size for sm | `0.875rem` |
+| `--aeva-text-size-md` | Font size for md | `1rem` |
+| `--aeva-text-size-lg` | Font size for lg | `1.125rem` |
+| `--aeva-text-size-xl` | Font size for xl | `1.25rem` |
+| `--aeva-text-size-2xl` | Font size for 2xl | `1.5rem` |
+| `--aeva-text-size-3xl` | Font size for 3xl | `1.875rem` |
+| `--aeva-text-margin-top` | Top margin | `0` |
+| `--aeva-text-margin-bottom` | Bottom margin | `0` |
+| `--aeva-text-max-width` | Maximum width | `none` |
 
 ## Accessibility
 

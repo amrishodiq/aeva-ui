@@ -43,17 +43,27 @@ npm install @aeva/ui
 
 ## Events
 
-| Event | Detail | Description |
-|-------|--------|-------------|
-| `selection-change` | `{ index: number, label: string }` | Fired when a new item is selected |
+| Event | Component | Detail | Description |
+|-------|-----------|--------|-------------|
+| `selection-change` | `aeva-list` | `{ index: number, label: string }` | Fired when a new item is selected |
+| `list-item-click` | `aeva-list-item` | `{ index: number, label: string }` | Fired when an item is clicked |
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-list-padding` | `8px` | Padding for the entire container |
-| `--aeva-list-gap` | `4px` | Spacing between list items |
-| `--aeva-list-border-radius`| - | Corner radius for the list block |
+### aeva-list
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-list-padding` | Padding for the entire container | `8px` |
+| `--aeva-list-gap` | Spacing between list items | `4px` |
+| `--aeva-list-border-radius`| Corner radius for the list block | - |
+
+### aeva-list-item
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-list-item-bg` | Background color of the item | `transparent` |
+| `--aeva-list-item-hover-bg` | Background color on hover | `rgba(0,0,0,0.04)` |
+| `--aeva-list-item-active-bg` | Background color when active | `rgba(102,126,234,0.08)` |
+| `--aeva-list-item-border-radius` | Corner radius for the item | `8px` |
 
 ## Accessibility
 

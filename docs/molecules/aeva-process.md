@@ -42,23 +42,31 @@ npm install @aeva/ui
 |------|-------------|
 | `(default)` | Container for `aeva-step` components |
 
-## Features
+## Events
 
-- ✅ **Automatic Status management**: Automatically marks previous steps as `completed`, the current index as `active`, and future steps as `pending`.
-- ✅ **Index Propagation**: Automatically assigns step numbers to children.
-- ✅ **Responsive Connectors**: Manages connector lines between steps based on layout direction.
+| Event | Detail | Description |
+|-------|--------|-------------|
+| - | - | This component does not dispatch custom events |
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-process-gap` | - | Horizontal spacing in 'horizontal' mode |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-process-gap` | Horizontal spacing in 'horizontal' mode | `var(--aeva-space-lg)` |
+| `--aeva-step-circle-size` | Dimension of the step circle | `32px` |
+| `--aeva-step-circle-bg` | Background of the step circle | - |
+| `--aeva-step-line-thickness` | Thickness of connector lines | `2px` |
+| `--aeva-step-line-color` | Color of the connector lines | - |
+| `--aeva-step-color-pending` | Indicator color for pending state | - |
+| `--aeva-step-color-active` | Indicator color for active state | - |
+| `--aeva-step-color-completed` | Indicator color for completed state | - |
 
 ## Accessibility
 
 - ✅ Semantic progression flow
 - ✅ High contrast visual state indicators
 - ✅ Synchronized step numbering
+- ✅ Responsive connectors for both vertical and horizontal layouts
 
 ## TypeScript Support
 

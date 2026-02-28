@@ -99,22 +99,60 @@
     </aeva-doc-section>
 
     <aeva-doc-section title="Events">
-        <table>
-            <thead>
-                <tr>
-                    <th>Event</th>
-                    <th>Detail</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="property-name">change</td>
-                    <td><code>{ checked: boolean }</code></td>
-                    <td>Fires when the toggle state changes.</td>
-                </tr>
-            </tbody>
-        </table>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>change</code></td>
+                        <td><code>{ checked }</code></td>
+                        <td>Dispatched when the switch state is toggled.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization" description="Aeva Switch can be customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-switch-track-bg</code></td>
+                        <td>Background color of the track (unchecked).</td>
+                        <td><code>rgba(255, 255, 255, 0.1)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-switch-track-checked-bg</code></td>
+                        <td>Background color of the track (checked).</td>
+                        <td><code>var(--aeva-primary-color)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-switch-thumb-bg</code></td>
+                        <td>Color of the sliding thumb.</td>
+                        <td><code>#ffffff</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-switch-transition</code></td>
+                        <td>Transition timing for state changes.</td>
+                        <td><code>0.3s ease</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </aeva-doc-section>
 
 </aeva-doc-page>

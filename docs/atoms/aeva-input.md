@@ -203,34 +203,11 @@ For the **text variant only**, you can filter allowed characters using regex pat
 
 ## Events
 
-### input
-Fired when the input value changes (only for valid values).
-
-```javascript
-input.addEventListener('input', (e) => {
-  console.log('Value:', e.detail.value);
-});
-```
-
-### change
-Fired when the input loses focus after value change.
-
-```javascript
-input.addEventListener('change', (e) => {
-  console.log('Final value:', e.detail.value);
-});
-```
-
-### error
-Fired when validation fails.
-
-```javascript
-input.addEventListener('error', (e) => {
-  console.log('Error:', e.detail.message);
-  console.log('Code:', e.detail.code);
-  console.log('Value:', e.detail.value);
-});
-```
+| Event | Detail | Description |
+|-------|--------|-------------|
+| `input` | `{ value }` | Fired when the input value changes (only for valid values). |
+| `change` | `{ value }` | Fired when the input loses focus after value change. |
+| `error` | `{ message, code, value }` | Fired when validation fails. |
 
 ## Complete Examples
 
@@ -285,48 +262,16 @@ input.addEventListener('error', (e) => {
 
 ## CSS Customization
 
-### Colors
-
-```css
-aeva-input {
-  --aeva-input-bg: #ffffff;
-  --aeva-input-border-color: #d1d5db;
-  --aeva-input-text-color: #1a1a1a;
-  --aeva-input-placeholder-color: #9ca3af;
-  --aeva-input-error-border-color: #dc2626;
-}
-```
-
-### Focus State
-
-```css
-aeva-input {
-  --aeva-input-focus-border-color: #667eea;
-  --aeva-input-focus-ring-color: rgba(102, 126, 234, 0.3);
-  --aeva-input-focus-ring-width: 3px;
-}
-```
-
-### Sizes
-
-```css
-aeva-input {
-  /* Small */
-  --aeva-input-padding-sm: 8px 12px;
-  --aeva-input-font-size-sm: 14px;
-  --aeva-input-height-sm: 36px;
-
-  /* Medium */
-  --aeva-input-padding-md: 12px 16px;
-  --aeva-input-font-size-md: 16px;
-  --aeva-input-height-md: 44px;
-
-  /* Large */
-  --aeva-input-padding-lg: 16px 20px;
-  --aeva-input-font-size-lg: 18px;
-  --aeva-input-height-lg: 52px;
-}
-```
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-input-bg` | Background color | - |
+| `--aeva-input-border-color` | Border color | - |
+| `--aeva-input-border-radius` | Border radius | `22px` |
+| `--aeva-input-text-color` | Text color | - |
+| `--aeva-input-placeholder-color` | Placeholder color | - |
+| `--aeva-input-focus-border-color` | Border color on focus | - |
+| `--aeva-input-focus-ring-color` | Focus ring color | - |
+| `--aeva-input-error-border-color` | Border color on error | - |
 
 ## Accessibility
 

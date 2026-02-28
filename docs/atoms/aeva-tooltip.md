@@ -36,15 +36,21 @@ npm install @aeva/ui
 | `position`| `'top' \| 'bottom' \| 'left' \| 'right'` | `'top'` | Preferred tooltip position |
 | `delay` | `number` | `200` | Show delay in milliseconds |
 
+## Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| - | - | This component does not dispatch custom events |
+
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-tooltip-bg` | `#1f2937` | Background color |
-| `--aeva-tooltip-color` | `#ffffff` | Text color |
-| `--aeva-tooltip-border-radius`| `6px` | Corner radius |
-| `--aeva-tooltip-font-size` | `12px` | Text size |
-| `--aeva-tooltip-padding` | `6px 10px` | Internal padding |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-tooltip-bg` | Background color | `#1f2937` |
+| `--aeva-tooltip-color` | Text color | `#ffffff` |
+| `--aeva-tooltip-border-radius`| Corner radius | `6px` |
+| `--aeva-tooltip-font-size` | Text size | `12px` |
+| `--aeva-tooltip-padding` | Internal padding | `6px 10px` |
 
 ## Accessibility
 

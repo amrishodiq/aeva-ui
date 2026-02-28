@@ -55,18 +55,67 @@
         </aeva-doc-example>
     </aeva-doc-section>
 
-    <aeva-doc-section title="Customization" columns="1"
-        description="Adjust button appearance using CSS Custom Properties.">
-        <aeva-doc-example language="css" code="aeva-button {
-    --aeva-button-primary-bg: #8e44ad;
-    --aeva-button-border-radius: 4px;
-    --aeva-button-font-weight: 700;
-}">
-            <aeva-button
-                style="--aeva-button-primary-bg: #8e44ad; --aeva-button-border-radius: 4px; --aeva-button-font-weight: 700;">
-                Custom Button
-            </aeva-button>
-        </aeva-doc-example>
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>click</code></td>
+                        <td>-</td>
+                        <td>Standard click event inherited from the native button.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization"
+        description="Aeva Button can be highly customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-button-primary-bg</code></td>
+                        <td>Background color of the primary button.</td>
+                        <td><code>#667eea</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-button-primary-color</code></td>
+                        <td>Text color of the primary button.</td>
+                        <td><code>#ffffff</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-button-border-radius</code></td>
+                        <td>Border radius for all button variants.</td>
+                        <td><code>50vh</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-button-font-family</code></td>
+                        <td>Font family for button text.</td>
+                        <td><code>inherit</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-button-gap</code></td>
+                        <td>Gap between icons and text.</td>
+                        <td><code>8px</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </aeva-doc-section>
 
     <aeva-doc-section title="Properties">

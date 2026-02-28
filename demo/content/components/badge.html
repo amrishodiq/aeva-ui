@@ -71,7 +71,8 @@
                         <td class="property-name">variant</td>
                         <td><code>string</code></td>
                         <td><code>primary</code>, <code>secondary</code>, <code>success</code>, <code>warning</code>,
-                            <code>danger</code>, <code>info</code></td>
+                            <code>danger</code>, <code>info</code>
+                        </td>
                         <td>Visual theme of the badge.</td>
                         <td><code>primary</code></td>
                     </tr>
@@ -95,6 +96,63 @@
                         <td>-</td>
                         <td>Badge text (can also use default slot).</td>
                         <td><code>''</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>badge-delete</code></td>
+                        <td><code>{ badge }</code></td>
+                        <td>Dispatched when the delete button is clicked.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization" description="Aeva Badge can be customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-badge-border-radius</code></td>
+                        <td>Corner radius of the badge.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-badge-gap</code></td>
+                        <td>Gap between icon and text.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-badge-transition</code></td>
+                        <td>Transition timing for state changes.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-badge-delete-size</code></td>
+                        <td>Size of the delete button.</td>
+                        <td>-</td>
                     </tr>
                 </tbody>
             </table>

@@ -43,17 +43,17 @@ npm install @aeva/ui
 
 | Event | Detail | Description |
 |-------|--------|-------------|
-| `open` | - | Fired when the page starts opening |
-| `close` | - | Fired when the page starts closing |
-| `backdrop-click`| - | Fired when the backdrop overlay is clicked |
+| `open` | - | Fired when the page starts opening. |
+| `close` | - | Fired when the page starts closing. |
+| `backdrop-click` | - | Fired when the backdrop overlay is clicked. |
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-page-background` | `white` | Main surface background |
-| `--aeva-page-backdrop-bg` | `rgba(0,0,0,0.5)`| Overlay color |
-| `--aeva-page-z-index` | `2000` | Layer priority |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-page-background` | Main surface background | `white` |
+| `--aeva-page-backdrop-bg` | Overlay color | `rgba(0,0,0,0.5)` |
+| `--aeva-page-z-index` | Layer priority | `2000` |
 
 ## Accessibility
 

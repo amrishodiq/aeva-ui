@@ -165,24 +165,134 @@
                 <thead>
                     <tr>
                         <th>Slot</th>
+                        <th>Component</th>
                         <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="property-name">icon-left</td>
-                        <td>Icon or element displayed at the start of the item.</td>
+                        <td><code>(default)</code></td>
+                        <td><code>aeva-list</code></td>
+                        <td>The list items (<code>aeva-list-item</code>) to display.</td>
                     </tr>
                     <tr>
-                        <td class="property-name">icon-right</td>
-                        <td>Element displayed at the end (e.g. badge or arrow).</td>
+                        <td><code>icon-left</code></td>
+                        <td><code>aeva-list-item</code></td>
+                        <td>Icon or element at the start of the item.</td>
                     </tr>
                     <tr>
-                        <td class="property-name">description</td>
+                        <td><code>title</code></td>
+                        <td><code>aeva-list-item</code></td>
+                        <td>Main text content (alternative to <code>label</code> property).</td>
+                    </tr>
+                    <tr>
+                        <td><code>description</code></td>
+                        <td><code>aeva-list-item</code></td>
                         <td>Secondary text displayed below the label.</td>
+                    </tr>
+                    <tr>
+                        <td><code>icon-right</code></td>
+                        <td><code>aeva-list-item</code></td>
+                        <td>Element at the end (e.g. badge or arrow).</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Component</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>selection-change</code></td>
+                        <td><code>aeva-list</code></td>
+                        <td><code>{ index, label }</code></td>
+                        <td>Dispatched when the active item changes.</td>
+                    </tr>
+                    <tr>
+                        <td><code>list-item-click</code></td>
+                        <td><code>aeva-list-item</code></td>
+                        <td><code>{ index, label }</code></td>
+                        <td>Dispatched when an item is clicked.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization"
+        description="The list and its items can be styled using these CSS variables.">
+        <div style="margin-bottom: 2rem;">
+            <h4>aeva-list</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CSS Variable</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--aeva-list-padding</code></td>
+                            <td>Padding for the list container.</td>
+                            <td><code>8px</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-list-gap</code></td>
+                            <td>Gap between items.</td>
+                            <td><code>4px</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <h4>aeva-list-item</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CSS Variable</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--aeva-list-item-bg</code></td>
+                            <td>Background color of the item.</td>
+                            <td><code>transparent</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-list-item-hover-bg</code></td>
+                            <td>Background color on hover.</td>
+                            <td><code>rgba(0, 0, 0, 0.04)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-list-item-active-bg</code></td>
+                            <td>Background color when active.</td>
+                            <td><code>rgba(102, 126, 234, 0.08)</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-list-item-border-radius</code></td>
+                            <td>Corner radius for the item.</td>
+                            <td><code>8px</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </aeva-doc-section>
 </aeva-doc-page>

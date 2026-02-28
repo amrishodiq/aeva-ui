@@ -50,19 +50,23 @@ npm install @aeva/ui
 |------|-------------|
 | `(default)` | The icon content (SVG, img, emoji, or text) |
 
+## Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| - | - | This component does not dispatch custom events |
+
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-icon-bg` | `#f5f5f5` | Container background color |
-| `--aeva-icon-color` | `#667eea` | Default icon/text color |
-| `--aeva-icon-border-color` | `#667eea` | Color for solid border |
-| `--aeva-icon-border-width` | `2px` | Width for solid border |
-
-### Custom Sizes
-- `--aeva-icon-size-sm`: default `40px`
-- `--aeva-icon-size-md`: default `56px`
-- `--aeva-icon-size-lg`: default `72px`
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-icon-bg` | Container background color | `#f5f5f5` |
+| `--aeva-icon-color` | Default icon/text color | `#667eea` |
+| `--aeva-icon-border-color` | Color for solid border | `#667eea` |
+| `--aeva-icon-border-width` | Width for solid border | `2px` |
+| `--aeva-icon-size-sm` | Small scale dimension | `40px` |
+| `--aeva-icon-size-md` | Medium scale dimension | `56px` |
+| `--aeva-icon-size-lg` | Large scale dimension | `72px` |
 
 ## Accessibility
 

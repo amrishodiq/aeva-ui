@@ -62,15 +62,15 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-pagination-gap` | - | Spacing between buttons/dots |
-| `--aeva-pagination-btn-size` | - | Width/Height of page buttons |
-| `--aeva-pagination-btn-bg` | - | Background of inactive buttons |
-| `--aeva-pagination-btn-color` | - | Text/Dot color |
-| `--aeva-pagination-btn-hover-bg`| - | Background on hover |
-| `--aeva-pagination-btn-active-bg`| - | Background of the active page |
-| `--aeva-pagination-btn-active-color`| - | Text color of the active page |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-pagination-gap` | Spacing between buttons/dots | - |
+| `--aeva-pagination-btn-size` | Width/Height of page buttons | - |
+| `--aeva-pagination-btn-bg` | Background of inactive buttons | - |
+| `--aeva-pagination-btn-color` | Text/Dot color | - |
+| `--aeva-pagination-btn-hover-bg`| Background on hover | - |
+| `--aeva-pagination-btn-active-bg`| Background of the active page | - |
+| `--aeva-pagination-btn-active-color`| Text color of the active page | - |
 
 ## Accessibility
 

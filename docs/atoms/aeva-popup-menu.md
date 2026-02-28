@@ -49,12 +49,13 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-popup-bg` | glass-style | Background color (supports blur) |
-| `--aeva-popup-border-radius` | `22px` | Corner radius |
-| `--aeva-popup-min-width` | `200px` | Minimum width constraint |
-| `--aeva-popup-max-width` | `600px` | Maximum width constraint |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-popup-bg` | Background color (supports blur) | `rgba(255, 255, 255, 0.7)` |
+| `--aeva-popup-border-radius` | Corner radius | `22px` |
+| `--aeva-popup-min-width` | Minimum width constraint | `200px` |
+| `--aeva-popup-max-width` | Maximum width constraint | `600px` |
+| `--aeva-popup-shadow-color` | Shadow color | `rgba(0, 0, 0, 0.2)` |
 
 ## Accessibility
 

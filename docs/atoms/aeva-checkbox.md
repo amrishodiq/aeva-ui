@@ -40,17 +40,17 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-checkbox-size` | `20px` | Dimension of the checkbox |
-| `--aeva-checkbox-border-radius` | `4px` | Corner radius of the box |
-| `--aeva-checkbox-unchecked-bg` | - | Background color when off |
-| `--aeva-checkbox-unchecked-stroke`| - | Border color when off |
-| `--aeva-checkbox-checked-bg` | - | Background color when on |
-| `--aeva-checkbox-checked-stroke` | - | Border color when on |
-| `--aeva-checkbox-checkmark-color` | - | Color of the check SVG path |
-| `--aeva-checkbox-transition` | - | Animation timing |
-| `--aeva-checkbox-disabled-opacity`| - | Opacity in disabled state |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-checkbox-size` | Dimension of the checkbox | `20px` |
+| `--aeva-checkbox-border-radius` | Corner radius of the box | `6px` |
+| `--aeva-checkbox-unchecked-bg` | Background color when off | - |
+| `--aeva-checkbox-unchecked-stroke`| Border color when off | - |
+| `--aeva-checkbox-checked-bg` | Background color when on | - |
+| `--aeva-checkbox-checked-stroke` | Border color when on | - |
+| `--aeva-checkbox-checkmark-color` | Color of the checkmark icon | - |
+| `--aeva-checkbox-transition` | Animation timing | - |
+| `--aeva-checkbox-disabled-opacity`| Opacity in disabled state | - |
 
 ## Accessibility
 

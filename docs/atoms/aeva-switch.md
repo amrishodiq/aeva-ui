@@ -56,13 +56,12 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-switch-track-bg` | - | Track color when OFF |
-| `--aeva-switch-track-checked-bg`| - | Track color when ON |
-| `--aeva-switch-thumb-bg` | - | Color of the switch knob |
-| `--aeva-switch-thumb-shadow` | - | Shadow for the switch knob |
-| `--aeva-switch-transition` | - | Fallback transition timing |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-switch-track-bg` | Background color of the track (unchecked). | `rgba(255, 255, 255, 0.1)` |
+| `--aeva-switch-track-checked-bg` | Background color of the track (checked). | `var(--aeva-primary-color)` |
+| `--aeva-switch-thumb-bg` | Color of the switch knob. | `#ffffff` |
+| `--aeva-switch-transition` | Transition timing for state changes. | `0.3s ease` |
 
 ### Size Overrides
 - `--aeva-switch-width`

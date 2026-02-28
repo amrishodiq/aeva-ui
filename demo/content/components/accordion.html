@@ -64,36 +64,6 @@
         </aeva-doc-example>
     </aeva-doc-section>
 
-    <aeva-doc-section title="Accordion Properties">
-        <div style="overflow-x: auto;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Property</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                        <th>Default</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="property-name">variant</td>
-                        <td><code>string</code></td>
-                        <td><code>flush</code>, <code>bordered</code></td>
-                        <td>The visual style of the accordion.</td>
-                        <td><code>flush</code></td>
-                    </tr>
-                    <tr>
-                        <td class="property-name">multiple</td>
-                        <td><code>boolean</code></td>
-                        <td>Allow multiple items to be open at once.</td>
-                        <td><code>false</code></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </aeva-doc-section>
-
     <aeva-doc-section title="Accordion Item Properties">
         <div style="overflow-x: auto;">
             <table>
@@ -126,6 +96,96 @@
                     </tr>
                 </tbody>
             </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Component</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>toggle</code></td>
+                        <td><code>aeva-accordion-item</code></td>
+                        <td><code>{ open }</code></td>
+                        <td>Dispatched when an accordion item is expanded or collapsed.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization"
+        description="Aeva Accordion can be highly customized using these CSS variables.">
+        <div style="margin-bottom: 2rem;">
+            <h4>aeva-accordion</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CSS Variable</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--aeva-accordion-bg</code></td>
+                            <td>Background color of the container.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-accordion-border-radius</code></td>
+                            <td>Corner radius of the container.</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <h4>aeva-accordion-item</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CSS Variable</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>--aeva-accordion-header-padding</code></td>
+                            <td>Padding for the item header.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-accordion-header-hover-bg</code></td>
+                            <td>Background color on header hover.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-accordion-content-padding</code></td>
+                            <td>Padding for the expanded content.</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-accordion-item-border-color</code></td>
+                            <td>Color of the separator borders.</td>
+                            <td>-</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </aeva-doc-section>
 </aeva-doc-page>

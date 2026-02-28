@@ -70,76 +70,70 @@
             </aeva-doc-example>
         </aeva-doc-section>
 
-        <aeva-doc-section title="Theming" columns="1" description="Customize card appearance using CSS variables.">
-            <aeva-doc-example language="css" code="aeva-card {
-    --aeva-card-bg: rgba(255, 255, 255, 0.05);
-    --aeva-card-border-color: var(--aeva-primary-color);
-    --aeva-card-border-radius: 24px;
-}">
-                <aeva-card
-                    style="--aeva-card-bg: rgba(255, 255, 255, 0.05); --aeva-card-border-color: var(--aeva-primary-color); --aeva-card-border-radius: 24px; width: 100%;">
-                    <aeva-text variant="body">Customized Card Style</aeva-text>
-                </aeva-card>
-            </aeva-doc-example>
-        </aeva-doc-section>
-
-        <aeva-doc-section title="Properties">
+        <aeva-doc-section title="Events">
             <div style="overflow-x: auto;">
                 <table>
                     <thead>
                         <tr>
-                            <th>Property</th>
-                            <th>Type</th>
-                            <th>Options</th>
+                            <th>Event</th>
+                            <th>Detail</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>card-click</code></td>
+                            <td>-</td>
+                            <td>Dispatched when an interactive card is clicked.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </aeva-doc-section>
+
+        <aeva-doc-section title="Customization" description="Aeva Card can be customized using these CSS variables.">
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>CSS Variable</th>
                             <th>Description</th>
                             <th>Default</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="property-name">interactive</td>
-                            <td><code>boolean</code></td>
-                            <td><code>true</code>, <code>false</code></td>
-                            <td>Enables hover states and pointer cursor.</td>
-                            <td><code>false</code></td>
+                            <td><code>--aeva-card-bg</code></td>
+                            <td>Background color of the card.</td>
+                            <td><code>#ffffff</code></td>
                         </tr>
                         <tr>
-                            <td class="property-name">padding</td>
-                            <td><code>string</code></td>
-                            <td><code>none</code>, <code>sm</code>, <code>md</code>, <code>lg</code></td>
-                            <td>Internal spacing around content.</td>
-                            <td><code>md</code> (24px)</td>
+                            <td><code>--aeva-card-border-color</code></td>
+                            <td>Default border color.</td>
+                            <td><code>#e5e7eb</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-card-border-hover-color</code></td>
+                            <td>Border color on hover (interactive).</td>
+                            <td><code>#667eea</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-card-border-radius</code></td>
+                            <td>Corner radius of the card.</td>
+                            <td><code>22px</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-card-transition</code></td>
+                            <td>Transition timing for state changes.</td>
+                            <td><code>all 0.2s ease</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>--aeva-card-height</code></td>
+                            <td>Card height constraint.</td>
+                            <td><code>100%</code></td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </aeva-doc-section>
-
-        <aeva-doc-section title="Slots">
-            <div style="overflow-x: auto;">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Slot</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="property-name">(default)</td>
-                            <td>Main body content of the card.</td>
-                        </tr>
-                        <tr>
-                            <td class="property-name">header</td>
-                            <td>Top section of the card, usually for titles or icons.</td>
-                        </tr>
-                        <tr>
-                            <td class="property-name">footer</td>
-                            <td>Bottom section, ideal for action buttons or metadata.</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </aeva-doc-section>
-
 </aeva-doc-page>

@@ -38,71 +38,136 @@
         </aeva-doc-example>
     </aeva-doc-section>
 
-    <aeva-doc-section title="Process Properties">
-        <div style="overflow-x: auto;">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Property</th>
-                        <th>Type</th>
-                        <th>Options</th>
-                        <th>Description</th>
-                        <th>Default</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="property-name">current</td>
-                        <td><code>number</code></td>
-                        <td>-</td>
-                        <td>The active step index (0-based).</td>
-                        <td><code>0</code></td>
-                    </tr>
-                    <tr>
-                        <td class="property-name">direction</td>
-                        <td><code>string</code></td>
-                        <td><code>horizontal</code>, <code>vertical</code></td>
-                        <td>Layout orientation.</td>
-                        <td><code>horizontal</code></td>
-                    </tr>
-                </tbody>
-            </table>
+    <aeva-doc-section title="Properties">
+        <div style="margin-bottom: 2rem;">
+            <h4>aeva-process</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Options</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="property-name">current</td>
+                            <td><code>number</code></td>
+                            <td>-</td>
+                            <td>The active step index (0-based).</td>
+                            <td><code>0</code></td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">direction</td>
+                            <td><code>string</code></td>
+                            <td><code>horizontal</code>, <code>vertical</code></td>
+                            <td>Layout orientation.</td>
+                            <td><code>horizontal</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div>
+            <h4>aeva-step</h4>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property</th>
+                            <th>Type</th>
+                            <th>Options</th>
+                            <th>Description</th>
+                            <th>Default</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="property-name">label</td>
+                            <td><code>string</code></td>
+                            <td>-</td>
+                            <td>Step title.</td>
+                            <td><code>''</code></td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">description</td>
+                            <td><code>string</code></td>
+                            <td>-</td>
+                            <td>Detailed description.</td>
+                            <td><code>''</code></td>
+                        </tr>
+                        <tr>
+                            <td class="property-name">status</td>
+                            <td><code>string</code></td>
+                            <td><code>pending</code>, <code>active</code>, <code>completed</code>, <code>error</code>
+                            </td>
+                            <td>Step status (usually managed by parent).</td>
+                            <td><code>pending</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </aeva-doc-section>
 
-    <aeva-doc-section title="Step Properties">
+    <aeva-doc-section title="Events">
+        <p>This component currently does not dispatch custom events.</p>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization" description="Aeva Process can be customized using these CSS variables.">
         <div style="overflow-x: auto;">
             <table>
                 <thead>
                     <tr>
-                        <th>Property</th>
-                        <th>Type</th>
-                        <th>Options</th>
+                        <th>CSS Variable</th>
                         <th>Description</th>
                         <th>Default</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="property-name">label</td>
-                        <td><code>string</code></td>
-                        <td>-</td>
-                        <td>Step title.</td>
-                        <td><code>''</code></td>
+                        <td><code>--aeva-process-gap</code></td>
+                        <td>Horizontal spacing in 'horizontal' mode.</td>
+                        <td><code>var(--aeva-space-lg)</code></td>
                     </tr>
                     <tr>
-                        <td class="property-name">description</td>
-                        <td><code>string</code></td>
-                        <td>-</td>
-                        <td>Detailed description.</td>
-                        <td><code>''</code></td>
+                        <td><code>--aeva-step-circle-size</code></td>
+                        <td>Dimension of the step circle.</td>
+                        <td><code>32px</code></td>
                     </tr>
                     <tr>
-                        <td class="property-name">status</td>
-                        <td><code>string</code></td>
-                        <td><code>pending</code>, <code>active</code>, <code>completed</code>, <code>error</code></td>
-                        <td>Step status (usually managed by parent).</td>
-                        <td><code>pending</code></td>
+                        <td><code>--aeva-step-circle-bg</code></td>
+                        <td>Background of the step circle.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-step-line-thickness</code></td>
+                        <td>Thickness of connector lines.</td>
+                        <td><code>2px</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-step-line-color</code></td>
+                        <td>Color of the connector lines.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-step-color-pending</code></td>
+                        <td>Indicator color for pending state.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-step-color-active</code></td>
+                        <td>Indicator color for active state.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-step-color-completed</code></td>
+                        <td>Indicator color for completed state.</td>
+                        <td>-</td>
                     </tr>
                 </tbody>
             </table>

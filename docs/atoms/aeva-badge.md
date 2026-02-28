@@ -65,23 +65,23 @@ npm install @aeva/ui
 ## CSS Customization
 
 ### Sizes
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-badge-padding-sm` | - | Small badge padding |
-| `--aeva-badge-font-size-sm` | - | Small badge font size |
-| `--aeva-badge-padding-md` | - | Medium badge padding |
-| `--aeva-badge-font-size-md` | - | Medium badge font size |
-| `--aeva-badge-padding-lg` | - | Large badge padding |
-| `--aeva-badge-font-size-lg` | - | Large badge font size |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-badge-padding-sm` | Small badge padding | - |
+| `--aeva-badge-font-size-sm` | Small badge font size | - |
+| `--aeva-badge-padding-md` | Medium badge padding | - |
+| `--aeva-badge-font-size-md` | Medium badge font size | - |
+| `--aeva-badge-padding-lg` | Large badge padding | - |
+| `--aeva-badge-font-size-lg` | Large badge font size | - |
 
 ### Styling
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-badge-border-radius` | - | Corner radius |
-| `--aeva-badge-gap` | - | Space between icon and text |
-| `--aeva-badge-transition` | - | State transition timing |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-badge-border-radius` | Corner radius | - |
+| `--aeva-badge-gap` | Space between icon and text | - |
+| `--aeva-badge-transition` | State transition timing | - |
+| `--aeva-badge-delete-size` | Size of delete button | - |
+| `--aeva-badge-delete-hover-bg` | Delete button hover background | - |
 
 ## Accessibility
 

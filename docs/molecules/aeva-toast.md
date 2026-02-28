@@ -54,12 +54,13 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-toast-bg` | Glass style | Background (supports blur) |
-| `--aeva-toast-padding` | `1rem 1.25rem` | Internal padding |
-| `--aeva-toast-min-width`| `300px` | Minimum width block |
-| `--aeva-toast-blur` | `8px` | Backdrop blur intensity |
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-toast-bg` | Background color (supports blur) | `var(--aeva-surface-glass)` |
+| `--aeva-toast-padding` | Internal padding | `1rem 1.25rem` |
+| `--aeva-toast-min-width`| Minimum width block | `300px` |
+| `--aeva-toast-blur` | Backdrop blur intensity | `8px` |
+| `--aeva-toast-border-radius`| Corner radius | `12px` |
 
 ## Accessibility
 

@@ -31,6 +31,12 @@ npm install @aeva/ui
 | `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | Button type attribute |
 | `aria-label` | `string \| null` | `null` | Aria label for accessibility (required for icon-only buttons) |
 
+## Events
+
+| Event | Detail | Description |
+|-------|--------|-------------|
+| `click` | - | Standard click event inherited from the native button. |
+
 ## Variants
 
 ### Primary

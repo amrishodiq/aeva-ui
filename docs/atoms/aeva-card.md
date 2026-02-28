@@ -58,19 +58,17 @@ npm install @aeva/ui
 
 ## CSS Customization
 
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `--aeva-card-bg` | `#ffffff` | Background color |
-| `--aeva-card-border-color` | `#e5e7eb` | Default border color |
-| `--aeva-card-border-hover-color`| `#667eea` | Border color on hover (interactive) |
-| `--aeva-card-border-radius` | `22px` | Corner radius |
-| `--aeva-card-transition` | `all 0.2s ease`| Transition timing |
-| `--aeva-card-height` | `100%` | Card height constraint |
-
-### Padding Variables
-- `--aeva-card-padding-sm`: default `1rem`
-- `--aeva-card-padding-md`: default `1.5rem`
-- `--aeva-card-padding-lg`: default `2rem`
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `--aeva-card-bg` | Background color | `#ffffff` |
+| `--aeva-card-border-color` | Default border color | `#e5e7eb` |
+| `--aeva-card-border-hover-color`| Border color on hover (interactive) | `#667eea` |
+| `--aeva-card-border-radius` | Corner radius | `22px` |
+| `--aeva-card-transition` | Transition timing | `all 0.2s ease` |
+| `--aeva-card-height` | Card height constraint | `100%` |
+| `--aeva-card-padding-sm` | Small padding value | `1rem` |
+| `--aeva-card-padding-md` | Medium padding value | `1.5rem` |
+| `--aeva-card-padding-lg` | Large padding value | `2rem` |
 
 ## Accessibility
 
