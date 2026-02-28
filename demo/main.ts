@@ -88,6 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Checkbox Demo Handlers
     const checkboxResult = document.getElementById('checkbox-result');
 
+    // AevaSelect Demo (Delegated because documentation is loaded via AJAX)
+    document.addEventListener('selected', (e: any) => {
+        if (e.target.id === 'select-demo') {
+            const status = document.getElementById('selection-status');
+            if (status) {
+                status.innerHTML = `Selected: <span style="font-weight: 600; color: var(--aeva-primary-color);">${e.detail.label}</span>`;
+            }
+        }
+    });
+
     // Get checkbox values
     document.getElementById('get-checkbox-values')?.addEventListener('click', () => {
         const values = CheckboxGroupHelper.getValues('interests');

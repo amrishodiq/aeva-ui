@@ -24,6 +24,7 @@ export { AevaCode } from './components/atoms/aeva-code.js';
 export { AevaStep } from './components/atoms/aeva-step.js';
 export { AevaSlider } from './components/atoms/aeva-slider.js';
 export { AevaSwitch } from './components/atoms/aeva-switch.js';
+export { AevaSelect } from './components/atoms/aeva-select.js';
 
 // Utils
 export { RadioGroupHelper } from './utils/radio-group-helper.js';

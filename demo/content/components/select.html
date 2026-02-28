@@ -1,0 +1,236 @@
+<aeva-doc-page title="Select"
+    description="A premium dropdown selection component that reuses input styling and popup-menu logic for a consistent and accessible experience.">
+
+    <aeva-doc-section title="Basic Usage" description="Simple selection from a list of options.">
+        <aeva-doc-example code='<aeva-select placeholder="Choose a fruit">
+    <aeva-list-item label="Apple" value="apple"></aeva-list-item>
+    <aeva-list-item label="Banana" value="banana"></aeva-list-item>
+    <aeva-list-item label="Cherry" value="cherry"></aeva-list-item>
+</aeva-select>'>
+            <div style="width: 100%; max-width: 400px;">
+                <aeva-select placeholder="Choose a fruit">
+                    <aeva-list-item label="Apple" value="apple"></aeva-list-item>
+                    <aeva-list-item label="Banana" value="banana"></aeva-list-item>
+                    <aeva-list-item label="Cherry" value="cherry"></aeva-list-item>
+                </aeva-select>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Standard Variants" description="Different sizes and styles for various UI contexts.">
+        <aeva-doc-example code='<aeva-select size="sm" placeholder="Small Select"></aeva-select>
+<aeva-select size="md" placeholder="Medium Select"></aeva-select>
+<aeva-select size="lg" placeholder="Large Select"></aeva-select>
+<aeva-select appearance="flat" placeholder="Flat Appearance"></aeva-select>'>
+            <div
+                style="display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 400px; color: var(--aeva-text-color);">
+                <aeva-select size="sm" placeholder="Small Select">
+                    <aeva-list-item label="Small Option 1"></aeva-list-item>
+                    <aeva-list-item label="Small Option 2"></aeva-list-item>
+                </aeva-select>
+                <aeva-select size="md" placeholder="Medium Select">
+                    <aeva-list-item label="Medium Option 1"></aeva-list-item>
+                    <aeva-list-item label="Medium Option 2"></aeva-list-item>
+                </aeva-select>
+                <aeva-select size="lg" placeholder="Large Select">
+                    <aeva-list-item label="Large Option 1"></aeva-list-item>
+                    <aeva-list-item label="Large Option 2"></aeva-list-item>
+                </aeva-select>
+                <aeva-select appearance="flat" placeholder="Flat Appearance">
+                    <aeva-list-item label="Flat Option 1"></aeva-list-item>
+                    <aeva-list-item label="Flat Option 2"></aeva-list-item>
+                </aeva-select>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Interactions" description="Test the selection behavior.">
+        <aeva-doc-example code='<aeva-select id="select-demo" placeholder="Choose a fruit">
+    <aeva-list-item label="Apple" value="apple"></aeva-list-item>
+    <aeva-list-item label="Banana" value="banana"></aeva-list-item>
+    <aeva-list-item label="Cherry" value="cherry"></aeva-list-item>
+</aeva-select>
+
+<p id="selection-status">Selected: None</p>
+
+<script>
+    const select = document.getElementById("select-demo");
+    const status = document.getElementById("selection-status");
+
+    // Listen for the custom "selected" event
+    select.addEventListener("selected", (e) => {
+        const { value, label, index } = e.detail;
+        status.innerText = `Selected: ${label}`;
+    });
+</script>'>
+            <div style="width: 100%; max-width: 400px; color: var(--aeva-text-color);">
+                <aeva-select id="select-demo" placeholder="Choose a fruit">
+                    <aeva-list-item label="Apple" value="apple"></aeva-list-item>
+                    <aeva-list-item label="Banana" value="banana"></aeva-list-item>
+                    <aeva-list-item label="Cherry" value="cherry"></aeva-list-item>
+                </aeva-select>
+                <div id="selection-status"
+                    style="margin-top: 1rem; padding: 0.75rem; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    Selected: <span style="font-weight: 600; color: var(--aeva-primary-color);">None</span>
+                </div>
+                <script>
+                    const select = document.getElementById('select-demo');
+                    const status = document.getElementById('selection-status');
+                    select.addEventListener('selected', (e) => {
+                        status.innerHTML = `Selected: <span style="font-weight: 600; color: var(--aeva-primary-color);">${e.detail.label}</span>`;
+                    });
+                </script>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Mandatory Selection"
+        description="When mandatory is true, the user must select an option to close the dropdown.">
+        <aeva-doc-example code='<aeva-select mandatory placeholder="You must choose one">
+    <aeva-list-item label="Accept Terms" value="accept"></aeva-list-item>
+    <aeva-list-item label="Decline Terms" value="decline"></aeva-list-item>
+</aeva-select>'>
+            <div style="width: 100%; max-width: 400px; height: 100px; color: var(--aeva-text-color);">
+                <aeva-select mandatory placeholder="You must choose one">
+                    <aeva-list-item label="Accept Terms" value="accept"></aeva-list-item>
+                    <aeva-list-item label="Decline Terms" value="decline"></aeva-list-item>
+                </aeva-select>
+                <p style="margin-top: 0.5rem; font-size: 0.85rem; opacity: 0.7;">Try clicking outside while the menu is
+                    open.</p>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Options</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">value</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>The currently selected value.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">placeholder</td>
+                        <td><code>string</code></td>
+                        <td>-</td>
+                        <td>Text shown when no value is selected.</td>
+                        <td><code>'Select an option'</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">size</td>
+                        <td><code>string</code></td>
+                        <td><code>sm</code>, <code>md</code>, <code>lg</code></td>
+                        <td>Trigger size.</td>
+                        <td><code>md</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">appearance</td>
+                        <td><code>string</code></td>
+                        <td><code>bordered</code>, <code>flat</code></td>
+                        <td>Visual style.</td>
+                        <td><code>bordered</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">disabled</td>
+                        <td><code>boolean</code></td>
+                        <td>-</td>
+                        <td>Whether the component is interactive.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">mandatory</td>
+                        <td><code>boolean</code></td>
+                        <td>-</td>
+                        <td>If true, requires an option to be selected to close the popup.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Events">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Detail</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>change</code></td>
+                        <td><code>{ value, label }</code></td>
+                        <td>Dispatched when the selection changes (Standard behavior).</td>
+                    </tr>
+                    <tr>
+                        <td><code>selected</code></td>
+                        <td><code>{ value, label, index }</code></td>
+                        <td>Dispatched on successful selection. Recommended for detailed interactions.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization" description="Aeva Select can be customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-input-border-radius</code></td>
+                        <td>Border radius of the selection trigger.</td>
+                        <td><code>22px</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-input-bg</code></td>
+                        <td>Background color of the selection trigger.</td>
+                        <td><code>rgba(255, 255, 255, 0.05)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-input-border-color</code></td>
+                        <td>Border color of the selection trigger.</td>
+                        <td><code>rgba(255, 255, 255, 0.2)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-popup-bg</code></td>
+                        <td>Background color of the dropdown menu.</td>
+                        <td><code>rgba(255, 255, 255, 0.7)</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-popup-blur</code></td>
+                        <td>Backdrop blur intensity for the dropdown.</td>
+                        <td><code>10px</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-popup-border-radius</code></td>
+                        <td>Border radius of the dropdown menu.</td>
+                        <td><code>22px</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+</aeva-doc-page>

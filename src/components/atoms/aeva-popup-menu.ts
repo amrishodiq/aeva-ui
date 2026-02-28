@@ -1,5 +1,5 @@
 import { LitElement, html, css } from 'lit';
-import { customElement, property, state } from 'lit/decorators.js';
+import { customElement, property, state, query } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { accessibilityStyles } from '../../styles/accessibility';
 import { WithCloseAnimation } from '../../utils/behaviors';
@@ -34,17 +34,42 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
         z-index: var(--aeva-z-popover);
       }
 
+      :host([strategy='absolute']) {
+        display: none;
+        position: absolute;
+        width: 100%;
+        height: auto;
+        z-index: var(--aeva-z-popover);
+      }
+
+      /* CSS Popover API Resets */
+      .popup-container {
+        position: fixed;
+        inset: unset;
+        margin: 0;
+        padding: 0;
+        border: none;
+        background: transparent;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .popup-container:popover-open {
+        display: flex;
+      }
+
       :host([open]) {
         display: block;
       }
 
       .backdrop {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
-        width: 100%;
-        height: 100%;
+        width: 100vw;
+        height: 100vh;
         background: transparent;
+        pointer-events: auto;
       }
 
       .popup-container {
@@ -120,8 +145,14 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
   @property({ type: Boolean, attribute: 'auto-close' })
   autoClose = true;
 
-  @property({ type: Number, reflect: true })
+  @property({ type: Boolean, reflect: true })
   elevation = 3;
+
+  @property({ type: Boolean, attribute: 'disable-backdrop-click' })
+  disableBackdropClick = false;
+
+  @property({ type: String, reflect: true })
+  strategy: 'fixed' | 'absolute' = 'fixed';
 
   @state()
   private x = 0;
@@ -131,6 +162,9 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
 
   @state()
   private origin = 'top left';
+
+  @query('.popup-container')
+  private _container!: HTMLElement;
 
   private _spring = new SpringController(
     this,
@@ -177,6 +211,14 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
     let left = rect.left;
     let transformOrigin = 'top left';
 
+    if (this.strategy === 'absolute') {
+      this.open = true;
+      this.closing = false;
+      this._spring.setTarget(1);
+      this.dispatchEvent(new CustomEvent('open', { bubbles: true, composed: true }));
+      return;
+    }
+
     // Crude overflow handling (can be improved)
     // If it's too close to the right edge, align to the right of the anchor
     if (left + 200 > viewportWidth) {
@@ -188,8 +230,7 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
     // If it's too close to the bottom edge, show above the anchor
     if (top + 200 > viewportHeight) {
       top = rect.top - 8 - 200; // Approximate height
-      if (top < 0)
-        top = rect.bottom + 8; // fallback
+      if (top < 0) top = rect.bottom + 8; // fallback
       else transformOrigin = 'bottom left';
     }
 
@@ -199,6 +240,15 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
     this.open = true;
     this.closing = false;
     this._spring.setTarget(1);
+
+    // Use Popover API if supported
+    if (this._container && 'showPopover' in this._container) {
+      try {
+        this._container.showPopover();
+      } catch (e) {
+        console.warn('Popover API show failed:', e);
+      }
+    }
 
     this.dispatchEvent(new CustomEvent('open', { bubbles: true, composed: true }));
   }
@@ -210,27 +260,43 @@ export class AevaPopupMenu extends WithCloseAnimation(LitElement) {
     if (!this.open || this.closing) return;
     this._spring.setTarget(0);
     await new Promise((resolve) => setTimeout(resolve, 300));
+
+    // Hide popover if supported
+    if (this._container && 'hidePopover' in this._container) {
+      try {
+        this._container.hidePopover();
+      } catch (e) {
+        // May already be hidden or not supported on this specific element
+      }
+    }
+
     await this.closeWithAnimation(0);
     this.dispatchEvent(new CustomEvent('close', { bubbles: true, composed: true }));
   };
 
   private handleBackdropClick(e: MouseEvent) {
     e.stopPropagation();
-    this.close();
+    if (!this.disableBackdropClick) {
+      this.close();
+    }
   }
 
   render() {
     return html`
-      <div class="backdrop" @click=${this.handleBackdropClick}></div>
-      <div class="popup-container" style="top: ${this.y}px; left: ${this.x}px;">
+      <div 
+        popover="manual"
+        class="popup-container" 
+        style="${this.strategy === 'fixed' ? `top: ${this.y}px; left: ${this.x}px;` : 'top: 100%; left: 0; width: 100%;'}"
+      >
+        <div class="backdrop" @click=${this.handleBackdropClick}></div>
         <div
           part="popup"
           class="popup"
           style="${styleMap({
-            'transform-origin': this.origin,
-            opacity: `${this._spring.value}`,
-            transform: `scale(${0.95 + 0.05 * this._spring.value}) translateY(${(1 - this._spring.value) * -8}px)`,
-          })}"
+      'transform-origin': this.origin,
+      opacity: `${this._spring.value}`,
+      transform: `scale(${0.95 + 0.05 * this._spring.value}) translateY(${(1 - this._spring.value) * -8}px)`,
+    })}"
         >
           <slot></slot>
         </div>
