@@ -1,0 +1,139 @@
+<aeva-doc-page title="Avatar"
+    description="Components designed to represent a user or entity. Supports fallback logic (Image &gt; Initials &gt; Icon) and grouping capabilities.">
+
+    <aeva-doc-section title="Basic & Fallbacks"
+        description="If an image is not provided or fails to load, it falls back to name initials. If a name is also missing, it shows an icon.">
+        <aeva-doc-example code='<aeva-avatar src="https://i.pravatar.cc/150?img=11"></aeva-avatar>
+<aeva-avatar name="Budi Santoso"></aeva-avatar>
+<aeva-avatar name="J"></aeva-avatar>
+<aeva-avatar></aeva-avatar>'>
+            <div style="width: 100%; display: flex; gap: 1rem;">
+                <!-- Valid Image -->
+                <aeva-avatar src="https://i.pravatar.cc/150?img=11"></aeva-avatar>
+                <!-- Initials Fallback (2 words) -->
+                <aeva-avatar name="Budi Santoso"></aeva-avatar>
+                <!-- Initials Fallback (1 word) -->
+                <aeva-avatar name="J"></aeva-avatar>
+                <!-- Icon Fallback -->
+                <aeva-avatar></aeva-avatar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Broken Image Fallback"
+        description="If the src URL points to a broken image (404), the component automatically falls back to initials seamlessly.">
+        <aeva-doc-example
+            code='<aeva-avatar src="https://broken-link.com/img.jpg" name="Error Fallback"></aeva-avatar>'>
+            <div style="width: 100%; display: flex; gap: 1rem;">
+                <aeva-avatar src="https://broken-link.com/img.jpg" name="Error Fallback"
+                    style="--aeva-avatar-bg: var(--aeva-danger-color);"></aeva-avatar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Shapes & Sizes" description="Supports multiple visual constraints.">
+        <aeva-doc-example code='<aeva-avatar size="xl" src="https://i.pravatar.cc/150?img=1"></aeva-avatar>
+<aeva-avatar size="lg" shape="rounded" src="https://i.pravatar.cc/150?img=2"></aeva-avatar>
+<aeva-avatar size="md" shape="square" src="https://i.pravatar.cc/150?img=3"></aeva-avatar>
+<aeva-avatar size="sm" name="Small"></aeva-avatar>'>
+            <div style="width: 100%; display: flex; align-items: center; gap: 1rem;">
+                <aeva-avatar size="xl" src="https://i.pravatar.cc/150?img=1"></aeva-avatar>
+                <aeva-avatar size="lg" shape="rounded" src="https://i.pravatar.cc/150?img=2"></aeva-avatar>
+                <aeva-avatar size="md" shape="square" src="https://i.pravatar.cc/150?img=3"></aeva-avatar>
+                <aeva-avatar size="sm" name="Small"></aeva-avatar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Status Indicator"
+        description="Display online/offline presence using a colored badge overlay. Adapts to different shapes.">
+        <aeva-doc-example code='<aeva-avatar status="online" src="https://i.pravatar.cc/150?img=4"></aeva-avatar>
+<aeva-avatar status="away" src="https://i.pravatar.cc/150?img=5"></aeva-avatar>
+<aeva-avatar shape="square" status="busy" src="https://i.pravatar.cc/150?img=6"></aeva-avatar>
+<aeva-avatar shape="rounded" status="offline" name="Offline User"></aeva-avatar>'>
+            <div style="width: 100%; display: flex; gap: 1rem; align-items: center;">
+                <aeva-avatar status="online" src="https://i.pravatar.cc/150?img=4"></aeva-avatar>
+                <aeva-avatar status="away" src="https://i.pravatar.cc/150?img=5"></aeva-avatar>
+                <aeva-avatar shape="square" status="busy" src="https://i.pravatar.cc/150?img=6"></aeva-avatar>
+                <aeva-avatar shape="rounded" status="offline" name="Offline User"></aeva-avatar>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Avatar Group"
+        description="Aeva Avatar Group manages multiple avatars by overlapping them and hiding surplus items when bounded by max.">
+        <aeva-doc-example code='<aeva-avatar-group max="4" size="md">
+    <aeva-avatar src="https://i.pravatar.cc/150?img=1"></aeva-avatar>
+    <aeva-avatar src="https://i.pravatar.cc/150?img=2"></aeva-avatar>
+    <aeva-avatar src="https://i.pravatar.cc/150?img=3"></aeva-avatar>
+    <aeva-avatar src="https://i.pravatar.cc/150?img=4"></aeva-avatar>
+    <aeva-avatar src="https://i.pravatar.cc/150?img=5"></aeva-avatar>
+    <aeva-avatar src="https://i.pravatar.cc/150?img=6"></aeva-avatar>
+</aeva-avatar-group>'>
+            <div style="width: 100%;">
+                <aeva-avatar-group max="4" size="md">
+                    <aeva-avatar src="https://i.pravatar.cc/150?img=1"></aeva-avatar>
+                    <aeva-avatar src="https://i.pravatar.cc/150?img=2"></aeva-avatar>
+                    <aeva-avatar src="https://i.pravatar.cc/150?img=3"></aeva-avatar>
+                    <aeva-avatar src="https://i.pravatar.cc/150?img=4"></aeva-avatar>
+                    <aeva-avatar src="https://i.pravatar.cc/150?img=5"></aeva-avatar>
+                    <aeva-avatar src="https://i.pravatar.cc/150?img=6"></aeva-avatar>
+                </aeva-avatar-group>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">src</td>
+                        <td><code>string</code></td>
+                        <td>Image URL.</td>
+                        <td><code>undefined</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">name</td>
+                        <td><code>string</code></td>
+                        <td>Sets alt text constraint and Initials fallback text.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">shape</td>
+                        <td><code>circle | rounded | square</code></td>
+                        <td>Defines border radius.</td>
+                        <td><code>circle</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">size</td>
+                        <td><code>sm | md | lg | xl</code></td>
+                        <td>Defines dimensions. (Can be overridden by a Group).</td>
+                        <td><code>md</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">status</td>
+                        <td><code>online | offline | away | busy | none</code></td>
+                        <td>Presence indicator in the corner.</td>
+                        <td><code>none</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">max <em>(Group Only)</em></td>
+                        <td><code>number</code></td>
+                        <td>Cut-off length rendering +X leftover node.</td>
+                        <td><code>undefined</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+</aeva-doc-page>
