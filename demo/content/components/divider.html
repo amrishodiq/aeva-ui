@@ -1,0 +1,126 @@
+<aeva-doc-page title="Divider"
+    description="A component used to create visual separation between differing blocks of content. Supports text labels and multiple line styles.">
+
+    <aeva-doc-section title="Basic Usage" description="The default solid divider splitting two sections.">
+        <aeva-doc-example code='<div style="text-align: center;">
+    <p>Top Content</p>
+    <aeva-divider></aeva-divider>
+    <p>Bottom Content</p>
+</div>'>
+            <div style="width: 100%; text-align: center; color: var(--aeva-text-muted-color);">
+                <p>Top Content</p>
+                <aeva-divider></aeva-divider>
+                <p>Bottom Content</p>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Text Label" description="Dividers can encapsulate text passing meaning to the separation.">
+        <aeva-doc-example code='<aeva-divider>OR</aeva-divider>
+<aeva-divider variant="dashed">Continue Below</aeva-divider>'>
+            <div style="width: 100%;">
+                <aeva-divider>OR</aeva-divider>
+                <aeva-divider variant="dashed">Continue Below</aeva-divider>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Style Variants"
+        description="Different stroke variants corresponding to design requirements.">
+        <aeva-doc-example code='<aeva-divider variant="solid"></aeva-divider>
+<aeva-divider variant="dashed"></aeva-divider>
+<aeva-divider variant="dotted"></aeva-divider>'>
+            <div style="width: 100%;">
+                <aeva-divider variant="solid"></aeva-divider>
+                <aeva-divider variant="dashed"></aeva-divider>
+                <aeva-divider variant="dotted"></aeva-divider>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Vertical Orientation"
+        description="Used to separate items displayed horizontally, like in toolbars or flex containers.">
+        <aeva-doc-example code='<div style="display: flex; align-items: center; justify-content: center; height: 40px; color: var(--aeva-primary-color);">
+    <span>Option A</span>
+    <aeva-divider orientation="vertical"></aeva-divider>
+    <span>Option B</span>
+    <aeva-divider orientation="vertical" variant="dashed"></aeva-divider>
+    <span>Option C</span>
+</div>'>
+            <div
+                style="width: 100%; display: flex; align-items: center; justify-content: center; height: 40px; color: var(--aeva-primary-color);">
+                <span>Option A</span>
+                <aeva-divider orientation="vertical"></aeva-divider>
+                <span>Option B</span>
+                <aeva-divider orientation="vertical" variant="dashed"></aeva-divider>
+                <span>Option C</span>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">variant</td>
+                        <td><code>'solid' | 'dashed' | 'dotted'</code></td>
+                        <td>The stroke style of the divider.</td>
+                        <td><code>'solid'</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">orientation</td>
+                        <td><code>'horizontal' | 'vertical'</code></td>
+                        <td>The direction of the dividing line.</td>
+                        <td><code>'horizontal'</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">--aeva-divider-color</td>
+                        <td>Color of the stroke.</td>
+                        <td><code>--aeva-border-color</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">--aeva-divider-text-color</td>
+                        <td>Color of the slotted text.</td>
+                        <td><code>--aeva-text-muted-color</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">--aeva-divider-thickness</td>
+                        <td>Line thickness height/width.</td>
+                        <td><code>1px</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">--aeva-divider-spacing</td>
+                        <td>Surrounding margin around the component.</td>
+                        <td><code>1.5rem</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+</aeva-doc-page>

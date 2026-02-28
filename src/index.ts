@@ -28,6 +28,7 @@ export { AevaSwitch } from './components/atoms/aeva-switch.js';
 export { AevaSelect } from './components/atoms/aeva-select.js';
 export { AevaSimpleTable } from './components/atoms/aeva-simple-table.js';
 export { AevaDate } from './components/atoms/aeva-date.js';
+export { AevaDivider } from './components/atoms/aeva-divider.js';
 
 // Utils
 export { RadioGroupHelper } from './utils/radio-group-helper.js';
