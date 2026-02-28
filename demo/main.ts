@@ -26,6 +26,11 @@ import './src/components/aeva-doc-page';
 import './src/components/aeva-doc-section';
 import './src/components/aeva-doc-example';
 
+// Chart Documentation Components
+import '../docs/pages/docs-aeva-bar-chart';
+import '../docs/pages/docs-aeva-line-chart';
+import '../docs/pages/docs-aeva-doughnut-chart';
+
 // Demo: Getting Selected Value examples
 document.addEventListener('DOMContentLoaded', () => {
     const valueResult = document.getElementById('value-result');

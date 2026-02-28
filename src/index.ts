@@ -47,8 +47,10 @@ export { AevaAlert } from './components/molecules/aeva-alert.js';
 export { AevaAccordion } from './components/molecules/aeva-accordion.js';
 export { AevaPagination } from './components/molecules/aeva-pagination.js';
 export { AevaProcess } from './components/molecules/aeva-process.js';
-export { AevaAvatarGroup } from './components/molecules/aeva-avatar-group.js';
 export { AevaEmptyState } from './components/molecules/aeva-empty-state.js';
+export { AevaBarChart } from './components/molecules/aeva-bar-chart.js';
+export { AevaLineChart } from './components/molecules/aeva-line-chart.js';
+export { AevaDoughnutChart } from './components/molecules/aeva-doughnut-chart.js';
 
 // Organisms
 export { AevaSidebar } from './components/organisms/aeva-sidebar.js';

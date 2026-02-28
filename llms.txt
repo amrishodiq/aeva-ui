@@ -10,6 +10,12 @@ A lightweight, customizable design system library built with Lit for rapid web d
 - [CONTRIBUTING.md](CONTRIBUTING.md): Guidelines for contributing to the project.
 - [CHANGELOG.md](CHANGELOG.md): History of changes and version releases.
 
+## Data Visualization
+
+- [aeva-bar-chart](docs/molecules/aeva-bar-chart.md)
+- [aeva-line-chart](docs/molecules/aeva-line-chart.md)
+- [aeva-doughnut-chart](docs/molecules/aeva-doughnut-chart.md)
+
 ## Component Documentation
 
 ### Atoms (22)
