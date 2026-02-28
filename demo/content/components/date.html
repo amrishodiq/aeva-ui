@@ -1,0 +1,126 @@
+<aeva-doc-page title="Date"
+    description="A simple utility component used to standardize formatting for JavaScript Date objects, ISO strings, and integer timestamps across the application. Relying deeply on Intl.DateTimeFormat API for robust multi-region native localization.">
+
+    <aeva-doc-section title="Basic Formats"
+        description="Choose from a variety of predefined formats mapped to native browser localization APIs.">
+        <aeva-doc-example code='<aeva-date value="2026-02-28T14:30:00.000Z" format="short"></aeva-date>
+<aeva-date value="2026-02-28T14:30:00.000Z" format="medium"></aeva-date>
+<aeva-date value="2026-02-28T14:30:00.000Z" format="long"></aeva-date>
+<aeva-date value="2026-02-28T14:30:00.000Z" format="full"></aeva-date>'>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div
+                    style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">Short:</aeva-text>
+                    <aeva-date value="2026-02-28T14:30:00.000Z" format="short"></aeva-date>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">Medium (Default):</aeva-text>
+                    <aeva-date value="2026-02-28T14:30:00.000Z" format="medium"></aeva-date>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">Long:</aeva-text>
+                    <aeva-date value="2026-02-28T14:30:00.000Z" format="long"></aeva-date>
+                </div>
+                <div style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem;">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">Full:</aeva-text>
+                    <aeva-date value="2026-02-28T14:30:00.000Z" format="full"></aeva-date>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Specific Formats" description="Extract only the date portion or only the time portion.">
+        <aeva-doc-example code='<aeva-date value="2026-02-28T14:30:00.000Z" format="date-only"></aeva-date>
+<aeva-date value="2026-02-28T14:30:00.000Z" format="time-only"></aeva-date>'>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div
+                    style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">Date Only:</aeva-text>
+                    <aeva-date value="2026-02-28T14:30:00.000Z" format="date-only"></aeva-date>
+                </div>
+                <div style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem;">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">Time Only:</aeva-text>
+                    <aeva-date value="2026-02-28T14:30:00.000Z" format="time-only"></aeva-date>
+                </div>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Relative Time"
+        description="The component automatically calculates the time difference and formats it dynamically like social media timestamps.">
+        <aeva-doc-example code='<aeva-date id="demo-relative-1" format="relative"></aeva-date>
+<aeva-date id="demo-relative-2" format="relative"></aeva-date>
+<aeva-date id="demo-relative-3" format="relative"></aeva-date>'>
+            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <div
+                    style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">2 hours ago:</aeva-text>
+                    <aeva-date id="demo-relative-1" format="relative"></aeva-date>
+                </div>
+                <div
+                    style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem; border-bottom: 1px dashed rgba(255,255,255,0.1);">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">In 3 days:</aeva-text>
+                    <aeva-date id="demo-relative-2" format="relative"></aeva-date>
+                </div>
+                <div style="display: flex; justify-content: space-between; max-width: 400px; padding: 0.5rem;">
+                    <aeva-text variant="body" style="color: var(--aeva-text-muted);">25 seconds ago:</aeva-text>
+                    <aeva-date id="demo-relative-3" format="relative"></aeva-date>
+                </div>
+            </div>
+
+            <script>
+                // Generate dynamic relative dates for the demo
+                setTimeout(() => {
+                    const now = new Date();
+                    const d1 = new Date(now.getTime() - (2 * 60 * 60 * 1000));
+                    document.getElementById('demo-relative-1').setAttribute('value', d1.toISOString());
+
+                    const d2 = new Date(now.getTime() + (3 * 24 * 60 * 60 * 1000));
+                    document.getElementById('demo-relative-2').setAttribute('value', d2.toISOString());
+
+                    const d3 = new Date(now.getTime() - (25 * 1000));
+                    document.getElementById('demo-relative-3').setAttribute('value', d3.toISOString());
+                }, 100);
+            </script>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">value</td>
+                        <td><code>Date|string|number</code></td>
+                        <td>The date to format. Accepts ISO strings or timestamps.</td>
+                        <td><code>undefined</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">format</td>
+                        <td><code>string</code></td>
+                        <td><code>short</code>, <code>medium</code>, <code>long</code>, <code>full</code>,
+                            <code>date-only</code>, <code>time-only</code>, <code>relative</code></td>
+                        <td><code>'medium'</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">locale</td>
+                        <td><code>string</code></td>
+                        <td>Locale code, e.g., <code>id-ID</code> or <code>en-US</code>. By default reads from the
+                            browser.</td>
+                        <td><code>navigator.language</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>
