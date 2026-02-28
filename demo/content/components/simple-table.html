@@ -1,0 +1,179 @@
+<aeva-doc-page title="Simple Table"
+    description="A minimalist data table component optimized for straightforward data presentation, supporting both quick string-based attributes and robust property bindings for complex structures. Features automatic built-in sorting.">
+
+    <aeva-doc-section title="String Attributes (Quick Usage)"
+        description="Perfect for static data where formatting and commas within cells are not an issue. Note: You can click the headers to sort the table!">
+        <aeva-doc-example code='<aeva-simple-table 
+    searchable
+    paginated
+    items-per-page="5"
+    header="#,Name,Part,Contribution" 
+    data="1,Amri Shodiq,ST Plugin P,540;2,Naufal,ST Plugin P,489;3,Kevin,SW Framework,600;4,Budi,DB Admin,450;5,Siti,QA,510;6,Reza,Backend,420;7,Gita,UI Design,580;8,Andi,DevOps,505;9,Lia,Frontend,495;10,Rio,Mobile,460;11,Dina,Data Sci,520;12,Tono,Security,480">
+</aeva-simple-table>'>
+            <div style="width: 100%;">
+                <aeva-simple-table searchable paginated items-per-page="5" header="#,Name,Part,Contribution"
+                    data="1,Amri Shodiq,ST Plugin P,540;2,Naufal,ST Plugin P,489;3,Kevin,SW Framework,600;4,Budi,DB Admin,450;5,Siti,QA,510;6,Reza,Backend,420;7,Gita,UI Design,580;8,Andi,DevOps,505;9,Lia,Frontend,495;10,Rio,Mobile,460;11,Dina,Data Sci,520;12,Tono,Security,480">
+                </aeva-simple-table>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Property Binding (Robust API)"
+        description="Ideal for generating tables dynamically from Javascript data, allowing complex characters like commas inside table cells and mapping keys to columns.">
+        <aeva-doc-example code='<aeva-simple-table id="dynamic-table"></aeva-simple-table>
+
+<script>
+    const table = document.getElementById("dynamic-table");
+    
+    // Define columns using an array of objects
+    table.columns = [
+        { key: "id", label: "#" },
+        { key: "name", label: "Full Name" },
+        { key: "role", label: "Role & Department" },
+        { key: "score", label: "Score" }
+    ];
+    
+    // Provide an array of objects for the rows
+    table.rows = [
+        { id: 1, name: "Alice, M.D.", role: "Engineering, Frontend", score: 95 },
+        { id: 2, name: "Bob, Ph.D.", role: "Data Science", score: 88 }
+    ];
+</script>'>
+            <div style="width: 100%;">
+                <aeva-simple-table id="demo-dynamic-table"></aeva-simple-table>
+                <script>
+                    setTimeout(() => {
+                        const table = document.getElementById('demo-dynamic-table');
+                        if (table) {
+                            table.columns = [
+                                { key: "id", label: "#" },
+                                { key: "name", label: "Full Name" },
+                                { key: "role", label: "Role & Department" },
+                                { key: "score", label: "Score" }
+                            ];
+                            table.rows = [
+                                { id: 1, name: "Alice, M.D.", role: "Engineering, Frontend", score: 95 },
+                                { id: 2, name: "Bob, Ph.D.", role: "Data Science", score: 88 }
+                            ];
+                        }
+                    }, 100);
+                </script>
+            </div>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Default</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="property-name">header</td>
+                        <td><code>string</code></td>
+                        <td>Comma-separated list of column headers. Overridden if <code>columns</code> array is
+                            provided.</td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">data</td>
+                        <td><code>string</code></td>
+                        <td>Data definition as a semicolon-separated list of comma-separated rows. Overridden if
+                            <code>rows</code> array is provided.
+                        </td>
+                        <td><code>''</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">columns</td>
+                        <td><code>Array</code></td>
+                        <td>JS array definition for columns. Array of strings or objects like
+                            <code>{ key: '...', label: '...' }</code>
+                        </td>
+                        <td><code>undefined</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">rows</td>
+                        <td><code>Array</code></td>
+                        <td>JS array definition for sequence of rows. Can be array of arrays or array of objects
+                            matching column keys.</td>
+                        <td><code>undefined</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">searchable</td>
+                        <td><code>boolean</code></td>
+                        <td>Enables a global search input above the table.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">searchPlaceholder</td>
+                        <td><code>string</code></td>
+                        <td>Placeholder text for the search input.</td>
+                        <td><code>'Search...'</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">paginated</td>
+                        <td><code>boolean</code></td>
+                        <td>Enables slicing data and displaying a pagination control.</td>
+                        <td><code>false</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">itemsPerPage</td>
+                        <td><code>number</code></td>
+                        <td>Number of rows to display per page.</td>
+                        <td><code>10</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization"
+        description="Aeva Simple Table can be customized using these CSS variables.">
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>CSS Variable</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>--aeva-border-color</code></td>
+                        <td>Color of the table boundaries and cell separators.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-border-radius-md</code></td>
+                        <td>Corner radius of the table container.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-surface-color</code></td>
+                        <td>Background color of the table.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-surface-color-light</code></td>
+                        <td>Background color for the header row to differentiate it.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-text-color</code></td>
+                        <td>Text color for row cells.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-text-muted-color</code></td>
+                        <td>Text color for the header.</td>
+                    </tr>
+                    <tr>
+                        <td><code>--aeva-hover-color</code></td>
+                        <td>Background color of a row upon being hovered.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </aeva-doc-section>
+</aeva-doc-page>
