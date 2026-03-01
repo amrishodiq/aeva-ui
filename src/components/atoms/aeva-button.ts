@@ -317,49 +317,55 @@ export class AevaButton extends LitElement {
   ];
 
   /**
-   * Button variant style
+   * Visual style variant of the button.
+   * @type {'primary' | 'secondary' | 'outline' | 'ghost' | 'danger'}
    */
   @property({ type: String, reflect: true })
   variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' = 'primary';
 
   /**
-   * Button size
+   * Size of the button.
+   * @type {'sm' | 'md' | 'lg'}
    */
   @property({ type: String, reflect: true })
   size: 'sm' | 'md' | 'lg' = 'md';
 
   /**
-   * Whether the button is disabled
+   * Whether the button is currently disabled.
+   * Prevents user interaction and applies disabled styles.
    */
   @property({ type: Boolean, reflect: true })
   disabled = false;
 
   /**
-   * Whether the button is in loading state
+   * Whether the button is in a loading state.
+   * Shows a spinner and disables interaction.
    */
   @property({ type: Boolean, reflect: true })
   loading = false;
 
   /**
-   * Whether the button should take full width
+   * Whether the button should expand to fill its container's width.
    */
   @property({ type: Boolean, reflect: true, attribute: 'full-width' })
   fullWidth = false;
 
   /**
-   * Button type attribute
+   * The underlying button type attribute.
+   * @type {'button' | 'submit' | 'reset'}
    */
   @property({ type: String })
   type: 'button' | 'submit' | 'reset' = 'button';
 
   /**
-   * Whether this is an icon-only button
+   * Whether this button only contains an icon.
+   * Adjusts padding and aspect ratio.
    */
   @property({ type: Boolean, reflect: true, attribute: 'icon-only' })
   iconOnly = false;
 
   /**
-   * Aria label for icon-only buttons
+   * Accessible label for the button, especially important for icon-only buttons.
    */
   @property({ type: String, attribute: 'aria-label' })
   ariaLabel: string | null = null;
@@ -401,7 +407,7 @@ export class AevaButton extends LitElement {
       if (filledSlots.includes('icon-only') && filledSlots.length > 1) {
         console.warn(
           '[aeva-button] Using slot="icon-only" with other slots may cause unexpected layout. ' +
-            'Use icon-only alone, or use icon-left/icon-right with default slot.',
+          'Use icon-only alone, or use icon-left/icon-right with default slot.',
           { filledSlots }
         );
       }

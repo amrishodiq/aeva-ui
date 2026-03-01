@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.6] - 2026-03-01
+
+### Improved
+- **Branding Refresh**: Updated project metadata and documentation to a more "effortlessly chill" and youth-oriented tone.
+- **Documentation**: Revamped `README.md` with clean, grouped component documentation and streamlined installation guides.
+- **Visual Refinement**: Toned down visual clutter (emojis) in documentation for a cleaner professional look while keeping the relaxed tone.
+
+## [0.1.5] - 2026-03-01
+
+### Added
+- **Developer Experience**: Integrated Custom Elements Manifest (CEM) to provide rich IDE support (VS Code hints, validation).
+- **Manifest**: Added `custom-elements.json` manifest file to the build output.
+- **Documentation**: Added comprehensive JSDoc annotations to core components for CEM analyzer compatibility.
+
+## [0.1.4] - 2026-03-01
+
+### Added
+- **Featured Implementation**: "Application Board" page and component refinements for better integration.
+- **New Component**: `aeva-select` (Highly customizable select component with support for themes and accessibility).
+
+### Improved
+- **Rapid Prototyping**: Refined `AevaStack`, `AevaInput`, `AevaTab`, and `AevaCard` for faster layout building and better defaults.
+- **Metadata**: Introduced `llms.txt` for better LLM integration and understanding of the library.
+
 ## [0.1.3] - 2026-02-28
 
 ### Added

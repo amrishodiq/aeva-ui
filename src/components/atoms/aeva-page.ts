@@ -117,28 +117,36 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
   `;
 
   /**
-   * Whether the page is open
+   * Whether the page is currently open and visible.
+   * Modifies the display property and triggers opening animations.
    */
   @property({ type: Boolean, reflect: true })
   open = false;
 
   /**
-   * Custom background color/gradient
+   * Custom background color or gradient for the page.
+   * If provided, it overrides the --aeva-page-background CSS variable.
    */
   @property({ type: String })
   background = '';
 
   /**
-   * Whether to close when clicking the backdrop
+   * Whether the page should automatically close when the backdrop is clicked.
+   * Default is true.
    */
   @property({ type: Boolean, attribute: 'close-on-backdrop' })
   closeOnBackdrop = true;
 
+  /**
+   * Amount of blur to apply to the content behind the page (in pixels).
+   * Only applicable if supported by the browser via backdrop-filter.
+   */
   @property({ type: Number, attribute: 'blur-amount' })
   blurAmount = 10;
 
   /**
-   * Whether to disable history integration (prevents closing on back button)
+   * Whether to disable automatic browser history integration.
+   * When enabled, the page will not push a state to history and won't close on back button.
    */
   @property({ type: Boolean, attribute: 'disable-history' })
   disableHistory = false;
@@ -271,9 +279,9 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
         class="backdrop"
         @click=${this.handleBackdropClick}
         style="${styleMap({
-          opacity: `${springVal}`,
-          visibility: springVal > 0.01 ? 'visible' : 'hidden',
-        })}"
+      opacity: `${springVal}`,
+      visibility: springVal > 0.01 ? 'visible' : 'hidden',
+    })}"
       ></div>
       <div
         part="page"
@@ -282,10 +290,10 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
         role="dialog"
         aria-modal="true"
         style="${styleMap({
-          transform,
-          opacity: `${opacity}`,
-          visibility: springVal > 0.01 ? 'visible' : 'hidden',
-        })}"
+      transform,
+      opacity: `${opacity}`,
+      visibility: springVal > 0.01 ? 'visible' : 'hidden',
+    })}"
       >
         <slot></slot>
       </div>
