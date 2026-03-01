@@ -42,6 +42,12 @@ export class AevaTheme extends LitElement {
   @property({ type: Object })
   customStyles: ThemeStyles | null = null;
 
+  /**
+   * If true, prevents automatic injection of Google Fonts (Inter & Outfit).
+   */
+  @property({ type: Boolean, attribute: 'disable-font-injection' })
+  disableFontInjection = false;
+
   updated(changedProperties: Map<string, any>) {
     if (changedProperties.has('theme') || changedProperties.has('customStyles')) {
       this.applyThemeToHost();
@@ -90,8 +96,24 @@ export class AevaTheme extends LitElement {
     });
   }
 
+  private injectFonts() {
+    if (this.disableFontInjection) return;
+
+    const fontId = 'aeva-google-fonts';
+    if (document.getElementById(fontId)) return;
+
+    const link = document.createElement('link');
+    link.id = fontId;
+    link.rel = 'stylesheet';
+    link.href =
+      'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap';
+
+    document.head.appendChild(link);
+  }
+
   connectedCallback() {
     super.connectedCallback();
+    this.injectFonts();
     this.applyThemeToHost();
   }
 

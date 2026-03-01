@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeva UI CDN Test</title>
+    <!-- CSS is now style.css -->
+    <link rel="stylesheet" href="./dist/style.css">
+</head>
+
+<body>
+    <aeva-theme>
+        <div style="padding: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+            <h1>Aeva UI CDN Test</h1>
+            <p>If you see this page, components below should be rendered and styled without needing an importmap.</p>
+
+            <aeva-stack gap="md">
+                <aeva-button variant="primary">Primary Button</aeva-button>
+                <aeva-badge variant="success">Success Badge</aeva-badge>
+                <aeva-input label="Input Field" placeholder="Type something..."></aeva-input>
+            </aeva-stack>
+
+            <div style="margin-top: 2rem;">
+                <p>Check "Network" tab in browser to see if 'Inter' and 'Outfit' fonts are loaded from Google Fonts.</p>
+            </div>
+        </div>
+    </aeva-theme>
+
+    <script type="module">
+        // Using the bundled build - no importmap needed!
+        import './dist/aeva-ui.bundle.js';
+
+        console.log('Aeva UI Bundled Loaded');
+    </script>
+</body>
+
+</html>

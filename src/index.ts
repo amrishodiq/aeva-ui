@@ -1,6 +1,11 @@
 // Main entry point for @aeva/ui library
 // Export all components here
 
+// Global Styles
+import './styles/tokens.css';
+import './styles/basic-component.css';
+import './styles/scrollbar.css';
+
 // Atoms
 export { AevaButton } from './components/atoms/aeva-button.js';
 export { AevaText } from './components/atoms/aeva-text.js';

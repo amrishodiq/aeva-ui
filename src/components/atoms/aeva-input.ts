@@ -405,6 +405,7 @@ export class AevaInput extends LitElement {
   }
 
   private _handleInput(e: Event) {
+    e.stopPropagation(); // Prevent native input event from bubbling
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     let newValue = target.value;
 
@@ -459,6 +460,7 @@ export class AevaInput extends LitElement {
   }
 
   private _handleChange(e: Event) {
+    e.stopPropagation(); // Prevent native change event from bubbling
     const target = e.target as HTMLInputElement | HTMLTextAreaElement;
     this.dispatchEvent(
       new CustomEvent('change', {
