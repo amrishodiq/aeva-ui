@@ -21,52 +21,60 @@ export class AevaMasonry extends LitElement {
     }
 
     .masonry-container {
+      column-count: var(--base-columns, 1);
       column-gap: var(--aeva-masonry-gap);
       width: 100%;
     }
 
-    /* Auto columns based on viewport */
-    .masonry-container.auto-columns {
-      column-count: 1;
+    /* Media queries cascade from smallest to largest */
+    @media (min-width: 576px) {
+      .masonry-container {
+        column-count: var(--sm-columns, var(--base-columns, 1));
+      }
     }
 
-    /* Fixed column layouts */
-    .masonry-container.columns-1 {
-      column-count: 1;
-    }
-
-    .masonry-container.columns-2 {
-      column-count: 2;
-    }
-
-    .masonry-container.columns-3 {
-      column-count: 3;
-    }
-
-    .masonry-container.columns-4 {
-      column-count: 4;
-    }
-
-    .masonry-container.columns-5 {
-      column-count: 5;
-    }
-
-    /* Responsive breakpoints for auto mode */
     @media (min-width: 768px) {
-      .masonry-container.auto-columns {
-        column-count: 2;
+      .masonry-container {
+        column-count: var(
+          --md-columns,
+          var(--sm-columns, var(--base-columns, 1))
+        );
       }
     }
 
     @media (min-width: 1024px) {
-      .masonry-container.auto-columns {
-        column-count: 3;
+      .masonry-container {
+        column-count: var(
+          --lg-columns,
+          var(--md-columns, var(--sm-columns, var(--base-columns, 1)))
+        );
       }
     }
 
     @media (min-width: 1440px) {
-      .masonry-container.auto-columns {
-        column-count: 4;
+      .masonry-container {
+        column-count: var(
+          --xl-columns,
+          var(
+            --lg-columns,
+            var(--md-columns, var(--sm-columns, var(--base-columns, 1)))
+          )
+        );
+      }
+    }
+
+    @media (min-width: 1920px) {
+      .masonry-container {
+        column-count: var(
+          --xxl-columns,
+          var(
+            --xl-columns,
+            var(
+              --lg-columns,
+              var(--md-columns, var(--sm-columns, var(--base-columns, 1)))
+            )
+          )
+        );
       }
     }
 
@@ -81,10 +89,16 @@ export class AevaMasonry extends LitElement {
   `;
 
   /**
-   * Number of columns ('auto' for responsive, or fixed number)
+   * Number of base columns (mobile). If 'auto', uses internal responsive presets.
    */
   @property({ type: String, reflect: true })
-  columns: 'auto' | '1' | '2' | '3' | '4' | '5' = 'auto';
+  columns: 'auto' | '1' | '2' | '3' | '4' | '5' | string = 'auto';
+
+  @property({ type: String, attribute: 'sm-columns' }) smColumns?: string;
+  @property({ type: String, attribute: 'md-columns' }) mdColumns?: string;
+  @property({ type: String, attribute: 'lg-columns' }) lgColumns?: string;
+  @property({ type: String, attribute: 'xl-columns' }) xlColumns?: string;
+  @property({ type: String, attribute: 'xxl-columns' }) xxlColumns?: string;
 
   /**
    * Gap between items. Can be a number (px) or a token (xs, sm, md, lg, xl).
@@ -124,12 +138,32 @@ export class AevaMasonry extends LitElement {
   }
 
   render() {
-    const containerClass = `masonry-container ${
-      this.columns === 'auto' ? 'auto-columns' : `columns-${this.columns}`
-    }`;
+    // Determine the base and responsive columns
+    // If 'auto' mode is active, simulate the old auto behavior by injecting default responsive values
+    const isAuto = this.columns === 'auto';
+    const baseCol = isAuto ? '1' : this.columns;
+
+    const styles: Record<string, string | undefined> = {
+      '--base-columns': baseCol,
+      '--sm-columns': this.smColumns,
+      '--md-columns': this.mdColumns ?? (isAuto && !this.smColumns ? '2' : undefined), // Old auto behavior: 2 cols at md
+      '--lg-columns': this.lgColumns ?? (isAuto && !this.mdColumns && !this.smColumns ? '3' : undefined), // Old auto: 3 at lg
+      '--xl-columns': this.xlColumns ?? (isAuto && !this.lgColumns && !this.mdColumns && !this.smColumns ? '4' : undefined), // Old auto: 4 at xl
+      '--xxl-columns': this.xxlColumns,
+    };
+
+    // Construct the inline style string
+    const styleString = Object.entries(styles)
+      .filter(([_, value]) => value !== undefined)
+      .map(([key, value]) => `${key}: ${value}`)
+      .join('; ');
 
     return html`
-      <div class="${containerClass}" part="container" style="column-gap: var(--aeva-masonry-gap)">
+      <div
+        class="masonry-container"
+        part="container"
+        style="${styleString}; column-gap: var(--aeva-masonry-gap)"
+      >
         <slot></slot>
       </div>
     `;

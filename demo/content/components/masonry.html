@@ -22,6 +22,29 @@
         </aeva-doc-example>
     </aeva-doc-section>
 
+    <aeva-doc-section title="Responsive Layouts"
+        description="Manually specify columns at specific breakpoints. Resize the browser to see the effect.">
+        <aeva-doc-example>
+            <div slot="example">
+                <aeva-masonry columns="1" md-columns="2" lg-columns="3" gap="sm">
+                    <aeva-card padding="md" style="height: 100px; background: rgba(0,0,0,0.05)"><aeva-text>Mobile: 1
+                            Col</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 150px; background: rgba(0,0,0,0.05)"><aeva-text>Tablet: 2
+                            Cols</aeva-text></aeva-card>
+                    <aeva-card padding="md" style="height: 120px; background: rgba(0,0,0,0.05)"><aeva-text>Desktop: 3
+                            Cols</aeva-text></aeva-card>
+                    <aeva-card padding="md"
+                        style="height: 180px; background: rgba(0,0,0,0.05)"><aeva-text>Responsive</aeva-text></aeva-card>
+                </aeva-masonry>
+            </div>
+            <pre slot="code">
+&lt;aeva-masonry columns="1" md-columns="2" lg-columns="3" gap="sm"&gt;
+    &lt;aeva-card&gt;...&lt;/aeva-card&gt;
+    &lt;aeva-card&gt;...&lt;/aeva-card&gt;
+&lt;/aeva-masonry&gt;</pre>
+        </aeva-doc-example>
+    </aeva-doc-section>
+
     <aeva-doc-section title="Fixed Columns" description="Force a specific number of columns across all breakpoints.">
         <aeva-doc-example>
             <div slot="example">
@@ -61,8 +84,43 @@
                         <td class="property-name">columns</td>
                         <td><code>string</code></td>
                         <td><code>auto</code>, <code>1</code>-<code>6</code></td>
-                        <td>Number of columns in the masonry layout.</td>
+                        <td>Number of basic (mobile) columns in the masonry layout.</td>
                         <td><code>auto</code></td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">sm-columns</td>
+                        <td><code>string</code></td>
+                        <td><code>1</code>-<code>6</code></td>
+                        <td>Number of columns on screens &ge; 576px.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">md-columns</td>
+                        <td><code>string</code></td>
+                        <td><code>1</code>-<code>6</code></td>
+                        <td>Number of columns on screens &ge; 768px.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">lg-columns</td>
+                        <td><code>string</code></td>
+                        <td><code>1</code>-<code>6</code></td>
+                        <td>Number of columns on screens &ge; 1024px.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">xl-columns</td>
+                        <td><code>string</code></td>
+                        <td><code>1</code>-<code>6</code></td>
+                        <td>Number of columns on screens &ge; 1440px.</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td class="property-name">xxl-columns</td>
+                        <td><code>string</code></td>
+                        <td><code>1</code>-<code>6</code></td>
+                        <td>Number of columns on screens &ge; 1920px.</td>
+                        <td>-</td>
                     </tr>
                     <tr>
                         <td class="property-name">gap</td>

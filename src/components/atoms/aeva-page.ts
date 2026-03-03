@@ -3,6 +3,7 @@ import { customElement, property } from 'lit/decorators.js';
 import { styleMap } from 'lit/directives/style-map.js';
 import { WithCloseAnimation } from '../../utils/behaviors';
 import { SpringController } from '../../controllers/spring-controller';
+import { PageStackController, globalPageStack } from '../../utils/page-stack';
 
 /**
  * A full-screen page component with modal behavior and slide animations.
@@ -24,6 +25,7 @@ import { SpringController } from '../../controllers/spring-controller';
  */
 @customElement('aeva-page')
 export class AevaPage extends WithCloseAnimation(LitElement) {
+  private pageStackController = new PageStackController(this);
   static styles = css`
     :host {
       display: none;
@@ -109,11 +111,6 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
       }
     }
 
-    /* Disable opening animations for the first page in the stack */
-    :host(:first-of-type) .backdrop,
-    :host(:first-of-type) .page-container {
-      animation: none !important;
-    }
   `;
 
   /**
@@ -165,12 +162,10 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener('popstate', this.handlePopState);
   }
 
   disconnectedCallback() {
     super.disconnectedCallback();
-    window.removeEventListener('popstate', this.handlePopState);
   }
 
   updated(changedProperties: Map<string, unknown>) {
@@ -195,10 +190,8 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
     // Lock body scroll
     document.body.style.overflow = 'hidden';
 
-    // Add to history for back button support
-    if (!this.disableHistory && window.history.state?.aevaPage !== true) {
-      window.history.pushState({ aevaPage: true }, '');
-    }
+    // Register active page and push history state
+    this.pageStackController.register();
 
     // Focus the page
     this.updateComplete.then(() => {
@@ -211,6 +204,10 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
 
   private handleClose() {
     this._spring.setTarget(0);
+
+    // Unregister active page
+    this.pageStackController.unregister();
+
     // Restore body scroll
     document.body.style.overflow = '';
 
@@ -233,12 +230,6 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
     }
   };
 
-  private handlePopState = () => {
-    if (this.open && !this.disableHistory && window.history.state?.aevaPage !== true) {
-      this.close(true);
-    }
-  };
-
   /**
    * Open the page with animation
    */
@@ -256,13 +247,15 @@ export class AevaPage extends WithCloseAnimation(LitElement) {
     await this.closeWithAnimation(0);
 
     // Remove from history if we added it, unless we're already coming from a popstate
-    if (!fromPopState && !this.disableHistory && window.history.state?.aevaPage === true) {
+    if (!fromPopState && !this.disableHistory) {
       window.history.back();
     }
   }
 
   render() {
-    const isFirstPage = this.matches(':first-of-type');
+    // A page is the first page if it is the only page in the stack, effectively the foundation
+    const isFirstPage = globalPageStack.isFirst(this);
+
     // Only clamp to 1 if we are the first page, open, AND not in the middle of closing
     const springVal = isFirstPage && this.open && !this.closing ? 1 : this._spring.value;
 
