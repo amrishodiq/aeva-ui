@@ -20,6 +20,26 @@
 </style>
 
 <aeva-masonry sm-columns="1" lg-columns="3" md-columns="2" gap="md">
+    <!-- 2026 SENSORY UI SECTION -->
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/squishy-button', true)">
+        <div slot="header"><aeva-text variant="h4">Squishy Button</aeva-text></div>
+        <aeva-text variant="body">Tactile Sensory UI button with jelly-like volume preservation physics.</aeva-text>
+        <div slot="footer" class="card-footer"
+            style="display: flex; gap: 8px; justify-content: center; align-items: center; flex-wrap: wrap;">
+            <aeva-squishy-button variant="primary" size="md">Primary</aeva-squishy-button>
+            <aeva-squishy-button variant="secondary" size="sm">Secondary</aeva-squishy-button>
+            <aeva-squishy-button variant="danger" size="lg">Danger</aeva-squishy-button>
+        </div>
+    </aeva-card>
+
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/kinetic-text', true)">
+        <div slot="header"><aeva-text variant="h4">Kinetic Text</aeva-text></div>
+        <aeva-text variant="body">Liquid typography that stretches reactively to touch or gaze proximity.</aeva-text>
+        <div slot="footer" class="card-footer" style="display: flex; justify-content: center;">
+            <aeva-kinetic-text text="Aeva" variant="h3"></aeva-kinetic-text>
+        </div>
+    </aeva-card>
+
     <!-- ATOMS SECTION -->
     <aeva-card padding="md" onclick="showComponentDetail('components/button', true)">
         <div slot="header"><aeva-text variant="h4">Button</aeva-text></div>

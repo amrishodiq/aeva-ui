@@ -8,6 +8,8 @@ import './styles/scrollbar.css';
 
 // Atoms
 export { AevaButton } from './components/atoms/aeva-button.js';
+export { AevaSquishyButton } from './components/atoms/aeva-squishy-button.js';
+export { AevaKineticText } from './components/atoms/aeva-kinetic-text.js';
 export { AevaText } from './components/atoms/aeva-text.js';
 export { AevaInput } from './components/atoms/aeva-input.js';
 export { AevaModal } from './components/atoms/aeva-modal.js';
