@@ -71,3 +71,34 @@ export { AevaSection } from './components/templates/layout/aeva-section.js';
 
 // Theme
 export { AevaTheme } from './theme/aeva-theme.js';
+
+import { darkTheme } from './theme/tokens/dark.js';
+
+if (typeof document !== 'undefined') {
+    const injectDefaultTheme = () => {
+        // Only check direct children of document.body
+        const hasAevaTheme = document.body?.querySelector(':scope > aeva-theme') !== null;
+        const styleId = 'aeva-default-theme';
+
+        if (!hasAevaTheme && !document.getElementById(styleId)) {
+            const style = document.createElement('style');
+            style.id = styleId;
+            let cssText = ':root {\n';
+            Object.entries(darkTheme).forEach(([key, value]) => {
+                if (value) {
+                    cssText += `  ${key}: ${value};\n`;
+                }
+            });
+            cssText += '}\n';
+            style.textContent = cssText;
+            document.head.prepend(style);
+        }
+    };
+
+    // Run when the DOM content is fully loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', injectDefaultTheme);
+    } else {
+        injectDefaultTheme();
+    }
+}

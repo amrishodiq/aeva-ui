@@ -33,7 +33,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && vite build --mode bundle",
+    "build": "npm run analyze && tsc && vite build && vite build --mode bundle",
     "analyze": "custom-elements-manifest analyze",
     "preview": "vite preview",
     "lint": "eslint src --ext .ts",

@@ -107,170 +107,170 @@
 </head>
 
 <body>
-    <aeva-theme theme="dark">
-        <aeva-page open disable-history
-            style="--aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 0;">
-            <div style="display: flex; height: 100%;">
-                <!-- Sidebar -->
-                <aeva-sidebar id="main-sidebar" width="md">
-                    <!-- Navigation -->
-                    <aeva-list>
-                        <aeva-list-item active data-content="main-content">
-                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- <aeva-theme theme="dark"> -->
+    <aeva-page open disable-history
+        style="--aeva-page-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: 0;">
+        <div style="display: flex; height: 100%;">
+            <!-- Sidebar -->
+            <aeva-sidebar id="main-sidebar" width="md">
+                <!-- Navigation -->
+                <aeva-list>
+                    <aeva-list-item active data-content="main-content">
+                        <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
+                            </path>
+                        </svg>
+                        <span slot="title">Docs</span>
+                    </aeva-list-item>
+
+                    <aeva-list-item data-content="components">
+                        <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                        <span slot="title">Components</span>
+                    </aeva-list-item>
+
+                    <aeva-list-item data-content="blog-content">
+                        <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                            </path>
+                        </svg>
+                        <span slot="title">Blog</span>
+                    </aeva-list-item>
+
+                    <aeva-list-item data-content="playground-content">
+                        <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
+                            </path>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                        <span slot="title">Playground</span>
+                    </aeva-list-item>
+                </aeva-list>
+            </aeva-sidebar>
+
+            <!-- Main Content -->
+            <aeva-section full-height gap="none" padding="none" style="flex: 1;">
+                <!-- Header with Action Bar -->
+                <div slot="header">
+                    <aeva-action-bar padding="md">
+                        <!-- Left: Menu icon + Title -->
+                        <aeva-button id="menu-toggle" slot="secondary" icon-only variant="ghost" aria-label="Menu"
+                            style="--aeva-button-ghost-color: white;">
+                            <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
-                                </path>
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
-                            <span slot="title">Docs</span>
-                        </aeva-list-item>
+                        </aeva-button>
+                        <aeva-text slot="secondary" variant="h4" style="--aeva-text-color: white;">Aeva
+                            UI</aeva-text>
 
-                        <aeva-list-item data-content="components">
-                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M4 6h16M4 12h16m-7 6h7"></path>
-                            </svg>
-                            <span slot="title">Components</span>
-                        </aeva-list-item>
+                        <!-- Right: Theme selection -->
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                const themeEl = document.querySelector('aeva-theme');
 
-                        <aeva-list-item data-content="blog-content">
-                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
-                                </path>
-                            </svg>
-                            <span slot="title">Blog</span>
-                        </aeva-list-item>
-
-                        <aeva-list-item data-content="playground-content">
-                            <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z">
-                                </path>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <span slot="title">Playground</span>
-                        </aeva-list-item>
-                    </aeva-list>
-                </aeva-sidebar>
-
-                <!-- Main Content -->
-                <aeva-section full-height gap="none" padding="none" style="flex: 1;">
-                    <!-- Header with Action Bar -->
-                    <div slot="header">
-                        <aeva-action-bar padding="md">
-                            <!-- Left: Menu icon + Title -->
-                            <aeva-button id="menu-toggle" slot="secondary" icon-only variant="ghost" aria-label="Menu"
-                                style="--aeva-button-ghost-color: white;">
-                                <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M4 6h16M4 12h16M4 18h16"></path>
-                                </svg>
-                            </aeva-button>
-                            <aeva-text slot="secondary" variant="h4" style="--aeva-text-color: white;">Aeva
-                                UI</aeva-text>
-
-                            <!-- Right: Theme selection -->
-                            <script>
-                                document.addEventListener('DOMContentLoaded', () => {
-                                    const themeEl = document.querySelector('aeva-theme');
-
-                                    // Define custom themes with inheritance
-                                    themeEl.customStyles = {
-                                        'halloween': {
-                                            variables: {
-                                                '--aeva-page-bg': '#1a1a1a',
-                                                '--aeva-page-background': 'radial-gradient(circle, #2c1810 0%, #000000 100%)',
-                                                '--aeva-primary-color': '#ff7518',
-                                                '--aeva-text-color': '#ff7518',
-                                                '--aeva-card-bg': '#2a2a2a',
-                                                '--aeva-card-border-color': '#ff7518',
-                                                '--aeva-card-border-hover-color': '#ffffff'
-                                            }
-                                        },
-                                        'emerald-city': {
-                                            extends: 'light',
-                                            variables: {
-                                                '--aeva-primary-color': '#10b981',
-                                                '--aeva-button-primary-bg': '#10b981',
-                                                '--aeva-button-primary-hover-bg': '#059669',
-                                                '--aeva-button-primary-active-bg': '#047857',
-                                                '--aeva-action-bar-bg': 'rgba(255, 255, 255, 0.3)',
-                                                '--aeva-action-bar-backdrop-filter': 'blur(15px)',
-                                                '--aeva-action-bar-border-radius': '50vh',
-                                                '--aeva-action-bar-drop-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
-                                                '--aeva-action-bar-glassmorphism-border': '1px solid rgba(255, 255, 255, 0.4)',
-                                                '--aeva-page-background': 'linear-gradient(135deg, #ecfdf5 0%, #10b981 100%)',
-                                                '--aeva-card-bg': 'rgba(255, 255, 255, 0.8)',
-                                                '--aeva-card-border-color': '#10b981',
-                                                '--aeva-text-color': '#064e3b'
-                                            }
+                                // Define custom themes with inheritance
+                                themeEl.customStyles = {
+                                    'halloween': {
+                                        variables: {
+                                            '--aeva-page-bg': '#1a1a1a',
+                                            '--aeva-page-background': 'radial-gradient(circle, #2c1810 0%, #000000 100%)',
+                                            '--aeva-primary-color': '#ff7518',
+                                            '--aeva-text-color': '#ff7518',
+                                            '--aeva-card-bg': '#2a2a2a',
+                                            '--aeva-card-border-color': '#ff7518',
+                                            '--aeva-card-border-hover-color': '#ffffff'
                                         }
-                                    };
+                                    },
+                                    'emerald-city': {
+                                        extends: 'light',
+                                        variables: {
+                                            '--aeva-primary-color': '#10b981',
+                                            '--aeva-button-primary-bg': '#10b981',
+                                            '--aeva-button-primary-hover-bg': '#059669',
+                                            '--aeva-button-primary-active-bg': '#047857',
+                                            '--aeva-action-bar-bg': 'rgba(255, 255, 255, 0.3)',
+                                            '--aeva-action-bar-backdrop-filter': 'blur(15px)',
+                                            '--aeva-action-bar-border-radius': '50vh',
+                                            '--aeva-action-bar-drop-shadow': '0 8px 32px rgba(0, 0, 0, 0.1)',
+                                            '--aeva-action-bar-glassmorphism-border': '1px solid rgba(255, 255, 255, 0.4)',
+                                            '--aeva-page-background': 'linear-gradient(135deg, #ecfdf5 0%, #10b981 100%)',
+                                            '--aeva-card-bg': 'rgba(255, 255, 255, 0.8)',
+                                            '--aeva-card-border-color': '#10b981',
+                                            '--aeva-text-color': '#064e3b'
+                                        }
+                                    }
+                                };
 
-                                    // Define cycle order (still used by toggleTheme() if called elsewhere)
-                                    themeEl.themes = ['light', 'dark', 'emerald-city', 'halloween'];
-                                });
-                            </script>
-                            <aeva-button id="theme-menu-trigger" slot="primary" icon-only variant="ghost"
-                                aria-label="Theme Menu" style="--aeva-button-ghost-color: white;">
-                                <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
-                                    </path>
-                                </svg>
-                            </aeva-button>
-                        </aeva-action-bar>
-                    </div>
+                                // Define cycle order (still used by toggleTheme() if called elsewhere)
+                                themeEl.themes = ['light', 'dark', 'emerald-city', 'halloween'];
+                            });
+                        </script>
+                        <aeva-button id="theme-menu-trigger" slot="primary" icon-only variant="ghost"
+                            aria-label="Theme Menu" style="--aeva-button-ghost-color: white;">
+                            <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+                                </path>
+                            </svg>
+                        </aeva-button>
+                    </aeva-action-bar>
+                </div>
 
-                    <!-- Body with Dynamic Content -->
-                    <div id="content-area" class="content-area">
-                        <!-- Content will be loaded here dynamically -->
-                    </div>
-                </aeva-section>
-            </div>
-        </aeva-page>
+                <!-- Body with Dynamic Content -->
+                <div id="content-area" class="content-area">
+                    <!-- Content will be loaded here dynamically -->
+                </div>
+            </aeva-section>
+        </div>
+    </aeva-page>
 
-        <!-- Detail Page Overlay -->
-        <aeva-page id="detail-page" background="var(--aeva-page-bg)" close-on-backdrop>
-        </aeva-page>
+    <!-- Detail Page Overlay -->
+    <aeva-page id="detail-page" background="var(--aeva-page-bg)" close-on-backdrop>
+    </aeva-page>
 
-        <aeva-popup-menu id="theme-popup" auto-close>
-            <aeva-list>
-                <aeva-list-item id="theme-light">
-                    <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M14.5 12a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z">
-                        </path>
-                    </svg>
-                    <span slot="title">Light</span>
-                </aeva-list-item>
-                <aeva-list-item id="theme-dark">
-                    <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
-                        </path>
-                    </svg>
-                    <span slot="title">Dark</span>
-                </aeva-list-item>
-                <aeva-list-item id="theme-emerald">
-                    <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z">
-                        </path>
-                    </svg>
-                    <span slot="title">Emerald City</span>
-                </aeva-list-item>
-                <aeva-list-item id="theme-halloween">
-                    <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                    <span slot="title">Halloween</span>
-                </aeva-list-item>
-            </aeva-list>
-        </aeva-popup-menu>
-    </aeva-theme>
+    <aeva-popup-menu id="theme-popup" auto-close>
+        <aeva-list>
+            <aeva-list-item id="theme-light">
+                <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M14.5 12a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z">
+                    </path>
+                </svg>
+                <span slot="title">Light</span>
+            </aeva-list-item>
+            <aeva-list-item id="theme-dark">
+                <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z">
+                    </path>
+                </svg>
+                <span slot="title">Dark</span>
+            </aeva-list-item>
+            <aeva-list-item id="theme-emerald">
+                <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-7.714 2.143L11 21l-2.286-6.857L1 12l7.714-2.143L11 3z">
+                    </path>
+                </svg>
+                <span slot="title">Emerald City</span>
+            </aeva-list-item>
+            <aeva-list-item id="theme-halloween">
+                <svg slot="icon-left" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                </svg>
+                <span slot="title">Halloween</span>
+            </aeva-list-item>
+        </aeva-list>
+    </aeva-popup-menu>
+    <!-- </aeva-theme> -->
 
     <!-- Load Aeva UI Library -->
     <script type="module" src="./main.ts"></script>

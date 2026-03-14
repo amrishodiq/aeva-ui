@@ -28,7 +28,7 @@ export class AevaTheme extends LitElement {
 
   @provide({ context: themeContext })
   @property({ type: String })
-  theme: Theme = 'light';
+  theme: Theme = 'dark';
 
   /**
    * List of themes to cycle through when calling toggleTheme().
