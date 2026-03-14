@@ -177,7 +177,7 @@ export class AevaSquishyButton extends LitElement {
         }
     }
 
-    private _handlePointerUp(e: PointerEvent) {
+    private _handlePointerUp() {
         if (this.disabled) return;
         this.scaleSpring.setTarget(1);
 

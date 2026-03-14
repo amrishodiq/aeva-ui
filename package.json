@@ -1,6 +1,6 @@
 {
   "name": "aeva-ui",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "The light, bouncy, and effortlessly chill UI library for the next gen of web developers. Build fast, stay relaxed.",
   "type": "module",
   "sideEffects": false,

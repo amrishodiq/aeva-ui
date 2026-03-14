@@ -58,6 +58,7 @@ export { AevaEmptyState } from './components/molecules/aeva-empty-state.js';
 export { AevaBarChart } from './components/molecules/aeva-bar-chart.js';
 export { AevaLineChart } from './components/molecules/aeva-line-chart.js';
 export { AevaDoughnutChart } from './components/molecules/aeva-doughnut-chart.js';
+export { AevaAvatarGroup } from './components/molecules/aeva-avatar-group.js';
 
 // Organisms
 export { AevaSidebar } from './components/organisms/aeva-sidebar.js';

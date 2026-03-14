@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.7] - 2026-03-14
+
+### Added
+- **New Component**: \`aeva-kinetic-text\` (A playful, bouncy text component for engaging headings).
+- **New Component**: \`aeva-squishy-button\` (A tactile, physics-based button with realistic squish mechanics).
+
+### Improved
+- **Responsive Layouts**: Added \`md-columns\` and \`lg-columns\` properties to \`aeva-masonry\` for dynamic layout responses across breakpoints.
+- **Theme Delivery**: Resolved issues with custom components loading without \`aeva-theme\` initialized by injecting a default style layer.
+- **Component Exports**: Added \`AevaAvatarGroup\` export to the main library entry file.
+
 ## [0.1.6] - 2026-03-01
 
 ### Improved
