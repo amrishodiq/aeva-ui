@@ -28,7 +28,8 @@
   },
   "homepage": "https://github.com/amrishodiq/aeva-ui#readme",
   "files": [
-    "dist"
+    "dist",
+    "custom-elements.json"
   ],
   "scripts": {
     "dev": "vite",
