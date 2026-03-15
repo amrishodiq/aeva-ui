@@ -12,6 +12,7 @@ export { AevaSquishyButton } from './components/atoms/aeva-squishy-button.js';
 export { AevaMagnetic } from './components/atoms/aeva-magnetic.js';
 export { AevaMembraneInput } from './components/atoms/aeva-membrane-input.js';
 export { AevaJellyCard } from './components/atoms/aeva-jelly-card.js';
+export { AevaMechanicalSwitch } from './components/atoms/aeva-mechanical-switch.js';
 export { AevaKineticText } from './components/atoms/aeva-kinetic-text.js';
 export { AevaText } from './components/atoms/aeva-text.js';
 export { AevaInput } from './components/atoms/aeva-input.js';

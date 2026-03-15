@@ -496,4 +496,15 @@ export const lightTheme: ThemeVariables = {
   '--aeva-switch-thumb-shadow': '0 2px 4px rgba(0, 0, 0, 0.2)',
   '--aeva-switch-transition': '300ms cubic-bezier(0.4, 0, 0.2, 1)',
   '--aeva-switch-elastic-transition': '400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+
+  // Mechanical Switch (Experimental)
+  '--aeva-mechanical-track-bg': '#d1d5db',
+  '--aeva-mechanical-track-shadow': 'rgba(0, 0, 0, 0.1)',
+  '--aeva-mechanical-track-highlight': 'rgba(255, 255, 255, 0.8)',
+  '--aeva-mechanical-rocker-bg': '#f3f4f6',
+  '--aeva-mechanical-rocker-checked-bg': '#ffffff',
+  '--aeva-mechanical-rocker-shadow': 'rgba(0, 0, 0, 0.1)',
+  '--aeva-mechanical-rocker-highlight': 'rgba(255, 255, 255, 1)',
+  '--aeva-mechanical-indicator-off': '#9ca3af',
+  '--aeva-mechanical-label-color': '#6b7280',
 };

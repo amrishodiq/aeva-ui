@@ -496,4 +496,15 @@ export const darkTheme: ThemeVariables = {
   '--aeva-switch-thumb-shadow': '0 2px 4px rgba(0, 0, 0, 0.4)',
   '--aeva-switch-transition': '300ms cubic-bezier(0.4, 0, 0.2, 1)',
   '--aeva-switch-elastic-transition': '400ms cubic-bezier(0.34, 1.56, 0.64, 1)',
+
+  // Mechanical Switch (Experimental)
+  '--aeva-mechanical-track-bg': '#1a1a1a',
+  '--aeva-mechanical-track-shadow': 'rgba(0, 0, 0, 0.8)',
+  '--aeva-mechanical-track-highlight': 'rgba(255, 255, 255, 0.1)',
+  '--aeva-mechanical-rocker-bg': '#333333',
+  '--aeva-mechanical-rocker-checked-bg': '#3a3a3a',
+  '--aeva-mechanical-rocker-shadow': 'rgba(0, 0, 0, 0.4)',
+  '--aeva-mechanical-rocker-highlight': 'rgba(255, 255, 255, 0.1)',
+  '--aeva-mechanical-indicator-off': '#111111',
+  '--aeva-mechanical-label-color': '#555555',
 };
