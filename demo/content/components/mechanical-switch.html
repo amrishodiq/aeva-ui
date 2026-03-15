@@ -1,29 +1,56 @@
-<aeva-doc-page title="Mechanical Toggle (Circular IO)"
-    description="A redesigned Tactile Maximalism component that simulates a heavy circular industrial disc toggle. It features a glowing binary IO (Power) symbol and a satisfying 3D 'rocker' tilt.">
+<aeva-doc-page title="Recessed Glass Switch"
+    description="A futuristic Tactile Maximalism component that simulates a large glass disc that sinks or rises within a track. It features an engraved I/O symbol with a soft LED backlight.">
 
-    <aeva-doc-section title="Circular Disc Toggle"
-        description="Experience the redesign. The circular disc pivots physically, and the integrated IO icon glows when the circuit is active.">
+    <aeva-doc-section title="Depth-based Interaction"
+        description="Experience sensory depth. The circular glass disc physically 'sinks' into the track when active. The I/O symbol is engraved into the glass, revealing a soft glow from beneath.">
 
         <aeva-doc-example code='<aeva-mechanical-switch></aeva-mechanical-switch>'>
             <div
-                style="display: flex; gap: 4rem; padding: 4rem; justify-content: center; align-items: center; border-radius: 1rem; flex-wrap: wrap; background: rgba(0,0,0,0.2);">
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                style="display: flex; gap: 4rem; padding: 4rem; justify-content: center; align-items: center; border-radius: 2rem; flex-wrap: wrap; background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%); border: 1px solid rgba(255,255,255,0.05);">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
                     <aeva-mechanical-switch></aeva-mechanical-switch>
-                    <aeva-text variant="small">Power</aeva-text>
+                    <aeva-text variant="small" style="color: white; opacity: 0.5;">Raised (Off)</aeva-text>
                 </div>
 
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
                     <aeva-mechanical-switch checked></aeva-mechanical-switch>
-                    <aeva-text variant="small">Engine</aeva-text>
+                    <aeva-text variant="small" style="color: white; opacity: 0.5;">Sunken (On)</aeva-text>
                 </div>
 
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem;">
                     <aeva-mechanical-switch disabled></aeva-mechanical-switch>
-                    <aeva-text variant="small">Disconnected</aeva-text>
+                    <aeva-text variant="small" style="color: white; opacity: 0.5;">Locked</aeva-text>
                 </div>
             </div>
         </aeva-doc-example>
 
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Customization"
+        description="Developers can easily customize the LED backlight color using the <code>--aeva-switch-backlight-color</code> CSS variable.">
+
+        <aeva-doc-example code='<aeva-mechanical-switch style="--aeva-switch-backlight-color: #ff0055;" checked></aeva-mechanical-switch>
+<aeva-mechanical-switch style="--aeva-switch-backlight-color: #00ff88;" checked></aeva-mechanical-switch>
+<aeva-mechanical-switch style="--aeva-switch-backlight-color: #ffaa00;" checked></aeva-mechanical-switch>'>
+            <div
+                style="display: flex; gap: 4rem; padding: 2rem; justify-content: center; align-items: center; border-radius: 2rem; background: #111;">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <aeva-mechanical-switch style="--aeva-switch-backlight-color: #ff0055;"
+                        checked></aeva-mechanical-switch>
+                    <aeva-text variant="small" style="color: white; opacity: 0.6;">Deep Pink</aeva-text>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <aeva-mechanical-switch style="--aeva-switch-backlight-color: #00ff88;"
+                        checked></aeva-mechanical-switch>
+                    <aeva-text variant="small" style="color: white; opacity: 0.6;">Neo Mint</aeva-text>
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <aeva-mechanical-switch style="--aeva-switch-backlight-color: #ffaa00;"
+                        checked></aeva-mechanical-switch>
+                    <aeva-text variant="small" style="color: white; opacity: 0.6;">Amber</aeva-text>
+                </div>
+            </div>
+        </aeva-doc-example>
     </aeva-doc-section>
 
     <aeva-doc-section title="Properties" description="Configuration options for the mechanical switch.">

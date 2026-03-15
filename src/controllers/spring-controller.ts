@@ -18,6 +18,10 @@ export class SpringController implements ReactiveController {
   private settlePromise: Promise<void> | null = null;
   private settleResolve: (() => void) | null = null;
 
+  public get currentVelocity() {
+    return this.velocity;
+  }
+
   constructor(
     host: ReactiveControllerHost,
     config: SpringConfig = { stiffness: 0.15, damping: 0.6 },
