@@ -33,7 +33,7 @@ Aeva UI isn't just another library; it's a mood. Built on modern web standards t
 
 Aeva UI features a standard set of atomic components alongside a special collection of tactile, physics-based elements that define the "Aeva" experience.
 
-### ✨ Tactile & Physics (Special)
+### Tactile & Physics (Special)
 
 These components use custom physics controllers to create that signature bouncy, fluid feel.
 
