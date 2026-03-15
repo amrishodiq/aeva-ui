@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.8] - 2026-03-15
+
+### Added
+- **New Component**: `aeva-magnetic` (A container that adds a physics-based magnetic pull to its children).
+- **New Component**: `aeva-membrane-input` (A stretchy, pulse-reactive button that mimics membrane material).
+- **New Component**: `aeva-jelly-card` (A card component with viscous liquid physics and "jelly" wobble effects).
+- **New Component**: `aeva-mechanical-switch` (A highly tactile, large-scale recessed switch with "sinking" depth physics).
+- **New Component**: `aeva-gooey-slider` (A liquid-physics slider where the thumb and track use SVG gooey filters for a melting effect).
+
+### Improved
+- **Tactile Physics**: Redesigned `aeva-squishy-button` with realistic transparent glass aesthetics, 3D lighting, and enhanced squish mechanics.
+- **Developer Experience**: Added explicit `.d.ts` declaration generation to the build process for better IDE auto-completion.
+- **Library Stability**: Updated and verified standard exports in the main entry file.
+
 ## [0.1.7] - 2026-03-14
 
 ### Added

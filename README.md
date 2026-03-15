@@ -31,7 +31,22 @@ Aeva UI isn't just another library; it's a mood. Built on modern web standards t
 
 ## Components
 
-Explore the collection of bouncy components:
+Aeva UI features a standard set of atomic components alongside a special collection of tactile, physics-based elements that define the "Aeva" experience.
+
+### ✨ Tactile & Physics (Special)
+
+These components use custom physics controllers to create that signature bouncy, fluid feel.
+
+- **[Kinetic Text](docs/atoms/aeva-kinetic-text.md)**: Text that stretches and reacts like physical matter.
+- **[Squishy Button](docs/atoms/aeva-squishy-button.md)**: A button that feels like soft rubber when pressed.
+- **[Magnetic](docs/atoms/aeva-magnetic.md)**: A wrapper that attracts elements to your cursor.
+- **[Gooey Slider](docs/atoms/aeva-gooey-slider.md)**: A slider with a fluid, viscous transition effect.
+- **[Mechanical Switch](docs/atoms/aeva-mechanical-switch.md)**: A switch with tactile physics and sound-like visuals.
+- **[Jelly Card](docs/atoms/aeva-jelly-card.md)**: A card that wobbles and distorts when moved.
+- **[Membrane Input](docs/atoms/aeva-membrane-input.md)**: An input field that reacts like a flexible surface.
+
+### Components Library
+
 
 <details>
 <summary><b>Atoms (Basic Elements)</b></summary>
@@ -65,6 +80,13 @@ Explore the collection of bouncy components:
 - [Tab Item](docs/atoms/aeva-tab-item.md)
 - [Text](docs/atoms/aeva-text.md)
 - [Tooltip](docs/atoms/aeva-tooltip.md)
+- [Mechanical Switch](docs/atoms/aeva-mechanical-switch.md)
+- [Membrane Input](docs/atoms/aeva-membrane-input.md)
+- [Squishy Button](docs/atoms/aeva-squishy-button.md)
+- [Kinetic Text](docs/atoms/aeva-kinetic-text.md)
+- [Magnetic](docs/atoms/aeva-magnetic.md)
+- [Jelly Card](docs/atoms/aeva-jelly-card.md)
+- [Gooey Slider](docs/atoms/aeva-gooey-slider.md)
 </details>
 
 <details>
@@ -103,7 +125,14 @@ Explore the collection of bouncy components:
 
 ### Via NPM
 ```bash
-npm install aeva-ui lit
+$ npx create-aeva-project <project-name>
+? Select a template: » - Use arrow-keys. Return to submit.
+>   TypeScript
+    JavaScript
+
+$ cd <project-name>
+$ npm install
+$ npm run dev 
 ```
 
 ### Via CDN (jsDelivr)

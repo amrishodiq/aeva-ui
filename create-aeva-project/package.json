@@ -1,0 +1,31 @@
+{
+    "name": "create-aeva-project",
+    "version": "1.0.0",
+    "description": "Scaffold a new Aeva UI project",
+    "type": "module",
+    "main": "index.js",
+    "bin": {
+        "create-aeva-project": "index.js"
+    },
+    "files": [
+        "index.js",
+        "templates"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "aeva-ui",
+        "scaffold",
+        "create-aeva",
+        "cli"
+    ],
+    "author": "",
+    "license": "MIT",
+    "dependencies": {
+        "fs-extra": "^11.2.0",
+        "kolorist": "^1.8.0",
+        "minimist": "^1.2.8",
+        "prompts": "^2.4.2"
+    }
+}

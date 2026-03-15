@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="viewport-fit=cover,width=device-width,initial-scale=1,user-scalable=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Aeva UI + Vite + TS</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+    <link rel="stylesheet" href="node_modules/aeva-ui/dist/style.css">
+</head>
+
+<body>
+    <aeva-theme>
+        <aeva-page open>
+            <aeva-container padding="sm">
+                <!-- Action Bar -->
+                <aeva-action-bar padding="xs">
+                    <aeva-avatar slot="secondary" src="https://i.pravatar.cc/150?img=12"
+                        alt="User Avatar"></aeva-avatar>
+                    <aeva-text slot="secondary" variant="h4">Aeva App</aeva-text>
+                    <aeva-button id="getting-started" slot="primary" variant="ghost" icon-only
+                        aria-label="Getting Started">
+                        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                            </path>
+                        </svg>
+                    </aeva-button>
+                    <aeva-button id="more-options" slot="primary" variant="ghost" icon-only aria-label="More Options">
+                        <svg slot="icon-only" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z">
+                            </path>
+                        </svg>
+                    </aeva-button>
+                </aeva-action-bar>
+
+                <!-- Cards -->
+                <aeva-card>
+                    <div slot="header"><aeva-text variant="h5">Why Shakespeare still feels
+                            intimidating</aeva-text></div>
+                    <aeva-text variant="body">Shakespeare sounds hard because his language is old not because it
+                        is empty. His words carried entertainment power in a world without screens. Audiences
+                        listened closely and language had to work hard. Insults became one of his most efficient
+                        tools.</aeva-text>
+                    <aeva-button slot="footer" variant="outline" size="sm">Read More</aeva-button>
+                </aeva-card>
+            </aeva-container>
+        </aeva-page>
+    </aeva-theme>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
