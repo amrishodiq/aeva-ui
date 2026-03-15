@@ -13,19 +13,21 @@ export class AevaSquishyButton extends LitElement {
     static styles = css`
         :host {
             display: inline-block;     
-}
+        }
 
         button {
-            /* Base Aeva Button styling with advanced shadow layer */
-            background: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            color: var(--aeva-button-primary-color, white);
+            /* Pure transparent glass aesthetic */
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--aeva-text-color, #ffffff);
             
             padding: var(--aeva-button-padding-md, 16px 32px);
             border-radius: var(--aeva-button-border-radius, 24px);
             font-family: var(--aeva-button-font-family, inherit);
             font-size: var(--aeva-button-font-size-md, 1rem);
-            font-weight: 500;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -35,24 +37,30 @@ export class AevaSquishyButton extends LitElement {
             position: relative;
             overflow: hidden;
             
-            /* Dynamic shadows controlled via CSS vars updated by JS */
+            /* High-fidelity 2026 sensory shadows: combined outer and inner */
             box-shadow: 
-                var(--shadow-x, 8px) var(--shadow-y, 8px) 24px rgba(0,0,0,0.15),
-                calc(var(--shadow-x, 8px) * -1) calc(var(--shadow-y, 8px) * -1) 24px rgba(255,255,255,0.4),
-                inset 4px 4px 12px rgba(255,255,255,0.5),
-                inset -4px -4px 12px rgba(0,0,0,0.1);
+                var(--shadow-x, 8px) var(--shadow-y, 8px) 32px rgba(0,0,0,0.15),
+                calc(var(--shadow-x, 8px) * -1) calc(var(--shadow-y, 8px) * -1) 32px rgba(255,255,255,0.3),
+                inset 2px 2px 8px rgba(255,255,255,0.4),
+                inset -2px -2px 8px rgba(0,0,0,0.05);
                 
-            transition: filter 0.3s ease;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
             will-change: transform, box-shadow;
             transform-origin: center center;
             
-            /* Remove tap highlight on mobile */
             -webkit-tap-highlight-color: transparent;
         }
 
-        /* Focus ring for accessibility */
+        /* Dark mode adjustment for transparency */
+        @media (prefers-color-scheme: dark) {
+            button {
+                background: rgba(255, 255, 255, 0.02);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
         button:focus-visible {
-            outline: var(--aeva-button-focus-ring-width, 2px) solid var(--aeva-button-focus-ring-color, #667eea);
+            outline: var(--aeva-button-focus-ring-width, 2px) solid var(--aeva-primary-color, #667eea);
             outline-offset: var(--aeva-button-focus-ring-offset, 2px);
         }
         
@@ -61,27 +69,28 @@ export class AevaSquishyButton extends LitElement {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             border-radius: inherit;
-            background: radial-gradient(circle at var(--light-x, 50%) var(--light-y, 0%), rgba(255,255,255,0.6), transparent 70%);
+            background: radial-gradient(circle at var(--light-x, 50%) var(--light-y, 0%), rgba(255,255,255,0.4), transparent 80%);
             pointer-events: none;
         }
 
         button:hover:not(:disabled) {
-            filter: brightness(1.05);
-            /* Shadows dynamically updated by pointermove, CSS handles the filter transition */
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.3);
         }
         
         button:active:not(:disabled) {
+            background: rgba(255, 255, 255, 0.03);
             box-shadow: 
-                var(--shadow-x, 2px) var(--shadow-y, 2px) 8px rgba(0,0,0,0.1),
-                calc(var(--shadow-x, 2px) * -1) calc(var(--shadow-y, 2px) * -1) 8px rgba(255,255,255,0.2),
-                inset 8px 8px 20px rgba(0,0,0,0.2),
-                inset -8px -8px 20px rgba(255,255,255,0.4);
+                var(--shadow-x, 2px) var(--shadow-y, 2px) 10px rgba(0,0,0,0.1),
+                calc(var(--shadow-x, 2px) * -1) calc(var(--shadow-y, 2px) * -1) 10px rgba(255,255,255,0.2),
+                inset 10px 10px 25px rgba(0,0,0,0.1),
+                inset -10px -10px 25px rgba(255,255,255,0.3);
         }
 
         button:disabled {
-            opacity: 0.6;
+            opacity: 0.4;
             cursor: not-allowed;
-            filter: grayscale(0.5);
+            filter: grayscale(1);
         }
         
         /* Size variants */
@@ -100,44 +109,11 @@ export class AevaSquishyButton extends LitElement {
             font-size: var(--aeva-button-font-size-lg, 1.125rem);
         }
 
-        /* Color variants matching aeva-button exactly */
-        .variant-primary {
-            background-color: var(--aeva-button-primary-bg);
-            color: var(--aeva-button-primary-color);
-        }
-
-        .variant-secondary {
-            background-color: var(--aeva-button-secondary-bg);
-            color: var(--aeva-button-secondary-color);
-        }
-
-        .variant-outline {
-            background-color: transparent;
-            color: var(--aeva-button-outline-color);
-            border: 2px solid var(--aeva-button-outline-border-color);
-        }
-
-        .variant-ghost {
-            background-color: transparent;
-            color: var(--aeva-button-ghost-color);
-            box-shadow: none;
-        }
-
-        .variant-danger {
-            background-color: var(--aeva-button-danger-bg);
-            color: var(--aeva-button-danger-color);
-        }
-
         .squish {
             display: contents;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.15);
         }
     `;
-
-    /**
-     * Visual style variant of the button.
-     */
-    @property({ type: String, reflect: true })
-    variant: 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger' = 'primary';
 
     /**
      * Size of the button.
@@ -221,7 +197,6 @@ export class AevaSquishyButton extends LitElement {
         const scaleX = 1 + (1 - scaleY) * 0.6;
 
         const classes = {
-            [`variant-${this.variant}`]: true,
             [`size-${this.size}`]: true,
         };
 
