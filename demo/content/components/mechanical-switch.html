@@ -1,0 +1,56 @@
+<aeva-doc-page title="Mechanical Toggle (Circular IO)"
+    description="A redesigned Tactile Maximalism component that simulates a heavy circular industrial disc toggle. It features a glowing binary IO (Power) symbol and a satisfying 3D 'rocker' tilt.">
+
+    <aeva-doc-section title="Circular Disc Toggle"
+        description="Experience the redesign. The circular disc pivots physically, and the integrated IO icon glows when the circuit is active.">
+
+        <aeva-doc-example code='<aeva-mechanical-switch></aeva-mechanical-switch>'>
+            <div
+                style="display: flex; gap: 4rem; padding: 4rem; justify-content: center; align-items: center; border-radius: 1rem; flex-wrap: wrap; background: rgba(0,0,0,0.2);">
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <aeva-mechanical-switch></aeva-mechanical-switch>
+                    <aeva-text variant="small">Power</aeva-text>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <aeva-mechanical-switch checked></aeva-mechanical-switch>
+                    <aeva-text variant="small">Engine</aeva-text>
+                </div>
+
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
+                    <aeva-mechanical-switch disabled></aeva-mechanical-switch>
+                    <aeva-text variant="small">Disconnected</aeva-text>
+                </div>
+            </div>
+        </aeva-doc-example>
+
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties" description="Configuration options for the mechanical switch.">
+        <aeva-simple-table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>checked</code></td>
+                    <td><code>checked</code></td>
+                    <td>The state of the switch.</td>
+                    <td><code>false</code></td>
+                </tr>
+                <tr>
+                    <td><code>disabled</code></td>
+                    <td><code>disabled</code></td>
+                    <td>Whether the switch is interactive.</td>
+                    <td><code>false</code></td>
+                </tr>
+            </tbody>
+        </aeva-simple-table>
+    </aeva-doc-section>
+
+</aeva-doc-page>

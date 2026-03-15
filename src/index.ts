@@ -35,6 +35,7 @@ export { AevaRating } from './components/atoms/aeva-rating.js';
 export { AevaCode } from './components/atoms/aeva-code.js';
 export { AevaStep } from './components/atoms/aeva-step.js';
 export { AevaSlider } from './components/atoms/aeva-slider.js';
+export { AevaGooeySlider } from './components/atoms/aeva-gooey-slider.js';
 export { AevaSwitch } from './components/atoms/aeva-switch.js';
 export { AevaSelect } from './components/atoms/aeva-select.js';
 export { AevaSimpleTable } from './components/atoms/aeva-simple-table.js';

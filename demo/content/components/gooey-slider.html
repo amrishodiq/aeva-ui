@@ -1,0 +1,70 @@
+<aeva-doc-page title="Gooey Slider"
+    description="A Tactile Maximalism slider that uses SVG filters to create a liquid liquid interaction between the thumb and the track.">
+
+    <aeva-doc-section title="Liquid interaction"
+        description="Drag the slider below quickly to see the liquid 'tail' follow the thumb. The connection between the thumb and the track fill stretches and morphs organically.">
+
+        <aeva-doc-example code='<aeva-gooey-slider label="Volume" value="40"></aeva-gooey-slider>'>
+            <div
+                style="padding: 2rem; max-width: 500px; margin: 0 auto; background: rgba(0,0,0,0.2); border-radius: 1rem;">
+                <aeva-gooey-slider label="Intensity" value="65"></aeva-gooey-slider>
+                <div style="margin-top: 2rem;"></div>
+                <aeva-gooey-slider label="Liquid flow" value="30"
+                    style="--aeva-primary-color: var(--aeva-color-indigo-400);"></aeva-gooey-slider>
+            </div>
+        </aeva-doc-example>
+
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties" description="Configuration options for the gooey slider.">
+        <aeva-simple-table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>value</code></td>
+                    <td><code>value</code></td>
+                    <td>The current value of the slider.</td>
+                    <td><code>50</code></td>
+                </tr>
+                <tr>
+                    <td><code>min</code></td>
+                    <td><code>min</code></td>
+                    <td>The minimum value.</td>
+                    <td><code>0</code></td>
+                </tr>
+                <tr>
+                    <td><code>max</code></td>
+                    <td><code>max</code></td>
+                    <td>The maximum value.</td>
+                    <td><code>100</code></td>
+                </tr>
+                <tr>
+                    <td><code>step</code></td>
+                    <td><code>step</code></td>
+                    <td>The increment step.</td>
+                    <td><code>1</code></td>
+                </tr>
+                <tr>
+                    <td><code>label</code></td>
+                    <td><code>label</code></td>
+                    <td>An optional label for the slider.</td>
+                    <td><code>''</code></td>
+                </tr>
+                <tr>
+                    <td><code>disabled</code></td>
+                    <td><code>disabled</code></td>
+                    <td>Whether the slider is interactive.</td>
+                    <td><code>false</code></td>
+                </tr>
+            </tbody>
+        </aeva-simple-table>
+    </aeva-doc-section>
+
+</aeva-doc-page>
