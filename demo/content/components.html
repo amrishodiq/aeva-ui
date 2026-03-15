@@ -32,6 +32,17 @@
         </div>
     </aeva-card>
 
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/magnetic', true)">
+        <div slot="header"><aeva-text variant="h4">Magnetic Hover</aeva-text></div>
+        <aeva-text variant="body">Physical attraction utility that pulls content towards the cursor using spring
+            physics.</aeva-text>
+        <div slot="footer" class="card-footer" style="display: flex; justify-content: center; padding: 1rem;">
+            <aeva-magnetic strength="1.2" radius="100">
+                <aeva-button variant="primary" size="sm">Hover Near Me</aeva-button>
+            </aeva-magnetic>
+        </div>
+    </aeva-card>
+
     <aeva-card padding="md" interactive onclick="showComponentDetail('components/kinetic-text', true)">
         <div slot="header"><aeva-text variant="h4">Kinetic Text</aeva-text></div>
         <aeva-text variant="body">Liquid typography that stretches reactively to touch or gaze proximity.</aeva-text>

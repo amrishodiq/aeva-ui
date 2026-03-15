@@ -1,0 +1,98 @@
+<aeva-doc-page title="Magnetic Hover"
+    description="A Tactile Maximalism utility that provides a physics-based 'magnetic' pull. When the cursor approaches, the content smoothly moves towards it, creating a sense of physical attraction.">
+
+    <aeva-doc-section title="Basic Attraction"
+        description="Wrap any element with aeva-magnetic to make it high-touch and interactive. Perfect for CTA buttons or important navigation items.">
+
+        <aeva-doc-example code='<aeva-magnetic>
+  <aeva-button variant="primary">Magnetic Button</aeva-button>
+</aeva-magnetic>'>
+            <div
+                style="display: flex; gap: 4rem; padding: 4rem; justify-content: center; align-items: center; border-radius: 1rem; flex-wrap: wrap;">
+                <aeva-magnetic>
+                    <aeva-button variant="primary" size="lg">I am Magnetic</aeva-button>
+                </aeva-magnetic>
+
+                <aeva-magnetic strength="0.8" radius="200" max-distance="50">
+                    <aeva-squishy-button variant="secondary">Magnetic & Squishy</aeva-squishy-button>
+                </aeva-magnetic>
+            </div>
+        </aeva-doc-example>
+
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Icon Magnetism"
+        description="Subtle magnetism on icons can make toolbars feel alive and responsive to the user's presence.">
+
+        <aeva-doc-example code='<aeva-magnetic strength="1.5" radius="80">
+  <aeva-icon shape="circular" color="primary">
+    <svg ...></svg>
+  </aeva-icon>
+</aeva-magnetic>'>
+            <div
+                style="display: flex; gap: 2rem; padding: 2rem; justify-content: center; align-items: center; border-radius: 1rem;">
+                <aeva-magnetic strength="1.2" radius="100">
+                    <aeva-icon shape="circular" color="primary">
+                        <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+                        </svg>
+                    </aeva-icon>
+                </aeva-magnetic>
+
+                <aeva-magnetic strength="1.2" radius="100">
+                    <aeva-icon shape="circular" color="success">
+                        <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
+                            </path>
+                        </svg>
+                    </aeva-icon>
+                </aeva-magnetic>
+
+                <aeva-magnetic strength="1.2" radius="100">
+                    <aeva-icon shape="circular" color="danger">
+                        <svg slot="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </aeva-icon>
+                </aeva-magnetic>
+            </div>
+        </aeva-doc-example>
+
+    </aeva-doc-section>
+
+    <aeva-doc-section title="Properties" description="Fine-tune the magnetic behavior with these attributes.">
+        <aeva-simple-table>
+            <thead>
+                <tr>
+                    <th>Property</th>
+                    <th>Attribute</th>
+                    <th>Description</th>
+                    <th>Default</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>strength</code></td>
+                    <td><code>strength</code></td>
+                    <td>Movement multiplier. Higher values = stronger attraction.</td>
+                    <td><code>0.5</code></td>
+                </tr>
+                <tr>
+                    <td><code>radius</code></td>
+                    <td><code>radius</code></td>
+                    <td>Proximity in pixels to start the effect.</td>
+                    <td><code>150</code></td>
+                </tr>
+                <tr>
+                    <td><code>maxDistance</code></td>
+                    <td><code>max-distance</code></td>
+                    <td>Maximum pixels the content can move from its resting state.</td>
+                    <td><code>30</code></td>
+                </tr>
+            </tbody>
+        </aeva-simple-table>
+    </aeva-doc-section>
+
+</aeva-doc-page>
