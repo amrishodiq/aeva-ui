@@ -32,6 +32,26 @@
         </div>
     </aeva-card>
 
+    <aeva-card padding="md" interactive onclick="showComponentDetail('components/jelly-card', true)">
+        <div slot="header"><aeva-text variant="h4">Jelly Cards</aeva-text></div>
+        <aeva-text variant="body">Bouncy card grid with collision physics. Neighboring cards push away from focus
+            points.</aeva-text>
+        <div slot="footer" class="card-footer" style="padding: 1rem;">
+            <aeva-masonry columns="2" gap="sm">
+                <aeva-jelly-card id="demo-jelly-1" interactive padding="sm">
+                    <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <aeva-text variant="small">Jelly A</aeva-text>
+                    </div>
+                </aeva-jelly-card>
+                <aeva-jelly-card id="demo-jelly-2" interactive padding="sm">
+                    <div style="height: 40px; display: flex; align-items: center; justify-content: center;">
+                        <aeva-text variant="small">Jelly B</aeva-text>
+                    </div>
+                </aeva-jelly-card>
+            </aeva-masonry>
+        </div>
+    </aeva-card>
+
     <aeva-card padding="md" interactive onclick="showComponentDetail('components/membrane-input', true)">
         <div slot="header"><aeva-text variant="h4">Membrane Input</aeva-text></div>
         <aeva-text variant="body">Tactile input utility that pulses and ripples like an elastic membrane on every

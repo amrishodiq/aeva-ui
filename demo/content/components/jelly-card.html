@@ -1,0 +1,58 @@
+<aeva-doc-page title="Jelly Cards"
+    description="A Tactile Maximalism component that behaves like a block of jelly. These cards expand when hovered and physically 'push' or 'dent' neighboring cards in the grid.">
+
+    <aeva-doc-section title="Jelly Collision Grid"
+        description="Hover over the cards below to see them interact. Notice how surrounding cards react to the expansion of the hovered card.">
+
+        <aeva-doc-example code='<aeva-masonry columns="3" gap="md">
+  <aeva-jelly-card interactive>...</aeva-jelly-card>
+  <aeva-jelly-card interactive>...</aeva-jelly-card>
+  ...
+</aeva-masonry>'>
+            <div style="padding: 2rem; background: rgba(0,0,0,0.1); border-radius: 1rem;">
+                <aeva-masonry columns="3" gap="md" id="jelly-grid">
+                    <aeva-jelly-card id="j1" interactive padding="sm">
+                        <div slot="header"><aeva-text variant="h5">Jelly One</aeva-text></div>
+                        <aeva-text variant="body">I move when my neighbor grows.</aeva-text>
+                    </aeva-jelly-card>
+
+                    <aeva-jelly-card id="j2" interactive padding="sm">
+                        <div slot="header"><aeva-text variant="h5">Jelly Two</aeva-text></div>
+                        <aeva-text variant="body">Try hovering near me.</aeva-text>
+                    </aeva-jelly-card>
+
+                    <aeva-jelly-card id="j3" interactive padding="sm">
+                        <div slot="header"><aeva-text variant="h5">Jelly Three</aeva-text></div>
+                        <aeva-text variant="body">Bouncy and responsive.</aeva-text>
+                    </aeva-jelly-card>
+
+                    <aeva-jelly-card id="j4" interactive padding="sm">
+                        <div slot="header"><aeva-text variant="h5">Jelly Four</aeva-text></div>
+                        <aeva-text variant="body">Elastic interactions.</aeva-text>
+                    </aeva-jelly-card>
+
+                    <aeva-jelly-card id="j5" interactive padding="sm">
+                        <div slot="header"><aeva-text variant="h5">Jelly Five</aeva-text></div>
+                        <aeva-text variant="body">Feel the collision.</aeva-text>
+                    </aeva-jelly-card>
+
+                    <aeva-jelly-card id="j6" interactive padding="sm">
+                        <div slot="header"><aeva-text variant="h5">Jelly Six</aeva-text></div>
+                        <aeva-text variant="body">Tactile Maximalism.</aeva-text>
+                    </aeva-jelly-card>
+                </aeva-masonry>
+            </div>
+        </aeva-doc-example>
+
+    </aeva-doc-section>
+
+    <aeva-doc-section title="How it Works"
+        description="Jelly Cards use a shared CSS variable system to communicate 'pressure points' to their siblings. This allows for complex reactive layouts without heavy JavaScript event management.">
+        <aeva-text variant="body">
+            When a card is hovered, it sets <code>--jelly-active-x</code> and <code>--jelly-active-y</code> on its
+            parent container. Sibling cards then use these coordinates to calculate their displacement using
+            physics-based springs.
+        </aeva-text>
+    </aeva-doc-section>
+
+</aeva-doc-page>
